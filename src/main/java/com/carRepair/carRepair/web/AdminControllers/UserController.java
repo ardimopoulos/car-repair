@@ -31,7 +31,7 @@ public class UserController {
 //        return "user";
 //    }
 
-    @RequestMapping(value="/search-user/{id}" ,  method = RequestMethod.GET)
+/*    @RequestMapping(value="/search-user/{id}" ,  method = RequestMethod.GET)
     public String searchUser(@PathVariable("id") long id){
         User user = userService.searchUser(id);
         return "user";
@@ -55,7 +55,7 @@ public class UserController {
     public String deleteuser(@PathVariable("id") long id){
         userService.deleteUser(id);
         return "user";
-    }
+    }*/
 
 
 }

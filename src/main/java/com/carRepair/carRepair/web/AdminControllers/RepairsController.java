@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class ServicesController {
+public class RepairsController {
 
-    // Selida Service(Repair)
+    // Selida Repair(Service)
 
     @RequestMapping(value = "/admin/service" ,  method = RequestMethod.GET)
     public String services(){
