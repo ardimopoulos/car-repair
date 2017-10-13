@@ -4,111 +4,50 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 
-
 @Entity
-
 public class User {
 
-
     @Id
-
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id" ,nullable = false)
     private long userId;
 
-
-    @Column(nullable = false)
-
+    @Column(nullable = false , length = 32)
     private String email;
 
-
-    @Column(nullable = false)
-
+    @Column(nullable = false , length = 20)
     private String password;
 
 
-    @Column(nullable = false)
-
-    private int userType;
-
+    @Column(nullable = false , length=1)
+    private boolean userType;
 
     @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class)
-
     private Member member;
-
 
     public User() {
     }
 
-    ;
-
-
-    public User(long userId, String email, String password, int userType) {
-
-        this.userId = userId;
-
+    public User(String email, String password, boolean userType) {
         this.email = email;
-
         this.password = password;
-
         this.userType = userType;
-
     }
 
+    public long getUserId() { return userId; }
 
-    public long getUserId() {
+    public void setUserId(long userId) { this.userId = userId; }
 
-        return userId;
+    public String getEmail() { return email; }
 
-    }
+    public void setEmail(String email) { this.email = email; }
 
+    public String getPassword() { return password; }
 
-    public void setUserId(long userId) {
+    public void setPassword(String password) { this.password = password; }
 
-        this.userId = userId;
+    public boolean getUserType() { return userType; }
 
-    }
-
-
-    public String getEmail() {
-
-        return email;
-
-    }
-
-
-    public void setEmail(String email) {
-
-        this.email = email;
-
-    }
-
-
-    public String getPassword() {
-
-        return password;
-
-    }
-
-
-    public void setPassword(String password) {
-
-        this.password = password;
-
-    }
-
-
-    public int getUserType() {
-
-        return userType;
-
-    }
-
-
-    public void setUserType(int userType) {
-
-        this.userType = userType;
-
-    }
+    public void setUserType(boolean userType) { this.userType = userType; }
 
 }

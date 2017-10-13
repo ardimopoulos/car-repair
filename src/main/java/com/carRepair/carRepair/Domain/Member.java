@@ -8,23 +8,22 @@ import java.util.Collection;
 public class Member{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id" ,nullable = false)
     private long memberId;
 
-    @Column(nullable = false)
+    @Column(nullable = false , length =9)
     private int vat;
 
-    @Column(nullable = false)
+    @Column(nullable = false , length = 32)
     private String firstname;
 
-    @Column(nullable = false)
+    @Column(nullable = false , length = 32)
     private String lastname;
 
-    @Column(nullable = false)
+    @Column(nullable = false , length = 64)
     private String address;
 
-    @Column(nullable = false)
+    @Column(nullable = false , length = 8)
     private String plate;
 
     @OneToOne(optional = false)
@@ -36,7 +35,7 @@ public class Member{
 
     public Member(){}
 
-    public Member(long userId, String email, String password, int userType, int vat, String firstname, String lastname, String plate){
+    public Member(String email, String password, int userType, int vat, String firstname, String lastname, String plate){
         //super(userId,email,password,userType);
         this.vat = vat;
         this.firstname = firstname;

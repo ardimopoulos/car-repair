@@ -22,10 +22,10 @@ public class Service {
     @Column(nullable = false, length = 1)
     private int status;
 
-    @Column(nullable = false)
+    @Column(nullable = false )
     private String description;
 
-    @Column(nullable = false)
+    @Column(nullable = false , length =1)
     private boolean type;
 
     @ManyToOne(optional = false)
@@ -35,7 +35,6 @@ public class Service {
     public Service(){}
 
     public Service(long serviceId, Date date, Date time, int status, String description, boolean type, Member member) {
-        this.serviceId = serviceId;
         this.date = date;
         this.time = time;
         this.status = status;
