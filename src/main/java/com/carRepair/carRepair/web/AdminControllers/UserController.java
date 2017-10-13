@@ -25,7 +25,7 @@ public class UserController {
 
         for(int i=0; i < users.size(); i++){
 
-            System.out.println("User"+i+" : "+users.get(i).getUsername() + users.get(i).getPassword() );
+            System.out.println("User"+i+" : "+users.get(i).getUserId() + users.get(i).getPassword() );
 
         }
         return "user";
@@ -35,24 +35,24 @@ public class UserController {
     public String index1(@PathVariable("id") long id){
         User user = userService.printSome1(id);
 
-        System.out.println("User : " + user.getUsername() + user.getPassword());
+        System.out.println("User : " + user.getEmail() + user.getPassword());
 
         return "user";
     }
 
-    @RequestMapping(value="/adduser" ,  method = RequestMethod.GET)
-    public String adduser(){
-        User user = userService.addUser(new User("p12133","xrhstos","bazdek@ad.com"));
-        return "user";
-    }
-
-    @RequestMapping(value="/updateuser/{id}" ,  method = RequestMethod.GET)
-    public String updateuser(@PathVariable("id") long id){
-       User user =  new User("p1314","pass","email@gmail.com");
-       user.setId(id);
-       userService.updateUser(id ,user);
-       return "user";
-    }
+//    @RequestMapping(value="/adduser" ,  method = RequestMethod.GET)
+//    public String adduser(){
+//        User user = userService.addUser(new User("p12133","xrhstos","bazdek@ad.com"));
+//        return "user";
+//    }
+//
+//    @RequestMapping(value="/updateuser/{id}" ,  method = RequestMethod.GET)
+//    public String updateuser(@PathVariable("id") long id){
+//       User user =  new User("p1314","pass","email@gmail.com");
+//       user.setId(id);
+//       userService.updateUser(id ,user);
+//       return "user";
+//    }
 
     @RequestMapping(value="/deleteuser/{id}" ,  method = RequestMethod.GET)
     public String deleteuser(@PathVariable("id") long id){
