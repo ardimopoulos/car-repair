@@ -16,8 +16,11 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        System.out.println("kwstas poulakakis");
         String username = authentication.getName();
+        System.out.println( username + "kwstas poulakakis");
         String password = (String) authentication.getCredentials();
+        System.out.println("maother" + password);
         accountService.login(username, password);
         return new UsernamePasswordAuthenticationToken(username, password);
     }
