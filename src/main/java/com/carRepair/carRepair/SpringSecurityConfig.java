@@ -19,7 +19,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
                 //.antMatchers("/resources").permitAll()
                 //.antMatchers("/resources/static/**").permitAll()
                 //.antMatchers("/resources/static/**").permitAll().anyRequest().permitAll()
@@ -27,14 +27,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/")
+                .formLogin().defaultSuccessUrl("/")
+                .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
                 //For CSS handling
-                http.authorizeRequests().antMatchers("/resources/static/**").permitAll().anyRequest().permitAll();
+                http.authorizeRequests().antMatchers("/resources/static/css**").permitAll().anyRequest().permitAll();
 
 //                .and()
 //                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);

@@ -12,7 +12,10 @@ public class LogInController {
     private static final String LOGIN_FORM = "loginForm";
 
     @RequestMapping(value="/" ,  method = RequestMethod.GET)
-    public String index(Model model){
+    public String home(){ return "redirect:/login"; }
+
+    @RequestMapping(value="/login" ,  method = RequestMethod.GET)
+    public String login(Model model){
 
         model.addAttribute(LOGIN_FORM, new LoginForm());
         return "login";
