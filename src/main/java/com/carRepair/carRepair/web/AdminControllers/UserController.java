@@ -18,9 +18,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @RequestMapping(value="/user" ,  method = RequestMethod.GET)
-//    public String index(){
-//
+    @RequestMapping(value="/user" ,  method = RequestMethod.GET)
+    public String index(){
+
 //        List<User> users = userService.allUsers();
 //
 //        for(int i=0; i < users.size(); i++){
@@ -28,8 +28,8 @@ public class UserController {
 //            System.out.println("User"+i+" : "+users.get(i).getUserId() + users.get(i).getPassword() );
 //
 //        }
-//        return "user";
-//    }
+        return "user";
+    }
 
 /*    @RequestMapping(value="/search-user/{id}" ,  method = RequestMethod.GET)
     public String searchUser(@PathVariable("id") long id){

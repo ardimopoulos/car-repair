@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -17,24 +18,26 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                //.antMatchers("/resources").permitAll()
-                //.antMatchers("/resources/static/**").permitAll()
-                //.antMatchers("/resources/static/**").permitAll().anyRequest().permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER")
-                .anyRequest().authenticated()
+              http
+              .csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"))
                 .and()
-                .formLogin().defaultSuccessUrl("/")
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
-                //For CSS handling
-                http.authorizeRequests().antMatchers("/resources/static/css**").permitAll().anyRequest().permitAll();
+                 //POST method for login
+                .formLogin().usernameParameter("username").passwordParameter("password")
+                .loginPage("/login").defaultSuccessUrl("/admin")
+              .and()
+              .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
+               .and()
+                  .authorizeRequests()
+                //.antMatchers("/login").permitAll()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/user/**").hasAuthority("USER");
+              // .anyRequest().authenticated();
+//                .and()
+
+//
+//                .logout().permitAll();
+//                //For CSS handling
+            //http.authorizeRequests().antMatchers("/resources/static/css/**").permitAll().anyRequest().permitAll();
 
 //                .and()
 //                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);

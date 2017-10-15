@@ -19,6 +19,15 @@
                      <h1>Welcome to Car Repairs</h1>
                      </header>
                      <h2>${message!""}</h2>
+                     <#if username??>
+                     <h1> Welcome, ${username!"guest"}</h1>
+                     <h1> Welcome, ${type!"guest"}</h1>
+                     <h2><a href="/logout">Logout</a></h2>
+                     <#else>
+                     <h1><a href="/register">Sign Up</a></h1>
+                     <h1><a href="/login">Log In</a></h1>
+                     </#if>
+
                      <h2 style="color: red;">${errorMessage!""}</h2>
 
              <div class="row"  >
@@ -26,11 +35,11 @@
                  <div class="col-md-8">
                        <form name="loginForm" action="/login"  method="post" >
                          <div class="login">
-                          <!-- <label for="email">Email:</label>-->
-                           <input type="email" class="form-control"  id="email" placeholder="Enter email" autocomplet="off" name="email" required/><br>
+                          <!-- <label for="username">Email:</label>-->
+                           <input type="email" class="form-control"  id="username" placeholder="Enter email" autocomplet="off" name="username" required/><br>
 
-                          <!-- <label for="pwd">Password:</label> -->
-                           <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required/><br>
+                          <!-- <label for="password">Password:</label> -->
+                           <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required/><br>
                          </div>
                            <button type="submit" class="btn">Let me in!</button>
                        </form>

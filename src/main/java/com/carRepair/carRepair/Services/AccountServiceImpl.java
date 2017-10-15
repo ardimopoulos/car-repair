@@ -1,12 +1,12 @@
 package com.carRepair.carRepair.Services;
 
 import com.carRepair.carRepair.Domain.User;
-import com.carRepair.carRepair.Exceptions.InvalidCredentialsException;
 import com.carRepair.carRepair.Repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 @Transactional
@@ -16,16 +16,16 @@ public class AccountServiceImpl implements AccountService{
     private AccountRepository accountRepository;
 
     @Override
-    public void login(String email, String password) throws AuthenticationException {
-        User user;
-        try {
-            user = accountRepository.findByEmailAndPassword(email, password);
-            System.out.println("asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" + user.getUserType());
-        } catch (Exception e) {
-            throw new InvalidCredentialsException("User not found!");
+    public User login(String email, String password) throws Exception {
+        System.out.println("Account Service");
+
+           User user =  accountRepository.findByEmailAndPassword(email , password);
+        if(user == null){
+            System.out.println("Exception");
+            throw new Exception("User not found!");
         }
-        System.err.println("Eksw apo to try");
-        //return (boolean)user.getUserType();
+        return user;
+
     }
 
     @Override

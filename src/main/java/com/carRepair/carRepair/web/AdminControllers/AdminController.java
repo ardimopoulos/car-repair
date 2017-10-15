@@ -3,7 +3,10 @@ package com.carRepair.carRepair.web.AdminControllers;
 
 import com.carRepair.carRepair.Services.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,8 +17,8 @@ public class AdminController {
     private MemberService memberService;
 
     @RequestMapping(value = "/admin" ,  method = RequestMethod.GET)
-    public String home(){
-
+    public String home(Model model){
+        addUsernameInModel(model);
         //List<Service> services = findByDate();
         //ServicesForm()
         return "admin/home";
@@ -88,5 +91,17 @@ public class AdminController {
         return "admin/customer/search_customer";
     }
 
+    private void addUsernameInModel(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
 
+        /*if (auth != null) {*/
+        if(!username.equals("anonymousUser")){
+            username = (String) auth.getPrincipal();
+            model.addAttribute("username", username);
+        } else {
+            model.addAttribute("errorMessage", "User not logged in anymore!");
+        }
+
+    }
 }
