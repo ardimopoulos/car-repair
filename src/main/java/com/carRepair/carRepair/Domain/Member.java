@@ -1,77 +1,112 @@
 package com.carRepair.carRepair.Domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.Collection;
 
-
 @Entity
-public class Member{
-
+public class Member extends User implements Serializable {
+/*
     @Id
+    @Column(name = "member_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id" ,nullable = false)
-    private long memberId;
+    private long memberId;*/
 
-    @Column(nullable = false , length =9)
+    @Column(nullable = false, length = 9)
     private int vat;
 
-    @Column(nullable = false , length = 32)
+    @Column(nullable = false)
     private String firstname;
 
-    @Column(nullable = false , length = 32)
+    @Column(nullable = false)
     private String lastname;
 
-    @Column(nullable = false , length = 64)
+    @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false , length = 8)
-    private String plate;
+   /* @Column(nullable = false, length = 8)
+    private String plate;*/
 
-    @OneToOne(optional = false)
+   /* @OneToOne(optional = false)
     @JoinColumn(name = "userId")
-    private User user;
+    private User user; */
 
-    @OneToMany(mappedBy = "member" , targetEntity = Service.class)
-    private Collection service;
+    @OneToMany(mappedBy = "member", targetEntity = Service.class)
+    private Collection services;
+
+    @OneToMany(mappedBy = "member", targetEntity = Vehicle.class)
+    private Collection vehicles;
+
 
     public Member(){}
 
-    public Member(String email, String password, int userType, int vat, String firstname, String lastname, String plate){
+
+public Member(long userId, String email, String password, int userType, int vat, String firstname, String lastname, String plate){
         //super(userId,email,password,userType);
         this.vat = vat;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.plate = plate;
-
+        //this.plate = plate;
     }
 
-    public long getMemberId() { return memberId; }
 
 
-    public void setMemberId(long memberId) { this.memberId = memberId; }
+    /*public long getMemberId() {
+        return memberId;
+    }
 
-    public int getVat() { return vat; }
+    public void setMemberId(long memberId) {
+        this.memberId = memberId;
+    }*/
 
-    public void setVat(int vat) { this.vat = vat; }
+    public int getVat() {
+        return vat;
+    }
 
-    public String getFirstname() { return firstname; }
+    public void setVat(int vat) {
+        this.vat = vat;
+    }
 
-    public void setFirstname(String firstname) { this.firstname = firstname; }
+    public String getFirstname() {
+        return firstname;
+    }
 
-    public String getLastname() { return lastname; }
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-    public void setLastname(String lastname) { this.lastname = lastname; }
+    public String getLastname() {
+        return lastname;
+    }
 
-    public String getAddress() { return address; }
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-    public void setAddress(String address) { this.address = address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public String getPlate() { return plate; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public void setPlate(String plate) { this.plate = plate; }
+   /* public String getPlate() {
+        return plate;
+    }
 
-    public User getUser() { return user; }
+    public void setPlate(String plate) {
+        this.plate = plate;
+    }*/
 
-    public void setUser(User user) { this.user = user; }
+    /*public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }*/
 }
+

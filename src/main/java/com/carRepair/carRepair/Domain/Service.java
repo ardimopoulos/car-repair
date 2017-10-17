@@ -1,14 +1,15 @@
 package com.carRepair.carRepair.Domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Service {
+public class Service implements Serializable {
 
     @Id
+    @Column(name = "service_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "service_id" ,nullable = false)
     private long serviceId;
 
     @Column(nullable = false)
@@ -22,65 +23,81 @@ public class Service {
     @Column(nullable = false, length = 1)
     private int status;
 
-    @Column(nullable = false )
+    @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false , length =1)
+    @Column(nullable = false)
     private boolean type;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "member_id", referencedColumnName = "member_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private Member member;
 
     public Service(){}
 
     public Service(long serviceId, Date date, Date time, int status, String description, boolean type, Member member) {
+        this.serviceId = serviceId;
         this.date = date;
         this.time = time;
         this.status = status;
         this.description = description;
         this.type = type;
-        this.member = member;
-
+       // this.member = member;
     }
 
-    public long getServiceId() { return serviceId; }
+    public long getServiceId() {
+        return serviceId;
+    }
 
+    public void setServiceId(long serviceId) {
+        this.serviceId = serviceId;
+    }
 
+    public Date getDate() {
+        return date;
+    }
 
-    public void setServiceId(long serviceId) { this.serviceId = serviceId; }
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-    public Date getDate() { return date; }
+    public Date getTime() {
+        return time;
+    }
 
-    public void setDate(Date date) { this.date = date; }
+    public void setTime(Date time) {
+        this.time = time;
+    }
 
-    public Date getTime() { return time; }
+    public int getStatus() {
+        return status;
+    }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
+    public String getDescription() {
+        return description;
+    }
 
-    public void setTime(Date time) { this.time = time; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public int getStatus() { return status; }
+    public boolean isType() {
+        return type;
+    }
 
-    public void setStatus(int status) { this.status = status; }
+    public void setType(boolean type) {
+        this.type = type;
+    }
 
-    public String getDescription() { return description; }
+    /*public Member getMember() {
+        return member;
+    }
 
-    public void setDescription(String description) { this.description = description; }
-
-    public boolean isType() { return type; }
-
-    public void setType(boolean type) { this.type = type; }
-
-   /*public Member getMember() {
-
-       return member;
-
-   }
-   public void setMember(Member member) {
-
-       this.member = member;
-
-   }*/
-
+    public void setMember(Member member) {
+        this.member = member;
+    }*/
 }
