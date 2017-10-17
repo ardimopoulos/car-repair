@@ -1,107 +1,53 @@
 package com.carRepair.carRepair.web.AdminControllers;
 
 
-import com.carRepair.carRepair.Services.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.carRepair.carRepair.Model.UserForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 public class AdminController {
 
-    @Autowired
-    private MemberService memberService;
+    private static final String USER_FORM = "userForm";
+    private static final String BASE_URL = "/admin";
 
-    @RequestMapping(value = "/admin" ,  method = RequestMethod.GET)
-    public String home(Model model){
-        addUsernameInModel(model);
-        //List<Service> services = findByDate();
-        //ServicesForm()
+    @RequestMapping(value = {"/admin/home", "/admin"}, method = RequestMethod.GET)
+    String getAdminView(){
         return "admin/home";
     }
 
+    @RequestMapping(value = "/admin/create-user", method = RequestMethod.GET)
+    String getCreateUserView(Model model){
 
-    // Selida Owner(Customer)
-
-    @RequestMapping(value = "/admin/customers" ,  method = RequestMethod.GET)
-    public String customer(){
-
-        //List<User> users = findAll(); // Users
-        //CustomerForm()
-        return "admin/customer/customers";
-    }
-
-    @RequestMapping(value = "/admin/new-customer" ,  method = RequestMethod.GET)
-    public String createCustomer(){
-
-        //CreateUserForm()
-        return "admin/customer/new_customer";
-    }
-
-    @RequestMapping(value = "/admin/new-customer" ,  method = RequestMethod.POST)
-    public String createCustomerPost(){
-
-        //save(User user); // Users
-        return "admin/customer/new_customer";
-    }
-
-    @RequestMapping(value = "/admin/delete-customer" ,  method = RequestMethod.GET)
-    public String deleteCustomer(){
-
-        //DeleteUserForm()
-        return "admin/customer/delete_customer";
-    }
-
-    @RequestMapping(value = "/admin/delete-customer" ,  method = RequestMethod.POST)
-    public String deleteCustomerPost(){
-
-        //delete(Long id); // Users
-        return "admin/customer/delete_customer";
-    }
-
-    @RequestMapping(value = "/admin/update-customer" ,  method = RequestMethod.GET)
-    public String updateCustomer(){
-
-        //UpdateUserForm()
-        return "admin/customer/update_customer";
-    }
-
-    @RequestMapping(value = "/admin/update-customer" ,  method = RequestMethod.POST)
-    public String updateCustomerPost(){
-
-        //save(Long id , User user); // Users
-        return "admin/customer/update_customer";
-    }
-
-    @RequestMapping(value = "/admin/search-customer" ,  method = RequestMethod.GET)
-    public String searchCustomer(){
-
-        //SearchUserForm()
-        return "admin/customer/search_customer";
-    }
-
-    @RequestMapping(value = "/admin/search-customer" ,  method = RequestMethod.POST)
-    public String searchCustomerPost(){
-
-        //User user = {user}Service.findOne(User user); // Users
-        return "admin/customer/search_customer";
-    }
-
-    private void addUsernameInModel(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-
-        /*if (auth != null) {*/
-        if(!username.equals("anonymousUser")){
-            username = (String) auth.getPrincipal();
-            model.addAttribute("username", username);
-        } else {
-            model.addAttribute("errorMessage", "User not logged in anymore!");
+        if(!model.containsAttribute(USER_FORM)){
+            model.addAttribute(USER_FORM, new UserForm());
         }
 
+        return "/admin/user/create-user";
     }
+
+    @RequestMapping(name = "/admin/create-user", method = RequestMethod.POST)
+    public String createUser(Model model, @Valid @ModelAttribute(name = USER_FORM) UserForm userForm,
+                             BindingResult bindingResult, RedirectAttributes redirectAttributes){
+
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userForm",bindingResult);
+            redirectAttributes.addFlashAttribute(USER_FORM, userForm);
+            redirectAttributes.addFlashAttribute("message", "Please fill the fields again");
+            redirectAttributes.addFlashAttribute("errorMessage", "Create user failed!");
+            return "redirect:/admin/create-user";
+        }
+
+        //TODO service <-new user exists
+        redirectAttributes.addFlashAttribute("message", "New user :"+userForm.getFirstname());
+        return "redirect:/admin/create-user";
+    }
+
 }
