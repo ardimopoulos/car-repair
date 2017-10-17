@@ -1,0 +1,1 @@
+ <footer>Copyright Coding School - Team 10</footer>
