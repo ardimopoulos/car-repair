@@ -12,28 +12,28 @@ public class UserForm {
     private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9]+$";
     private static final int PASSWORD_MINIMUM_SIZE = 8;
 
-    @NotNull(message = "{create-user.vat.null}")
-    @Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")
+    @NotNull(message = "{new_user.vat.null}")
+    @Pattern(regexp = VAT_PATTERN, message = "{new_user.vat.invalid}")
     private String vat;
 
-    @NotNull(message = "{create-user.firstname.null}")
-    @Pattern(regexp = NAME_PATTERN, message = "{create-user.firstname.invalid}")
+    @NotNull(message = "{new_user.firstname.null}")
+    @Pattern(regexp = NAME_PATTERN, message = "{new_user.firstname.invalid}")
     private String firstname;
 
-    @NotNull(message = "{create-user.lastname.null}")
-    @Pattern(regexp = NAME_PATTERN, message = "{create-user.lastname.invalid}")
+    @NotNull(message = "{new_user.lastname.null}")
+    @Pattern(regexp = NAME_PATTERN, message = "{new_user.lastname.invalid}")
     private String lastname;
 
-    @NotNull(message = "{create-user.address.null}")
-    @Pattern(regexp = ADDRESS_PATTERN, message = "{create-user.address.invalid}")
+    @NotNull(message = "{new_user.address.null}")
+    @Pattern(regexp = ADDRESS_PATTERN, message = "{new_user.address.invalid}")
     private String address;
 
-    @NotNull(message = "{create-user.email.null}")
-    @Pattern(regexp = EMAIL_PATTERN, message = "{create-user.email.invalid}")
+    @NotNull(message = "{new_user.email.null}")
+    @Pattern(regexp = EMAIL_PATTERN, message = "{new_user.email.invalid}")
     private String email;
 
-    @NotNull(message = "{create-user.password.null}")
-    @Pattern(regexp = PASSWORD_PATTERN, message = "{create-user.password.invalid}")
+    @NotNull(message = "{new_user.password.null}")
+    @Pattern(regexp = PASSWORD_PATTERN, message = "{new_user.password.invalid}")
     @Size(min = PASSWORD_MINIMUM_SIZE, message = "Password length must be 8 characters or/and numbers at least.")
     private String password;
 

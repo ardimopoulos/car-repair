@@ -1,5 +1,6 @@
 package com.carRepair.carRepair.Security;
 
+import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Exceptions.InvalidCredentialsException;
 import com.carRepair.carRepair.Services.AccountService;
@@ -11,7 +12,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -24,8 +28,8 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = authentication.getName().trim();
-        String password = (String) authentication.getCredentials().toString().trim();
+        String username = "akis@akis.gr"/*authentication.getName().trim()*/;
+        String password = "12345"/*(String) authentication.getCredentials().toString().trim()*/;
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 

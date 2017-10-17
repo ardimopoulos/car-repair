@@ -1,18 +1,11 @@
 package com.carRepair.carRepair.Domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
 public class Member extends User implements Serializable {
-/*
-    @Id
-    @Column(name = "member_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long memberId;*/
 
     @Column(nullable = false, length = 9)
     private int vat;
@@ -26,12 +19,9 @@ public class Member extends User implements Serializable {
     @Column(nullable = false)
     private String address;
 
-   /* @Column(nullable = false, length = 8)
-    private String plate;*/
-
-   /* @OneToOne(optional = false)
+    @OneToOne(optional = false)
     @JoinColumn(name = "userId")
-    private User user; */
+    private User user;
 
     @OneToMany(mappedBy = "member", targetEntity = Service.class)
     private Collection services;
@@ -40,26 +30,16 @@ public class Member extends User implements Serializable {
     private Collection vehicles;
 
 
-    public Member(){}
+    public Member() {
+    }
 
 
-public Member(long userId, String email, String password, int userType, int vat, String firstname, String lastname, String plate){
+    public Member(long userId, String email, String password, int userType, int vat, String firstname, String lastname, String plate) {
         //super(userId,email,password,userType);
         this.vat = vat;
         this.firstname = firstname;
         this.lastname = lastname;
-        //this.plate = plate;
     }
-
-
-
-    /*public long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
-    }*/
 
     public int getVat() {
         return vat;
@@ -93,20 +73,4 @@ public Member(long userId, String email, String password, int userType, int vat,
         this.address = address;
     }
 
-   /* public String getPlate() {
-        return plate;
-    }
-
-    public void setPlate(String plate) {
-        this.plate = plate;
-    }*/
-
-    /*public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }*/
 }
-

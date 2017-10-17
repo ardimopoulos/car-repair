@@ -21,8 +21,8 @@ public class User implements Serializable{
     @Column(nullable = false)
     private boolean userType;    // value true means ADMIN - value false means USER
 
-   /* @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class)
-    private Member member;*/
+    @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class)
+    private Member member;
 
     public User(){}
 
@@ -61,12 +61,16 @@ public class User implements Serializable{
         return userType;
     }
 
-   /* public void setUserType(boolean userType) {
+    public void setUserType(boolean userType) {
         this.userType = userType;
     }
 
-    public void getRole() {
-        if (this.userType){ return ADMIN; }else{return USER;}
-    }*/
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Member getMember() {
+        return member;
+    }
 
 }

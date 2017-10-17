@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.web.AdminControllers;
+package com.carRepair.carRepair.Web.AdminControllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

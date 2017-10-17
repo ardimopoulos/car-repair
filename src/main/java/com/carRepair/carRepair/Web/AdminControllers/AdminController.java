@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.web.AdminControllers;
+package com.carRepair.carRepair.Web.AdminControllers;
 
 
 import com.carRepair.carRepair.Forms.UserForm;
@@ -30,7 +30,7 @@ public class AdminController {
             model.addAttribute(USER_FORM, new UserForm());
         }
 
-        return "/admin/user/create-user";
+        return "/admin/user/new_user";
     }
 
     @RequestMapping(name = "/admin/create-user", method = RequestMethod.POST)
@@ -47,7 +47,7 @@ public class AdminController {
 
         //TODO service <-new user exists
         redirectAttributes.addFlashAttribute("message", "New user :"+userForm.getFirstname());
-        return "redirect:/admin/create-user";
+        return "redirect:/admin/new_user";
     }
 
 }
