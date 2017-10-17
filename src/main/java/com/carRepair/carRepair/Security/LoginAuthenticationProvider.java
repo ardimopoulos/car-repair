@@ -25,20 +25,14 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName().trim();
-        System.out.println( "Username : " + username );
         String password = (String) authentication.getCredentials().toString().trim();
-        System.out.println("Pass : " +password);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
-        try {
-            User user = accountService.login(username, password);
+        User user = accountService.login(username, password);
 
-            if(user==null){ System.out.println("user = null "); }
-            else if ( user.getUserType() ){ grantedAuthorities.add(new SimpleGrantedAuthority("ADMIN"));}
-            else{ grantedAuthorities.add(new SimpleGrantedAuthority("USER"));}
-
-        }catch (Exception e){throw new InvalidCredentialsException("User can not be found!");}
+        if ( user.getUserType() ){ grantedAuthorities.add(new SimpleGrantedAuthority("ADMIN"));}
+        else{grantedAuthorities.add(new SimpleGrantedAuthority("MEMBER"));}
 
         return new UsernamePasswordAuthenticationToken(username, password,grantedAuthorities);
     }

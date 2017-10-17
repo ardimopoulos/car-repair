@@ -31,7 +31,7 @@ public class Member{
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(mappedBy = "member", targetEntity = Service.class)
+    @OneToMany(mappedBy = "member" , targetEntity = Service.class)
     private Collection service;
 
     public Member(){}

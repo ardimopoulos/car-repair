@@ -19,14 +19,6 @@
                      <h1>Welcome to Car Repairs</h1>
                      </header>
                      <h2>${message!""}</h2>
-                     <#if username??>
-                     <h1> Welcome, ${username!"guest"}</h1>
-                     <h1> Welcome, ${type!"guest"}</h1>
-                     <h2><a href="/logout">Logout</a></h2>
-                     <#else>
-                     <h1><a href="/register">Sign Up</a></h1>
-                     <h1><a href="/login">Log In</a></h1>
-                     </#if>
 
                      <h2 style="color: red;">${errorMessage!""}</h2>
 

@@ -1,5 +1,6 @@
 package com.carRepair.carRepair;
 
+import com.carRepair.carRepair.Handlers.SuccessLoginHandler;
 import com.carRepair.carRepair.Security.LoginAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -16,31 +17,30 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private LoginAuthenticationProvider loginAuthenticationProvider;
 
+    @Autowired
+    private SuccessLoginHandler successLoginHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-              http
-              .csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"))
-                .and()
-                 //POST method for login
-                .formLogin().usernameParameter("username").passwordParameter("password")
-                .loginPage("/login").defaultSuccessUrl("/admin")
-              .and()
-              .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
-               .and()
-                  .authorizeRequests()
-                //.antMatchers("/login").permitAll()
+            http.csrf().disable()
+            //POST method for login
+            .formLogin()
+                    .successHandler(successLoginHandler)
+                    .loginPage("/login")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
+            .and()
+            .logout()
+                .logoutSuccessUrl("/login")
+            .and()
+                .authorizeRequests()
+                .antMatchers("/login").anonymous()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/user/**").hasAuthority("USER");
-              // .anyRequest().authenticated();
-//                .and()
+                .antMatchers("/member/**").hasAuthority("MEMBER");
 
-//
-//                .logout().permitAll();
-//                //For CSS handling
+            //For CSS handling
             //http.authorizeRequests().antMatchers("/resources/static/css/**").permitAll().anyRequest().permitAll();
 
-//                .and()
-//                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
     @Autowired

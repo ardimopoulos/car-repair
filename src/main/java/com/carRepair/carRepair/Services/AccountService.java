@@ -6,7 +6,7 @@ import org.springframework.security.core.AuthenticationException;
 
 public interface AccountService {
 
-    User login(String username, String password) throws Exception;
+    User login(String username, String password) throws AuthenticationException;
 
     void logout(String username) throws Exception;
 

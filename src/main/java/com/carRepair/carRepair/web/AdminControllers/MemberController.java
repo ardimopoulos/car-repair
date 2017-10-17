@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-public class UserController {
+public class MemberController {
 
     //marks this us something that needs dependency
     //
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value="/user" ,  method = RequestMethod.GET)
+    @RequestMapping(value="/member" ,  method = RequestMethod.GET)
     public String index(){
 
 //        List<User> users = userService.allUsers();
@@ -28,7 +28,7 @@ public class UserController {
 //            System.out.println("User"+i+" : "+users.get(i).getUserId() + users.get(i).getPassword() );
 //
 //        }
-        return "user";
+        return "Owner/home";
     }
 
 /*    @RequestMapping(value="/search-user/{id}" ,  method = RequestMethod.GET)
