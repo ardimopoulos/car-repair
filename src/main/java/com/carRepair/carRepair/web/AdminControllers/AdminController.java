@@ -1,7 +1,7 @@
 package com.carRepair.carRepair.web.AdminControllers;
 
 
-import com.carRepair.carRepair.Model.UserForm;
+import com.carRepair.carRepair.Forms.UserForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

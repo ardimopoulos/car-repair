@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Model;
+package com.carRepair.carRepair.Forms;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
