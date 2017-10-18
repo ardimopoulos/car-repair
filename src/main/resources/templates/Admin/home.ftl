@@ -33,9 +33,9 @@
     <#list services as service>
                <tr>
                  <td>${service.description}</td>
-                 <td>${service.status}</td>
+                 <td><#if service.status==0>Not Done<#elseif service.status==1>Stand By<#else>Done</#if></td>
                  <td>${service.date}</td>
-                 <td>${service.type}</td>
+                 <td><#if service.type>Big<#else>Small</#if></td>
                  <td>${service.time}</td>
                  <td>Note done yet</td>
                </tr>
