@@ -7,8 +7,8 @@ import java.util.Collection;
 @Entity
 public class Member extends User implements Serializable {
 
-    @Column(nullable = false, length = 9)
-    private int vat;
+    @Column(nullable = false, length = 9, unique = true)
+    private String vat;
 
     @Column(nullable = false)
     private String firstname;
@@ -21,6 +21,7 @@ public class Member extends User implements Serializable {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "userId")
+    @MapsId
     private User user;
 
     @OneToMany(mappedBy = "member", targetEntity = Service.class)
@@ -34,18 +35,18 @@ public class Member extends User implements Serializable {
     }
 
 
-    public Member(long userId, String email, String password, int userType, int vat, String firstname, String lastname, String plate) {
-        //super(userId,email,password,userType);
+    public Member(long userId, String email, String password, boolean userType, String vat, String firstname, String lastname, String plate) {
+        super(email,password,userType);
         this.vat = vat;
         this.firstname = firstname;
         this.lastname = lastname;
     }
 
-    public int getVat() {
+    public String getVat() {
         return vat;
     }
 
-    public void setVat(int vat) {
+    public void setVat(String vat) {
         this.vat = vat;
     }
 
@@ -73,4 +74,19 @@ public class Member extends User implements Serializable {
         this.address = address;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Collection getServices() {
+        return services;
+    }
+
+    public Collection getVehicles() {
+        return vehicles;
+    }
 }

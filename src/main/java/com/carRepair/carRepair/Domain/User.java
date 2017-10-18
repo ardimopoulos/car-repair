@@ -12,7 +12,7 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -21,7 +21,7 @@ public class User implements Serializable{
     @Column(nullable = false)
     private boolean userType;    // value true means ADMIN - value false means USER
 
-    @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class)
+    @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class, cascade = CascadeType.ALL)
     private Member member;
 
     public User(){}
@@ -31,6 +31,8 @@ public class User implements Serializable{
         this.email = email;
         this.password = password;
         this.userType = userType;
+
+       // this.member = member;
     }
 
     public long getUserId() {

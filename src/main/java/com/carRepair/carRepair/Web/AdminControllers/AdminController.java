@@ -1,7 +1,12 @@
 package com.carRepair.carRepair.Web.AdminControllers;
 
 
+import com.carRepair.carRepair.Converters.UserConverter;
+import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Forms.UserForm;
+import com.carRepair.carRepair.Services.UserService;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,8 +20,13 @@ import javax.validation.Valid;
 @Controller
 public class AdminController {
 
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(AdminController.class);
+
     private static final String USER_FORM = "userForm";
     private static final String BASE_URL = "/admin";
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = {"/admin/home", "/admin"}, method = RequestMethod.GET)
     String getAdminView(){
@@ -30,7 +40,7 @@ public class AdminController {
             model.addAttribute(USER_FORM, new UserForm());
         }
 
-        return "/admin/user/new_user";
+        return "/admin/user/create-user";
     }
 
     @RequestMapping(name = "/admin/create-user", method = RequestMethod.POST)
@@ -46,8 +56,15 @@ public class AdminController {
         }
 
         //TODO service <-new user exists
-        redirectAttributes.addFlashAttribute("message", "New user :"+userForm.getFirstname());
-        return "redirect:/admin/new_user";
+
+        User user = UserConverter.buildUserObjecr(userForm);
+        try {
+            userService.insertUser(user);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        redirectAttributes.addFlashAttribute("message", "New user is created :"+userForm.getFirstname());
+        return "redirect:/admin/create-user";
     }
 
 }

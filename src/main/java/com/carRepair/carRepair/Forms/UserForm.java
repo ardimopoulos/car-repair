@@ -12,32 +12,32 @@ public class UserForm {
     private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9]+$";
     private static final int PASSWORD_MINIMUM_SIZE = 8;
 
-    @NotNull(message = "{new_user.vat.null}")
-    @Pattern(regexp = VAT_PATTERN, message = "{new_user.vat.invalid}")
+    @NotNull(message = "{create-user.vat.null}")
+    @Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")
     private String vat;
 
-    @NotNull(message = "{new_user.firstname.null}")
-    @Pattern(regexp = NAME_PATTERN, message = "{new_user.firstname.invalid}")
+    @NotNull(message = "{create-user.firstname.null}")
+    @Pattern(regexp = NAME_PATTERN, message = "{create-user.firstname.invalid}")
     private String firstname;
 
-    @NotNull(message = "{new_user.lastname.null}")
-    @Pattern(regexp = NAME_PATTERN, message = "{new_user.lastname.invalid}")
+    @NotNull(message = "{create-user.lastname.null}")
+    @Pattern(regexp = NAME_PATTERN, message = "{create-user.lastname.invalid}")
     private String lastname;
 
-    @NotNull(message = "{new_user.address.null}")
-    @Pattern(regexp = ADDRESS_PATTERN, message = "{new_user.address.invalid}")
+    @NotNull(message = "{create-user.address.null}")
+    @Pattern(regexp = ADDRESS_PATTERN, message = "{create-user.address.invalid}")
     private String address;
 
-    @NotNull(message = "{new_user.email.null}")
-    @Pattern(regexp = EMAIL_PATTERN, message = "{new_user.email.invalid}")
+    @NotNull(message = "{create-user.email.null}")
+    @Pattern(regexp = EMAIL_PATTERN, message = "{create-user.email.invalid}")
     private String email;
 
-    @NotNull(message = "{new_user.password.null}")
-    @Pattern(regexp = PASSWORD_PATTERN, message = "{new_user.password.invalid}")
+    @NotNull(message = "{create-user.password.null}")
+    @Pattern(regexp = PASSWORD_PATTERN, message = "{create-user.password.invalid}")
     @Size(min = PASSWORD_MINIMUM_SIZE, message = "Password length must be 8 characters or/and numbers at least.")
     private String password;
 
-    private String userType;
+    private boolean userType;
 
     public String getFirstname() {
         return firstname;
@@ -87,11 +87,11 @@ public class UserForm {
         this.password = password;
     }
 
-    public String getUserType() {
+    public boolean getUserType() {
         return userType;
     }
 
-    public void setUserType(String type) {
+    public void setUserType(boolean type) {
         userType = type;
     }
 }

@@ -13,6 +13,8 @@ public interface UserRepository extends CrudRepository<User,Long>{
 
     User findOne(Long id);
 
+    User save(User user);
+
 
 
 

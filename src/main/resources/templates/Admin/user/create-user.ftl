@@ -88,8 +88,8 @@
     <label for="UserType">User Type</label>
 <select id="UserType" name="UserType" required>
     <!--<option value="disabled selected">-</option>-->
-    <option value="ADMIN" selected>Admin</option>
-    <option value="USER">Simple user</option>
+    <option value="true" selected>Admin</option>
+    <option value="false">Simple user</option>
 </select><br>
 
 <@spring.bind "userForm.password"/>
