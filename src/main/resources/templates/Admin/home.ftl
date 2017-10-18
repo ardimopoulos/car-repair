@@ -2,21 +2,16 @@
 </html>
 
 <#import "/spring.ftl" as spring/>
-
-
 <head>
-
     <title>Sign-Up/Login Form</title>
-
         <#include "/base_libraries/head.ftl"/>
-
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
     <body>
     <#include "/Admin/menu_bar.ftl"/>
-
+<div class="container">
     <table class="table table-striped">
-    <div class="container">
+
    <h1>Last Services </h1>
          <thead>
                <tr>
