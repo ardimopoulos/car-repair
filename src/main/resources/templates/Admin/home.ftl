@@ -37,7 +37,10 @@
     </#list>
      </tbody>
                </table>
+               <#else>
+               There is no Service for today
 </#if>
+
 </div>
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
