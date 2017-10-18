@@ -2,8 +2,10 @@ package com.carRepair.carRepair.Web.AdminControllers;
 
 
 import com.carRepair.carRepair.Converters.UserConverter;
+import com.carRepair.carRepair.Domain.Service;
 import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Forms.UserForm;
+import com.carRepair.carRepair.Services.RepairService;
 import com.carRepair.carRepair.Services.UserService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -28,8 +31,19 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RepairService repairService;
+
     @RequestMapping(value = {"/admin/home", "/admin"}, method = RequestMethod.GET)
-    String getAdminView(){
+    String getAdminView(Model model){
+
+        List<Service> services = repairService.getDailyServices();
+        model.addAttribute("services" , services);
+
+        for(int i=0; i<services.size(); i++){
+            System.out.println(services.get(i).getDate());
+        }
+
         return "admin/home";
     }
 
@@ -66,36 +80,6 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("message", "New user is created :"+userForm.getFirstname());
         return "redirect:/admin/create-user";
     }
-//    @RequestMapping(value = {"/admin/home", "/admin"}, method = RequestMethod.GET)
-//    String getAdminView(){
-//        return "admin/home";
-//    }
-//
-//    @RequestMapping(value = "/admin/create-user", method = RequestMethod.GET)
-//    String getCreateUserView(Model model){
-//
-//        if(!model.containsAttribute(USER_FORM)){
-//            model.addAttribute(USER_FORM, new UserForm());
-//        }
-//
-//        return "/admin/user/new_user";
-//    }
-//
-//    @RequestMapping(name = "/admin/create-user", method = RequestMethod.POST)
-//    public String createUser(Model model, @Valid @ModelAttribute(name = USER_FORM) UserForm userForm,
-//                             BindingResult bindingResult, RedirectAttributes redirectAttributes){
-//
-//        if(bindingResult.hasErrors()){
-//            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userForm",bindingResult);
-//            redirectAttributes.addFlashAttribute(USER_FORM, userForm);
-//            redirectAttributes.addFlashAttribute("message", "Please fill the fields again");
-//            redirectAttributes.addFlashAttribute("errorMessage", "Create user failed!");
-//            return "redirect:/admin/create-user";
-//        }
-//
-//        //TODO service <-new user exists
-//        redirectAttributes.addFlashAttribute("message", "New user :"+userForm.getFirstname());
-//        return "redirect:/admin/new_user";
-//    }
+
 
 }

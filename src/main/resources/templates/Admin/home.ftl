@@ -11,47 +11,37 @@
         <#include "/base_libraries/head.ftl"/>
 
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-
-
 </head>
-
-
     <body>
-
     <#include "/Admin/menu_bar.ftl"/>
 
-          </div>-->
-          <div class="container">
-           <h1>Last Services </h1>
-
-           <table class="table table-striped">
-             <thead>
+    <table class="table table-striped">
+    <div class="container">
+   <h1>Last Services </h1>
+         <thead>
                <tr>
-                 <th>Firstname</th>
-                 <th>Lastname</th>
-                 <th>Email</th>
+                 <th>Description</th>
+                 <th>Status</th>
+                 <th>Date</th>
+                 <th>Type</th>
+                 <th>Time</th>
+                 <th>Name</th>
                </tr>
-             </thead>
-             <tbody>
+         </thead>
+     <tbody>
+<#if services??>
+    <#list services as service>
                <tr>
-                 <td>John</td>
-                 <td>Doe</td>
-                 <td>john@example.com</td>
+                 <td>${service.description}</td>
+                 <td>${service.status}</td>
+                 <td>${service.date}</td>
+                 <td>${service.time}</td>
                </tr>
-               <tr>
-                 <td>Mary</td>
-                 <td>Moe</td>
-                 <td>mary@example.com</td>
-               </tr>
-               <tr>
-                 <td>July</td>
-                 <td>Dooley</td>
-                 <td>july@example.com</td>
-               </tr>
-             </tbody>
-           </table>
-
-
+    </#list>
+     </tbody>
+               </table>
+</#if>
+</div>
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
     </body>
