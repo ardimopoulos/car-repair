@@ -35,7 +35,9 @@
                  <td>${service.description}</td>
                  <td>${service.status}</td>
                  <td>${service.date}</td>
+                 <td>${service.type}</td>
                  <td>${service.time}</td>
+                 <td>Note done yet</td>
                </tr>
     </#list>
      </tbody>
