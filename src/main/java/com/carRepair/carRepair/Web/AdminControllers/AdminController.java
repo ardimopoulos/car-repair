@@ -53,7 +53,7 @@ public class AdminController {
         return "/admin/user/create-user";
     }
 
-    @RequestMapping(name = "/admin/create-user", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/create-user", method = RequestMethod.POST)
     public String createUser(Model model, @Valid @ModelAttribute(name = USER_FORM) UserForm userForm,
                              BindingResult bindingResult, RedirectAttributes redirectAttributes){
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class UserController {
 
-    @RequestMapping(name = "/admin/edit-user", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/edit-user", method = RequestMethod.GET)
     public String getEditUserView(Model model, UserForm userForm){
         userForm.setFirstname("Akis");
         userForm.setLastname("Dimopoulos");
