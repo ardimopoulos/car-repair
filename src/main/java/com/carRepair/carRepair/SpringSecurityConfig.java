@@ -40,7 +40,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/member/**").hasAuthority("MEMBER");
 
             //For CSS handling
-            http.authorizeRequests().antMatchers("resources/static/css/**").permitAll();
+            //http.authorizeRequests().antMatchers("resources/static/css/**").permitAll();
 
     }
 

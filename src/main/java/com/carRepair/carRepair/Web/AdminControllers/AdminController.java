@@ -66,5 +66,36 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("message", "New user is created :"+userForm.getFirstname());
         return "redirect:/admin/create-user";
     }
+//    @RequestMapping(value = {"/admin/home", "/admin"}, method = RequestMethod.GET)
+//    String getAdminView(){
+//        return "admin/home";
+//    }
+//
+//    @RequestMapping(value = "/admin/create-user", method = RequestMethod.GET)
+//    String getCreateUserView(Model model){
+//
+//        if(!model.containsAttribute(USER_FORM)){
+//            model.addAttribute(USER_FORM, new UserForm());
+//        }
+//
+//        return "/admin/user/new_user";
+//    }
+//
+//    @RequestMapping(name = "/admin/create-user", method = RequestMethod.POST)
+//    public String createUser(Model model, @Valid @ModelAttribute(name = USER_FORM) UserForm userForm,
+//                             BindingResult bindingResult, RedirectAttributes redirectAttributes){
+//
+//        if(bindingResult.hasErrors()){
+//            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userForm",bindingResult);
+//            redirectAttributes.addFlashAttribute(USER_FORM, userForm);
+//            redirectAttributes.addFlashAttribute("message", "Please fill the fields again");
+//            redirectAttributes.addFlashAttribute("errorMessage", "Create user failed!");
+//            return "redirect:/admin/create-user";
+//        }
+//
+//        //TODO service <-new user exists
+//        redirectAttributes.addFlashAttribute("message", "New user :"+userForm.getFirstname());
+//        return "redirect:/admin/new_user";
+//    }
 
 }
