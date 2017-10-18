@@ -40,10 +40,6 @@ public class AdminController {
         List<Service> services = repairService.getDailyServices();
         model.addAttribute("services" , services);
 
-        for(int i=0; i<services.size(); i++){
-            System.out.println(services.get(i).getDate());
-        }
-
         return "admin/home";
     }
 

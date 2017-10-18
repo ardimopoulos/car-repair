@@ -22,18 +22,9 @@ public class RepairServiceImpl implements RepairService{
     public List<Service> getDailyServices(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
-        System.out.println("edw");
         List<Service> serviceList = repairRepository.findByDateOrderByTimeAsc(java.sql.Date.valueOf(localDate));
-        for(int i=0; i<serviceList.size(); i++){
-            System.out.println(serviceList.get(i).getDescription());
-        }
         return serviceList;
     }
-    public String formatStringDate(String format , LocalDate date){
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
-        String stringDate = date.format(formatter);
-        return stringDate;
-    }
 
 }
