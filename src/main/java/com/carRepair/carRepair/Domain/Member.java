@@ -24,9 +24,9 @@ public class Member extends User implements Serializable {
     private User user;
 
     @OneToMany(mappedBy = "member", targetEntity = Repair.class)
-    private Collection services;
+    private Collection repairs;
 
-    @OneToMany(mappedBy = "member", targetEntity = Vehicle.class)
+    @OneToMany(mappedBy = "member", targetEntity = Vehicle.class,  cascade = CascadeType.ALL)
     private Collection vehicles;
 
 
@@ -82,8 +82,8 @@ public class Member extends User implements Serializable {
         this.user = user;
     }
 
-    public Collection getServices() {
-        return services;
+    public Collection getRepairs() {
+        return repairs;
     }
 
     public Collection getVehicles() {
