@@ -8,6 +8,7 @@ public interface SearchService {
 
     public Member getCustomerByEmail(String email)throws UserNotFoundException;
     public Member getCustomerByVat(String vat) throws UserNotFoundException;
-    public Member getMemberByVatOrMail(String vat , String email);
+    public Member getMemberByVatOrMail(String vat , String email) throws UserNotFoundException;
+
 
 }
