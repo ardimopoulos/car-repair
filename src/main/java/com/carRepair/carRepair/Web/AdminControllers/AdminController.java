@@ -59,7 +59,7 @@ public class AdminController {
             String message = model.asMap().get("message").toString();
             String userId = model.asMap().get("userId").toString();
             model.addAttribute("message", message);
-           model.addAttribute("userId", userId);
+            model.addAttribute("userId", userId);
         }
         if(!model.containsAttribute(USER_FORM)){
             model.addAttribute(USER_FORM, new UserForm());

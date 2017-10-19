@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService{
         User user = accountRepository.findByEmail(email); //if user with email not found filed user will be null
         try {
             //if object user is null, checkPassword will return exception
-            boolean correctPassword = AppUtilities.checkPassword(password, user.getPassword());
+            AppUtilities.checkPassword(password, user.getPassword());
         }catch(NullPointerException e){
             throw new InvalidCredentialsException("User not found!");
         }
