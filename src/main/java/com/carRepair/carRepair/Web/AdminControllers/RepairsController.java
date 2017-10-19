@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class RepairsController {
 
-    // Selida Repair(Service)
+    // Selida Repair(Repair)
 
     @RequestMapping(value = "/admin/service" ,  method = RequestMethod.GET)
     public String services(){
@@ -27,7 +27,7 @@ public class RepairsController {
     @RequestMapping(value = "/admin/new-service" ,  method = RequestMethod.POST)
     public String createServicePost(){
 
-        //save(Service service); // Service
+        //save(Repair service); // Repair
         return "admin/service/new_service";
     }
 
@@ -41,7 +41,7 @@ public class RepairsController {
     @RequestMapping(value = "/admin/update-service" ,  method = RequestMethod.POST)
     public String updateServicePost(){
 
-        //save(Long id , Service service); // Service
+        //save(Long id , Repair service); // Repair
         return "admin/service/update_service";
     }
 
@@ -55,7 +55,7 @@ public class RepairsController {
     @RequestMapping(value = "/admin/delete-service" ,  method = RequestMethod.POST)
     public String deleteServicePost(){
 
-        //delete(Long id); // Service
+        //delete(Long id); // Repair
         return "admin/service/delete_service";
     }
 
@@ -69,7 +69,7 @@ public class RepairsController {
     @RequestMapping(value = "/admin/search-service" ,  method = RequestMethod.POST)
     public String searchServicePost(){
 
-        //Service service = findOne(Long id); // Service
+        //Repair service = findOne(Long id); // Repair
         return "admin/service/search_service";
     }
 

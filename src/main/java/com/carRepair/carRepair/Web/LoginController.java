@@ -39,26 +39,6 @@ public class LoginController {
 
         if(!model.containsAttribute(LOGIN_FORM)){ model.addAttribute(LOGIN_FORM, new LoginForm()); }
 
-
-
-        /*Member m = new Member("email","pass",true,
-                "first","last","address","123456789");*/
-        /*User u = new User();
-        u.setUserType(m.getUserType());
-        u.setPassword(m.getPassword());
-        u.setEmail(m.getEmail());*/
-       // u.setMember(m);
-
-/*      m.setVat("123456789");
-        m.setAddress("address");
-        m.setLastname("last");
-        m.setFirstname("first");*//*
-
-
-
-*/
-        //repo.save(m);
-        //repom.save(m);
         return view;
     }
 }

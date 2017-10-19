@@ -38,7 +38,6 @@ public class AppUtilities {
     public static String hashPassword(String password){
         String salt = BCrypt.gensalt();
         String hashPassword = BCrypt.hashpw(password, salt);
-
         return hashPassword;
     }
 

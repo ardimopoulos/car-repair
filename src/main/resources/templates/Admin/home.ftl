@@ -24,8 +24,8 @@
                </tr>
          </thead>
      <tbody>
-<#if services??>
-    <#list services as service>
+<#if repairs??>
+    <#list repairs as service>
                <tr>
                  <td>${service.description}</td>
                  <td><#if service.status==0>Not Done<#elseif service.status==1>Stand By<#else>Done</#if></td>

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-//When the application boot up it make an instance (singleton ) of all the @Service classes
+//When the application boot up it make an instance (singleton ) of all the @Repair classes
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {

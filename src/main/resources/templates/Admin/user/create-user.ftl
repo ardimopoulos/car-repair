@@ -53,6 +53,10 @@
     <div class="vehicleRegistration">
     <div class="col-md-2"></div>
     <div class="col-md-8">
+    <#if userId??>
+    <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
+    ${message!""}
+    </#if>
     <header><h1>User registration form</h1>
     <h4>Please fill all the following fields</h4></header>
 <div class="side">
@@ -112,16 +116,12 @@
 <!--<label for="TaxNum">Plate number</label>
     <input type="text" id="platenum" name="platenum" placeholder="Type plate number.." /><br>-->
 
-
-<#if userId??>
-<a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
-</#if>
     <input type="submit" value="Submit">
     </form>
   <script>
      $("#signupForm").validate();
   </script>
-${message!""}
+
     </div>
     </div>
     </div>

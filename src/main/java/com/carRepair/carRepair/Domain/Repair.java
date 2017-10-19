@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Service implements Serializable {
+public class Repair implements Serializable {
 
     @Id
     @Column(name = "service_id", nullable = false)
@@ -33,9 +33,9 @@ public class Service implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private Member member;
 
-    public Service(){}
+    public Repair(){}
 
-    public Service(long serviceId, Date date, Date time, int status, String description, boolean type, Member member) {
+    public Repair(long serviceId, Date date, Date time, int status, String description, boolean type, Member member) {
         this.serviceId = serviceId;
         this.date = date;
         this.time = time;

@@ -23,7 +23,7 @@ public class Member extends User implements Serializable {
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(mappedBy = "member", targetEntity = Service.class)
+    @OneToMany(mappedBy = "member", targetEntity = Repair.class)
     private Collection services;
 
     @OneToMany(mappedBy = "member", targetEntity = Vehicle.class)
