@@ -3,6 +3,7 @@ package com.carRepair.carRepair.Web;
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Forms.LoginForm;
+import com.carRepair.carRepair.Repositories.MemberRepository;
 import com.carRepair.carRepair.Repositories.UserRepository;
 import com.carRepair.carRepair.Services.AccountServiceImpl;
 import com.carRepair.carRepair.Utilities.AppUtilities;
@@ -23,6 +24,7 @@ public class LoginController {
 
     @Autowired
     private UserRepository repo;
+    private MemberRepository repom;
 
     @RequestMapping(value = {"/login" , "/"}, method = RequestMethod.GET)
     public String getLoginView(Model model, @RequestParam(name = "error", required = false) String error, HttpServletRequest request) {
@@ -37,37 +39,26 @@ public class LoginController {
 
         if(!model.containsAttribute(LOGIN_FORM)){ model.addAttribute(LOGIN_FORM, new LoginForm()); }
 
-/*
-        Member m = new Member();
 
-        m.setFirstname("first");
-        m.setLastname("last");
-        m.setAddress("address");
-        m.setVat("123456789");
-        m.setEmail("email");
-        m.setPassword("12345");
-        m.setUserType(false);
 
-        User u = new User();
-        u.setEmail(m.getEmail());
+        /*Member m = new Member("email","pass",true,
+                "first","last","address","123456789");*/
+        /*User u = new User();
+        u.setUserType(m.getUserType());
         u.setPassword(m.getPassword());
-        u.setUserType(m.getUserType());*/
+        u.setEmail(m.getEmail());*/
        // u.setMember(m);
-        /*Member member = new Member();
-        member.setAddress("address");
-        member.setLastname("last");
-        member.setFirstname("first");tty88yy8u8yhyuiyuyyuuiyyt
-        member.set
 
-        User user= new User();
-        user.setUserType(false);
-        user.setPassword("123456");
-        user.setEmail("email");
-        user.setMember();*/
-
-       // repo.save(u);
+/*      m.setVat("123456789");
+        m.setAddress("address");
+        m.setLastname("last");
+        m.setFirstname("first");*//*
 
 
+
+*/
+        //repo.save(m);
+        //repom.save(m);
         return view;
     }
 }

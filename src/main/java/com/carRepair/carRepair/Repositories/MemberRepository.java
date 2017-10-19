@@ -13,6 +13,8 @@ public interface MemberRepository extends CrudRepository<Member , Long>{
 
     Member findOne(Long id);
 
+    Member save(Member member);
+
 
 
 }

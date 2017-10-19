@@ -21,7 +21,6 @@ public class Member extends User implements Serializable {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "userId")
-    @MapsId
     private User user;
 
     @OneToMany(mappedBy = "member", targetEntity = Service.class)
@@ -35,11 +34,12 @@ public class Member extends User implements Serializable {
     }
 
 
-    public Member(long userId, String email, String password, boolean userType, String vat, String firstname, String lastname, String plate) {
+    public Member(String email, String password, boolean userType, String firstname, String lastname,String address, String vat) {
         super(email,password,userType);
         this.vat = vat;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.address = address;
     }
 
     public String getVat() {

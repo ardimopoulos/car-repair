@@ -56,7 +56,7 @@
     <header><h1>User registration form</h1>
     <h4>Please fill all the following fields</h4></header>
 <div class="side">
-<form action="/admin/user/create-user" id="mainForm" method="post" name="userForm">
+<form action="/admin/create-user" id="mainForm" method="post" name="userForm">
     <label for="vat">VAT</label>
     <@spring.bind "userForm.vat"/>
     <input type="text" id="TaxNum" name="vat" placeholder="Type vat.." value="${userForm.vat!""}"/><br>
@@ -112,8 +112,10 @@
 <!--<label for="TaxNum">Plate number</label>
     <input type="text" id="platenum" name="platenum" placeholder="Type plate number.." /><br>-->
 
-    <!-- Choose if you want to add a vehicle:<br>
-<a href="tsertsrtete.html"><button>Go to vehicle form</button></a> !-->
+
+<#if userId??>
+<a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
+</#if>
     <input type="submit" value="Submit">
     </form>
   <script>

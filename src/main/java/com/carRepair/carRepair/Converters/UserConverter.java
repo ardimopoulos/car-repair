@@ -7,17 +7,16 @@ import com.carRepair.carRepair.Forms.UserForm;
 public class UserConverter {
 
     public static User buildUserObjecr(UserForm userForm){
-        Member member = new Member();
-        member.setFirstname(userForm.getFirstname());
-        member.setLastname(userForm.getLastname());
-        member.setVat(userForm.getVat());
-        member.setAddress(userForm.getAddress());
+        String email = userForm.getEmail();
+        String password = userForm.getPassword();
+        String firstName = userForm.getFirstname();
+        String lastName = userForm.getLastname();
+        String address = userForm.getAddress();
+        String vat = userForm.getVat();
+        boolean userType = userForm.getUserType();
 
-        User user = new User();
-        user.setEmail(userForm.getEmail());
-        user.setPassword(userForm.getPassword());
-        user.setUserType(userForm.getUserType());
-        user.setMember(member);
+        //Upcasting
+        User user = new Member(email, password, userType, firstName, lastName, address, vat);
 
         return user;
     }

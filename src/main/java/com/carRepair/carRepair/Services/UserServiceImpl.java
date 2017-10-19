@@ -18,10 +18,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void insertUser(User user) throws Exception{
+    public User insertUser(User user) throws Exception{
 
         User newUser = userRepository.save(user);
-
+        if(newUser == null){
+            throw new Exception("User already exists");
+        }
+        return newUser;
     }
 
     /*public List<User> allUsers(){

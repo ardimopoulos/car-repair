@@ -28,8 +28,8 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = "akis@akis.gr"/*authentication.getName().trim()*/;
-        String password = "12345"/*(String) authentication.getCredentials().toString().trim()*/;
+        String username = authentication.getName().trim();
+        String password = authentication.getCredentials().toString().trim();
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
