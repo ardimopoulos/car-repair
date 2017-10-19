@@ -10,8 +10,8 @@ import java.util.List;
 public interface MemberRepository extends CrudRepository<Member , Long>{
 
     List<Member> findAll();
-
     Member findOne(Long id);
+    Member findByVat(String vat);
 
     Member save(Member member);
 
