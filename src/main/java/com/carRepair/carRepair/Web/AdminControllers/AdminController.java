@@ -2,10 +2,13 @@ package com.carRepair.carRepair.Web.AdminControllers;
 
 
 import com.carRepair.carRepair.Converters.UserConverter;
+import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Service;
 import com.carRepair.carRepair.Domain.User;
+import com.carRepair.carRepair.Forms.SearchForm;
 import com.carRepair.carRepair.Forms.UserForm;
 import com.carRepair.carRepair.Services.RepairService;
+import com.carRepair.carRepair.Services.SearchService;
 import com.carRepair.carRepair.Services.UserService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -27,9 +31,14 @@ public class AdminController {
 
     private static final String USER_FORM = "userForm";
     private static final String BASE_URL = "/admin";
+    private static final String SEARCH_FORM = "searchForm";
+
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SearchService searchService;
 
     @Autowired
     private RepairService repairService;
@@ -75,6 +84,25 @@ public class AdminController {
         }
         redirectAttributes.addFlashAttribute("message", "New user is created :"+userForm.getFirstname());
         return "redirect:/admin/create-user";
+    }
+
+    @RequestMapping(value = "/admin/search-user", method = RequestMethod.GET)
+    public String searchUser(Model model){
+
+
+        model.addAttribute(SEARCH_FORM, new SearchForm());
+        return "/admin/user/search_user";
+    }
+
+    @RequestMapping(value = "/admin/search-user", method = RequestMethod.POST)
+    public String searchUserPost(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
+                                 HttpSession session,
+                                 RedirectAttributes redirectAttributes){
+        System.out.println("Gaamw " + searchForm.getVat() + searchForm.getEmail());
+
+       Member member  =  searchService.getMemberByVatOrMail(searchForm.getVat() , searchForm.getEmail());
+
+        return "redirect:/admin/search-user";
     }
 
 
