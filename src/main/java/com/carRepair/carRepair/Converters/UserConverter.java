@@ -3,12 +3,13 @@ package com.carRepair.carRepair.Converters;
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Forms.UserForm;
+import com.carRepair.carRepair.Utilities.AppUtilities;
 
 public class UserConverter {
 
     public static User buildUserObjecr(UserForm userForm){
         String email = userForm.getEmail();
-        String password = userForm.getPassword();
+        String password = AppUtilities.hashPassword(userForm.getPassword());
         String firstName = userForm.getFirstname();
         String lastName = userForm.getLastname();
         String address = userForm.getAddress();
