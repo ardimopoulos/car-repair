@@ -2,9 +2,9 @@ package com.carRepair.carRepair.Services;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.User;
+import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import com.carRepair.carRepair.Repositories.UserRepository;
-import jdk.nashorn.internal.runtime.ECMAException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,36 +18,36 @@ public class SearchServiceImpl implements SearchService{
     private UserRepository userRepository;
 
     @Override
-    public Member getCustomerByVat(String vat){
+    public Member getCustomerByVat(String vat) throws UserNotFoundException{
 
        Member member = memberRepository.findByVat(vat);
-
 
        if(member != null ) {
            System.out.println(member.getAddress() + member.getFirstname());
            return member;
        }else{
-            return member;
-          // throw new Exception("User not found");
+          throw new UserNotFoundException("User not found");
        }
 
     }
 
     @Override
-    public Member getCustomerByEmail(String email){
+    public Member getCustomerByEmail(String email) throws UserNotFoundException{
 
         User user = userRepository.findByEmail(email);
+        if(user !=null){
+            Member member = memberRepository.findOne(user.getUserId());
 
-        Member member = memberRepository.findOne(user.getUserId());
-
-
-        if(member != null ) {
-            System.out.println(member.getAddress() + member.getFirstname());
-            return member;
+            if(member != null ) {
+                System.out.println(member.getAddress() + member.getFirstname());
+                return member;
+            }else{
+                throw new UserNotFoundException("Member not found");
+            }
         }else{
-            return member;
-            // throw new Exception("User not found");
+            throw new UserNotFoundException("User not found");
         }
+
 
     }
 
@@ -55,9 +55,18 @@ public class SearchServiceImpl implements SearchService{
         Member searchMember = null;
         if( !vat.equals("") || !email.equals("") ) {
             if (!vat.equals("")) {
-                 searchMember = getCustomerByVat(vat);
+                try {
+                    searchMember = getCustomerByVat(vat);
+                }catch(UserNotFoundException userNotFound){
+                    System.out.println("User not found from vat!");
+                }
             } else if (!email.equals("")) {
-                 searchMember = getCustomerByEmail(email);
+                try {
+                    searchMember = getCustomerByEmail(email);
+                }catch(UserNotFoundException userNotFound){
+                    System.out.println("User not found from email!" + userNotFound);
+
+                }
             } else {
                 System.out.println("Didn t give an email or VAT");
             }
