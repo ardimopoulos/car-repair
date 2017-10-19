@@ -22,10 +22,6 @@ public class LoginController {
     private static final String LOGIN_FORM = "loginForm";
     private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(AccountServiceImpl.class);
 
-    @Autowired
-    private UserRepository repo;
-    private MemberRepository repom;
-
     @RequestMapping(value = {"/login" , "/"}, method = RequestMethod.GET)
     public String getLoginView(Model model, @RequestParam(name = "error", required = false) String error, HttpServletRequest request) {
         String view = "/login";
