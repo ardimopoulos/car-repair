@@ -2,6 +2,7 @@ package com.carRepair.carRepair.Domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 
 @Entity
@@ -17,8 +18,8 @@ public class Repair implements Serializable {
     private Date date;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date time;
+    //@Temporal(TemporalType.TIME)
+    private Time time;
 
     @Column(nullable = false, length = 1)
     private int status;
@@ -35,14 +36,13 @@ public class Repair implements Serializable {
 
     public Repair(){}
 
-    public Repair(long serviceId, Date date, Date time, int status, String description, boolean type, Member member) {
+    public Repair(long serviceId, Date date, Time time, int status, String description, boolean type, Member member) {
         this.serviceId = serviceId;
         this.date = date;
         this.time = time;
         this.status = status;
         this.description = description;
         this.type = type;
-       // this.member = member;
     }
 
     public long getServiceId() {
@@ -65,7 +65,7 @@ public class Repair implements Serializable {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
