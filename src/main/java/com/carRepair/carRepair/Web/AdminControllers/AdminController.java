@@ -97,18 +97,16 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/search-user", method = RequestMethod.POST)
-    public String searchUserPost(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
-                                 HttpSession session,
-                                 RedirectAttributes redirectAttributes){
-        System.out.println("Gaamw " + searchForm.getVat() + searchForm.getEmail());
-
+    public String searchUserPost(Model model , @ModelAttribute(SEARCH_FORM) SearchForm searchForm){
+        Member member = null;
         try {
-            Member member = searchService.getMemberByVatOrMail(searchForm.getVat(), searchForm.getEmail());
+            member = searchService.getMemberByVatOrMail(searchForm.getVat(), searchForm.getEmail());
         }catch(UserNotFoundException userNotFound){
             System.out.println("User not Found controller" + userNotFound);
 
         }
-        return "redirect:/admin/search-user";
+        model.addAttribute("member",member);
+        return "/admin/user/update_user";
     }
 
 
