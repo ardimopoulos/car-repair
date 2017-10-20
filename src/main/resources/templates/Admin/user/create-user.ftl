@@ -35,9 +35,9 @@
          </li>
          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Repairs<span class="caret"></span></a>
                  <ul class="dropdown-menu">
-                   <li><a href="#">Create Service</a></li>
-                   <li><a href="#">Edit Service</a></li>
-                   <li><a href="#">Search Service</a></li>
+                        <li><a href="/admin/new-service">Create Service</a></li>
+                        <li><a href="/admin/update-service">Edit Service</a></li>
+                        <li><a href="/admin/search-service">Search Service</a></li>
                  </ul>
                </li>
 
@@ -49,7 +49,35 @@
                    </ul>
      </div>
     </nav>
+ <script>
+        function myFunction() {
+            var pass1 = document.getElementById("UserP").value;
+            var pass2 = document.getElementById("confpass").value;
+            if (pass1 != pass2) {
+                //alert("Passwords Do not match");
+                document.getElementById("UserP").style.borderColor = "#E34234 ";
+                document.getElementById("confpass").style.borderColor = "#E34234 ";
+            } else {
+                document.getElementById("UserP").style.borderColor = "#33cc33";
+                document.getElementById("confpass").style.borderColor = "#33cc33 ";
+            } {
+                var pass1 = document.getElementById("UserP").value;
+                var pass2 = document.getElementById("confpass").value;
+                var ok = true;
+                if (pass1 != pass2) {
+                    //alert("Passwords Do not match");
+                    document.getElementById("UserP").style.borderColor = "#E34234 ";
+                    document.getElementById("confpass").style.borderColor = "#E34234 ";
+                    ok = false;
+                } else {
+                    document.getElementById("UserP").style.borderColor = "#33cc33 ";
+                    document.getElementById("ConfirmPass").style.borderColor = "#33cc33 ";
+                }
+                return ok;
+            }
+        }
 
+    </script>
     <div class="userForm">
     <div class="col-md-1"></div>
     <div class="col-md-10">
@@ -136,7 +164,7 @@
 
 <!--<label for="TaxNum">Plate number</label>
     <input type="text" id="platenum" name="platenum" placeholder="Type plate number.." /><br>-->
-
+<br>
     <input type="submit" value="Submit">
      </div>
      </div>
