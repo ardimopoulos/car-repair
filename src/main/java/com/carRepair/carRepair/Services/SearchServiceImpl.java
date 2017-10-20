@@ -31,9 +31,7 @@ public class SearchServiceImpl implements SearchService{
     public Member getCustomerByEmail(String email) throws UserNotFoundException{
         User user = userRepository.findByEmail(email);
         if(user !=null){ Member member = memberRepository.findOne(user.getUserId());
-            if(member != null ) {
-                System.out.println(member.getAddress() + member.getFirstname());
-                return member;
+            if(member != null ) { return member;
             }else{ throw new UserNotFoundException("Member not found"); }
         }else{ throw new UserNotFoundException("User not found"); }
 

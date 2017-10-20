@@ -4,6 +4,7 @@
         <#include "/base_libraries/head.ftl"/>
 </head>
     <body>
+    <#include "/Admin/menu_bar.ftl"/>
              <header>
              <div class="row"  >
                  <div class="col-md-2"></div>
@@ -19,8 +20,10 @@
 
                  </div>
             <div class="col-md-2"></div>
-
 </div>
+
+
+
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
     </body>
