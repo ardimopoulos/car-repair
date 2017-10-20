@@ -18,7 +18,7 @@ public class RepairServiceImpl implements RepairService{
     public List<Repair> getDailyServices(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
-        List<Repair> repairList = repairRepository.findByDateOrderByTimeAsc(java.sql.Date.valueOf(localDate));
+        List<Repair> repairList = repairRepository.findFirst10ByDateOrderByTimeAsc(java.sql.Date.valueOf(localDate));
         return repairList;
     }
 

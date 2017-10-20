@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface RepairRepository extends CrudRepository<Repair, Long> {
 
-    public List<Repair> findByDateOrderByTimeAsc(Date date);
+    public List<Repair> findFirst10ByDateOrderByTimeAsc(Date date);
 
 }
