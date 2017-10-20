@@ -3,7 +3,7 @@
 <html>
 <head>
 
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
              crossorigin="anonymous">
@@ -50,83 +50,106 @@
      </div>
     </nav>
 
-    <div class="vehicleRegistration">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="userForm">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
     <#if userId??>
     <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
     ${message!""}
     </#if>
-    <header><h1>User registration form</h1>
-    <h4>Please fill all the following fields</h4></header>
-<div class="side">
-<form action="/admin/create-user" id="mainForm" method="post" name="userForm">
-    <label for="vat">VAT</label>
-    <@spring.bind "userForm.vat"/>
-    <input type="text" id="TaxNum" name="vat" placeholder="Type vat.." value="${userForm.vat!""}"/><br>
-    <#list spring.status.errorMessages as error>
-         <span style="color:red">${error}</span>
-    </#list><br>
+    <h1>User registration form</h1>
 
-<@spring.bind "userForm.firstname"/>
-<label for="firstname">First name</label>
-     <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${userForm.firstname!""}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<#list spring.status.errorMessages as error>
-         <span style="color:red">${error}</span>
-    </#list><br>
+    <form action="/admin/create-user" id="mainForm" method="post" name="userForm">
+     <div class="col-md-12">
 
-<@spring.bind "userForm.lastname"/>
-<label for="lastname">Last name</label>
-     <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${userForm.lastname!""}"/><br>
+            <div class="col-md-12">
+            <div class="side">
+            <h4>Please fill all the following fields:</h4>
+                <div class="col-md-6">
+                     <label for="vat">VAT</label>
+                         <@spring.bind "userForm.vat"/>
+                    <input type="number" id="TaxNum" name="vat" placeholder="Type vat.." value="${userForm.vat!""}"/>
+
+                     <#list spring.status.errorMessages as error>
+                     <span style="color:red">${error}</span>
+                        </#list>
+                 </div>
+                <div class="col-md-6">
+                    <@spring.bind "userForm.firstname"/>
+                <label for="firstname">First name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${userForm.firstname!""}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <#list spring.status.errorMessages as error>s
+                     <span style="color:red">${error}</span>
+                 </#list>
+                 </div>
+                <div class="col-md-6">
+                    <@spring.bind "userForm.lastname"/>
+                    <label for="lastname">Last name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${userForm.lastname!""}"/><br>
+                    <#list spring.status.errorMessages as error>
+                    <span style="color:red">${error}</span>
+                    </#list>
+
+                </div>
+                <div class="col-md-6">
+
+                <@spring.bind "userForm.email"/>
+                <label for="email">e-mail</label>
+                 <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <#list spring.status.errorMessages as error>
+                 <span style="color:red">${error}</span>
+            </#list>
+            </div>
+
+
+                <div class="col-md-6">
+
+                    <label for="UserType">User Type</label>
+
+                    <select id="UserType" name="UserType" required>
+                    <!--<option value="disabled selected">-</option>-->
+                    <option value="true" selected>Admin</option>
+                    <option value="false">Simple user</option>
+                        </select>
+                </div>
+                <div class="col-md-6">
+
+                <@spring.bind "userForm.password"/>
+                    <label for ="password">User password</label>
+                   <input type="text" id="UserP" name="password" placeholder="Set new password.." />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <#list spring.status.errorMessages as error>
      <span style="color:red">${error}</span>
-</#list><br>
+</#list></div>
+        <div class="col-md-6">
 
-<@spring.bind "userForm.email"/>
-<label for="email">e-mail</label>
-     <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<#list spring.status.errorMessages as error>
+            <@spring.bind "userForm.address"/>
+            <label for="address">Address</label>
+             <input type="text" id="Address" name="address" placeholder="Type address.." value="${userForm.address!""}"/><br>
+            <#list spring.status.errorMessages as error>
      <span style="color:red">${error}</span>
-</#list><br>
+</#list></div>
+                <div class="col-md-6">
 
-    <label for="UserType">User Type</label>
-<select id="UserType" name="UserType" required>
-    <!--<option value="disabled selected">-</option>-->
-    <option value="true" selected>Admin</option>
-    <option value="false">Simple user</option>
-</select><br>
+                  <label for="configpassword">Confirm password</label>
+                 <input type="text" id="ConfPass" name="configpassword" placeholder="Confirm password number.." />
+            </div>
 
-<@spring.bind "userForm.password"/>
-<label for ="password">User password</label>
-    <input type="text" id="UserP" name="password" placeholder="Set new password.." />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<#list spring.status.errorMessages as error>
-     <span style="color:red">${error}</span>
-</#list><br>
-
-
-<label for="configpassword">Confirm password</label>
-    <input type="text" id="ConfPass" name="configpassword" placeholder="Confirm password number.." />
-            <br>
-<@spring.bind "userForm.address"/>
-<label for="address">Address</label>
-    <input type="text" id="Address" name="address" placeholder="Type address.." value="${userForm.address!""}"/><br>
-<#list spring.status.errorMessages as error>
-     <span style="color:red">${error}</span>
-</#list><br>
 <!--<label for="TaxNum">Plate number</label>
     <input type="text" id="platenum" name="platenum" placeholder="Type plate number.." /><br>-->
 
     <input type="submit" value="Submit">
+     </div>
+     </div>
     </form>
   <script>
      $("#signupForm").validate();
   </script>
 
+
+
     </div>
     </div>
-    </div>
-<div class="col-md-2">
-    </div>
+<div class="col-md-1"></div>
 
 </body>
 </html>

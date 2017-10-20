@@ -23,24 +23,24 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-            http.csrf().disable()
+//        http.csrf().disable()
             //POST method for login
-            .formLogin()
-                    .loginPage("/login")
-                    .successHandler(successLoginHandler)
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-            .and()
-            .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .permitAll()
-            .and()
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").anonymous()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/member/**").hasAuthority("MEMBER");
+//            .formLogin()
+//                    .loginPage("/login")
+//                    .successHandler(successLoginHandler)
+//                    .usernameParameter("username")
+//                    .passwordParameter("password")
+//            .and()
+//            .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/login")
+//                .permitAll()
+//            .and()
+//                .authorizeRequests()
+//                .antMatchers("/").permitAll()
+//                .antMatchers("/login").anonymous()
+//                .antMatchers("/admin/**").hasAuthority("ADMIN")
+//                .antMatchers("/member/**").hasAuthority("MEMBER");
 
             //For CSS handling
             //http.authorizeRequests().antMatchers("resources/static/css/**").permitAll();
@@ -48,11 +48,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(loginAuthenticationProvider);
+        @Autowired
+        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+            auth.authenticationProvider(loginAuthenticationProvider);
+        }
+
+
+
     }
 
-
-
-}
