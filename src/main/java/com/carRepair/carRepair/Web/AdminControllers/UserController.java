@@ -27,14 +27,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/admin/create-user", method = RequestMethod.GET)
-    String getCreateUserView(Model model, RedirectAttributes redirectAttributes){
+    String getCreateUserView(Model model){
 
-        if(model.containsAttribute("userId")){
-            String message = model.asMap().get("message").toString();
-            String userId = model.asMap().get("userId").toString();
-            model.addAttribute("message", message);
-            model.addAttribute("userId", userId);
-        }
         if(!model.containsAttribute(USER_FORM)){
             model.addAttribute(USER_FORM, new UserForm());
         }
@@ -49,26 +43,32 @@ public class UserController {
         if(bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userForm", bindingResult);
             redirectAttributes.addFlashAttribute(USER_FORM, userForm);
-            redirectAttributes.addFlashAttribute("message", "Please fill the fields again");
-            redirectAttributes.addFlashAttribute("errorMessage", "Create user failed!");
+           // redirectAttributes.addFlashAttribute("message", "Please fill the fields again");
+           // redirectAttributes.addFlashAttribute("errorMessage", "Create user failed!");
             return "redirect:/admin/create-user";
         }
 
         User user = UserConverter.buildUserObjecr(userForm);
         Member member;
+
+        //TODO check vehicle radio button if it is true or false. if it is true redirect to add vehicle page
+        //TODO or redirect the same page with successful message
+
+       // if(userForm.)
         try {
             user = userService.insertUser(user);
             member = (Member) user;  // Downcasting
 
-            // If user is admin (true), redirect a message and user id to create vehicle page
-            if(!user.getUserType()){
+
+            // If user is a simple user (false), redirect a message and user id to create vehicle page
+           /* if(!user.getUserType()){
                 String message = "Add vehicle for user: " + member.getFirstname() + " " + member.getLastname() + " - " + member.getVat();
                 redirectAttributes.addFlashAttribute("message", message);
                 redirectAttributes.addFlashAttribute("userId", user.getUserId());
                 return "redirect:/admin/create-vehicle";
-            }
+            }*/
 
-            String message = "New user is created: " + member.getFirstname() + " " + member.getLastname() + " - " + member.getVat();
+            String message = "New user is created: " + member.getFirstname() + " " + member.getLastname() + " with VAT: " + member.getVat();
             redirectAttributes.addFlashAttribute("message", message);
             redirectAttributes.addFlashAttribute("userId", member.getUserId());
 

@@ -32,9 +32,10 @@ public class Vehicle {
 
     public Vehicle(){}
 
-    public Vehicle(String plate, String brand, Date year, String color) {
+    public Vehicle(String plate, String brand, String model, Date year, String color) {
         this.plate = plate;
         this.brand = brand;
+        this.model = model;
         this.year = year;
         this.color = color;
     }
@@ -85,5 +86,13 @@ public class Vehicle {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }

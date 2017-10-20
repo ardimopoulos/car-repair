@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
         return newUser;
     }
 
+
+    public User findUser(long id) throws Exception{
+        User u = userRepository.findOne(id);
+        return u;
+    }
+
     /*public List<User> allUsers(){
         List<User> users = userRepository.findAll();
         return users;

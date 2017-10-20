@@ -18,7 +18,14 @@
                <li><a href="#">Edit Service</a></li>
                <li><a href="#">Search Service</a></li>
              </ul>
-           </li>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehicles<span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                     <li><a href="/admin/create-vehicle">Create Vehicle</a></li>
+                     <li><a href="/admin/edit-vehicle">Edit Vehicle</a></li>
+                     <li><a href="/admin/search-vehicle">Search Vehicle</a></li>
+                   </ul>
+      </li>
 
    </ul>
    <ul class="nav navbar-nav navbar-right">

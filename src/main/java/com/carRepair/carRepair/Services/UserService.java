@@ -5,4 +5,6 @@ import com.carRepair.carRepair.Domain.User;
 public interface UserService {
 
      User insertUser(User user) throws Exception;
+
+     User findUser(long id) throws Exception;
 }

@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Sign-Up/Login Form</title>
+    <title>Login</title>
 
         <#include "/base_libraries/head.ftl"/>
 

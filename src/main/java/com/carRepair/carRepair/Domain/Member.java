@@ -3,6 +3,7 @@ package com.carRepair.carRepair.Domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Member extends User implements Serializable {
@@ -27,7 +28,7 @@ public class Member extends User implements Serializable {
     private Collection repairs;
 
     @OneToMany(mappedBy = "member", targetEntity = Vehicle.class,  cascade = CascadeType.ALL)
-    private Collection vehicles;
+    private List<Vehicle> vehicles;
 
 
     public Member() {
@@ -80,6 +81,10 @@ public class Member extends User implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setVehicles(Vehicle vehicle) {
+        this.vehicles.add(vehicle);
     }
 
     public Collection getRepairs() {
