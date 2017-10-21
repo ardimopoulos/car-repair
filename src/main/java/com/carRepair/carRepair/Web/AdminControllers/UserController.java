@@ -80,11 +80,4 @@ public class UserController {
         return "redirect:/admin/create-user";
     }
 
-    @RequestMapping(value = "/admin/edit-user", method = RequestMethod.GET)
-    public String getEditUserView(Model model, UserForm userForm){
-        userForm.setFirstname("Akis");
-        userForm.setLastname("Dimopoulos");
-        model.addAttribute("userForm", userForm);
-        return "/admin/user/edit-user";
-    }
 }
