@@ -16,7 +16,7 @@
              <ul class="dropdown-menu">
                <li><a href="#">Create Service</a></li>
                <li><a href="#">Edit Service</a></li>
-               <li><a href="#">Search Service</a></li>
+               <li><a href="/admin/search-repair">Search Service</a></li>
              </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehicles<span class="caret"></span></a>
