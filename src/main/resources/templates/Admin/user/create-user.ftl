@@ -1,5 +1,5 @@
 <#import "/spring.ftl" as spring/>
-
+<#import "/spring.ftl" as spring/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,34 +103,33 @@
                      <span style="color:red">${error}</span>
                         </#list>
                  </div>
-                <div class="col-md-6">
-                    <@spring.bind "userForm.firstname"/>
-                <label for="firstname">First name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${userForm.firstname!""}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <#list spring.status.errorMessages as error>s
-                     <span style="color:red">${error}</span>
-                 </#list>
-                 </div>
+                    <div class="col-md-6">
+
+                                 <@spring.bind "userForm.email"/>
+                                 <label for="email">e-mail</label>
+                                  <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">
+                                    <#list spring.status.errorMessages as error>
+                                  <span style="color:red">${error}</span>
+                             </#list>
+                             </div>
+
                 <div class="col-md-6">
                     <@spring.bind "userForm.lastname"/>
                     <label for="lastname">Last name</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${userForm.lastname!""}"/><br>
+                    <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${userForm.lastname!""}"/>
                     <#list spring.status.errorMessages as error>
                     <span style="color:red">${error}</span>
                     </#list>
 
                 </div>
-                <div class="col-md-6">
-
-                <@spring.bind "userForm.email"/>
-                <label for="email">e-mail</label>
-                 <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   <#list spring.status.errorMessages as error>
-                 <span style="color:red">${error}</span>
-            </#list>
-            </div>
-
-
+             <div class="col-md-6">
+                                 <@spring.bind "userForm.firstname"/>
+                             <label for="firstname">First name</label>
+                             <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${userForm.firstname!""}"/>
+                             <#list spring.status.errorMessages as error>s
+                                  <span style="color:red">${error}</span>
+                              </#list>
+                              </div>
                 <div class="col-md-6">
 
                     <label for="UserType">User Type</label>
