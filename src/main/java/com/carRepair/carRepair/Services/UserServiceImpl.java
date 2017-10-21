@@ -1,6 +1,7 @@
 package com.carRepair.carRepair.Services;
 
 import com.carRepair.carRepair.Domain.User;
+import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,11 @@ public class UserServiceImpl implements UserService {
     public User findUser(long id) throws Exception{
         User u = userRepository.findOne(id);
         return u;
+    }
+
+    public User getUserByEmail(String email) throws UserNotFoundException{
+        User u = userRepository.findByEmail(email);
+        if(u != null){return u;}else{throw new UserNotFoundException("Use not found by email");}
     }
 
     /*public List<User> allUsers(){

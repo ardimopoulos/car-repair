@@ -21,5 +21,6 @@ insert into repair ( date, description, status, time, type, user_id) VALUES ('20
 insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description12', '2', '09:15:00', false, '1');
 insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description13', '1', '12:15:00', true, '2');
 insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description14', '1', '12:30:00', false, '3');
+insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description14', '1', '12:30:00', false, '4');
 
 

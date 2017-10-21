@@ -61,7 +61,7 @@
     <th><a href="/admin/edit-user/${member.vat}"><button type="button" class="btn btn-info">Edit</button></a></th>
     </form>
     <form action ="/admin/delete-user" name="deleteForm" id ="deleteForm" method="POST">
-        <input type="hidden" name="vat" id="vat" value="${member.getUser().getEmail()}">
+        <input type="hidden" name="hidden_email" id="hidden_email" value="${member.getUser().getEmail()}">
     <th><input type="submit" class="btn btn-danger" value="Delete"></th>
     </form>
   </tr>
