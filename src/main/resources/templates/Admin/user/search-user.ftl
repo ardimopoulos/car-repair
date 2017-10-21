@@ -33,6 +33,7 @@
 <div class="container">
 <table class="table">
    <tr>
+   <th>Email</th>
      <th>FirstName</th>
      <th>LastName</th>
      <th>VAT</th>
@@ -42,14 +43,13 @@
      <th>Delete</th>
    </tr>
    <tr>
+    <th>${member.getUser().getEmail()}</th>
     <th>${member.firstname}</th>
     <th>${member.lastname}</th>
     <th>${member.vat}</th>
     <th>${member.address}</th>
-    <th>not done yet</th>
-    <form action ="/admin/edit-user" name="editForm" id ="editForm" method="GET">
-        <input type="hidden" name="vat" id="vat" value="${member.vat}">
-    <th><input type="submit" class="btn btn-info" value="Edit"></th>
+    <th>Not doen Yet</th>
+    <th><a href="/admin/edit-user/${member.vat}"><button type="button" class="btn btn-info">Edit</button></a></th>
     </form>
     <form action ="/admin/delete-user" name="deleteForm" id ="deleteForm" method="POST">
         <input type="hidden" name="vat" id="vat" value="${member.vat}">

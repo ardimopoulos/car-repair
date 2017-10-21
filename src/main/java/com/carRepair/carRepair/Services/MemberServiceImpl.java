@@ -1,6 +1,7 @@
 package com.carRepair.carRepair.Services;
 
 import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,12 @@ public class MemberServiceImpl implements MemberService {
     public Member updateMember(Long id , Member member){
        Member m = memberRepository.save(member);
         return m;
+    }
+
+    @Override
+    public Member getMemberByVat(String vat) throws UserNotFoundException{
+            Member m = memberRepository.findByVat(vat);
+            if(m != null){return m;}else{ throw new UserNotFoundException("User not Found"); }
     }
 
     public void deleteMember(Long id){ memberRepository.delete(id); }

@@ -26,12 +26,7 @@ public class SearchServiceImpl implements SearchService{
     @Override
     public Member getCustomerByEmail(String email) throws UserNotFoundException{
         User user = userRepository.findByEmail(email);
-        if(user !=null){ Member member = memberRepository.findOne(user.getUserId());
-            if(member != null ) { return member;
-            }else{ throw new UserNotFoundException("Member not found"); }
-        }else{ throw new UserNotFoundException("User not found"); }
-
-
+        if(user !=null){ return user.getMember(); }else{ throw new UserNotFoundException("User not found"); }
     }
 
     public Member getMemberByVatOrMail(String vat , String email) throws UserNotFoundException{
