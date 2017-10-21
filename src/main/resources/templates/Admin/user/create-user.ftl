@@ -106,7 +106,7 @@
                     <div class="col-md-6">
 
                                  <@spring.bind "userForm.email"/>
-                                 <label for="email">e-mail</label>
+                                 <label for="email">E-mail</label>
                                   <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">
                                     <#list spring.status.errorMessages as error>
                                   <span style="color:red">${error}</span>
@@ -126,7 +126,7 @@
                                  <@spring.bind "userForm.firstname"/>
                              <label for="firstname">First name</label>
                              <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${userForm.firstname!""}"/>
-                             <#list spring.status.errorMessages as error>s
+                             <#list spring.status.errorMessages as error>
                                   <span style="color:red">${error}</span>
                               </#list>
                               </div>
