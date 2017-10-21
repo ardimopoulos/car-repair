@@ -31,7 +31,7 @@
 
     <label for="address">Address</label>
         <input type="text" id="Address" name="address" placeholder="Type address.." value="${member.address}"/><br>
-
+<input type="hidden" name="vat_hidden" id="vat_hidden" value="${member.getUser().getUserId()}">
     <input type="submit" class="btn btn-info" value="Update">
         </form>
         <#else>

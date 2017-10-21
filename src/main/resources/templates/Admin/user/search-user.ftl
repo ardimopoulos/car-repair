@@ -15,12 +15,21 @@
              <div class="row"  >
                  <div class="col-md-2"></div>
                  <div class="col-md-8">
-                       <form name="searchForm" action="/admin/search-user"  method="post" >
-                          <!-- <label for="vat">VAT:</label>-->
-                           <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="vat" /><br>
+                       <form name="searchForm" id="searchForm" action="/admin/search-user"  method="post" >
 
-                          <!-- <label for="email">Email:</label> -->
-                           <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" /><br>
+                           <@spring.bind "searchForm.vat"/>
+                                <input type="text" class="form-control"  id="vat" placeholder="Enter VAT"  name="vat" /><br>
+                            <#list spring.status.errorMessages as error>
+                                <span>${error}</span>
+                            </#list>
+
+                            <@spring.bind "searchForm.email"/>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" />
+                            <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                            </#list>
+
+                            <br>
                            <button type="submit" class="btn">Search</button>
                         </form>
 
@@ -52,7 +61,7 @@
     <th><a href="/admin/edit-user/${member.vat}"><button type="button" class="btn btn-info">Edit</button></a></th>
     </form>
     <form action ="/admin/delete-user" name="deleteForm" id ="deleteForm" method="POST">
-        <input type="hidden" name="vat" id="vat" value="${member.vat}">
+        <input type="hidden" name="vat" id="vat" value="${member.getUser().getEmail()}">
     <th><input type="submit" class="btn btn-danger" value="Delete"></th>
     </form>
   </tr>

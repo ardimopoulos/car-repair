@@ -5,6 +5,7 @@ insert into user (email,password,user_type) values("tsapas@gmail.gr","$2a$10$/1v
 insert into member (address,firstname,lastname,vat,user_id)  values('Karpenisiou 3','loannis','Ioannou',123234345,1);
 insert into member (address,firstname,lastname,vat,user_id)  values('Kavalas 12','Georgios','Georgiou',123345789,2);
 insert into member (address,firstname,lastname,vat,user_id)  values('Athinas 8','Akis','Dimopoulos',456852397,3);
+insert into member (address,firstname,lastname,vat,user_id)  values('Kabalas 10','Kostas','Poulakakis',222312312,4);
 
 insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description1', '0', '11:45:00', false, '1');
 insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description2', '1', '10:00:00', true, '2');
