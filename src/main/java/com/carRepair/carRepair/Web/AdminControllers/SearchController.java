@@ -31,12 +31,12 @@ public class SearchController {
     @RequestMapping(value = "/admin/search-user", method = RequestMethod.POST)
     public String searchUserPost(Model model , @ModelAttribute(SEARCH_FORM) SearchForm searchForm
                                             , RedirectAttributes redirectAttributes){
-        Member member = null;
+
         try {
-            member = searchService.getMemberByVatOrMail(searchForm.getVat(), searchForm.getEmail());
+            Member member = searchService.getMemberByVatOrMail(searchForm.getVat(), searchForm.getEmail());
             redirectAttributes.addFlashAttribute("member" , member);
         }catch(UserNotFoundException userNotFound){
-            System.out.println("User not Found controller" + userNotFound);
+            System.out.println("Controller : User not Found " + userNotFound);
             redirectAttributes.addFlashAttribute("errorMessage" , "Can t find the user");
         }
         return "redirect:/admin/search-user";

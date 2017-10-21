@@ -20,11 +20,7 @@ public class SearchServiceImpl implements SearchService{
     @Override
     public Member getCustomerByVat(String vat) throws UserNotFoundException{
        Member member = memberRepository.findByVat(vat);
-       if(member != null ) {
-           System.out.println(member.getAddress() + member.getFirstname());
-           return member;
-       }else{ throw new UserNotFoundException("User not found"); }
-
+       if(member != null ) { return member; }else{ throw new UserNotFoundException("User not found"); }
     }
 
     @Override
