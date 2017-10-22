@@ -23,4 +23,7 @@ insert into repair ( date, description, status, time, type, user_id) VALUES ('20
 insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description14', '1', '12:30:00', false, '3');
 insert into repair ( date, description, status, time, type, user_id) VALUES ('2017-10-21', 'This is a description14', '1', '12:30:00', false, '4');
 
-
+INSERT INTO vehicle ( brand, color, model, plate, year, user_id) VALUES ( 'BMW', 'Red', '94', 'ABC-1234', '2017-10-21', '1');
+INSERT INTO vehicle ( brand, color, model, plate, year, user_id) VALUES ( 'Toyota', 'Blue', '94', 'DEF-1234', '2017-10-21', '2');
+INSERT INTO vehicle ( brand, color, model, plate, year, user_id) VALUES ( 'Nissan', 'Black', '94', 'GHI-1234', '2017-10-21', '3');
+INSERT INTO vehicle ( brand, color, model, plate, year, user_id) VALUES ( 'Scoda', 'White', '94', 'JKL-1234', '2017-10-21', '4');
