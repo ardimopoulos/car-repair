@@ -1,10 +1,5 @@
 package com.carRepair.carRepair.Converters;
 
-import com.carRepair.carRepair.Domain.Member;
-import com.carRepair.carRepair.Domain.User;
-import com.carRepair.carRepair.Forms.UserForm;
-import com.carRepair.carRepair.Utilities.AppUtilities;
-
 public class UserConverter {
 
     // No need yet

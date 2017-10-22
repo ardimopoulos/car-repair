@@ -20,7 +20,7 @@ public class Member extends User implements Serializable {
     @Column(nullable = false)
     private String address;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     private User user;
 

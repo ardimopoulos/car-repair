@@ -3,7 +3,7 @@ package com.carRepair.carRepair.Web.AdminControllers.Vehicle;
 import com.carRepair.carRepair.Converters.VehicleConverter;
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Vehicle;
-import com.carRepair.carRepair.Forms.VehicleForm;
+import com.carRepair.carRepair.Forms.Vehicle.VehicleForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
 import com.carRepair.carRepair.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;

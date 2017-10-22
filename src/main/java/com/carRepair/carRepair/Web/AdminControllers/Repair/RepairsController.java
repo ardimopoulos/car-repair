@@ -1,6 +1,6 @@
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
-import com.carRepair.carRepair.Forms.RepairForm;
+import com.carRepair.carRepair.Forms.Repair.RepairForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

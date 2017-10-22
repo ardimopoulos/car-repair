@@ -10,6 +10,10 @@ public class DeleteServiceImpl implements DeleteService{
     @Autowired
     private UserRepository userRepository;
 
-    public void deleteUser(Long id){ userRepository.delete(id); }
+    public void deleteUser(Long id) throws IllegalArgumentException{
+
+        userRepository.delete(id);
+
+    }
 
 }

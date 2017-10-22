@@ -115,7 +115,7 @@
                     <#list spring.status.errorMessages as error>
                          <span style="color:red">${error}</span>
                     </#list><br/>
-                    ${passwordMessage!"Password doesn't chane if fields are empty bellow"}
+                    ${passwordMessage!"Password doesn't change if fields are empty bellow"}<br/>
                         <label for ="password">Current password</label>
                         <input type="password" id="password" name="password" placeholder="Current password.." />
                         </div>
