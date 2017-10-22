@@ -19,10 +19,11 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public Vehicle insertVehicle(Vehicle vehicle) throws Exception {
-      //  Member member = memberService.getMember(id);
-      //  vehicle.setMember(m);
 
-        Vehicle v = vehicleRepository.save(vehicle);
+        Vehicle newVehicle = vehicleRepository.save(vehicle);
+        if(vehicle == null){
+            throw new Exception("Vehicle already exists");
+        }
         return vehicle;
     }
 }

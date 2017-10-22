@@ -34,7 +34,6 @@ public class Member extends User implements Serializable {
     public Member() {
     }
 
-
     public Member(String email, String password, boolean userType, String firstname, String lastname,String address, String vat) {
         super(email,password,userType);
         this.vat = vat;

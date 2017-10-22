@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Add user</title>
 
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
              crossorigin="anonymous">
@@ -17,114 +18,143 @@
 
 
 </head>
-    <body>
-    <nav class="navbar navbar-inverse">
-     <div class="container-fluid">
-       <div class="navbar-header">
-         <a class="navbar-brand" href="#">Car Repairs</a>
-       </div>
-       <ul class="nav navbar-nav">
-         <li class="active"><a href="/admin">Home</a></li>
-         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
-           <ul class="dropdown-menu">
-             <li><a href="/admin/create-user">Create User</a></li>
-             <li><a href="/admin/search-user">Search User</a></li>
-             <li><a href="/admin/edit-user">Edit User</a></li>
 
-           </ul>
-         </li>
-         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Repairs<span class="caret"></span></a>
-                 <ul class="dropdown-menu">
-                   <li><a href="#">Create Service</a></li>
-                   <li><a href="#">Edit Service</a></li>
-                   <li><a href="#">Search Service</a></li>
-                 </ul>
-               </li>
-
-       </ul>
-       <ul class="nav navbar-nav navbar-right">
-                     <li>
-                         <a href="/"> <span class="glyphicon glyphicon-log-in"></span>&nbsp; Logout</a>
-                     </li>
-                   </ul>
-     </div>
-    </nav>
-
-    <div class="vehicleRegistration">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-    <header><h1>User registration form</h1>
-    <h4>Please fill all the following fields</h4></header>
-<div class="side">
-<form action="/admin/user/create-user" id="mainForm" method="post" name="userForm">
-    <label for="vat">VAT</label>
-    <@spring.bind "userForm.vat"/>
-    <input type="text" id="TaxNum" name="vat" placeholder="Type vat.." value="${userForm.vat!""}"/><br>
-    <#list spring.status.errorMessages as error>
-         <span style="color:red">${error}</span>
-    </#list><br>
-
-<@spring.bind "userForm.firstname"/>
-<label for="firstname">First name</label>
-     <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${userForm.firstname!""}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<#list spring.status.errorMessages as error>
-         <span style="color:red">${error}</span>
-    </#list><br>
-
-<@spring.bind "userForm.lastname"/>
-<label for="lastname">Last name</label>
-     <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${userForm.lastname!""}"/><br>
-<#list spring.status.errorMessages as error>
-     <span style="color:red">${error}</span>
-</#list><br>
-
-<@spring.bind "userForm.email"/>
-<label for="email">e-mail</label>
-     <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<#list spring.status.errorMessages as error>
-     <span style="color:red">${error}</span>
-</#list><br>
-
-    <label for="UserType">User Type</label>
-<select id="UserType" name="UserType" required>
-    <!--<option value="disabled selected">-</option>-->
-    <option value="true" selected>Admin</option>
-    <option value="false">Simple user</option>
-</select><br>
-
-<@spring.bind "userForm.password"/>
-<label for ="password">User password</label>
-    <input type="text" id="UserP" name="password" placeholder="Set new password.." />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<#list spring.status.errorMessages as error>
-     <span style="color:red">${error}</span>
-</#list><br>
+<body>
+<#include "/admin/menu_bar.ftl"/>
 
 
-<label for="configpassword">Confirm password</label>
-    <input type="text" id="ConfPass" name="configpassword" placeholder="Confirm password number.." />
-            <br>
-<@spring.bind "userForm.address"/>
-<label for="address">Address</label>
-    <input type="text" id="Address" name="address" placeholder="Type address.." value="${userForm.address!""}"/><br>
-<#list spring.status.errorMessages as error>
-     <span style="color:red">${error}</span>
-</#list><br>
-<!--<label for="TaxNum">Plate number</label>
-    <input type="text" id="platenum" name="platenum" placeholder="Type plate number.." /><br>-->
+    <script>
+             function myFunction() {
+                 var pass1 = document.getElementById("UserP").value;
+                 var pass2 = document.getElementById("ConfPass").value;
+                 if (pass1 != pass2) {
+                     //alert("Passwords Do not match");
+                     document.getElementById("UserP").style.borderColor = "#E34234 ";
+                     document.getElementById("ConfPass").style.borderColor = "#E34234 ";
+                 } else {
+                     document.getElementById("UserP").style.borderColor = "#33cc33";
+                     document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
+                 } {
+                     var pass1 = document.getElementById("UserP").value;
+                     var pass2 = document.getElementById("ConfPass").value;
+                     var ok = true;
+                     if (pass1 != pass2) {
+                         //alert("Passwords Do not match");
+                         document.getElementById("UserP").style.borderColor = "#E34234 ";
+                         document.getElementById("ConfPass").style.borderColor = "#E34234 ";
+                         ok = false;
+                     } else {
+                         document.getElementById("UserP").style.borderColor = "#33cc33 ";
+                         document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
+                     }
+                     return ok;
+                 }
+             }
+     </script>
 
-    <!-- Choose if you want to add a vehicle:<br>
-<a href="tsertsrtete.html"><button>Go to vehicle form</button></a> !-->
-    <input type="submit" value="Submit">
-    </form>
-  <script>
-     $("#signupForm").validate();
-  </script>
-${message!""}
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+       <h1>Edit user</h1>
+
+       <form name="searchUser" action="/admin/edit-user"  method="get" >
+          <!-- <label for="vat">VAT:</label>-->
+          <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="v" />
+           <button type="submit" class="btn">Search</button>
+        </form>
+       <span style="background-color:red;">${errormessage!""}<span>
+       <#if editUserForm??>
+        <form action="/admin/edit-user" id="mainForm" method="post" name="editUserForm">
+         <!--<#if userId??>
+                <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
+
+          </#if>-->
+            <div class="col-md-12">
+                <div class="side">
+                <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
+                <span style="color: red; font-weight: bold; font-size:14px">${errormessage!""}</span>
+                    <div class="col-md-12">
+                    <@spring.bind "editUserForm.userId"/>
+                    <input type="hidden" name="userId" value="${editUserForm.userId!""}"/>
+                   <div class="col-md-6">
+                    <@spring.bind "editUserForm.firstname"/>
+                     <#list spring.status.errorMessages as error>
+                          <span style="color:red">${error}</span>
+                     </#list><br/>
+                    <label for="firstname">First name</label>
+                         <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${editUserForm.firstname!""}"/>
+                        </div>
+                    <div class="col-md-6">
+                    <@spring.bind "editUserForm.lastname"/>
+                    <#list spring.status.errorMessages as error>
+                        <span style="color:red">${error}</span>
+                     </#list><br/>
+                    <label for="lastname">Last name</label>
+                         <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${editUserForm.lastname!""}"/><br>
+
+                        </div>
+                    <div class="col-md-6">
+                    <@spring.bind "editUserForm.vat"/>
+                    <#list spring.status.errorMessages as error>
+                         <span style="color:red">${error}</span>
+                    </#list><br/>
+                     <label for="vat">VAT</label>
+                            <input type="text" id="TaxNum" name="vat" placeholder="Type vat.." value="${editUserForm.vat!""}"/><br>
+                        </div>
+                    <div class="col-md-6">
+                    <label for="UserType">User Type</label>
+                    <select id="UserType" name="UserType">
+                        <option value="true" ${admin!""}>Admin</option>
+                        <option value="false" ${simple!""}>Simple user</option>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="col-md-12">
+                    <div class="col-md-6">
+                    <@spring.bind "editUserForm.password"/>
+                    <#list spring.status.errorMessages as error>
+                         <span style="color:red">${error}</span>
+                    </#list><br/>
+                    ${passwordMessage!"Password doesn't chane if fields are empty bellow"}
+                        <label for ="password">Current password</label>
+                        <input type="password" id="password" name="password" placeholder="Current password.." />
+                        </div>
+                    <div class="col-md-6">
+                    <@spring.bind "editUserForm.newPassword"/>
+                    <label for="newpassword">New password</label>
+        <input type="password" id="newPass" name="newPassword" placeholder="New password.." /></div>
+           </div>
+            <div class="col-md-12">
+    <div class="col-md-6">
+                    <@spring.bind "editUserForm.address"/>
+                    <#list spring.status.errorMessages as error>
+                       <span style="color:red">${error}</span>
+                    </#list><br/>
+                    <label for="address">Address</label>
+                    <input type="text" id="Address" name="address" placeholder="Type address.." value="${editUserForm.address!""}"/><br>
+                    </div>
+        <div class="col-md-6">
+                    <@spring.bind "editUserForm.email"/>
+                    <#list spring.status.errorMessages as error>
+                       <span style="color:red">${error}</span>
+                    </#list><br/>
+                        <label for="email">e-mail</label>
+                             <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${editUserForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         </div>
+
+                    </div>
+                    &nbsp;<br>
+                    <input type="submit" value="Submit"><br><br>
+                 </div>
+
+            </div>
+
+        </form>
+        </#if>
     </div>
-    </div>
-    </div>
-<div class="col-md-2">
-    </div>
+    <div class="col-md-1">
 
-</body>
-</html>
+    </div>
+    </body>
+
+    </html>

@@ -6,13 +6,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class UserForm {
+public class EditUserForm {
+
     private static final String VAT_PATTERN = "^[0-9]{9}$";
     private static final String NAME_PATTERN = "^[a-zA-Z]+$";
     private static final String ADDRESS_PATTERN = "^[a-zA-Z0-9\\s]+$";
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$";
-    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&]*$";
+    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9]*$";
     private static final int PASSWORD_MINIMUM_SIZE = 8;
+
+    @NotNull
+    private long userId;
 
     @NotNull(message = "{create-user.vat.null}")
     @Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")
@@ -34,26 +38,45 @@ public class UserForm {
     @Pattern(regexp = EMAIL_PATTERN, message = "{create-user.email.invalid}")
     private String email;
 
-    @NotNull(message = "{create-user.password.null}")
-    @Pattern(regexp = PASSWORD_PATTERN, message = "{create-user.password.invalid}")
-    @Size(min = PASSWORD_MINIMUM_SIZE, message = "Password length must be 8 characters or/and numbers at least.")
+    //@NotNull(message = "{create-user.password.null}")
+   // @Pattern(regexp = PASSWORD_PATTERN, message = "{create-user.password.invalid}")
+    //@Size(min = PASSWORD_MINIMUM_SIZE, message = "Password length must be 8 characters or/and numbers at least.")
     private String password;
 
+   // @Pattern(regexp = PASSWORD_PATTERN, message = "{create-user.password.invalid}")
+    private String newPassword;
+
+    @NotNull
     private boolean userType;
 
-    private boolean addVehicle;
+    public EditUserForm(){}
 
-    public UserForm(){}
-
-    public UserForm(Member member){
+    public EditUserForm(Member member) {
+        this.userId = member.getUserId();
         this.vat = member.getVat();
         this.firstname = member.getFirstname();
         this.lastname = member.getLastname();
         this.address = member.getAddress();
         this.email = member.getEmail();
         this.password = member.getPassword();
+        //this.newPassword = newPassword;
         this.userType = member.getUserType();
-        this.password = member.getPassword();
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public String getVat() {
+        return vat;
+    }
+
+    public void setVat(String vat) {
+        this.vat = vat;
     }
 
     public String getFirstname() {
@@ -72,24 +95,16 @@ public class UserForm {
         this.lastname = lastname;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
@@ -104,19 +119,19 @@ public class UserForm {
         this.password = password;
     }
 
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
     public boolean getUserType() {
         return userType;
     }
 
-    public void setUserType(boolean type) {
-        userType = type;
-    }
-
-    public boolean getAddVehicle() {
-        return addVehicle;
-    }
-
-    public void setAddVehicle(boolean addVehicle) {
-        this.addVehicle = addVehicle;
+    public void setUserType(boolean userType) {
+        this.userType = userType;
     }
 }

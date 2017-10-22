@@ -21,6 +21,37 @@
 
 <body>
 <#include "/admin/menu_bar.ftl"/>
+
+
+    <script>
+             function myFunction() {
+                 var pass1 = document.getElementById("UserP").value;
+                 var pass2 = document.getElementById("ConfPass").value;
+                 if (pass1 != pass2) {
+                     //alert("Passwords Do not match");
+                     document.getElementById("UserP").style.borderColor = "#E34234 ";
+                     document.getElementById("ConfPass").style.borderColor = "#E34234 ";
+                 } else {
+                     document.getElementById("UserP").style.borderColor = "#33cc33";
+                     document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
+                 } {
+                     var pass1 = document.getElementById("UserP").value;
+                     var pass2 = document.getElementById("ConfPass").value;
+                     var ok = true;
+                     if (pass1 != pass2) {
+                         //alert("Passwords Do not match");
+                         document.getElementById("UserP").style.borderColor = "#E34234 ";
+                         document.getElementById("ConfPass").style.borderColor = "#E34234 ";
+                         ok = false;
+                     } else {
+                         document.getElementById("UserP").style.borderColor = "#33cc33 ";
+                         document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
+                     }
+                     return ok;
+                 }
+             }
+     </script>
+
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
@@ -33,6 +64,7 @@
             <div class="col-md-12">
                 <div class="side">
                 <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
+                <span style="color: red; font-weight: bold; font-size:14px">${errormessage!""}</span>
                     <div class="col-md-12">
                    <div class="col-md-6">
                     <@spring.bind "userForm.firstname"/>
@@ -62,8 +94,8 @@
                     <div class="col-md-6">
                     <label for="UserType">User Type</label>
                     <select id="UserType" name="UserType">
-                        <option value="true" selected>Admin</option>
-                        <option value="false User">Simple user</option>
+                        <option value="true" ${admin!""}>Admin</option>
+                        <option value="false" ${simple!""}>Simple user</option>
                     </select>
                     </div>
                     </div>
@@ -98,7 +130,8 @@
                              <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          </div>
          <div class="col-md-6">
-                <label for="vehicle">Add vehicle</label> <input type="checkbox" name="vehicle" value="true"><br>
+          <@spring.bind "userForm.addVehicle"/>
+                <label for="vehicle">Add vehicle</label> <input type="checkbox" name="addVehicle" value="true" ${checked!""     }><br>
             </div>
                     </div>
                     &nbsp;<br>

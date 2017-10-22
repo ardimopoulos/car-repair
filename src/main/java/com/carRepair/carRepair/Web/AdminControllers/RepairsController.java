@@ -1,76 +1,27 @@
 package com.carRepair.carRepair.Web.AdminControllers;
 
+import com.carRepair.carRepair.Forms.RepairForm;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class RepairsController {
 
-    // Selida Repair(Repair)
+    private static final String REPAIR_FORM = "repairForm";
 
-    @RequestMapping(value = "/admin/service" ,  method = RequestMethod.GET)
-    public String services(){
+    @RequestMapping(value = "/admin/create-service" ,  method = RequestMethod.GET)
+    public String getCreateServiceView(Model model, RepairForm repairForm){
 
-        //List<Services> services = findAll(); // Services
-
-        return "admin/services/home";
+        model.addAttribute(REPAIR_FORM, new RepairForm());
+        return "admin/services/create-service";
     }
 
-    @RequestMapping(value = "/admin/new-service" ,  method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/create-service" ,  method = RequestMethod.POST)
     public String createService(){
 
-        //ServiceUserForm()
-        return "admin/services/new_service";
-    }
-
-    @RequestMapping(value = "/admin/new-service" ,  method = RequestMethod.POST)
-    public String createServicePost(){
-
-        //save(Repair service); // Repair
-        return "admin/service/new_service";
-    }
-
-    @RequestMapping(value = "/admin/update-service" ,  method = RequestMethod.GET)
-    public String updateService(){
-
-        //UpdateServiceForm()
-        return "admin/services/update_service";
-    }
-
-    @RequestMapping(value = "/admin/update-service" ,  method = RequestMethod.POST)
-    public String updateServicePost(){
-
-        //save(Long id , Repair service); // Repair
-        return "admin/service/update_service";
-    }
-
-    @RequestMapping(value = "/admin/delete-service" ,  method = RequestMethod.GET)
-    public String deleteService(){
-
-        //DeleteServiceForm()
-        return "admin/services/delete_service";
-    }
-
-    @RequestMapping(value = "/admin/delete-service" ,  method = RequestMethod.POST)
-    public String deleteServicePost(){
-
-        //delete(Long id); // Repair
-        return "admin/service/delete_service";
-    }
-
-    @RequestMapping(value = "/admin/search-service" ,  method = RequestMethod.GET)
-    public String searchService(){
-
-        //SearchServiceForm()
-        return "admin/services/search_service";
-    }
-
-    @RequestMapping(value = "/admin/search-service" ,  method = RequestMethod.POST)
-    public String searchServicePost(){
-
-        //Repair service = findOne(Long id); // Repair
-        return "admin/service/search_service";
+        return "admin/service/create-service";
     }
 
 

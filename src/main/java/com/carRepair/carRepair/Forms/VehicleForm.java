@@ -1,5 +1,7 @@
 package com.carRepair.carRepair.Forms;
 
+import com.carRepair.carRepair.Domain.Member;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -9,35 +11,34 @@ public class VehicleForm {
     private static final String BRAND_PATTERN = "^[a-zA-Z0-9\\s]+$";
     private static final String MODEL_PATTERN = "^[a-zA-Z0-9\\s]+$";
     private static final String COLOR_PATTERN = "^[a-zA-Z\\s]+$";
-    private static final String YEAR_PATTERN = "^[0-9]{2}/[0-9]{2}/[1-9]{4}$";
+    private static final String YEAR_PATTERN = "^[12]{1}[0-9]{3}$";
     private static final String VAT_PATTERN = "^[0-9]{9}$";
-    private static final String ID_PATTERN = "^[0-9]{9}$";
 
-   // @NotNull(message = "error")
-   // @Pattern(regexp = VAT_PATTERN, message = "error")
+    @NotNull(message = "{create-vehicle.vat.null}")
+    @Pattern(regexp = VAT_PATTERN, message = "{create-vehicle.vat.invalid}")
     private String vat;
 
-    @NotNull(message = "error")
-   // @Pattern(regexp = PLATE_PATTERN, message = "error")
+    @NotNull(message = "{create-vehicle.plate.null}")
+    @Pattern(regexp = PLATE_PATTERN, message = "{create-vehicle.plate.invalid}")
     private String plate;
 
-    @NotNull(message = "error")
-   // @Pattern(regexp = BRAND_PATTERN, message = "error")
+    @NotNull(message = "{create-vehicle.brand.null}")
+    @Pattern(regexp = BRAND_PATTERN, message = "{create-vehicle.brand.invalid}")
     private String brand;
 
-    @NotNull(message = "error")
-   // @Pattern(regexp = MODEL_PATTERN, message = "{create-user.vat.invalid}")
+    @NotNull(message = "{create-vehicle.model.null}")
+    @Pattern(regexp = MODEL_PATTERN, message = "{create-vehicle.model.invalid}")
     private String model;
 
-    @NotNull(message = "error")
-  //  @Pattern(regexp = COLOR_PATTERN, message = "{create-user.vat.invalid}")
+    @NotNull(message = "{create-vehicle.color.null}")
+    @Pattern(regexp = COLOR_PATTERN, message = "{create-vehicle.color.invalid}")
     private String color;
 
-    @NotNull(message = "error")
- //   @Pattern(regexp = YEAR_PATTERN, message = "{create-user.vat.invalid}")
+    @NotNull(message = "{create-vehicle.year.null}")
+    @Pattern(regexp = YEAR_PATTERN, message = "{create-vehicle.year.invalid}")
     private String yearOfModel;
 
-    //TODO add vehicle radio button fields
+    private Member member;
 
     public VehicleForm() {
     }

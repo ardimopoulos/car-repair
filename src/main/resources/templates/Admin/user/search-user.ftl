@@ -4,6 +4,8 @@
         <#include "/base_libraries/head.ftl"/>
 </head>
     <body>
+    <h4>${errormessage!""}</h4>
+    <#include "/admin/menu_bar.ftl"/>
              <header>
              <div class="row"  >
                  <div class="col-md-2"></div>
@@ -19,6 +21,19 @@
 
                  </div>
             <div class="col-md-2"></div>
+
+<#if member??>
+            <div>
+            <ul>
+                <li>${member.vat}</li>
+                <li>${member.firstname}</li>
+                <li>${member.lastname}</li>
+                <li>${member.email}</li>
+                <li><a href="/admin/edit-user?v=${member.vat}">edit</a></li>
+                <li><a href="/admin/delete-user?v=${member.vat}">delete</a></li>
+            </ul>
+            </div>
+</#if>
 
 </div>
 <#include "/base_libraries/footer.ftl"/>

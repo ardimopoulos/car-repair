@@ -26,6 +26,7 @@ public class VehicleConverter {
         Date yearOfModel = null;
         try {
             yearOfModel = formatter.parse(vehicleForm.getYearOfModel());
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

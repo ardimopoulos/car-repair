@@ -7,24 +7,16 @@
 
 <body>
 <#include "/admin/menu_bar.ftl"/>
-
 <h1> </h2>
 <h4>${message!""}</h4>
-<form action="/admin/create-vehicle" id="mainForm" method="post" name="vehicleForm">
-<#if userId??>
-<@spring.bind "vehicleForm.userId"/>
-     <input type="hidden" id="fname" name="userId" value="${userId!""}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<#list spring.status.errorMessages as error>
-         <span style="color:red">${error}</span>
-    </#list><br>
-<#else>
+<span style="color:red">${errormessage!""}</span>
+<form action="/admin/add-vehicle" id="mainForm" method="post" name="vehicleForm">
 <@spring.bind "vehicleForm.vat"/>
 <label for="vat">VAT</label>
-     <input type="text" id="fname" name="vat" placeholder="Type vat.." value="${vehicleForm.vat!""}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="text" id="fname" name="vat" placeholder="Type vat.." value="<#if memberVat??>${memberVat}<#else>${vehicleForm.vat!""}</#if>"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <#list spring.status.errorMessages as error>
          <span style="color:red">${error}</span>
     </#list><br>
-</#if>
 <@spring.bind "vehicleForm.plate"/>
 <label for="plate">Plate</label>
      <input type="text" id="fname" name="plate" placeholder="Type plate.." value="${vehicleForm.plate!""}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
