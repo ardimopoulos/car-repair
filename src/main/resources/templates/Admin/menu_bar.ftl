@@ -8,8 +8,8 @@
      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
        <ul class="dropdown-menu">
          <li><a href="/admin/create-user">Create User</a></li>
-         <li><a href="/admin/search-user">Search User</a></li>
          <li><a href="/admin/edit-user">Edit User</a></li>
+         <li><a href="/admin/search-user">Search User</a></li>
        </ul>
      </li>
      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Repairs<span class="caret"></span></a>
@@ -20,11 +20,11 @@
              </ul><!-- search-repair  -->
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehicles<span class="caret"></span></a>
-                   <ul class="dropdown-menu">
-                     <li><a href="/admin/add-vehicle">Create Vehicle</a></li>
-                     <li><a href="/admin/edit-vehicle">Edit Vehicle</a></li>
-                     <li><a href="/admin/search-vehicle">Search Vehicle</a></li>
-                   </ul>
+               <ul class="dropdown-menu">
+                 <li><a href="/admin/create-vehicle">Create Vehicle</a></li>
+                 <li><a href="/admin/edit-vehicle">Edit Vehicle</a></li>
+                 <li><a href="/admin/search-vehicle">Search Vehicle</a></li>
+               </ul>
       </li>
 
    </ul>

@@ -13,9 +13,9 @@ public class RepairDeleteController {
     private RepairDeleteService repairDeleteService;
 
     @RequestMapping(value = "/admin/delete-repair", method = RequestMethod.POST)
-    String deleteRepair(Model model , @RequestParam("hidden_email" )Long hidden_serviceId ){
+    String deleteRepair(Model model , @RequestParam("hidden_serviceId" )Long hidden_serviceId ){
 
-            repairDeleteService.deleteRepair(hidden_serviceId);
+            //repairDeleteService.deleteRepair(hidden_serviceId);
 
         return "redirect:/admin/search-repair";
     }
