@@ -25,7 +25,7 @@ public class Member extends User implements Serializable {
     private User user;
 
     @OneToMany(mappedBy = "member", targetEntity = Repair.class,  cascade = CascadeType.ALL) //otan diagrafw member diagrafei kai repair
-    private Collection repairs;
+    private List<Repair> repairs;
 
     @OneToMany(mappedBy = "member", targetEntity = Vehicle.class,  cascade = CascadeType.ALL)
     private List<Vehicle> vehicles;
