@@ -17,7 +17,6 @@ public interface UserRepository extends CrudRepository<User,Long>{
 
     User save(User user);
 
-
-
-
+    @Override
+    void delete(Long id);
 }

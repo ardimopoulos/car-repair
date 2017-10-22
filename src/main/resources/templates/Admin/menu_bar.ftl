@@ -17,7 +17,7 @@
                <li><a href="/admin/create-service">Create Service</a></li>
                <li><a href="/admin/edit-service">Edit Service</a></li>
                <li><a href="/admin/search-service">Search Service</a></li>
-             </ul>
+             </ul><!-- search-repair  -->
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehicles<span class="caret"></span></a>
                    <ul class="dropdown-menu">

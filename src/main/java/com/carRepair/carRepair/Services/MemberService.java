@@ -21,4 +21,5 @@ public interface MemberService {
 
     Member searchMember(Long id) throws Exception;
 
+    public Member getMemberByVat(String vat) throws UserNotFoundException;
 }

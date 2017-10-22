@@ -48,6 +48,8 @@ public class Repair implements Serializable {
         this.type = type;
     }
 
+
+
     public long getServiceId() {
         return serviceId;
     }
@@ -96,11 +98,11 @@ public class Repair implements Serializable {
         this.type = type;
     }
 
-    /*public Member getMember() {
+    public Member getMember() {
         return member;
     }
 
     public void setMember(Member member) {
         this.member = member;
-    }*/
+    }
 }
