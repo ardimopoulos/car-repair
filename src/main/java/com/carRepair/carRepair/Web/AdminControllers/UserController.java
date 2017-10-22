@@ -120,7 +120,7 @@ public class UserController {
         if(bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userForm", bindingResult);
-            redirectAttributes.addFlashAttribute(USER_FORM, editUserForm);
+            redirectAttributes.addFlashAttribute(EDIT_USER_FORM, editUserForm);
             redirectAttributes.addFlashAttribute(role, "selected");
 
             return "redirect:/admin/edit-user";

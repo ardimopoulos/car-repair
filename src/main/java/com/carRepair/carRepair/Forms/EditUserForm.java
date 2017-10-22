@@ -22,7 +22,7 @@ public class EditUserForm {
     @Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")
     private String vat;
 
-    @NotNull(message = "{create-user.firstname.null}")
+    @NotNull(message = "error")
     @Pattern(regexp = NAME_PATTERN, message = "{create-user.firstname.invalid}")
     private String firstname;
 
