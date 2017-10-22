@@ -37,7 +37,7 @@ public class UserSearchController {
         }*/
 
         model.addAttribute(SEARCH_FORM, new SearchForm());
-        return "/admin/user/search-user";
+        return "/admin/user/search-user-view";
     }
 
 

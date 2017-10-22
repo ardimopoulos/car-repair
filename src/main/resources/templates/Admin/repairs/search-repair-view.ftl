@@ -34,49 +34,32 @@
                <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm">
                <div class="tab-content" id="v-pills-tabContent">
                  <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                    <@spring.bind "repairSearchForm.vat"/>
                         <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
-                    <#list spring.status.errorMessages as error>
-                        <span>${error}</span>
-                    </#list>
 
                     <input type="submit" class="btn btn-info" name="button" value="Search Vat">
 
                 </div>
                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <@spring.bind "repairSearchForm.date"/>
                         <input type="text" class="form-control" id="date" placeholder="Enter date" name="date" /><br>
-                    <#list spring.status.errorMessages as error>
-                        <span>${error}</span>
-                    </#list>
+
 
                     <input type="submit" class="btn btn-info" name="button" value="Search Date">
 
                 </div>
                  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <@spring.bind "repairSearchForm.plate"/>
                         <input type="text" class="form-control" id="plate" placeholder="Enter plate" name="plate" /><br>
-                    <#list spring.status.errorMessages as error>
-                        <span>${error}</span>
-                    </#list>
 
                     <input type="submit" class="btn btn-info" name="button" value="Search Plate">
 
                 </div>
                 <div class="tab-pane fade" id="v-pills-dates" role="tabpanel" aria-labelledby="v-pills-dates-tab">
                     <div class="col-md-6">
-                        <@spring.bind "repairSearchForm.startDate"/>
                             <input type="text" class="form-control" id="startDate" placeholder="Enter Start Date" name="startDate" /><br>
-                        <#list spring.status.errorMessages as error>
-                            <span>${error}</span>
-                        </#list>
+
                     </div>
                     <div class="col-md-6">
-                        <@spring.bind "repairSearchForm.beforeDate"/>
                             <input type="text" class="form-control" id="beforeDate" placeholder="Enter Before Date" name="beforeDate" /><br>
-                        <#list spring.status.errorMessages as error>
-                            <span>${error}</span>
-                        </#list>
+
                     </div>
                     <input type="submit" class="btn btn-info" name="button" value="Search Between">
 

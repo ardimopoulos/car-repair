@@ -34,7 +34,7 @@ public class VehicleController {
         if(!model.containsAttribute(VEHICLE_FORM)){
             model.addAttribute(VEHICLE_FORM, new VehicleForm());
         }
-        return "/admin/vehicle/add-vehicle";
+        return "/admin/vehicle/add-vehicle-view";
     }
 
     @RequestMapping(value = "/admin/add-vehicle", method = RequestMethod.POST)

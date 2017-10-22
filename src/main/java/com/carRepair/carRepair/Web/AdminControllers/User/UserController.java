@@ -36,7 +36,7 @@ public class UserController {
             model.addAttribute(USER_FORM, new UserForm());
         }
 
-        return "/admin/user/create-user";
+        return "/admin/user/create-user-view";
     }
 
     @RequestMapping(value = "/admin/create-user", method = RequestMethod.POST)
@@ -53,7 +53,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute(role, "selected");
             redirectAttributes.addFlashAttribute("checked",  addVehicle);
 
-            return "redirect:/admin/create-user";
+            return "redirect:/admin/create-user-view";
         }
 
         Member member = MemberConverter.buildMemberObjecr(userForm);
@@ -81,7 +81,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("checked",  addVehicle);
         }
 
-        return "redirect:/admin/create-user";
+        return "redirect:/admin/create-user-view";
     }
 
     //TODO  New class edit form
@@ -103,7 +103,7 @@ public class UserController {
                 return "redirect:/admin/edit-user";
             }
         }
-        return "/admin/user/edit-user";
+        return "/admin/user/edit-user-view";
     }
 
     @RequestMapping(value = "/admin/edit-user", method = RequestMethod.POST)
