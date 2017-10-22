@@ -25,13 +25,13 @@
          </thead>
      <tbody>
 <#if repairs??>
-    <#list repairs as service>
+    <#list repairs as repair>
                <tr>
-                 <td>${service.description}</td>
-                 <td><#if service.status==0>Not Done<#elseif service.status==1>Stand By<#else>Done</#if></td>
-                 <td>${service.date}</td>
-                 <td><#if service.type>Big<#else>Small</#if></td>
-                 <td>${service.time}</td>
+                 <td>${repair.description}</td>
+                 <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
+                 <td>${repair.date}</td>
+                 <td><#if repair.type>Big<#else>Small</#if></td>
+                 <td>${repair.time}</td>
                  <td>Note done yet</td>
                </tr>
     </#list>
