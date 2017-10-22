@@ -1,29 +1,25 @@
-package com.carRepair.carRepair.Web.AdminControllers;
+package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Forms.SearchForm;
-import com.carRepair.carRepair.Forms.UserForm;
-import com.carRepair.carRepair.Services.MemberService;
+import com.carRepair.carRepair.Services.Member.MemberService;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
-
 
 @Controller
-public class SearchController {
+public class UserSearchController {
 
     private static final String SEARCH_FORM = "searchForm";
-    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(SearchController.class);
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserSearchController.class);
 
    /* @Autowired
     private SearchService searchService;*/
@@ -52,11 +48,10 @@ public class SearchController {
             member = memberService.getMemberByVatOrMail(searchForm.getVat(),searchForm.getEmail());
         }catch(UserNotFoundException userNotFound){
             System.out.println("User not Found controller" + userNotFound);
-            redirectAttributes.addFlashAttribute("errormessage", "No results");
+            redirectAttributes.addFlashAttribute("errorMessage", "No results");
             return "redirect:/admin/search-user";
         }
 
-        redirectAttributes.addFlashAttribute("errormessage", "yeaaah");
         redirectAttributes.addFlashAttribute("member", member);
         return "redirect:/admin/search-user";
     }

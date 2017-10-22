@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Services;
+package com.carRepair.carRepair.Services.Repair;
 
 public interface RepairDeleteService {
 

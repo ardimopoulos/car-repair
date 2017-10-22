@@ -1,12 +1,10 @@
 package com.carRepair.carRepair.Services;
 
-import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Repositories.VehicleRepository;
+import com.carRepair.carRepair.Services.Member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class VehicleServiceImpl implements VehicleService{

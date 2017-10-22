@@ -1,14 +1,10 @@
-package com.carRepair.carRepair.Web.AdminControllers;
+package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Converters.MemberConverter;
-import com.carRepair.carRepair.Converters.UserConverter;
 import com.carRepair.carRepair.Domain.Member;
-import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Forms.EditUserForm;
 import com.carRepair.carRepair.Forms.UserForm;
-import com.carRepair.carRepair.Repositories.MemberRepository;
-import com.carRepair.carRepair.Services.MemberService;
-import com.carRepair.carRepair.Services.UserService;
+import com.carRepair.carRepair.Services.Member.MemberService;
 import com.carRepair.carRepair.Utilities.AppUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 @Controller
 

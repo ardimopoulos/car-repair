@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Web.AdminControllers;
+package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
 import com.carRepair.carRepair.Forms.RepairForm;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Services;
+package com.carRepair.carRepair.Services.Member;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;

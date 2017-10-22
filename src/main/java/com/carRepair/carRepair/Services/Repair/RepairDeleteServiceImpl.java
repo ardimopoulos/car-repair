@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Services;
+package com.carRepair.carRepair.Services.Repair;
 
 import com.carRepair.carRepair.Repositories.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;

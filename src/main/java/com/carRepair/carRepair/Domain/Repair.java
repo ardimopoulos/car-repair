@@ -22,7 +22,7 @@ public class Repair implements Serializable {
     private Time time;
 
     @Column(nullable = false, length = 1)
-    private String status;
+    private int status;
 
     @Column(nullable = false)
     private String description;
@@ -39,7 +39,7 @@ public class Repair implements Serializable {
 
     public Repair(){}
 
-    public Repair(long serviceId, Date date, Time time, String status, String description, boolean type, Member member) {
+    public Repair(long serviceId, Date date, Time time, int status, String description, boolean type, Member member) {
         this.serviceId = serviceId;
         this.date = date;
         this.time = time;
@@ -74,11 +74,11 @@ public class Repair implements Serializable {
         this.time = time;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

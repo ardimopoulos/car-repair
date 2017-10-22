@@ -2,7 +2,7 @@ package com.carRepair.carRepair.Web.AdminControllers;
 
 
 import com.carRepair.carRepair.Domain.Repair;
-import com.carRepair.carRepair.Services.RepairService;
+import com.carRepair.carRepair.Services.Repair.RepairService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
