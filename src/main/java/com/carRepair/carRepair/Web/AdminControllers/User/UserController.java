@@ -84,7 +84,7 @@ public class UserController {
         return "redirect:/admin/create-user";
     }
 
-    //TODO  New class edit form
+    //TODO  bug edit
 
     @RequestMapping(value = "/admin/edit-user", method = RequestMethod.GET)
     public String getEditUserView(Model model, @RequestParam(name = "v", required = false) String vat,
