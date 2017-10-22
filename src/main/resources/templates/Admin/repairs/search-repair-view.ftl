@@ -12,59 +12,108 @@
             </div>
             </div>
             </#if>
-             <div class="row"  >
-                 <div class="col-md-2"></div>
-                 <div class="col-md-8">
-                       <form name="searchForm" id="searchForm" action="/admin/search-user"  method="post" >
+            <div class = "container">
 
-                           <@spring.bind "searchForm.vat"/>
-                                <input type="text" class="form-control"  id="vat" placeholder="Enter VAT"  name="vat" /><br>
-                            <#list spring.status.errorMessages as error>
-                                <span>${error}</span>
-                            </#list>
+               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Vat</a>
+                </li>
+               <li class="nav-item">
+                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Date</a>
+                </li>
+                <li class="nav-item">
+                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Plate</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" id="v-pills-dates-tab" data-toggle="pill" href="#v-pills-dates" role="tab" aria-controls="v-pills-dates" aria-selected="false">Between Dates</a>
+                  </li>
 
-                            <@spring.bind "searchForm.email"/>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" />
-                            <#list spring.status.errorMessages as error>
+               </div>
+               <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm">
+               <div class="tab-content" id="v-pills-tabContent">
+                 <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <@spring.bind "repairSearchForm.vat"/>
+                        <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
+                    <#list spring.status.errorMessages as error>
+                        <span>${error}</span>
+                    </#list>
+
+                    <input type="submit" class="btn btn-info" name="button" value="Search Vat">
+
+                </div>
+                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <@spring.bind "repairSearchForm.date"/>
+                        <input type="text" class="form-control" id="date" placeholder="Enter date" name="date" /><br>
+                    <#list spring.status.errorMessages as error>
+                        <span>${error}</span>
+                    </#list>
+
+                    <input type="submit" class="btn btn-info" name="button" value="Search Date">
+
+                </div>
+                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <@spring.bind "repairSearchForm.plate"/>
+                        <input type="text" class="form-control" id="plate" placeholder="Enter plate" name="plate" /><br>
+                    <#list spring.status.errorMessages as error>
+                        <span>${error}</span>
+                    </#list>
+
+                    <input type="submit" class="btn btn-info" name="button" value="Search Plate">
+
+                </div>
+                <div class="tab-pane fade" id="v-pills-dates" role="tabpanel" aria-labelledby="v-pills-dates-tab">
+                    <div class="col-md-6">
+                        <@spring.bind "repairSearchForm.startDate"/>
+                            <input type="text" class="form-control" id="startDate" placeholder="Enter Start Date" name="startDate" /><br>
+                        <#list spring.status.errorMessages as error>
                             <span>${error}</span>
-                            </#list>
+                        </#list>
+                    </div>
+                    <div class="col-md-6">
+                        <@spring.bind "repairSearchForm.beforeDate"/>
+                            <input type="text" class="form-control" id="beforeDate" placeholder="Enter Before Date" name="beforeDate" /><br>
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
+                    </div>
+                    <input type="submit" class="btn btn-info" name="button" value="Search Between">
 
-                            <br>
-                           <button type="submit" class="btn">Search</button>
-                        </form>
+                </div>
 
-                 </div>
-            <div class="col-md-2"></div>
+                </form>
+
 </div>
 
 <hr>
-<#if member??>
+<#if repairs??>
 <div class="container">
 <table class="table">
    <tr>
-   <th>Email</th>
-     <th>FirstName</th>
-     <th>LastName</th>
-     <th>VAT</th>
-     <th>Address</th>
-     <th>Cars</th>
-     <th>Edit</th>
-     <th>Delete</th>
+   <th>Date</th>
+     <th>Description</th>
+     <th>Status</th>
+     <th>Time</th>
+     <th>Type</th>
+     <th>User</th>
    </tr>
-   <tr>
-    <th>${member.getUser().getEmail()}</th>
-    <th>${member.firstname}</th>
-    <th>${member.lastname}</th>
-    <th>${member.vat}</th>
-    <th>${member.address}</th>
-    <th>Not doen Yet</th>
-    <th><a href="/admin/edit-user/${member.vat}"><button type="button" class="btn btn-info">Edit</button></a></th>
+   <#list repairs as repair>
+                  <tr>
+                    <td>${repair.date}</td>
+                    <td>${repair.description}</td>
+                    <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
+                     <td>${repair.time}</td>
+                    <td><#if repair.type>Big<#else>Small</#if></td>
+                    <td>${repair.getMember().getFirstname()}</td>
+
+    <th><a href="/admin/edit-repair"><button type="button" class="btn btn-info">Edit</button></a></th>
     </form>
-    <form action ="/admin/delete-user" name="deleteForm" id ="deleteForm" method="POST">
-        <input type="hidden" name="hidden_email" id="hidden_email" value="${member.getUser().getEmail()}">
+    <form action ="/admin/delete-repair" name="deleteForm" id ="deleteForm" method="POST">
+        <input type="hidden" name="hidden_email" id="hidden_email" value="">
     <th><input type="submit" class="btn btn-danger" value="Delete"></th>
     </form>
   </tr>
+  </#list>
 </table>
 </#if>
 
