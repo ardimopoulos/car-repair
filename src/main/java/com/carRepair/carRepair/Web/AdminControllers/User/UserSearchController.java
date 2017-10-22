@@ -32,7 +32,7 @@ public class UserSearchController {
     public String searchUser(Model model) {
 
         model.addAttribute(SEARCH_FORM, new SearchForm());
-        return "/admin/user/search-user";
+        return "/admin/user/search-user-view";
     }
 
 

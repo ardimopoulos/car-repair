@@ -8,4 +8,6 @@ public interface RepairService {
 
     public List<Repair> getDailyServices(); //TODO throw Esception ???
 
+    List<Repair> getMemberRepairs(String email);
+
 }

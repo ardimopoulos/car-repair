@@ -32,7 +32,7 @@ public class UserController {
             model.addAttribute(USER_FORM, new UserForm());
         }
 
-        return "/admin/user/create-user";
+        return "/admin/user/create-user-view";
     }
 
     @RequestMapping(value = "/admin/create-user", method = RequestMethod.POST)
@@ -62,7 +62,7 @@ public class UserController {
             if(userForm.getAddVehicle()){
                 redirectAttributes.addFlashAttribute("memberVat", member.getVat());
                 redirectAttributes.addFlashAttribute("errormessage", "Add vehicle for user wih VAT: " + member.getVat());
-                return "redirect:/admin/add-vehicle";
+                return "redirect:/admin/create-vehicle";
             }
 
 

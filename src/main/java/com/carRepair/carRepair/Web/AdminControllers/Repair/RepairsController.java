@@ -11,17 +11,17 @@ public class RepairsController {
 
     private static final String REPAIR_FORM = "repairForm";
 
-    @RequestMapping(value = "/admin/create-service" ,  method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/create-repair" ,  method = RequestMethod.GET)
     public String getCreateServiceView(Model model, RepairForm repairForm){
 
         model.addAttribute(REPAIR_FORM, new RepairForm());
-        return "admin/services/create-service";
+        return "/admin/repairs/create-repair-view";
     }
 
-    @RequestMapping(value = "/admin/create-service" ,  method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/create-repair" ,  method = RequestMethod.POST)
     public String createService(){
 
-        return "admin/service/create-service";
+        return "redirect:/admin/create-repair";
     }
 
 

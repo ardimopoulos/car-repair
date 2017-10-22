@@ -47,7 +47,7 @@ public class UserEditController {
                 return "redirect:/admin/edit-user";
             }
         }
-        return "/admin/user/edit-user";
+        return "/admin/user/edit-user-view";
     }
 
     @RequestMapping(value = "/admin/edit-user", method = RequestMethod.POST)
