@@ -10,7 +10,7 @@
 <h1> </h2>
 <h4>${message!""}</h4>
 <span style="color:red">${errormessage!""}</span>
-<form action="/admin/add-vehicle" id="mainForm" method="post" name="vehicleForm">
+<form action="/admin/create-vehicle" id="mainForm" method="post" name="vehicleForm">
 <@spring.bind "vehicleForm.vat"/>
 <label for="vat">VAT</label>
      <input type="text" id="fname" name="vat" placeholder="Type vat.." value="<#if memberVat??>${memberVat}<#else>${vehicleForm.vat!""}</#if>"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

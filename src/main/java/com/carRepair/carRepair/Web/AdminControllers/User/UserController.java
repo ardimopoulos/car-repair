@@ -49,7 +49,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute(role, "selected");
             redirectAttributes.addFlashAttribute("checked",  addVehicle);
 
-            return "redirect:/admin/create-user-view";
+            return "redirect:/admin/create-user";
         }
 
         Member member = MemberConverter.buildMemberObjecr(userForm);
@@ -62,7 +62,7 @@ public class UserController {
             if(userForm.getAddVehicle()){
                 redirectAttributes.addFlashAttribute("memberVat", member.getVat());
                 redirectAttributes.addFlashAttribute("errormessage", "Add vehicle for user wih VAT: " + member.getVat());
-                return "redirect:/admin/add-vehicle";
+                return "redirect:/admin/create-vehicle";
             }
 
 
@@ -77,7 +77,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("checked",  addVehicle);
         }
 
-        return "redirect:/admin/create-user-view";
+        return "redirect:/admin/create-user";
     }
 
 
