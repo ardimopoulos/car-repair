@@ -28,16 +28,16 @@ public class VehicleController {
     @Autowired
     private MemberService memberService;
 
-    @RequestMapping(value = "admin/add-vehicle", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/create-vehicle", method = RequestMethod.GET)
     public String getCreateVehicleView(Model model, RedirectAttributes redirectAttributes){
 
         if(!model.containsAttribute(VEHICLE_FORM)){
             model.addAttribute(VEHICLE_FORM, new VehicleForm());
         }
-        return "/admin/vehicle/add-vehicle-view";
+        return "/admin/vehicle/create-vehicle-view";
     }
 
-    @RequestMapping(value = "/admin/add-vehicle", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/create-vehicle", method = RequestMethod.POST)
     public String createVehicle(Model model, @Valid @ModelAttribute(name = VEHICLE_FORM) VehicleForm vehicleForm,
                              BindingResult bindingResult, RedirectAttributes redirectAttributes){
 
@@ -47,7 +47,7 @@ public class VehicleController {
             //redirectAttributes.addFlashAttribute("message", "Please fill the fields again");
             //redirectAttributes.addFlashAttribute("errorMessage", "Create vehicle failed!");
 
-            return "redirect:/admin/add-vehicle";
+            return "redirect:/admin/create-vehicle";
         }
 
         String memberVat = vehicleForm.getVat();
@@ -61,13 +61,13 @@ public class VehicleController {
             String message = "Add vehicle failed: There is not user with VAT: " + memberVat +
                             " or vehicle with plate " +vehicle.getPlate()+" already exists";
             redirectAttributes.addFlashAttribute("errormessage", message);
-            return "redirect:/admin/add-vehicle";
+            return "redirect:/admin/create-vehicle";
         }
 
         String message = "Vehicle with plate: " + vehicle.getPlate().toUpperCase() + " is created for user with VAT: " + memberVat;
         redirectAttributes.addFlashAttribute("message", message);
 
-        return "redirect:/admin/add-vehicle";
+        return "redirect:/admin/create-vehicle";
     }
 
 }
