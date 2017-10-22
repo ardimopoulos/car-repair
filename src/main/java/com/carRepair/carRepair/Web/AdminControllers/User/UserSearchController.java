@@ -2,7 +2,7 @@ package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
-import com.carRepair.carRepair.Forms.SearchForm;
+import com.carRepair.carRepair.Forms.User.SearchForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
 
 import org.slf4j.LoggerFactory;
@@ -31,49 +31,20 @@ public class UserSearchController {
     @RequestMapping(value = "/admin/search-user", method = RequestMethod.GET)
     public String searchUser(Model model) {
 
-/*
-        if(!model.containsAttribute(SEARCH_FORM)){
-            model.addAttribute(SEARCH_FORM, new SearchForm());
-        }*/
-
         model.addAttribute(SEARCH_FORM, new SearchForm());
         return "/admin/user/search-user";
     }
 
 
     @RequestMapping(value = "/admin/search-user", method = RequestMethod.POST)
-    public String searchUserPost(Model model , @ModelAttribute(SEARCH_FORM) SearchForm searchForm, RedirectAttributes redirectAttributes){
-        Member member = null;
-        try {
-            member = memberService.getMemberByVatOrMail(searchForm.getVat(),searchForm.getEmail());
-        }catch(UserNotFoundException userNotFound){
-            System.out.println("User not Found controller" + userNotFound);
-            redirectAttributes.addFlashAttribute("errorMessage", "No results");
-            return "redirect:/admin/search-user";
-        }
+    public String searchUserPost(@ModelAttribute(SEARCH_FORM) SearchForm searchForm, RedirectAttributes redirectAttributes){
 
-        redirectAttributes.addFlashAttribute("member", member);
+        try {
+            Member member = memberService.getMemberByVatOrMail(searchForm.getVat(),searchForm.getEmail());
+            redirectAttributes.addFlashAttribute("member", member);
+        }catch(UserNotFoundException userNotFound){
+            redirectAttributes.addFlashAttribute("errorMessage", "No results");
+        }
         return "redirect:/admin/search-user";
     }
-
-
-    /*public String searchUserPost(@Valid @ModelAttribute(SEARCH_FORM)
-                                SearchForm searchForm,
-                                BindingResult bindingResult,
-                                RedirectAttributes redirectAttributes){
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("bindingResult", bindingResult);
-            redirectAttributes.addFlashAttribute(SEARCH_FORM, searchForm);
-            logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
-            return "redirect:/admin/search-user";
-        }
-
-            Member member = searchService.getMemberByVatOrMail(searchForm.getVat(), searchForm.getEmail());
-            redirectAttributes.addFlashAttribute("member" , member);
-            System.out.println("Controller : User not Found " + userNotFound);
-            redirectAttributes.addFlashAttribute("errorMessage" , "Can t find the user");
-        return "redirect:/admin/search-user";*/
-
-
 }

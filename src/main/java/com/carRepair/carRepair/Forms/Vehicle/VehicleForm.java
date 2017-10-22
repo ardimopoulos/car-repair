@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Forms;
+package com.carRepair.carRepair.Forms.Vehicle;
 
 import com.carRepair.carRepair.Domain.Member;
 

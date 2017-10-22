@@ -1,8 +1,8 @@
 package com.carRepair.carRepair.Converters;
 
 import com.carRepair.carRepair.Domain.Member;
-import com.carRepair.carRepair.Forms.EditUserForm;
-import com.carRepair.carRepair.Forms.UserForm;
+import com.carRepair.carRepair.Forms.User.EditUserForm;
+import com.carRepair.carRepair.Forms.User.UserForm;
 import com.carRepair.carRepair.Utilities.AppUtilities;
 
 public class MemberConverter {

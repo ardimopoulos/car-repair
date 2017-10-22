@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface RepairService {
 
-    public List<Repair> getDailyServices();
+    public List<Repair> getDailyServices(); //TODO throw Esception ???
 
 }
