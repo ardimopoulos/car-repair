@@ -1,13 +1,14 @@
 <#import "/spring.ftl" as spring/>
 <html>
 <head>
-<title>Add user</title>
+<title>Add Vehicle</title>
     <#include "/base_libraries/head.ftl"/>
 </head>
 
 <body>
+
 <#include "/admin/menu_bar.ftl"/>
-<h1> </h2>
+
 <h4>${message!""}</h4>
 <span style="color:red">${errormessage!""}</span>
 <form action="/admin/create-vehicle" id="mainForm" method="post" name="vehicleForm">
@@ -57,5 +58,8 @@
     <input type="submit" value="Submit">
     </form>
 </body>
+
+<#include "/base_libraries/footer.ftl"/>
+<#include "/base_libraries/js.ftl"/>
 
 </html>
