@@ -51,14 +51,14 @@ public class UserEditController {
     }
 
     @RequestMapping(value = "/admin/edit-user", method = RequestMethod.POST)
-    public String editUser(Model model, @Valid @ModelAttribute("editUserForm") EditUserForm editUserForm, BindingResult bindingResult,
+    public String editUser(Model model, @Valid @ModelAttribute(name = EDIT_USER_FORM) EditUserForm editUserForm, BindingResult bindingResult,
                            RedirectAttributes redirectAttributes){
 
         String role = (editUserForm.getUserType()) ? "admin" : "simple";
 
         if(bindingResult.hasErrors()) {
 
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userForm", bindingResult);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.editUserForm", bindingResult);
             redirectAttributes.addFlashAttribute(EDIT_USER_FORM, editUserForm);
             redirectAttributes.addFlashAttribute(role, "selected");
 

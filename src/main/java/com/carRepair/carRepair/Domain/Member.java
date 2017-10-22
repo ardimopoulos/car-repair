@@ -20,14 +20,14 @@ public class Member extends User implements Serializable {
     @Column(nullable = false)
     private String address;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(optional = false)
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(mappedBy = "member", targetEntity = Repair.class,  cascade = CascadeType.ALL) //otan diagrafw member diagrafei kai repair
+    @OneToMany(mappedBy = "member", targetEntity = Repair.class, cascade = CascadeType.ALL) //otan diagrafw member diagrafei kai repair
     private List<Repair> repairs;
 
-    @OneToMany(mappedBy = "member", targetEntity = Vehicle.class,  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", targetEntity = Vehicle.class, cascade = CascadeType.ALL)
     private List<Vehicle> vehicles;
 
 

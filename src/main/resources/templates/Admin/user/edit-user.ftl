@@ -65,10 +65,6 @@
        <span style="background-color:red;">${errormessage!""}<span>
        <#if editUserForm??>
         <form action="/admin/edit-user" id="mainForm" method="post" name="editUserForm">
-         <!--<#if userId??>
-                <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
-
-          </#if>-->
             <div class="col-md-12">
                 <div class="side">
                 <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
@@ -109,21 +105,7 @@
                     </select>
                     </div>
                     </div>
-                    <div class="col-md-12">
-                    <div class="col-md-6">
-                    <@spring.bind "editUserForm.password"/>
-                    <#list spring.status.errorMessages as error>
-                         <span style="color:red">${error}</span>
-                    </#list><br/>
-                    ${passwordMessage!"Password doesn't change if fields are empty bellow"}<br/>
-                        <label for ="password">Current password</label>
-                        <input type="password" id="password" name="password" placeholder="Current password.." />
-                        </div>
-                    <div class="col-md-6">
-                    <@spring.bind "editUserForm.newPassword"/>
-                    <label for="newpassword">New password</label>
-        <input type="password" id="newPass" name="newPassword" placeholder="New password.." /></div>
-           </div>
+
             <div class="col-md-12">
     <div class="col-md-6">
                     <@spring.bind "editUserForm.address"/>
@@ -143,6 +125,24 @@
          </div>
 
                     </div>
+                    <div class="col-md-12">
+                     <hr>
+                      ${passwordMessage!"Fill the fields bellow if you want to change password"}<br/>
+                      <div class="col-md-6">
+                      <@spring.bind "editUserForm.password"/>
+                      <#list spring.status.errorMessages as error>
+                          <span style="color:red">${error}</span>
+                      </#list><br/>
+                        <label for ="password">Current password</label>
+                        <input type="password" id="password" name="password" placeholder="Current password.." />
+                        </div><br>
+                        <div class="col-md-6">
+                        <@spring.bind "editUserForm.newPassword"/>
+                        <label for="newpassword">New password</label>
+                        <input type="password" id="newPass" name="newPassword" placeholder="New password.." /></div>
+                     <hr>
+                     </div>
+
                     &nbsp;<br>
                     <input type="submit" value="Submit"><br><br>
                  </div>
