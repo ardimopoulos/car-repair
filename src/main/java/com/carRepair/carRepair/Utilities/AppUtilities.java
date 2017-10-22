@@ -5,7 +5,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 public class AppUtilities {
 
@@ -44,5 +47,12 @@ public class AppUtilities {
     public static boolean checkPassword(String password, String hashPassword){
 
         return BCrypt.checkpw(password, hashPassword);
+    }
+
+    public static Date getYear(Date date) throws ParseException {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        String year = date.toString().substring(0,4);
+        return formatter.parse(year);
     }
 }

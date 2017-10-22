@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Services;
+package com.carRepair.carRepair.Services.Member;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 
 public interface MemberService {
 
-    Member getMember(Long id) throws Exception;
+    Member getMemberByVatOrMail(String vat , String email) throws UserNotFoundException;
+
+    Member getMemberById(Long id) throws Exception;
+
+    Member getMemberByVat(String vat) throws UserNotFoundException;
 
     Member updateMember(Long id , Member member) throws Exception;
 
@@ -17,5 +21,5 @@ public interface MemberService {
 
     Member searchMember(Long id) throws Exception;
 
-    public Member getMemberByVat(String vat) throws UserNotFoundException;
+    /*public Member getMemberByVat(String vat) throws UserNotFoundException;*/
 }

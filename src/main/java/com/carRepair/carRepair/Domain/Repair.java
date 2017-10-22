@@ -30,6 +30,9 @@ public class Repair implements Serializable {
     @Column(nullable = false)
     private boolean type;
 
+    @Column(nullable = false)
+    private String cost;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private Member member;

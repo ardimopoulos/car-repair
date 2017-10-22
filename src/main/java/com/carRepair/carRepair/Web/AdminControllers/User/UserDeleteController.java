@@ -1,12 +1,10 @@
-package com.carRepair.carRepair.Web.AdminControllers;
+package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
-import com.carRepair.carRepair.Forms.UserForm;
-import com.carRepair.carRepair.Repositories.UserRepository;
 import com.carRepair.carRepair.Services.DeleteService;
-import com.carRepair.carRepair.Services.MemberService;
-import com.carRepair.carRepair.Services.UserService;
+import com.carRepair.carRepair.Services.Member.MemberService;
+import com.carRepair.carRepair.Services.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class DeleteController {
+public class UserDeleteController {
 
     @Autowired
     private DeleteService deleteService;

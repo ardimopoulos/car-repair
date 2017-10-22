@@ -1,8 +1,6 @@
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
-import com.carRepair.carRepair.Domain.User;
-import com.carRepair.carRepair.Exceptions.UserNotFoundException;
-import com.carRepair.carRepair.Services.RepairDeleteService;
+import com.carRepair.carRepair.Services.Repair.RepairDeleteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

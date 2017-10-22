@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Services;
+package com.carRepair.carRepair.Services.User;
 
 import com.carRepair.carRepair.Domain.User;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
@@ -6,9 +6,6 @@ import com.carRepair.carRepair.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 //When the application boot up it make an instance (singleton ) of all the @Repair classes
 @Service

@@ -13,6 +13,9 @@ public interface MemberRepository extends CrudRepository<Member , Long>{
     Member findOne(Long id);
     Member findByVat(String vat);
 
+    Member findByVatOrEmail(String vat, String email);
+    Member findByVatAndEmail(String vat, String email);
+
     Member save(Member member);
 
 

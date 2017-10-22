@@ -1,9 +1,8 @@
-package com.carRepair.carRepair.Services;
+package com.carRepair.carRepair.Services.Repair;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
-import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import com.carRepair.carRepair.Repositories.RepairRepository;
 import com.carRepair.carRepair.Repositories.VehicleRepository;

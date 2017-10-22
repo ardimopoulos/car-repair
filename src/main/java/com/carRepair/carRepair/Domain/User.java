@@ -12,7 +12,7 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 60)
     private String email;
 
     @Column(nullable = false)

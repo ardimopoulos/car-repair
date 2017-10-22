@@ -55,8 +55,16 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
-       <h1>User registration form</h1>
-        <form action="/admin/create-user" id="mainForm" method="post" name="userForm">
+       <h1>Edit user</h1>
+
+       <form name="searchUser" action="/admin/edit-user"  method="get" >
+          <!-- <label for="vat">VAT:</label>-->
+          <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="v" />
+           <button type="submit" class="btn">Search</button>
+        </form>
+       <span style="background-color:red;">${errormessage!""}<span>
+       <#if editUserForm??>
+        <form action="/admin/edit-user" id="mainForm" method="post" name="editUserForm">
          <!--<#if userId??>
                 <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
 
@@ -66,30 +74,32 @@
                 <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
                 <span style="color: red; font-weight: bold; font-size:14px">${errormessage!""}</span>
                     <div class="col-md-12">
+                    <@spring.bind "editUserForm.userId"/>
+                    <input type="hidden" name="userId" value="${editUserForm.userId!""}"/>
                    <div class="col-md-6">
-                    <@spring.bind "userForm.firstname"/>
+                    <@spring.bind "editUserForm.firstname"/>
                      <#list spring.status.errorMessages as error>
                           <span style="color:red">${error}</span>
                      </#list><br/>
                     <label for="firstname">First name</label>
-                         <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${userForm.firstname!""}"/>
+                         <input type="text" id="fname" name="firstname" placeholder="Type first name.." value="${editUserForm.firstname!""}"/>
                         </div>
                     <div class="col-md-6">
-                    <@spring.bind "userForm.lastname"/>
+                    <@spring.bind "editUserForm.lastname"/>
                     <#list spring.status.errorMessages as error>
                         <span style="color:red">${error}</span>
                      </#list><br/>
                     <label for="lastname">Last name</label>
-                         <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${userForm.lastname!""}"/><br>
+                         <input type="text" id="lname" name="lastname" placeholder="Type last name.." value="${editUserForm.lastname!""}"/><br>
 
                         </div>
                     <div class="col-md-6">
-                    <@spring.bind "userForm.vat"/>
+                    <@spring.bind "editUserForm.vat"/>
                     <#list spring.status.errorMessages as error>
                          <span style="color:red">${error}</span>
                     </#list><br/>
                      <label for="vat">VAT</label>
-                            <input type="text" id="TaxNum" name="vat" placeholder="Type vat.." value="${userForm.vat!""}"/><br>
+                            <input type="text" id="TaxNum" name="vat" placeholder="Type vat.." value="${editUserForm.vat!""}"/><br>
                         </div>
                     <div class="col-md-6">
                     <label for="UserType">User Type</label>
@@ -101,38 +111,37 @@
                     </div>
                     <div class="col-md-12">
                     <div class="col-md-6">
-                    <@spring.bind "userForm.password"/>
+                    <@spring.bind "editUserForm.password"/>
                     <#list spring.status.errorMessages as error>
                          <span style="color:red">${error}</span>
                     </#list><br/>
-                        <label for ="password">User password</label>
-                        <input type="password" id="UserP" name="password" placeholder="Set new password.." />
+                    ${passwordMessage!"Password doesn't chane if fields are empty bellow"}
+                        <label for ="password">Current password</label>
+                        <input type="password" id="password" name="password" placeholder="Current password.." />
                         </div>
                     <div class="col-md-6">
-                    <label for="configpassword">Confirm password</label>
-        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." /></div>
+                    <@spring.bind "editUserForm.newPassword"/>
+                    <label for="newpassword">New password</label>
+        <input type="password" id="newPass" name="newPassword" placeholder="New password.." /></div>
            </div>
             <div class="col-md-12">
     <div class="col-md-6">
-                    <@spring.bind "userForm.address"/>
+                    <@spring.bind "editUserForm.address"/>
                     <#list spring.status.errorMessages as error>
                        <span style="color:red">${error}</span>
                     </#list><br/>
                     <label for="address">Address</label>
-                    <input type="text" id="Address" name="address" placeholder="Type address.." value="${userForm.address!""}"/><br>
+                    <input type="text" id="Address" name="address" placeholder="Type address.." value="${editUserForm.address!""}"/><br>
                     </div>
         <div class="col-md-6">
-                    <@spring.bind "userForm.email"/>
+                    <@spring.bind "editUserForm.email"/>
                     <#list spring.status.errorMessages as error>
                        <span style="color:red">${error}</span>
                     </#list><br/>
                         <label for="email">e-mail</label>
-                             <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${editUserForm.email!""}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          </div>
-         <div class="col-md-6">
-          <@spring.bind "userForm.addVehicle"/>
-                <label for="vehicle">Add vehicle</label> <input type="checkbox" name="addVehicle" value="true" ${checked!""     }><br>
-            </div>
+
                     </div>
                     &nbsp;<br>
                     <input type="submit" value="Submit"><br><br>
@@ -141,6 +150,7 @@
             </div>
 
         </form>
+        </#if>
     </div>
     <div class="col-md-1">
 
