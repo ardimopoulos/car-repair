@@ -5,6 +5,7 @@
 </head>
     <body>
     <#include "/Admin/menu_bar.ftl"/>
+
             <#if errorMessage??>
             <div class="container">
             <div class="alert alert-danger" role="alert">
@@ -88,7 +89,13 @@
 <hr>
 <#if repairs??>
 <div class="container">
-<table class="table">
+
+<div class="search">
+<i class="glyphicon glyphicon-search"></i>
+ <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by User">
+</div>
+
+<table class="table" id="myTable">
    <tr>
    <th>Date</th>
      <th>Description</th>
@@ -107,9 +114,9 @@
                     <td>${repair.getMember().getFirstname()}</td>
 
     <th><a href="/admin/edit-repair"><button type="button" class="btn btn-info">Edit</button></a></th>
-    </form>
+
     <form action ="/admin/delete-repair" name="deleteForm" id ="deleteForm" method="POST">
-        <input type="hidden" name="hidden_email" id="hidden_email" value="">
+        <input type="hidden" name="hidden_serviceId" id="hidden_serviceId" value="${repair.serviceId}">
     <th><input type="submit" class="btn btn-danger" value="Delete"></th>
     </form>
   </tr>
@@ -120,4 +127,26 @@
 
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
+
+ <script>
+                function myFunction() {
+                    var input, filter, table, tr, td, i;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[5];
+                        if (td) {
+                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            </script>
+
+
     </body>
