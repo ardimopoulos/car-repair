@@ -17,7 +17,6 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
 
     public List<Repair> findByDateAfterAndDateBefore(Date startDate ,Date startAfter);
 
-
     void delete(Long id);
 
 }

@@ -8,4 +8,6 @@ public interface RepairService {
 
     public List<Repair> getDailyServices();
 
+    List<Repair> getMemberRepairs(String email);
+
 }
