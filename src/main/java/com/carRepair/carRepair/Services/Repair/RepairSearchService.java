@@ -8,12 +8,12 @@ import java.util.List;
 
 public interface RepairSearchService {
 
-    public List<Repair> getByDate(String date) throws RepairNotFoundException;
+    public List<Repair> getByRepairDate(String date) throws RepairNotFoundException;
 
     public List<Repair> getByVat(String vat) throws RepairNotFoundException;
 
     public List<Repair> getByPlate(String plate) throws RepairNotFoundException;
 
-    public List<Repair> getByBetweenDates(String startDate , String beforeDate) throws RepairNotFoundException;
+    public List<Repair> getByBetweenRepairDates(String startDate , String beforeDate) throws RepairNotFoundException;
 
 }

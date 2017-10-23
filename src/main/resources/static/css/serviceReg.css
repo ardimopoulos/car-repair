@@ -19,7 +19,7 @@ body{
         border-radius: 20px;
         padding: 26px;
     }
-    input[type=text], select, textarea {
+    input[type=text],input[type=time], select, textarea {
         width: 50%;
         padding: 12px;
         border: 0.4px solid #ccc;

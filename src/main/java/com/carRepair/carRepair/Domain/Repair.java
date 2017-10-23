@@ -3,6 +3,7 @@ package com.carRepair.carRepair.Domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,12 +15,7 @@ public class Repair implements Serializable {
     private long serviceId;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date date;
-
-    @Column(nullable = false)
-    //@Temporal(TemporalType.TIME)
-    private Time time;
+    private LocalDateTime repairDate;
 
     @Column(nullable = false, length = 1)
     private int status;
@@ -31,23 +27,26 @@ public class Repair implements Serializable {
     private boolean type;
 
     @Column(nullable = false)
-    private String cost;
+    private double cost;
 
-    @ManyToOne(optional = false)
+    /*@ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private Member member;
+    private Member member;*/
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicle;
 
     public Repair(){}
 
-    public Repair(long serviceId, Date date, Time time, int status, String description, boolean type, Member member) {
-        this.serviceId = serviceId;
-        this.date = date;
-        this.time = time;
+    public Repair(LocalDateTime repairDate, int status, String description, boolean type, double cost) {
+        //this.serviceId = serviceId;
+        this.repairDate = repairDate;
         this.status = status;
         this.description = description;
         this.type = type;
+        this.cost = cost;
     }
-
 
 
     public long getServiceId() {
@@ -58,20 +57,12 @@ public class Repair implements Serializable {
         this.serviceId = serviceId;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDateTime getrepairDate() {
+        return repairDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
+    public void setDate(LocalDateTime date) {
+        this.repairDate = repairDate;
     }
 
     public int getStatus() {
@@ -98,11 +89,19 @@ public class Repair implements Serializable {
         this.type = type;
     }
 
-    public Member getMember() {
-        return member;
+    public double getCost() {
+        return cost;
     }
 
-    public void setMember(Member member) {
-        this.member = member;
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }

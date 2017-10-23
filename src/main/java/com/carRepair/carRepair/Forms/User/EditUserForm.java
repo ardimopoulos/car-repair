@@ -4,7 +4,6 @@ import com.carRepair.carRepair.Domain.Member;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 public class EditUserForm {
 
@@ -12,8 +11,6 @@ public class EditUserForm {
     private static final String NAME_PATTERN = "^[a-zA-Z]+$";
     private static final String ADDRESS_PATTERN = "^[a-zA-Z0-9\\s]+$";
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$";
-    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9]*$";
-    private static final int PASSWORD_MINIMUM_SIZE = 8;
 
     @NotNull
     private long userId;
@@ -22,7 +19,7 @@ public class EditUserForm {
     @Pattern(regexp = VAT_PATTERN, message = "{edit-user.vat.invalid}")
     private String vat;
 
-    @NotNull(message = "error")
+    @NotNull(message = "{edit-user.firstname.null}")
     @Pattern(regexp = NAME_PATTERN, message = "{edit-user.firstname.invalid}")
     private String firstname;
 
