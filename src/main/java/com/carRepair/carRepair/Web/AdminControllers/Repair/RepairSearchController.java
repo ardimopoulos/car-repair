@@ -1,6 +1,7 @@
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
 import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairSearchForm;
 import com.carRepair.carRepair.Services.Repair.RepairSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,32 +43,30 @@ public class RepairSearchController {
                                    @RequestParam("button") String button){
 
         if(button.equals("Search Vat")){
-            System.out.println("Search Vat");
-
-            List<Repair> repairs = repairSearchService.getByVat(repairSearchForm.getVat());
-            redirectAttributes.addFlashAttribute("repairs" , repairs);
+            try {
+                List<Repair> repairs = repairSearchService.getByVat(repairSearchForm.getVat());
+                redirectAttributes.addFlashAttribute("repairs", repairs);
+            }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
 
         }else if(button.equals("Search Plate")){
+            try{
             List<Repair> repairs = repairSearchService.getByPlate(repairSearchForm.getPlate());
             redirectAttributes.addFlashAttribute("repairs" , repairs);
+        }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
 
         }else if(button.equals("Search Date")){
-
+            try{
                 List<Repair> repairs = repairSearchService.getByDate(repairSearchForm.getDate());
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
+        }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
 
         }else{
+            try{
             List<Repair> repairs = repairSearchService.getByBetweenDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate() );
             redirectAttributes.addFlashAttribute("repairs" , repairs);
+            }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
         }
 
-//        try {
-//            Member member = searchService.getMemberByVatOrMail(searchForm.getVat(), searchForm.getEmail());
-//            redirectAttributes.addFlashAttribute("member" , member);
-//        }catch(UserNotFoundException userNotFound){
-//            System.out.println("Controller : User not Found " + userNotFound);
-//            redirectAttributes.addFlashAttribute("errorMessage" , "Can t find the user");
-//        }
         return "redirect:/admin/search-repair";
     }
 

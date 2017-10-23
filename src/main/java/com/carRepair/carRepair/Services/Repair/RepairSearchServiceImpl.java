@@ -3,6 +3,7 @@ package com.carRepair.carRepair.Services.Repair;
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
+import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import com.carRepair.carRepair.Repositories.RepairRepository;
 import com.carRepair.carRepair.Repositories.VehicleRepository;
@@ -25,11 +26,15 @@ public class RepairSearchServiceImpl implements RepairSearchService{
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    public List<Repair> getByDate(String date){
+    public List<Repair> getByDate(String date)throws RepairNotFoundException{
 
-        List<Repair> repairList = repairRepository.findByDate(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , date)));
+        List<Repair> repairList = repairRepository.findByDate(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd", date)));
+        if(repairList.isEmpty()){throw new RepairNotFoundException("Repairs not exist for day " + date);}
+
         return repairList;
-    }
+
+        }
+
 
         public LocalDate formatLocalDate(String format , String date){
 
@@ -38,29 +43,31 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         return parsedDate; // get (default) format : yyyy-MM-dd
     }
 
-    public List<Repair> getByVat(String vat){
+    public List<Repair> getByVat(String vat) throws RepairNotFoundException{
 
             Member member = memberRepository.findByVat(vat);
+            if(member ==null){throw new RepairNotFoundException("Member not exist with vat "+vat );}
+            //List<Repair> repairList = repairRepository.findByMember(member);
+            List<Repair> repairList = member.getRepairs();
+            if(repairList.isEmpty() ) { throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
+            return repairList;
+        }
 
-            List<Repair> repairs = repairRepository.findByMember(member);
-
-            return repairs;
-    }
-
-    public List<Repair> getByPlate(String plate){
+    public List<Repair> getByPlate(String plate) throws RepairNotFoundException{
 
         Vehicle vehicle = vehicleRepository.findByPlate(plate);
 
-        List<Repair> repairs = repairRepository.findByMember(vehicle.getMember());
-
-        return repairs;
+        if(vehicle == null ){throw new RepairNotFoundException("Vehicle not exist with palte" + plate);}
+        List<Repair> repairList = repairRepository.findByMember(vehicle.getMember());
+        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
+        return repairList;
     }
 
-    public List<Repair> getByBetweenDates(String startDate , String beforeDate){
+    public List<Repair> getByBetweenDates(String startDate , String beforeDate) throws RepairNotFoundException{
 
-        List<Repair> repairs = repairRepository.findByDateAfterAndDateBefore(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , startDate) ), java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , beforeDate) ) );
-
-        return repairs;
+        List<Repair> repairList = repairRepository.findByDateAfterAndDateBefore(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , startDate) ), java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , beforeDate) ) );
+        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + startDate + " and " + beforeDate); }
+        return repairList;
     }
 
 }

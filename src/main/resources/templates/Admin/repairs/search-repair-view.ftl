@@ -6,13 +6,6 @@
     <body>
     <#include "/Admin/menu_bar.ftl"/>
 
-            <#if errorMessage??>
-            <div class="container">
-            <div class="alert alert-danger" role="alert">
-             ${errorMessage}
-            </div>
-            </div>
-            </#if>
             <div class = "container">
 
                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -68,7 +61,13 @@
                 </form>
 
 </div>
-
+<#if errorMessage??>
+<div class="container">
+<div class="alert alert-danger" role="alert">
+ ${errorMessage}
+</div>
+</div>
+</#if>
 <hr>
 <#if repairs??>
 <div class="container">

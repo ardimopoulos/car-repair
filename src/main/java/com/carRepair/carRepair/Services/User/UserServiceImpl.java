@@ -17,11 +17,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public User insertUser(User user) throws Exception{
-
         User newUser = userRepository.save(user);
-        if(newUser == null){
-            throw new Exception("User already exists");
-        }
+        if(newUser == null){ throw new Exception("User already exists"); }
         return newUser;
     }
 
