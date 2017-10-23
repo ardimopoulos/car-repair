@@ -1,3 +1,4 @@
+/*
 package com.carRepair.carRepair.Services.Repair;
 
 import com.carRepair.carRepair.Domain.Member;
@@ -14,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
-public class RepairSearchServiceImpl implements RepairSearchService{
+public abstract class RepairSearchServiceImpl implements RepairSearchService{
 
     @Autowired
     private RepairRepository repairRepository;
@@ -25,9 +26,9 @@ public class RepairSearchServiceImpl implements RepairSearchService{
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    public List<Repair> getByDate(String date){
+    public List<Repair> getByRepairDate(String date){
 
-        List<Repair> repairList = repairRepository.findByDate(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , date)));
+        List<Repair> repairList = null;//repairRepository.findByRepairDate(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , date)));
         return repairList;
     }
 
@@ -58,9 +59,10 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
     public List<Repair> getByBetweenDates(String startDate , String beforeDate){
 
-        List<Repair> repairs = repairRepository.findByDateAfterAndDateBefore(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , startDate) ), java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , beforeDate) ) );
+        List<Repair> repairs = null;//repairRepository.findByDateAfterAndDateBefore(java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , startDate) ), java.sql.Date.valueOf(formatLocalDate("yyyy/MM/dd" , beforeDate) ) );
 
         return repairs;
     }
 
 }
+*/

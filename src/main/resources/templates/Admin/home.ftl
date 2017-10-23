@@ -19,7 +19,6 @@
                  <th>Status</th>
                  <th>Date</th>
                  <th>Type</th>
-                 <th>Time</th>
                  <th>Name</th>
                </tr>
          </thead>
@@ -29,9 +28,8 @@
                <tr>
                  <td>${repair.description}</td>
                  <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
-                 <td>${repair.date}</td>
+                 <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
                  <td><#if repair.type>Big<#else>Small</#if></td>
-                 <td>${repair.time}</td>
                  <td>Note done yet</td>
                </tr>
     </#list>

@@ -8,6 +8,7 @@ import java.util.Date;
 public class Vehicle implements Serializable {
 
     @Id
+    @Column(name = "vehicle_id", nullable = false)
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long vehicleId;
 
@@ -30,6 +31,9 @@ public class Vehicle implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_Id", referencedColumnName = "user_id")
     private Member member;
+
+    @OneToOne(optional = false, mappedBy = "vehicle", targetEntity = Repair.class)
+    private Repair repair;
 
     public Vehicle(){}
 
@@ -95,5 +99,13 @@ public class Vehicle implements Serializable {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    public Repair getRepair() {
+        return repair;
+    }
+
+    public void setRepair(Repair repair) {
+        this.repair = repair;
     }
 }

@@ -6,9 +6,14 @@ import com.carRepair.carRepair.Repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.carRepair.carRepair.Repositories.RepairRepository;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,9 +26,11 @@ public class RepairServiceImpl implements RepairService{
     private MemberRepository memberRepository;
 
     public List<Repair> getDailyServices(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate localDate = LocalDate.now();
-        List<Repair> repairList = repairRepository.findFirst10ByDateOrderByTimeAsc(java.sql.Date.valueOf(localDate));
+
+        LocalDateTime startDate = LocalDateTime.parse(LocalDate.now()+"T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(LocalDate.now()+"T23:59:59");
+
+        List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate,endDate);
         return repairList;
     }
 
@@ -32,9 +39,9 @@ public class RepairServiceImpl implements RepairService{
 
         Member member = memberRepository.findByEmail(email);
 
-        List<Repair> repairs =  repairRepository.findByMember(member);
+       // List<Repair> repairs =  repairRepository.findByMember(member);
 
-        return  repairs;
+        return  null;
     }
 
 }

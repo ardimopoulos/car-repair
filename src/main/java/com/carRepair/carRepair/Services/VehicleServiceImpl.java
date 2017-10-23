@@ -24,4 +24,13 @@ public class VehicleServiceImpl implements VehicleService{
         }
         return vehicle;
     }
+
+    @Override
+    public Vehicle findByPlate(String plate) throws Exception {
+        Vehicle vehicle = vehicleRepository.findByPlate(plate);
+        if(vehicle == null){
+            throw new Exception("Vehicle not found");
+        }
+        return vehicle;
+    }
 }

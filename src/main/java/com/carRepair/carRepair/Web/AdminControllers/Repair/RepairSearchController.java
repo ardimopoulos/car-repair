@@ -1,3 +1,4 @@
+/*
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
 import com.carRepair.carRepair.Domain.Repair;
@@ -53,11 +54,11 @@ public class RepairSearchController {
 
         }else if(button.equals("Search Date")){
 
-                List<Repair> repairs = repairSearchService.getByDate(repairSearchForm.getDate());
+                List<Repair> repairs = repairSearchService.getByRepairDate(repairSearchForm.getDate());
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
 
         }else{
-            List<Repair> repairs = repairSearchService.getByBetweenDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate() );
+            List<Repair> repairs = repairSearchService.getByBetweenRepairDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate() );
             redirectAttributes.addFlashAttribute("repairs" , repairs);
         }
 
@@ -72,3 +73,4 @@ public class RepairSearchController {
     }
 
 }
+*/
