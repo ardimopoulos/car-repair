@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RepairDeleteServiceImpl {
+public class RepairDeleteServiceImpl implements RepairDeleteService{
 
     @Autowired
     private RepairRepository repairRepository;
 
-    public void deleteRepair(Long id){repairRepository.delete(id);}
+    public void deleteRepair(Long id){ repairRepository.delete(id); }
 
 
 }

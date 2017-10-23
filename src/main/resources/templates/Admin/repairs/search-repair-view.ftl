@@ -62,12 +62,12 @@
 
 </div>
 <#if errorMessage??>
-<div class="container">
-<div class="alert alert-danger" role="alert">
- ${errorMessage}
-</div>
-</div>
-</#if>
+            <div class="container">
+            <div class="alert alert-danger" role="alert">
+             ${errorMessage}
+            </div>
+            </div>
+            </#if>
 <hr>
 <#if repairs??>
 <div class="container">
