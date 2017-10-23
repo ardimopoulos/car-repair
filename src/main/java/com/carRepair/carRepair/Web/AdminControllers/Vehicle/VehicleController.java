@@ -5,7 +5,7 @@ import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Forms.Vehicle.VehicleForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
-import com.carRepair.carRepair.Services.VehicleService;
+import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

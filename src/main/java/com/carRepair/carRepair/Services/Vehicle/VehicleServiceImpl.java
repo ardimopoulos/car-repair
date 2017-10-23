@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Services;
+package com.carRepair.carRepair.Services.Vehicle;
 
 import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Repositories.VehicleRepository;

@@ -9,7 +9,7 @@ import com.carRepair.carRepair.Forms.Repair.RepairForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
 import com.carRepair.carRepair.Services.Repair.RepairCreateService;
 import com.carRepair.carRepair.Services.Repair.RepairService;
-import com.carRepair.carRepair.Services.VehicleService;
+import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

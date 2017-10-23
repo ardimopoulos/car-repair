@@ -1,6 +1,7 @@
 package com.carRepair.carRepair.Services.Repair;
 
 import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 
 import java.time.LocalDate;

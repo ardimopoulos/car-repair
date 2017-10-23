@@ -1,6 +1,7 @@
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
 import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairSearchForm;
 import com.carRepair.carRepair.Services.Repair.RepairSearchService;
@@ -56,13 +57,13 @@ public class RepairSearchController {
 
         }else if(button.equals("Search Date")){
             try{
-                List<Repair> repairs = repairSearchService.getByDate(repairSearchForm.getDate());
+                List<Repair> repairs = repairSearchService.getByRepairDate(repairSearchForm.getDate());
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
         }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
 
         }else{
             try{
-            List<Repair> repairs = repairSearchService.getByBetweenDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate() );
+            List<Repair> repairs = repairSearchService.getByBetweenRepairDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate() );
             redirectAttributes.addFlashAttribute("repairs" , repairs);
             }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
         }

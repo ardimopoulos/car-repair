@@ -82,18 +82,16 @@
    <th>Date</th>
      <th>Description</th>
      <th>Status</th>
-     <th>Time</th>
      <th>Type</th>
      <th>User</th>
    </tr>
    <#list repairs as repair>
                   <tr>
-                    <td>${repair.date}</td>
+                    <td>${repair.repairDate}</td>
                     <td>${repair.description}</td>
                     <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
-                     <td>${repair.time}</td>
                     <td><#if repair.type>Big<#else>Small</#if></td>
-                    <td>${repair.getMember().getFirstname()}</td>
+                    <td>${repair.getVehicle().getMember().getFirstname()}</td>
 
     <th><a href="/admin/edit-repair"><button type="button" class="btn btn-info">Edit</button></a></th>
 
