@@ -86,11 +86,11 @@ public class Member extends User implements Serializable {
         this.vehicles.add(vehicle);
     }
 
-    public Collection getRepairs() {
+    public List<Repair> getRepairs() {
         return repairs;
     }
 
-    public Collection getVehicles() {
+    public List<Vehicle> getVehicles() {
         return vehicles;
     }
 }
