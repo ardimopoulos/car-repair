@@ -66,16 +66,18 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
         if(vehicle == null ){throw new RepairNotFoundException("Vehicle not exist with palte" + plate);}
 
+        if(vehicle.getRepair() == null){ throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
+
         List<Repair> repairList = new ArrayList<>();
         repairList.add(vehicle.getRepair());
-        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
-        return repairList;
-    }
 
+        return repairList;
+          }
 
     public List<Repair> getByBetweenRepairDates(String firstDate , String beforeDate) throws RepairNotFoundException{
         LocalDateTime startDate = LocalDateTime.parse(formatLocalDate("yyyy/MM/dd",firstDate)+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(formatLocalDate("yyyy/MM/dd",beforeDate)+"T23:59:59");
+
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
         if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + startDate + " and " + beforeDate); }
         return repairList;
