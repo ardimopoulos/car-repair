@@ -72,14 +72,10 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         return repairList;
     }
 
-    @Override
-    public List<Repair> getByBetweenRepairDates(String startDate, String beforeDate) throws RepairNotFoundException {
-        return null;
-    }
 
-    public List<Repair> getByBetweenDates(String firstDate , String beforeDate) throws RepairNotFoundException{
-        LocalDateTime startDate = LocalDateTime.parse(firstDate+"T00:00:00");
-        LocalDateTime endDate = LocalDateTime.parse(beforeDate+"T23:59:59");
+    public List<Repair> getByBetweenRepairDates(String firstDate , String beforeDate) throws RepairNotFoundException{
+        LocalDateTime startDate = LocalDateTime.parse(formatLocalDate("yyyy/MM/dd",firstDate)+"T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(formatLocalDate("yyyy/MM/dd",beforeDate)+"T23:59:59");
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
         if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + startDate + " and " + beforeDate); }
         return repairList;
