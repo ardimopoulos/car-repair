@@ -2,9 +2,10 @@
 <head>
     <title>Sign-Up/Search Form</title>
         <#include "/base_libraries/head.ftl"/>
+        <link rel="stylesheet" type="text/css" href="/css/searchFormsStyle.css"/>
 </head>
     <body>
-    <#include "/Admin/menu_bar.ftl"/>
+    <#include "/admin/menu_bar.ftl"/>
 
             <div class = "container">
 
@@ -19,6 +20,7 @@
 
                </div>
                <form action="/admin/search-vehicle" method="POST" id="vehicleSearchForm" name = "vehicleSearchForm">
+               <br>
                <div class="tab-content" id="v-pills-tabContent">
                  <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
@@ -46,12 +48,9 @@
 </#if>
 <hr>
 <#if vehicles??>
-<div class="container">
+<div class="col-md-10">
 
-<div class="search">
-<i class="glyphicon glyphicon-search"></i>
- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by User">
-</div>
+
 
 <table class="table" id="myTable">
    <tr>
@@ -83,8 +82,7 @@
 </#if>
 
 
-<#include "/base_libraries/footer.ftl"/>
-<#include "/base_libraries/js.ftl"/>
+
 
  <script>
                 function myFunction() {
@@ -105,6 +103,7 @@
                     }
                 }
             </script>
-
+<#include "/base_libraries/footer.ftl"/>
+<#include "/base_libraries/js.ftl"/>
 
     </body>

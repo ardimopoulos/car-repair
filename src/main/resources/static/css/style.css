@@ -129,3 +129,15 @@ html {
               opacity:1.5;
 
         }
+.but{
+    background-color: lightgrey;
+    border-radius: 14px;
+    border-color: grey;
+    position: relative;
+    left: 2%;
+    padding: 2px;
+    width:8%;
+}
+.search{
+    border-radius: 22px;
+}

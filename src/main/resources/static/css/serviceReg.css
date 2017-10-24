@@ -18,6 +18,7 @@ body{
         border: 1.5px solid #4CAF50;
         border-radius: 20px;
         padding: 26px;
+        margin-bottom:50px;
     }
     input[type=text],input[type=time], select, textarea {
         width: 50%;
@@ -102,3 +103,28 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+button{
+width:10%;
+position: relative;
+top:-45px;
+left:32%;
+padding:11px;
+
+}
+#id{
+width:30%;
+}
+footer
+        {
+         font-size: 13px;
+          position:fixed;
+          width:auto;
+          right: 0;
+          bottom:0;
+
+          left: 0;
+          padding: 0.8rem;
+          color:white;
+          background-color: black;
+          text-align: center;
+         }

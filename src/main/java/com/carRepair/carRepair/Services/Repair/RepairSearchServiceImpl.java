@@ -31,7 +31,7 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
     @Override
     public List<Repair> getByRepairDate(String date)throws RepairNotFoundException,DateTimeParseException {
-        LocalDate date1 = formatLocalDate("dd/MM/yyyy",date);
+        LocalDate date1 = formatLocalDate("dd-MM-yyyy",date);
         LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(date1+"T23:59:59");
 
@@ -70,8 +70,8 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
     @Override
     public List<Repair> getByBetweenRepairDates(String firstDate , String beforeDate) throws RepairNotFoundException{
-        LocalDate date1 = formatLocalDate("dd/MM/yyyy",firstDate);
-        LocalDate date2 = formatLocalDate("dd/MM/yyyy",beforeDate);
+        LocalDate date1 = formatLocalDate("yyyy-MM-dd",firstDate);
+        LocalDate date2 = formatLocalDate("yyyy-MM-dd",beforeDate);
         LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(date2+"T23:59:59");
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
