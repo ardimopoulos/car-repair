@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
-
-
+<!DOCTYPE html>
+<html>
 <head>
 
     <title>Login</title>
@@ -39,3 +39,4 @@
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
     </body>
+</html>

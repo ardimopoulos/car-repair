@@ -21,7 +21,7 @@ public class User implements Serializable{
     @Column(nullable = false)
     private boolean userType;    // value true means ADMIN - value false means USER
 
-    @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class /*cascade = CascadeType.ALL*/)
+    @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class, cascade = CascadeType.ALL)
     private Member member;
 
     public User(){}

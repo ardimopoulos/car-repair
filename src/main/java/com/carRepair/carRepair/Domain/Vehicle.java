@@ -3,6 +3,7 @@ package com.carRepair.carRepair.Domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Vehicle implements Serializable {
@@ -32,8 +33,8 @@ public class Vehicle implements Serializable {
     @JoinColumn(name = "user_Id", referencedColumnName = "user_id")
     private Member member;
 
-    @OneToOne(optional = false, mappedBy = "vehicle", targetEntity = Repair.class)
-    private Repair repair;
+    @OneToMany(mappedBy = "vehicle", targetEntity = Repair.class, cascade = CascadeType.ALL)
+    private List<Repair> repairs;
 
     public Vehicle(){}
 
@@ -101,11 +102,11 @@ public class Vehicle implements Serializable {
         this.member = member;
     }
 
-    public Repair getRepair() {
-        return repair;
+    public List<Repair> getRepairs() {
+        return repairs;
     }
 
-    public void setRepair(Repair repair) {
-        this.repair = repair;
+    public void setRepairs(List<Repair> repairs) {
+        this.repairs = repairs;
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +29,9 @@ public class RepairSearchServiceImpl implements RepairSearchService{
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    public List<Repair> getByRepairDate(String date)throws RepairNotFoundException{
-        LocalDate date1 = formatLocalDate("yyyy/MM/dd",date);
+    @Override
+    public List<Repair> getByRepairDate(String date)throws RepairNotFoundException,DateTimeParseException {
+        LocalDate date1 = formatLocalDate("dd/MM/yyyy",date);
         LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(date1+"T23:59:59");
 
@@ -38,16 +40,9 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
         return repairList;
 
-        }
-
-
-        public LocalDate formatLocalDate(String format , String date){
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
-        LocalDate parsedDate = LocalDate.parse(date, formatter);
-        return parsedDate; // get (default) format : yyyy-MM-dd
     }
 
+    @Override
     public List<Repair> getByVat(String vat) throws RepairNotFoundException{
 
             Member member = memberRepository.findByVat(vat);
@@ -55,11 +50,11 @@ public class RepairSearchServiceImpl implements RepairSearchService{
             //List<Repair> repairList = repairRepository.findByMember(member);
             List<Vehicle> vehicleList = member.getVehicles();
             List<Repair> repairList = new ArrayList<>();
-            for(int i=0; i<vehicleList.size(); i++){ repairList.add( vehicleList.get(i).getRepair() ); }
+            for(int i=0; i<vehicleList.size(); i++){ repairList.add( vehicleList.get(i).getRepairs().get(i) ); }
             if(repairList.isEmpty() ) { throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
             return repairList;
         }
-
+    @Override
     public List<Repair> getByPlate(String plate) throws RepairNotFoundException{
 
         Vehicle vehicle = vehicleRepository.findByPlate(plate);
@@ -67,22 +62,28 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         if(vehicle == null ){throw new RepairNotFoundException("Vehicle not exist with palte" + plate);}
 
         List<Repair> repairList = new ArrayList<>();
-        repairList.add(vehicle.getRepair());
+        repairList = vehicle.getRepairs();
         if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
         return repairList;
     }
 
     @Override
-    public List<Repair> getByBetweenRepairDates(String startDate, String beforeDate) throws RepairNotFoundException {
-        return null;
-    }
-
-    public List<Repair> getByBetweenDates(String firstDate , String beforeDate) throws RepairNotFoundException{
-        LocalDateTime startDate = LocalDateTime.parse(firstDate+"T00:00:00");
-        LocalDateTime endDate = LocalDateTime.parse(beforeDate+"T23:59:59");
+    public List<Repair> getByBetweenRepairDates(String firstDate , String beforeDate) throws RepairNotFoundException{
+        LocalDate date1 = formatLocalDate("dd/MM/yyyy",firstDate);
+        LocalDate date2 = formatLocalDate("dd/MM/yyyy",beforeDate);
+        LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(date2+"T23:59:59");
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
         if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + startDate + " and " + beforeDate); }
         return repairList;
+    }
+
+
+    public LocalDate formatLocalDate(String format , String date){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        LocalDate parsedDate = LocalDate.parse(date, formatter);
+        return parsedDate; // get (default) format : yyyy-MM-dd
     }
 
 }

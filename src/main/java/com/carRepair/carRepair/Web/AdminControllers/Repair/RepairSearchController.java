@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @Controller
@@ -59,7 +60,11 @@ public class RepairSearchController {
             try{
                 List<Repair> repairs = repairSearchService.getByRepairDate(repairSearchForm.getDate());
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
-        }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
+        }catch(RepairNotFoundException repairNotFound) {
+                redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage());
+        }catch(DateTimeParseException ex){
+                redirectAttributes.addFlashAttribute("errorMessage", "Format or date is not valid. Please try again 'dd/mm/yyyy'");
+            }
 
         }else{
             try{

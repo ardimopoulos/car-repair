@@ -18,6 +18,8 @@ public class RepairForm {
     private static final String DESC_PATTERN = "^.+$";
     private static final String TYPE_PATTERN = "^.+$";
 
+    private String repairId;
+
     @NotNull(message = "{create-repair.plate.null}")
     @Pattern(regexp = PLATE_PATTERN, message = "{create-repair.plate.invalid}")
     private String plate;
@@ -47,6 +49,14 @@ public class RepairForm {
     public RepairForm() {
     }
 
+    public String getRepairId() {
+        return repairId;
+    }
+
+    public void setRepairId(String repairId) {
+        this.repairId = repairId;
+    }
+
     public String getPlate() {
         return plate;
     }
@@ -55,11 +65,11 @@ public class RepairForm {
         this.plate = vat;
     }
 
-    public String getDate() {
+    public String getRepairDate() {
         return repairDate;
     }
 
-    public void setDate(String date) {
+    public void setRepairDate(String date) {
         this.repairDate = date;
     }
 

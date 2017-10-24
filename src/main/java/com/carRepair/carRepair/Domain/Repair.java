@@ -10,9 +10,9 @@ import java.util.Date;
 public class Repair implements Serializable {
 
     @Id
-    @Column(name = "service_id", nullable = false)
+    @Column(name = "repair_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long serviceId;
+    private long repairId;
 
     @Column(nullable = false)
     private LocalDateTime repairDate;
@@ -29,12 +29,8 @@ public class Repair implements Serializable {
     @Column(nullable = false)
     private double cost;
 
-    /*@ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private Member member;*/
-
-    @OneToOne(optional = false)
-    @JoinColumn(name = "vehicle_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "vehicle_id", referencedColumnName = "vehicle_id")
     private Vehicle vehicle;
 
     public Repair(){}
@@ -50,11 +46,11 @@ public class Repair implements Serializable {
 
 
     public long getServiceId() {
-        return serviceId;
+        return repairId;
     }
 
-    public void setServiceId(long serviceId) {
-        this.serviceId = serviceId;
+    public void setServiceId(long repairId) {
+        this.repairId = repairId;
     }
 
     public LocalDateTime getrepairDate() {

@@ -1,0 +1,137 @@
+ body {
+     background: url('https://image.ibb.co/maKv1G/car_repair_362150_960_720.jpg') no-repeat center center fixed;
+     background-size: cover;
+     margin: 0;
+     padding: 0;
+     font-family: sans-serif;
+ }
+
+ h1 {
+     background-color: lightgray;
+     border: 1.5px solid #grey;
+     border-radius: 22px;
+     padding: 14px;
+     text-align: center;
+     font-family: inherit;
+     position: relative;
+         margin-top: -2%;
+
+
+
+ }
+
+ .side {
+     background-color: lightgray;
+     border: 2px solid #grey;
+     position: absolute;
+     top: 110%;
+     width: 90%;
+     left: 5%;
+     border-radius: 20px;
+     padding: 2px;
+ }
+table{
+     border: 1.5px solid black;
+     width: 100%;
+
+
+}
+table td{
+    border: 1.5px solid black;
+    padding: 8px;
+    text-align: center;
+
+}
+
+ table th {
+     background-color:grey;
+     color: white;
+     padding-top: 8px;
+  padding-bottom: 5px;
+border: 1.7px solid black;
+     border-collapse: separate;
+     text-align: center;
+}
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    border-radius: 14px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+    width: 55%;
+}
+
+
+
+
+     input::-webkit-outer-spin-button,
+     input::-webkit-inner-spin-button {
+         /* display: none; <- Crashes Chrome on hover */
+         -webkit-appearance: none;
+         margin: 0;
+         /* <-- Apparently some margin are still there even though it's hidden */
+     }
+.modal-content{
+    border: 6px solid #ccc;
+    font-style: italic;
+    width: 70%;
+    font-size: 120%;
+    border-radius: 50px;
+    padding: 10px;
+    position: fixed;
+    left: 14%;
+}
+.modal-dialog{
+    backface-visibility: hidden;
+    background-position: center;
+
+}
+.but{
+    background-color: lightgrey;
+    border-radius: 14px;
+    border-color: grey;
+    position: relative;
+    left: 2%;
+    padding: 3px;
+
+}
+.btnca{
+    border-radius: 10px;
+    background-color: lightgrey;
+    font-weight: bold;
+    width: 24%;
+}
+.subut{
+    width: 24%;
+    background-color: limegreen;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+
+}
+.buttoni{
+    border-radius: 14px;
+    padding: 3px;
+    width: 15%;
+    border-color: grey;
+    font-weight: bold;
+
+}
+input[type=date]{
+    border-radius: 10px;
+    border-color: black;
+    padding-bottom: 4px;
+    text-align: center;
+    text-decoration-color: darkseagreen;
+
+}

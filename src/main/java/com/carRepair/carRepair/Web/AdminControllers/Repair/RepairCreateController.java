@@ -49,14 +49,24 @@ public class RepairCreateController {
 
         if(bindingResult.hasErrors()) {
 
-           String type = (repairForm.getType().equals("true")) ? "long" : "short";
+            String type = (repairForm.getType().equals("true")) ? "long" : "short";
+            String status = "";
+            if(repairForm.getStatus().equals("1")){
+                status = "inProgress";
+            }else if(repairForm.getStatus().equals("2")){
+                status = "completed";
+            }else{
+                status = "pending";
+            }
+
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
             redirectAttributes.addFlashAttribute( type, "selected");
-         //   redirectAttributes.addFlashAttribute( status,  addVehicle);
+            redirectAttributes.addFlashAttribute( status, "selected");
+           // redirectAttributes.addFlashAttribute( "errorMessage",  "ERROR MESSAGE");
 
-            return "redirect:/admin/create-repair";
+            return "redirect:/admin/edit-repair";
         }
 
         try {
@@ -68,11 +78,8 @@ public class RepairCreateController {
         }catch (UserNotFoundException e){
             redirectAttributes.addFlashAttribute("errorMessage", "Vehicle with plate: "+repairForm.getPlate()+"not found");
         }catch(Exception e){
-            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong. Please try again");
+            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong. Please try again");redirectAttributes.addFlashAttribute("errorMessage", "Vehicle with plate: "+repairForm.getPlate()+"not found");
         }
-
-       redirectAttributes.addFlashAttribute("message", "yeaaah");
-
         return "redirect:/admin/create-repair";
     }
 
