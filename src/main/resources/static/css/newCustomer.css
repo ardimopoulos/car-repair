@@ -17,7 +17,7 @@ body{
         background-color:lightgray;
         border: 1.5px solid #4CAF50;
         border-radius: 20px;
-        padding: 50px;
+        padding: 25px;
         margin-bottom:50px;
     }
     input[type=text], textarea, select {
@@ -26,7 +26,7 @@ body{
         border: 0.4px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
-         margin-top: 6%;
+         margin-top: 4%;
                 margin-bottom: 6%;
         margin-right: 15px;
         resize: vertical;
@@ -61,7 +61,7 @@ body{
         box-sizing: border-box;
         margin-right: 15px;
 
-       margin-top: 6%;
+       margin-top: 4%;
         margin-bottom: 6%;
         resize: vertical;
     }
@@ -71,7 +71,7 @@ body{
         border: 0.4px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
-         margin-top: 6%;
+         margin-top: 4%;
                 margin-bottom: 6%;
         resize: vertical;
 
@@ -110,7 +110,7 @@ input::-webkit-inner-spin-button {
         border: 0.4px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
-        margin-top: 11%;
+        margin-top: 8%;
         margin-bottom: 6%;
         margin-right: 10px;
         resize: vertical;
@@ -121,8 +121,8 @@ margin-top:0%;
 }
 button{
 width:100px;
-position: fixed;
-top:197px;
+position: relative;
+top:-105px;
 left:35%;
 padding:11px;
 
