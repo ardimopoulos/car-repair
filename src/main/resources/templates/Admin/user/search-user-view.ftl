@@ -22,7 +22,7 @@
                                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" />
 
 
-                            <br>
+
                            <button type="submit" class="btn">Search</button>
                         </form>
 
