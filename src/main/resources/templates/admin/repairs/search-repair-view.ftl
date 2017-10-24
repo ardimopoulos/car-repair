@@ -4,7 +4,7 @@
         <#include "/base_libraries/head.ftl"/>
 </head>
     <body>
-    <#include "/Admin/menu_bar.ftl"/>
+    <#include "/admin/menu_bar.ftl"/>
 
             <div class = "container">
 

@@ -30,6 +30,6 @@ public class AdminController {
         List<Repair> repairs = repairService.getDailyServices();
         model.addAttribute("repairs" , repairs);
 
-        return "admin/home";
+        return "/admin/home";
     }
 }
