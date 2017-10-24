@@ -40,7 +40,7 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
         return repairList;
 
-    }
+        }
 
     @Override
     public List<Repair> getByVat(String vat) throws RepairNotFoundException{
@@ -61,8 +61,9 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
         if(vehicle == null ){throw new RepairNotFoundException("Vehicle not exist with palte" + plate);}
 
-        List<Repair> repairList = new ArrayList<>();
-        repairList = vehicle.getRepairs();
+        if(vehicle.getRepairs() == null){ throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
+
+        List<Repair> repairList = vehicle.getRepairs();
         if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
         return repairList;
     }
