@@ -45,11 +45,11 @@ public class Repair implements Serializable {
     }
 
 
-    public long getServiceId() {
+    public long getRepairId() {
         return repairId;
     }
 
-    public void setServiceId(long repairId) {
+    public void setRepairId(long repairId) {
         this.repairId = repairId;
     }
 
@@ -77,7 +77,7 @@ public class Repair implements Serializable {
         this.description = description;
     }
 
-    public boolean isType() {
+    public boolean getType() {
         return type;
     }
 
