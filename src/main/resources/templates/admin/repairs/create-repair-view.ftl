@@ -4,11 +4,7 @@
 <#import "/spring.ftl" as spring/>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/serviceReg.css">
 </head>
 <body>
@@ -105,6 +101,8 @@
 </div>
 <div class="col-md-1"></div>
 
+<#include "/base_libraries/footer.ftl"/>
+<#include "/base_libraries/js.ftl"/>
 
 </body>
 

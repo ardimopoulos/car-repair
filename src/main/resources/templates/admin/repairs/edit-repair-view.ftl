@@ -1,14 +1,11 @@
+<#import "/spring.ftl" as spring/>
 <!DOCTYPE html>
 
 <html>
-<#import "/spring.ftl" as spring/>
+
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/serviceReg.css">
 </head>
 <body>
@@ -17,20 +14,19 @@
 <div class="col-md-10">
 
 
-       <h1>New Service Form</h1>
+       <h1>Edit Service Form</h1>
        <form name="searchUser" action="/admin/edit-repair"  method="get" >
                  <!-- <label for="vat">VAT:</label>-->
-                 <input type="text"  placeholder="Enter service number" autocomplete="off" name="id" />
+                 <input type="text" class="form-control"  id="id" placeholder="Enter service number" autocomplet="off" name="id" required/>
                   <button type="submit" class="btn">Search</button>
                </form>
-               <br>
-      <#if repairForm??>
+<#if repairForm??>
     <form action="/admin/edit-repair" method="post" name="repairForm">
 
         <div class="col-md-12">
             <div class="side">
             ${message!""}
-                ${errorMessage!""}
+                ${errormessage!""}
                 <div class="col-md-12">
                    <div class="col-md-6">
                  <@spring.bind "repairForm.repairId"/>
@@ -115,6 +111,8 @@
 </div>
 <div class="col-md-1"></div>
 
+<#include "/base_libraries/footer.ftl"/>
+<#include "/base_libraries/js.ftl"/>
 
 </body>
 

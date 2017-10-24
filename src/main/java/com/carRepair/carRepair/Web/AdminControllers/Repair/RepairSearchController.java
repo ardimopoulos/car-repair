@@ -66,12 +66,16 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute("errorMessage", "Format or date is not valid. Please try again 'dd/mm/yyyy'");
             }
 
-        }else{
+        }else if(button.equals("Search Between")){
             try{
             List<Repair> repairs = repairSearchService.getByBetweenRepairDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate() );
             redirectAttributes.addFlashAttribute("repairs" , repairs);
             }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
+        }else{
+            redirectAttributes.addFlashAttribute("errorMessage", "Press the button");
+
         }
+
 
         return "redirect:/admin/search-repair";
     }
