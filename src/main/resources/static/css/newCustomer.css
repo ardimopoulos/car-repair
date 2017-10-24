@@ -59,8 +59,8 @@ body{
         border-radius: 8px;
         box-sizing: border-box;
         margin-right: 15px;
-       margin-top: 11px;
-        margin-bottom: 11px;
+       margin-top: 5%;
+        margin-bottom: 5%;
         resize: vertical;
     }
     input[type=email]{
@@ -108,8 +108,19 @@ input::-webkit-inner-spin-button {
         border: 0.4px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
-        margin-top: 11px;
-        margin-bottom: 11px;
+        margin-top: 5%;
+        margin-bottom: 5%;
         margin-right: 10px;
         resize: vertical;
+}
+#vat{
+width: 30%;
+}
+button{
+width:10%;
+position: relative;
+top:-45px;
+left:32%;
+padding:11px;
+
 }
