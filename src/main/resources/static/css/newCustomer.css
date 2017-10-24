@@ -26,8 +26,8 @@ body{
         border: 0.4px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
-        margin-top: 11px;
-        margin-bottom: 11px;
+         margin-top: 6%;
+                margin-bottom: 6%;
         margin-right: 15px;
         resize: vertical;
     }
@@ -60,8 +60,9 @@ body{
         border-radius: 8px;
         box-sizing: border-box;
         margin-right: 15px;
-       margin-top: 5%;
-        margin-bottom: 5%;
+
+       margin-top: 6%;
+        margin-bottom: 6%;
         resize: vertical;
     }
     input[type=email]{
@@ -70,8 +71,8 @@ body{
         border: 0.4px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
-       margin-top: 11px;
-        margin-bottom: 11px;
+         margin-top: 6%;
+                margin-bottom: 6%;
         resize: vertical;
 
     }
@@ -109,19 +110,20 @@ input::-webkit-inner-spin-button {
         border: 0.4px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-top: 11%;
+        margin-bottom: 6%;
         margin-right: 10px;
         resize: vertical;
 }
 #vat{
 width: 30%;
+margin-top:0%;
 }
 button{
-width:10%;
-position: relative;
-top:-45px;
-left:32%;
+width:100px;
+position: fixed;
+top:197px;
+left:35%;
 padding:11px;
 
 }

@@ -38,7 +38,7 @@
      </script>
     <div class="col-md-1"></div>
     <div class="col-md-10">
-       <h1>User registration form</h1>
+       <h1>User Registration Form</h1>
         <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return myFunction()">
          <!--<#if userId??>
                 <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
@@ -107,10 +107,10 @@
                     <#list spring.status.errorMessages as error>
                        <span style="color:red">${error}</span>
                     </#list><br/>
-                        <label for="email">e-mail</label>
+                        <label for="email">E-mail</label>
                              <input type="email" id="email" name="email" placeholder="Type e-mail.." value="${userForm.email!""}">
          </div>
-         <div class="col-md-6">
+         <div class="col-md-8">
           <@spring.bind "userForm.addVehicle"/>
                 <label for="vehicle">Add vehicle</label> <input type="checkbox" name="addVehicle" value="true" ${checked!""     }>
             </div>
