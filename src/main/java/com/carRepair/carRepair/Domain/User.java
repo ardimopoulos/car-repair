@@ -35,33 +35,19 @@ public class User implements Serializable{
        // this.member = member;
     }
 
-    public long getUserId() {
-        return userId;
-    }
+    public long getUserId() { return userId; }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+    public void setUserId(long userId) { this.userId = userId; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() { return password; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
-    public boolean getUserType() {
-        return userType;
-    }
+    public boolean getUserType() { return userType; }
 
     public void setUserType(boolean userType) {
         this.userType = userType;
