@@ -58,6 +58,12 @@
 
                     </div>
                     <div class="col-md-5">
+
+                    <div class="col-md-6">
+                            <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
+
+                    </div>
+                    <div class="col-md-6">
                             <input type="date" class="form-control" id="beforeDate" placeholder="Enter Before Date...dd/mm/yyyy" name="beforeDate" /><br>
 
                     </div>
