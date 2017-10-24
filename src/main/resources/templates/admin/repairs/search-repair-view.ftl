@@ -2,6 +2,7 @@
 <head>
     <title>Sign-Up/Search Form</title>
         <#include "/base_libraries/head.ftl"/>
+        <link rel="stylesheet" type="text/css" href="/css/searchFormsStyle.css"/>
 </head>
     <body>
     <#include "/admin/menu_bar.ftl"/>
@@ -9,7 +10,9 @@
             <div class = "container">
 
                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
                 <li class="nav-item">
                  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Vat</a>
                 </li>
@@ -24,16 +27,20 @@
                   </li>
 
                </div>
+               <br>&nbsp;
                <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm">
                <div class="tab-content" id="v-pills-tabContent">
+
                  <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
                         <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
 
                     <input type="submit" class="btn btn-info" name="button" value="Search Vat">
 
                 </div>
                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <input type="text" class="form-control" id="date" placeholder="Enter date... dd/mm/yyyy" name="date" /><br>
+
+                        <input type="date" class="form-control" id="date" placeholder="Enter date... dd/mm/yyyy" name="date" /><br>
 
 
                     <input type="submit" class="btn btn-info" name="button" value="Search Date">
@@ -46,12 +53,12 @@
 
                 </div>
                 <div class="tab-pane fade" id="v-pills-dates" role="tabpanel" aria-labelledby="v-pills-dates-tab">
-                    <div class="col-md-6">
-                            <input type="text" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
+                    <div class="col-md-5">
+                            <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
 
                     </div>
-                    <div class="col-md-6">
-                            <input type="text" class="form-control" id="beforeDate" placeholder="Enter Before Date...dd/mm/yyyy" name="beforeDate" /><br>
+                    <div class="col-md-5">
+                            <input type="date" class="form-control" id="beforeDate" placeholder="Enter Before Date...dd/mm/yyyy" name="beforeDate" /><br>
 
                     </div>
                     <input type="submit" class="btn btn-info" name="button" value="Search Between">
@@ -62,7 +69,7 @@
 
 </div>
 <#if errorMessage??>
-            <div class="container">
+            <div class="col-md-10">
             <div class="alert alert-danger" role="alert">
              ${errorMessage}
             </div>
@@ -70,13 +77,10 @@
             </#if>
 <hr>
 <#if repairs??>
-<div class="container">
+<div class="col-md-11">
 
-<div class="search">
-<i class="glyphicon glyphicon-search"></i>
- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by User">
-</div>
 
+<br>
 <table class="table" id="myTable">
    <tr>
    <th>Date</th>
@@ -130,3 +134,5 @@
 
 
     </body>
+
+

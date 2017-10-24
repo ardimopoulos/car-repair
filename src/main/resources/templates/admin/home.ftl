@@ -8,51 +8,17 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
     <body>
-    <#include "/admin/menu_bar.ftl"/>
+    <#include "/Admin/menu_bar.ftl"/>
 <div class="container">
-    <table id="myTable" class="table table-striped">
+    <table class="table table-striped">
 
-
-   <h1>Our daily Services </h1>
-        <div class="search">
-            &nbsp;&nbsp; <i class="glyphicon glyphicon-search"></i>
-
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type in to search">
-            <button type="button" class="but">Search</button>
-            <br>
-            <br>
-            <script>
-                function myFunction() {
-                    var input, filter, table, tr, td;
-                    input = document.getElementById("myInput");
-                    filter = input.value.toUpperCase();
-                    table = document.getElementById("myTable");
-                    tr = table.getElementsByTagName("tr");
-                    for (i = 0; i < tr.length; i++) {
-                        td = tr[i].getElementsByTagName("td")[5];
-
-
-
-                        if (td) {
-                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                            } else {
-                                tr[i].style.display = "none";
-                            }
-                        }
-                    }
-                }
-
-            </script>
-
-
-        <thead>
+   <h1>Last Services </h1>
+         <thead>
                <tr>
                  <th>Description</th>
                  <th>Status</th>
                  <th>Date</th>
                  <th>Type</th>
-                 <th>Time</th>
                  <th>Name</th>
                </tr>
          </thead>
@@ -62,10 +28,9 @@
                <tr>
                  <td>${repair.description}</td>
                  <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
-                 <td>${repair.repairDate}</td>
+                 <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
                  <td><#if repair.type>Big<#else>Small</#if></td>
                  <td>Note done yet</td>
-                   <td>${repair.getVehicle().getMember().getFirstname()}</td>
                </tr>
     </#list>
      </tbody>
