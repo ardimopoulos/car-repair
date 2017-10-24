@@ -93,10 +93,10 @@
                     <td><#if repair.type>Big<#else>Small</#if></td>
                     <td>${repair.getVehicle().getMember().getFirstname()}</td>
 
-    <th><a href="/admin/edit-repair"><button type="button" class="btn btn-info">Edit</button></a></th>
+    <th><a href="/admin/edit-repair?id=${repair.repairId}"><button type="button" class="btn btn-info">Edit</button></a></th>
 
     <form action ="/admin/delete-repair" name="deleteForm" id ="deleteForm" method="POST">
-        <input type="hidden" name="hidden_serviceId" id="hidden_serviceId" value="${repair.serviceId}">
+        <input type="hidden" name="hidden_serviceId" id="hidden_serviceId" value="${repair.repairId}">
     <th><input type="submit" class="btn btn-danger" value="Delete"></th>
     </form>
   </tr>

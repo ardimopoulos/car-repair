@@ -2,6 +2,7 @@ package com.carRepair.carRepair.Services.Repair;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,15 @@ public class RepairServiceImpl implements RepairService{
 
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate,endDate);
         return repairList;
+    }
+
+    @Override
+    public Repair getRepair(long repairId) throws RepairNotFoundException {
+        Repair repair = repairRepository.findByRepairId(repairId);
+        if(repair == null){
+            throw new RepairNotFoundException("Repair not found");
+        }
+        return repair;
     }
 
 

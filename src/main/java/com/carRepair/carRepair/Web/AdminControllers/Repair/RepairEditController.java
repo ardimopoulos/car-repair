@@ -1,8 +1,13 @@
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
+import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairForm;
 import com.carRepair.carRepair.Forms.User.SearchForm;
 import com.carRepair.carRepair.Forms.Vehicle.VehicleForm;
+import com.carRepair.carRepair.Repositories.RepairRepository;
+import com.carRepair.carRepair.Services.Repair.RepairService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,15 +24,38 @@ public class RepairEditController {
 
     private static final String REPAIR_FORM = "repairForm";
 
+    @Autowired
+    private RepairService repairService;
+
     @RequestMapping(value = "/admin/edit-repair", method = RequestMethod.GET)
-    String editRepair(Model model, @RequestParam(name = "id", required = false) String id){
+    String getEditRepairView(Model model, @RequestParam(name = "id", required = false) String id,RedirectAttributes redirectAttributes){
 
         //TODO check id and show form, messages
+        if(id != null){
+            System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            long repairId = Long.valueOf(id);
+            try {
+                Repair repair = repairService.getRepair(repairId);
+                RepairForm repairForm = new RepairForm(repair);
 
+                String type = (repair.getType()) ? "long" : "short";
+                String status = "";
+                if(repair.getStatus() == 1){
+                    status = "inProgress";
+                }else if(repair.getStatus() == 2){
+                    status = "completed";
+                }else{
+                    status = "pending";
+                }
 
-        if(!model.containsAttribute(REPAIR_FORM)) {
-            model.addAttribute(REPAIR_FORM, new RepairForm());
+                model.addAttribute(type,"selected");
+                model.addAttribute(status,"selected");
+                model.addAttribute(REPAIR_FORM, repairForm);
+            }catch(RepairNotFoundException ex){
+                model.addAttribute("errormessage", "Service with id: " + id + "not found");
+            }
         }
+
         return "/admin/repairs/edit-repair-view";
     }
 
@@ -39,12 +67,13 @@ public class RepairEditController {
 
             String type = (repairForm.getType().equals("true")) ? "long" : "short";
             String status = "";
-            if(repairForm.getStatus().equals("0")){
-                status = "pending";
-            }else if(repairForm.getStatus().equals("1")){
+            if(repairForm.getStatus().equals("1")){
+
                 status = "inProgress";
-            }else{
+            }else if(repairForm.getStatus().equals("2")){
                 status = "completed";
+            }else{
+                status = "pending";
             }
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);

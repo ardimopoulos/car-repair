@@ -64,9 +64,9 @@ public class RepairCreateController {
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
             redirectAttributes.addFlashAttribute( type, "selected");
             redirectAttributes.addFlashAttribute( status, "selected");
-           // redirectAttributes.addFlashAttribute( "errorMessage",  "ERROR MESSAGE");
+            redirectAttributes.addFlashAttribute( "errorMessage",  "Fill the fields bellow");
 
-            return "redirect:/admin/edit-repair";
+            return "redirect:/admin/create-repair";
         }
 
         try {

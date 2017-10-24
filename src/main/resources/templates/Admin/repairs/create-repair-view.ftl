@@ -80,7 +80,7 @@
                     <span style="color:red">${error}</span>
                 </#list><br>
                 <label for="Cost">Service Cost</label>
-            <input type="text" id="costServ" name="cost" placeholder="Type the cost of Service.." value=${repairForm.cost!""}>
+            <input type="text" id="costServ" name="cost" placeholder="Type cost of Service..(123.45)" value=${repairForm.cost!""}>
                     </div>
 
 

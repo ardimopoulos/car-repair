@@ -56,7 +56,7 @@ public class UserController {
 
         try {
 
-            member =memberService.insertMember(member);
+            member = memberService.insertMember(member);
 
             // Redirect if checkbox in form is checked
             if(userForm.getAddVehicle()){

@@ -18,18 +18,19 @@
 
 
        <h1>New Service Form</h1>
-       <form name="searchUser" action="/admin/edit-user"  method="get" >
+       <form name="searchUser" action="/admin/edit-repair"  method="get" >
                  <!-- <label for="vat">VAT:</label>-->
-                 <input type="text" class="form-control"  id="id" placeholder="Enter service number" autocomplet="off" name="id" />
+                 <input type="text"  placeholder="Enter service number" autocomplete="off" name="id" />
                   <button type="submit" class="btn">Search</button>
                </form>
                <br>
+      <#if repairForm??>
     <form action="/admin/edit-repair" method="post" name="repairForm">
 
         <div class="col-md-12">
             <div class="side">
             ${message!""}
-                ${errormessage!""}
+                ${errorMessage!""}
                 <div class="col-md-12">
                    <div class="col-md-6">
                  <@spring.bind "repairForm.repairId"/>
@@ -110,6 +111,7 @@
         </div>
 
     </form>
+    </#if>
 </div>
 <div class="col-md-1"></div>
 
