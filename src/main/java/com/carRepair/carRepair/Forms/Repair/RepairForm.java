@@ -1,5 +1,6 @@
 package com.carRepair.carRepair.Forms.Repair;
 
+import com.carRepair.carRepair.Domain.Repair;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
@@ -9,18 +10,17 @@ import java.time.LocalDateTime;
 
 public class RepairForm {
 
-    private static final String DATE_PATTERN = "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$";
-    private static final String TIME_PATTERN = "^[0-9]{2}:[0-9]{2}$";
+    private static final String DATE_PATTERN = "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$";
     private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[1-9]{4}$";
     private static final String STATUS_PATTERN = "^[012]$";
    // private static final String TYPE_PATTERN = "^[\btrue\b\bfalse\b]$";
-    private static final String COST_PATTERN = "^[0-9.]*$";
+    private static final String COST_PATTERN = "^[0-9]+[.]{1}[0-9]+$";
     private static final String DESC_PATTERN = "^.+$";
     private static final String TYPE_PATTERN = "^.+$";
 
     private String repairId;
 
-    @NotNull(message = "{create-repair.plate.null}")
+    @NotNull(message = "{create-vehicle.plate.null}")
     @Pattern(regexp = PLATE_PATTERN, message = "{create-repair.plate.invalid}")
     private String plate;
 
@@ -47,6 +47,18 @@ public class RepairForm {
     private String cost;
 
     public RepairForm() {
+    }
+
+    //TODO repairform converter
+
+    public RepairForm(Repair repair) {
+        this.repairId = String.valueOf(repair.getRepairId());
+        this.plate = repair.getVehicle().getPlate();
+        this.repairDate = repair.getrepairDate().toString();
+        this.status = String.valueOf(repair.getStatus());
+        this.description = repair.getDescription();
+        this.type = String.valueOf(repair.getType());
+        this.cost = String.valueOf(repair.getCost());
     }
 
     public String getRepairId() {

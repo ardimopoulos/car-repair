@@ -15,7 +15,7 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
 
    List<Repair> findByRepairDate(LocalDateTime repairDate);
 
-   // List<Repair> findByMember(Member member);
+   Repair findByRepairId(long  repairId);
 
     List<Repair> findByRepairDateAfterAndRepairDateBefore(LocalDateTime startDate ,LocalDateTime startAfter);
 
