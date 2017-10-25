@@ -32,14 +32,11 @@ public class RepairCreateController {
     @Autowired
     private VehicleService vehicleService;
 
-
     @RequestMapping(value = "/admin/create-repair" ,  method = RequestMethod.GET)
     public String getCreateServiceView(Model model, RepairForm repairForm){
-
         if(!model.containsAttribute(REPAIR_FORM)){
             model.addAttribute(REPAIR_FORM, new RepairForm());
         }
-
         return "/admin/repairs/create-repair-view";
     }
 

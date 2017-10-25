@@ -34,7 +34,6 @@ public class UserEditController {
     @RequestMapping(value = "/admin/edit-user", method = RequestMethod.GET)
     public String getEditUserView(Model model, @RequestParam(name = "v", required = false) String vat,
                                   RedirectAttributes redirectAttributes){
-
         if(vat != null){
             try {
                 Member member = memberService.getMemberByVat(vat);
@@ -55,22 +54,16 @@ public class UserEditController {
                            RedirectAttributes redirectAttributes){
 
         String role = (editUserForm.getUserType()) ? "admin" : "simple";
-
         if(bindingResult.hasErrors()) {
-
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.editUserForm", bindingResult);
             redirectAttributes.addFlashAttribute(EDIT_USER_FORM, editUserForm);
             redirectAttributes.addFlashAttribute(role, "selected");
-
             return "redirect:/admin/edit-user";
         }
 
         String pattern = "^[a-zA-Z0-9@#$%^&]*$";
-
         try {
-
             Member member = memberService.getMemberById(editUserForm.getUserId());
-
             String memberPass = member.getPassword();
             String formPass = editUserForm.getPassword();
             String formNewPass = editUserForm.getNewPassword();
@@ -94,21 +87,14 @@ public class UserEditController {
             }
 
             String pass = (hashFormNewPass.equals("")) ? memberPass : hashFormNewPass;
-
             editUserForm.setPassword(pass);
-
             Member editMember = MemberConverter.buildEditMemberObjecr(editUserForm);
-
-            member = memberService.insertMember(editMember);
-
+            memberService.insertMember(editMember);
             String message = "Successful update!";
             redirectAttributes.addFlashAttribute("message", message);
-
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errormessage", "Edit user failed");
-            return "redirect:/admin/edit-user";
         }
-
         return "redirect:/admin/edit-user";
     }
 }

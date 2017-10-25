@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-
 public class UserCreateController {
 
     private static final String USER_FORM = "userForm";
@@ -26,11 +25,9 @@ public class UserCreateController {
 
     @RequestMapping(value = "/admin/create-user", method = RequestMethod.GET)
     String getCreateUserView(Model model){
-
         if(!model.containsAttribute(USER_FORM)){
             model.addAttribute(USER_FORM, new UserForm());
         }
-
         return "/admin/user/create-user-view";
     }
 
@@ -42,19 +39,15 @@ public class UserCreateController {
         String addVehicle = (userForm.getAddVehicle()) ? "checked" : "";
 
         if(bindingResult.hasErrors()) {
-
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userForm", bindingResult);
             redirectAttributes.addFlashAttribute(USER_FORM, userForm);
             redirectAttributes.addFlashAttribute(role, "selected");
             redirectAttributes.addFlashAttribute("checked",  addVehicle);
-
             return "redirect:/admin/create-user";
         }
 
-        Member member = MemberConverter.buildMemberObjecr(userForm);
-
         try {
-
+            Member member = MemberConverter.buildMemberObjecr(userForm);
             member = memberService.insertMember(member);
 
             // Redirect if checkbox in form is checked
@@ -64,17 +57,16 @@ public class UserCreateController {
                 return "redirect:/admin/create-vehicle";
             }
 
-            String message = "New user is created: " + member.getFirstname() + " " + member.getLastname() + " with VAT: " + member.getVat();
+            String message = "New user is created: " + member.getFirstname() + " " + member.getLastname() +
+                             " with VAT: " + member.getVat();
             redirectAttributes.addFlashAttribute("message", message);
             redirectAttributes.addFlashAttribute("userId", member.getUserId());
-
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errormessage", "There is already an account with same VAT or email.");
             redirectAttributes.addFlashAttribute(USER_FORM, userForm);
             redirectAttributes.addFlashAttribute(role, "selected");
             redirectAttributes.addFlashAttribute("checked",  addVehicle);
         }
-
         return "redirect:/admin/create-user";
     }
 }

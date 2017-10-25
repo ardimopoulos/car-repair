@@ -26,7 +26,6 @@ public class UserDeleteController {
 
     @RequestMapping(value = "/admin/delete-user", method = RequestMethod.POST)
     String deleteUser(Model model , @RequestParam("hidden_email" )String hidden_email ){
-
         try {
             User user = userService.getUserByEmail(hidden_email);
             deleteService.deleteUser(user.getUserId());
@@ -35,8 +34,6 @@ public class UserDeleteController {
         }catch(IllegalArgumentException e){
             model.addAttribute("errorMessage", "Something went wrong");
         }
-
         return "redirect:/admin/search-user";
     }
-
 }
