@@ -25,7 +25,7 @@ footer
           text-align: center;
          }
 
-#vat{
+#vat, #email{
 width:30%;
 }
 #date{
@@ -34,7 +34,7 @@ width:30%;
 #plate{
  width:30%;
  }
- .container {
+ .container, #v-pills-tab {
           border-radius: 10px;
           background-color: #f2f2f2;
           padding: 10px;
@@ -42,4 +42,12 @@ width:30%;
  #pills-tab{
   background-color:lightgrey;
  }
-}
+  input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
