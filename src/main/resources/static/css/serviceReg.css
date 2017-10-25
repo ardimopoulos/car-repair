@@ -104,11 +104,13 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 button{
-width:10%;
-position: relative;
-top:-45px;
-left:32%;
-padding:11px;
+    width:10%;
+    position: relative;
+    top:-45px;
+    left:32%;
+    padding:11px;
+    background-color: #4CAF50;
+    color:white;
 
 }
 #id{

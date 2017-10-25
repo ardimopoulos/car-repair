@@ -40,7 +40,7 @@
                 </div>
                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 
-                        <input type="date" class="form-control" id="date" placeholder="Enter date... dd/mm/yyyy" name="date" /><br>
+                        <input type="date" class="form-control" id="date" placeholder="Enter date..." name="date" /><br>
 
 
                     <input type="submit" class="btn btn-info" name="button" value="Search Date">
@@ -53,18 +53,14 @@
 
                 </div>
                 <div class="tab-pane fade" id="v-pills-dates" role="tabpanel" aria-labelledby="v-pills-dates-tab">
+
+
                     <div class="col-md-5">
-                            <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
+                            <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date..." name="startDate" /><br>
 
                     </div>
                     <div class="col-md-5">
-
-                    <div class="col-md-6">
-                            <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
-
-                    </div>
-                    <div class="col-md-6">
-                            <input type="date" class="form-control" id="beforeDate" placeholder="Enter Before Date...dd/mm/yyyy" name="beforeDate" /><br>
+                            <input type="date" class="form-control" id="beforeDate" placeholder="Enter Before Date..." name="beforeDate" /><br>
 
                     </div>
                     <input type="submit" class="btn btn-info" name="button" value="Search Between">
