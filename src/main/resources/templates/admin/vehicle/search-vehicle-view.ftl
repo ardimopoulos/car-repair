@@ -40,7 +40,7 @@
 
 </div>
 <#if errorMessage??>
-<div class="container">
+<div class="col-md-10">
 <div class="alert alert-danger" role="alert">
  ${errorMessage}
 </div>

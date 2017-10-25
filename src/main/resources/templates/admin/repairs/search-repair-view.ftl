@@ -85,7 +85,10 @@
 <br>
 <table class="table" id="myTable">
    <tr>
-   <th>Date</th>
+     <th>Id</th>
+     <th>VAT</th>
+     <th>Plate</th>
+     <th>Date</th>
      <th>Description</th>
      <th>Status</th>
      <th>Type</th>
@@ -94,6 +97,10 @@
    <#list repairs as repair>
                   <tr>
                     <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>${repair.repairDate}</td>
                     <td>${repair.description}</td>
                     <td><#if repair.status==0>Pending<#elseif repair.status==1>In progress<#else>Completed</#if></td>
                     <td><#if repair.type>Big<#else>Small</#if></td>
