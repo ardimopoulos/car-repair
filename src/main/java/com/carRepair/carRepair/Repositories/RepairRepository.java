@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface RepairRepository extends CrudRepository<Repair, Long> {
 
-   List<Repair> findByRepairDate(LocalDateTime repairDate);
 
    Repair findByRepairId(long  repairId);
 

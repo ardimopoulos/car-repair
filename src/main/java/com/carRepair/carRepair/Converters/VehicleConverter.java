@@ -14,7 +14,6 @@ public class VehicleConverter {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
 
         //long user_id = Long.valueOf(vehicleForm.getUserId());
-        String vat = vehicleForm.getVat();
         String plate = vehicleForm.getPlate();
         String brand = vehicleForm.getBrand();
         String model = vehicleForm.getModel();

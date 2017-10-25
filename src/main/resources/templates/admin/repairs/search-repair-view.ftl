@@ -52,11 +52,11 @@
                     <input type="submit" class="btn btn-info" name="button" value="Search Plate">
 
                 </div>
-                <div class="tab-pane fade" id="v-pills-dates" role="tabpanel" aria-labelledby="v-pills-dates-tab">
-                    <div class="col-md-5">
-                            <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
+              <!--    <div class="tab-pane fade" id="v-pills-dates" role="tabpanel" aria-labelledby="v-pills-dates-tab">
+                   <div class="col-md-5">
+                           <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
 
-                    </div>
+                    </div> -->
                     <div class="col-md-5">
 
                     <div class="col-md-6">
@@ -97,9 +97,9 @@
    </tr>
    <#list repairs as repair>
                   <tr>
-                    <td>${repair.repairDate}</td>
+                    <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
                     <td>${repair.description}</td>
-                    <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
+                    <td><#if repair.status==0>Pending<#elseif repair.status==1>In progress<#else>Completed</#if></td>
                     <td><#if repair.type>Big<#else>Small</#if></td>
                     <td>${repair.getVehicle().getMember().getFirstname()}</td>
 

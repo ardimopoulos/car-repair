@@ -1,9 +1,12 @@
 package com.carRepair.carRepair.Web.AdminControllers.Vehicle;
 
 import com.carRepair.carRepair.Converters.VehicleConverter;
+import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Vehicle;
+import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Exceptions.Vehicle.VehicleNotFoundException;
 import com.carRepair.carRepair.Forms.Vehicle.VehicleForm;
+import com.carRepair.carRepair.Services.Member.MemberService;
 import com.carRepair.carRepair.Services.Repair.RepairService;
 import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,9 @@ public class VehicleEditController {
     @Autowired
     private VehicleService vehicleService;
 
+    @Autowired
+    private MemberService memberService;
+
     @RequestMapping(value = "/admin/edit-vehicle", method = RequestMethod.GET)
     public String getEditVehicleView(Model model, @RequestParam(name = "p", required = false) String p){
 
@@ -36,11 +42,10 @@ public class VehicleEditController {
                 VehicleForm vehicleForm = VehicleConverter.buildVehicleFormObject(vehicle);
                 model.addAttribute(VEHICLE_FORM, vehicleForm);
             } catch (VehicleNotFoundException e) {
-                model.addAttribute("errorMessage", e);
+                model.addAttribute("errorMessage", "Vehicle with plate "+ p + " not found");
             }
 
         }
-
         return "/admin/vehicle/edit-vehicle-view";
     }
 
@@ -48,43 +53,29 @@ public class VehicleEditController {
     public String editVehicleView(@Valid @ModelAttribute(name = VEHICLE_FORM) VehicleForm vehicleForm, BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes){
 
+        if(vehicleForm.getVehicleId().equals("")){
+            redirectAttributes.addFlashAttribute("errormessage", "Something went wrong");
+            return "redirect:/admin/edit-repair";
+        }
+
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.vehicleForm", bindingResult);
             redirectAttributes.addFlashAttribute(VEHICLE_FORM, vehicleForm);
             return "redirect:/admin/edit-vehicle";
         }
 
-
+        try {
+            Vehicle vehicle = VehicleConverter.buildVehicleObjecr(vehicleForm);
+            vehicle.setVehicleId(Long.valueOf(vehicleForm.getVehicleId()));
+            Member member = memberService.getMemberByVat(vehicleForm.getVat());
+            vehicle.setMember(member);
+            vehicleService.insertVehicle(vehicle);
+        }catch(UserNotFoundException e){
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong");
+        }
 
         return "redirect:/admin/edit-vehicle";
     }
-
 }
-
-
-
-/*
-
-@Autowired
-private VehicleSearchService vehicleSearchService;
-
-@RequestMapping(value = "/admin/edit-vehicle", method = RequestMethod.GET)
-public String getEditVehicleView(Model model ,@RequestParam(name="plate",required = false)String plate){
-
-        if(plate !=null) {
-        try {
-        List<Vehicle> vehicles = vehicleSearchService.getByPlate(plate); // one vehicle
-        model.addAttribute("vehicles", vehicles);
-        } catch (VehicleNotFoundException vehicleNotFound) { model.addAttribute("errorMessage", vehicleNotFound.getMessage()); }
-
-        if (!model.containsAttribute(VEHICLE_FORM)) { model.addAttribute(VEHICLE_FORM, new VehicleForm()); } else { }
-
-        } else{ model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm()); }
-
-
-
-        return "/admin/vehicle/edit-vehicle-view";
-        }
-*/
-
-

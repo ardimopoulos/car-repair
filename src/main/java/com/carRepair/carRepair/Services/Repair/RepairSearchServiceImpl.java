@@ -3,6 +3,7 @@ package com.carRepair.carRepair.Services.Repair;
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
+import com.carRepair.carRepair.Exceptions.DateParseException;
 import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import com.carRepair.carRepair.Repositories.RepairRepository;
@@ -118,7 +119,7 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         try {
              date1 = formatLocalDate("yyyy-MM-dd", firstDate);
              date2 = formatLocalDate("yyyy-MM-dd", beforeDate);
-        }catch(DateTimeParseException dateTimeParse){throw new DateUtil.DateParseException("Cant use this format.Use the datepicker!");}
+        }catch(DateTimeParseException dateTimeParse){throw new DateParseException("Cant use this format.Use the datepicker!");}
 
         LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(date2+"T23:59:59");

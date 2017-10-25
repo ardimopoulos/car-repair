@@ -96,7 +96,7 @@
                   <#list spring.status.errorMessages as error>
                   <span style="color:red">${error}</span>
               </#list><br>
-            <textarea name="description" class="form-control" rows="4" id="comment" placeholder="Type comments for the service here(255 characters limit).." ></textarea>
+            <textarea name="description" class="form-control" rows="4" id="comment" placeholder="Type comments for the service here(255 characters limit).." >${repairForm.description!""}</textarea>
                 </div>
                 <input type="submit" value="Submit"><br><br>
 

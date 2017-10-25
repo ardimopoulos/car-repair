@@ -1,6 +1,7 @@
 package com.carRepair.carRepair.Web;
 
 import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Services.Repair.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,8 +24,14 @@ public class MemberHomeController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        List<Repair> repairs = repairService.getMemberRepairs( auth.getName());
-        model.addAttribute("repairs" , repairs);
+        List<Repair> repairs = null;
+        try {
+            repairs = repairService.getMemberRepairs( auth.getName());
+            model.addAttribute("repairs" , repairs);
+        } catch (RepairNotFoundException e) {
+            model.addAttribute("message", "Repairs not exist for member");
+        }
+
 
         return "owner/home";
     }
