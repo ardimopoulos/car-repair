@@ -130,3 +130,16 @@ footer
           background-color: black;
           text-align: center;
          }
+#vehButton{
+ position: relative;
+
+    right:110px;
+}
+#vBrand{
+margin-top:6%;
+margin-bottom:2%;
+}
+#vModel{
+margin-top:6%;
+margin-bottom:2%;
+}
