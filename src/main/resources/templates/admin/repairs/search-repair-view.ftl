@@ -85,7 +85,10 @@
 <br>
 <table class="table" id="myTable">
    <tr>
-   <th>Date</th>
+     <th>Id</th>
+     <th>VAT</th>
+     <th>Plate</th>
+     <th>Date</th>
      <th>Description</th>
      <th>Status</th>
      <th>Type</th>
@@ -93,6 +96,9 @@
    </tr>
    <#list repairs as repair>
                   <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>${repair.repairDate}</td>
                     <td>${repair.description}</td>
                     <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
