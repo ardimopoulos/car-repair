@@ -58,6 +58,12 @@
 
                     </div>
                     <div class="col-md-5">
+
+                    <div class="col-md-6">
+                            <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date...dd/mm/yyyy" name="startDate" /><br>
+
+                    </div>
+                    <div class="col-md-6">
                             <input type="date" class="form-control" id="beforeDate" placeholder="Enter Before Date...dd/mm/yyyy" name="beforeDate" /><br>
 
                     </div>
@@ -66,8 +72,8 @@
                 </div>
 
                 </form>
-
 </div>
+
 <#if errorMessage??>
             <div class="col-md-10">
             <div class="alert alert-danger" role="alert">
@@ -111,26 +117,6 @@
 
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
-
- <script>
-                function myFunction() {
-                    var input, filter, table, tr, td, i;
-                    input = document.getElementById("myInput");
-                    filter = input.value.toUpperCase();
-                    table = document.getElementById("myTable");
-                    tr = table.getElementsByTagName("tr");
-                    for (i = 0; i < tr.length; i++) {
-                        td = tr[i].getElementsByTagName("td")[5];
-                        if (td) {
-                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                            } else {
-                                tr[i].style.display = "none";
-                            }
-                        }
-                    }
-                }
-            </script>
 
 
     </body>
