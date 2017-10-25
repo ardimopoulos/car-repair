@@ -55,22 +55,24 @@
 <table class="table" id="myTable">
    <tr>
    <th>Brand</th>
+   <th>Model</th>
      <th>Color</th>
-     <th>Model</th>
      <th>Plate</th>
      <th>Year</th>
-     <th>User</th>
+     <th>First name</th>
+     <th>Last name</th>
    </tr>
    <#list vehicles as vehicle>
                   <tr>
                     <td>${vehicle.brand}</td>
+                    <td>${vehicle.model}</td>
                     <td>${vehicle.color}</td>
-                    <td></td>
                      <td>${vehicle.plate}</td>
-                    <td>${vehicle.year}</td>
+                    <td>${vehicle.year?substring(7)}</td>
                     <td>${vehicle.getMember().getFirstname()}</td>
+                    <td>${vehicle.getMember().getLastname()}</td>
 
-    <th><a href="/admin/edit-vehicle"><button type="button" class="btn btn-info">Edit</button></a></th>
+    <th><a href="/admin/edit-vehicle?p=${vehicle.plate}"><button type="button" class="btn btn-info">Edit</button></a></th>
 
     <form action ="/admin/delete-vehicle" name="deleteForm" id ="deleteForm" method="POST">
         <input type="hidden" name="hidden_vehicleId" id="hidden_vehicleId" value="${vehicle.vehicleId}">

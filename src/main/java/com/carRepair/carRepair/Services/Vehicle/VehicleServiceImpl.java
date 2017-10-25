@@ -1,6 +1,7 @@
 package com.carRepair.carRepair.Services.Vehicle;
 
 import com.carRepair.carRepair.Domain.Vehicle;
+import com.carRepair.carRepair.Exceptions.Vehicle.VehicleNotFoundException;
 import com.carRepair.carRepair.Repositories.VehicleRepository;
 import com.carRepair.carRepair.Services.Member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +27,10 @@ public class VehicleServiceImpl implements VehicleService{
     }
 
     @Override
-    public Vehicle findByPlate(String plate) throws Exception {
+    public Vehicle findByPlate(String plate) throws VehicleNotFoundException {
         Vehicle vehicle = vehicleRepository.findByPlate(plate);
         if(vehicle == null){
-            throw new Exception("Vehicle not found");
+            throw new VehicleNotFoundException("Vehicle with " + plate + " not found");
         }
         return vehicle;
     }

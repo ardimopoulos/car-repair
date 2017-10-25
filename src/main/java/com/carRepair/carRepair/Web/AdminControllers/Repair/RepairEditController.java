@@ -1,12 +1,16 @@
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
+import com.carRepair.carRepair.Converters.RepairConverter;
 import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairForm;
 import com.carRepair.carRepair.Forms.User.SearchForm;
 import com.carRepair.carRepair.Forms.Vehicle.VehicleForm;
 import com.carRepair.carRepair.Repositories.RepairRepository;
+import com.carRepair.carRepair.Services.Repair.RepairCreateService;
 import com.carRepair.carRepair.Services.Repair.RepairService;
+import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.text.ParseException;
 
 @Controller
 public class RepairEditController {
@@ -27,14 +32,19 @@ public class RepairEditController {
     @Autowired
     private RepairService repairService;
 
+    @Autowired
+    private RepairCreateService repairCreateService;
+
+    @Autowired
+    private VehicleService vehicleService;
+
     @RequestMapping(value = "/admin/edit-repair", method = RequestMethod.GET)
     String getEditRepairView(Model model, @RequestParam(name = "id", required = false) String id,RedirectAttributes redirectAttributes){
 
         //TODO check id and show form, messages
-        if(id != null){
-            System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-            long repairId = Long.valueOf(id);
+        if(id != null ){
             try {
+                long repairId = Long.valueOf(id);
                 Repair repair = repairService.getRepair(repairId);
                 RepairForm repairForm = new RepairForm(repair);
 
@@ -52,7 +62,9 @@ public class RepairEditController {
                 model.addAttribute(status,"selected");
                 model.addAttribute(REPAIR_FORM, repairForm);
             }catch(RepairNotFoundException ex){
-                model.addAttribute("errormessage", "Service with id: " + id + "not found");
+                model.addAttribute("errorMessage", "Service with id: " + id + "not found");
+            }catch(NumberFormatException e){
+                model.addAttribute("errorMessage", "Service id must be number");
             }
         }
 
@@ -62,6 +74,12 @@ public class RepairEditController {
     @RequestMapping(value = "/admin/edit-repair" ,  method = RequestMethod.POST)
     public String editRepair(@Valid @ModelAttribute(name = REPAIR_FORM) RepairForm repairForm, BindingResult bindingResult,
                              RedirectAttributes redirectAttributes){
+
+        if(repairForm.getRepairId().equals("")){
+            redirectAttributes.addFlashAttribute("errormessage", "Something went wrong");
+            //redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
+            return "redirect:/admin/edit-repair";
+        }
 
         if(bindingResult.hasErrors()) {
 
@@ -79,7 +97,7 @@ public class RepairEditController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
             redirectAttributes.addFlashAttribute( type, "selected");
-            redirectAttributes.addFlashAttribute( "errorMessage",  "ERROR MESSAGE");
+            //redirectAttributes.addFlashAttribute( "errorMessage",  "ERROR MESSAGE");
 
             return "redirect:/admin/edit-repair";
         }
@@ -87,6 +105,18 @@ public class RepairEditController {
 
         //TODO Edit service Fuunctionality
 
+        try {
+            Vehicle vehicle = vehicleService.findByPlate(repairForm.getPlate());
+            Repair repair = RepairConverter.builtRepairObject(repairForm);
+            repair.setRepairId(Long.valueOf(repairForm.getRepairId()));
+            repair.setVehicle(vehicle);
+            repairCreateService.insertRepair(repair);
+            redirectAttributes.addFlashAttribute("message", "Sucessful update!");
+        }catch(ParseException e){
+            redirectAttributes.addFlashAttribute("errormessage", "Invalid date format");
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("errormessage", "Something went wrong");
+        }
 
         return "redirect:/admin/edit-repair";
     }

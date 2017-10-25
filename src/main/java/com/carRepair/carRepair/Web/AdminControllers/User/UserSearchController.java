@@ -27,14 +27,12 @@ public class UserSearchController {
     @Autowired
     private MemberService memberService;
 
-
     @RequestMapping(value = "/admin/search-user", method = RequestMethod.GET)
     public String searchUser(Model model) {
 
         model.addAttribute(SEARCH_FORM, new SearchForm());
         return "/admin/user/search-user-view";
     }
-
 
     @RequestMapping(value = "/admin/search-user", method = RequestMethod.POST)
     public String searchUserPost(@ModelAttribute(SEARCH_FORM) SearchForm searchForm, RedirectAttributes redirectAttributes){

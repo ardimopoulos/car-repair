@@ -1,7 +1,8 @@
+<#import "/spring.ftl" as spring/>
 <!DOCTYPE html>
 
 <html>
-<#import "/spring.ftl" as spring/>
+
 
 <head>
       <#include "/base_libraries/head.ftl"/>
@@ -50,7 +51,7 @@
                     <span style="color:red">${error}</span>
                 </#list><br>
                 <label for="dateService">Service Date</label>
-            <input type="datetime-local" id="dateServ" name="date" placeholder="Select a date" value=${repairForm.repairDate!""} >
+            <input type="datetime-local" id="dateServ" name="repairDate" placeholder="Select a date" value=${repairForm.repairDate!""} >
         </div>
 
 

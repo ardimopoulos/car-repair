@@ -14,6 +14,8 @@ public class VehicleForm {
     private static final String YEAR_PATTERN = "^[12]{1}[0-9]{3}$";
     private static final String VAT_PATTERN = "^[0-9]{9}$";
 
+    private String vehicleId;
+
     @NotNull(message = "{create-vehicle.vat.null}")
     @Pattern(regexp = VAT_PATTERN, message = "{create-vehicle.vat.invalid}")
     private String vat;
@@ -43,7 +45,23 @@ public class VehicleForm {
     public VehicleForm() {
     }
 
+    public VehicleForm(String vehicleId, String vat, String plate, String brand, String model, String color, String yearOfModel) {
+        this.vehicleId = vehicleId;
+        this.vat = vat;
+        this.plate = plate;
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+        this.yearOfModel = yearOfModel;
+    }
 
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+    }
 
     public String getVat() {
         return vat;

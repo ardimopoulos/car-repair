@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-public class VehicleController {
+public class VehicleCreateController {
 
     private static final String VEHICLE_FORM = "vehicleForm";
 
@@ -44,9 +44,6 @@ public class VehicleController {
         if(bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.vehicleForm", bindingResult);
             redirectAttributes.addFlashAttribute(VEHICLE_FORM, vehicleForm);
-            //redirectAttributes.addFlashAttribute("message", "Please fill the fields again");
-            //redirectAttributes.addFlashAttribute("errorMessage", "Create vehicle failed!");
-
             return "redirect:/admin/create-vehicle";
         }
 

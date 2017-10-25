@@ -60,7 +60,6 @@
      <th>LastName</th>
      <th>VAT</th>
      <th>Address</th>
-     <th>Cars</th>
      <th>Edit</th>
      <th>Delete</th>
    </tr>
@@ -70,7 +69,6 @@
     <th>${member.lastname}</th>
     <th>${member.vat}</th>
     <th>${member.address}</th>
-    <th>Not doen Yet</th>
     <th><a href="/admin/edit-user?v=${member.vat}"><button type="button" class="btn btn-info">Edit</button></a></th>
     </form>
     <form action ="/admin/delete-user" name="deleteForm" id ="deleteForm" method="POST">

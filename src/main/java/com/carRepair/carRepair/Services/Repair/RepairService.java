@@ -11,7 +11,7 @@ public interface RepairService {
 
     Repair getRepair(long repairId) throws RepairNotFoundException;
 
-    List<Repair> getMemberRepairs(String email);
+    List<Repair> getMemberRepairs(String email) throws RepairNotFoundException;
 
 
 

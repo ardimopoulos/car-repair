@@ -65,7 +65,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member getMemberByVat(String vat) throws UserNotFoundException{
             Member m = memberRepository.findByVat(vat);
-            if(m != null){return m;}else{ throw new UserNotFoundException("User not Found"); }
+            if(m != null){return m;}else{ throw new UserNotFoundException("User not found with VAT: " + vat); }
     }
 
     public void deleteMember(Long id){ memberRepository.delete(id); }

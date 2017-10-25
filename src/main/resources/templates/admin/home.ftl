@@ -15,22 +15,27 @@
    <h1>Last Services </h1>
          <thead>
                <tr>
+               <th>Service ID</th>
                  <th>Description</th>
                  <th>Status</th>
                  <th>Date</th>
                  <th>Type</th>
-                 <th>Name</th>
+                 <th>Vehicle</th>
+                 <th>VAT</th>
                </tr>
          </thead>
      <tbody>
 <#if repairs??>
     <#list repairs as repair>
                <tr>
+                 <td>#${repair.repairId}</td>
                  <td>${repair.description}</td>
-                 <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
+                 <td><#if repair.status==0>Pending<#elseif repair.status==1>In progress<#else>Completed</#if></td>
                  <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
                  <td><#if repair.type>Big<#else>Small</#if></td>
                  <td>${repair.getVehicle().getMember().getFirstname()} ${repair.getVehicle().getMember().getLastname()}</td>
+                 <th>${repair.getVehicle().getPlate()}</th>
+                 <td>${repair.getVehicle().getMember().getVat()}</td>
                </tr>
     </#list>
      </tbody>

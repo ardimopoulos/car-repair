@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 public class RepairForm {
 
-    private static final String DATE_PATTERN = "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$";
+    private static final String DATE_PATTERN = "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$";
     private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[1-9]{4}$";
     private static final String STATUS_PATTERN = "^[012]$";
    // private static final String TYPE_PATTERN = "^[\btrue\b\bfalse\b]$";
@@ -24,10 +24,8 @@ public class RepairForm {
     @Pattern(regexp = PLATE_PATTERN, message = "{create-repair.plate.invalid}")
     private String plate;
 
-    @NotNull(message = "{create-repair.date.null}")
-    @Pattern(regexp = DATE_PATTERN, message = "{create-repair.date.invalid}")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private String repairDate;
+    private LocalDateTime repairDate;
 
     @NotNull(message = "{create-repair.status.null}")
     @Pattern(regexp = STATUS_PATTERN, message = "{create-repair.status.invalid}")
@@ -54,7 +52,7 @@ public class RepairForm {
     public RepairForm(Repair repair) {
         this.repairId = String.valueOf(repair.getRepairId());
         this.plate = repair.getVehicle().getPlate();
-        this.repairDate = repair.getrepairDate().toString();
+        this.repairDate = repair.getrepairDate();
         this.status = String.valueOf(repair.getStatus());
         this.description = repair.getDescription();
         this.type = String.valueOf(repair.getType());
@@ -77,11 +75,11 @@ public class RepairForm {
         this.plate = vat;
     }
 
-    public String getRepairDate() {
+    public LocalDateTime getRepairDate() {
         return repairDate;
     }
 
-    public void setRepairDate(String date) {
+    public void setRepairDate(LocalDateTime date) {
         this.repairDate = date;
     }
 

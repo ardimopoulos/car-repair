@@ -8,6 +8,7 @@ import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import com.carRepair.carRepair.Repositories.RepairRepository;
 import com.carRepair.carRepair.Repositories.VehicleRepository;
+import freemarker.template.utility.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,18 +45,57 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
         return repairList;
 
+    }
+
+    /*@Override
+    public List<Repair> getByRepairDate(String date)throws RepairNotFoundException,DateTimeParseException {
+        // Chrome returns format yyyy-mm-dd. Mozilla returns dd/mm/yyyy.
+        if (date.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
+            String d = formatLocalDate("dd-MM-yyyy", date).toString();
+            date = d;
         }
+        LocalDateTime startDate = LocalDateTime.parse(date + "T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(date + "T23:59:59");
+
+        List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate);
+        if (repairList.isEmpty()) {
+            throw new RepairNotFoundException("Repairs not exist for day " + date);
+        }
+
+        return repairList;
+    }*/
+
+   /* @Override
+    public List<Repair> getByBetweenRepairDates(String firstDate , String beforeDate) throws RepairNotFoundException{
+        // Chrome returns format yyyy-mm-dd. Mozilla returns dd/mm/yyyy.
+        if (firstDate.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
+            String fDate = formatLocalDate("dd-MM-yyyy", firstDate).toString();
+            String bDate = formatLocalDate("dd-MM-yyyy", beforeDate).toString();
+            firstDate = fDate;
+            beforeDate = bDate;
+        }
+        LocalDateTime startDate = LocalDateTime.parse(firstDate+"T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(beforeDate+"T23:59:59");
+        List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
+        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + firstDate + " and " + beforeDate); }
+        return repairList;
+    }*/
 
     @Override
     public List<Repair> getByVat(String vat) throws RepairNotFoundException{
-
+        List<Repair> repairList = new ArrayList<>();
             Member member = memberRepository.findByVat(vat);
             if(member == null){throw new RepairNotFoundException("Member not exist with vat "+vat );}
-            //List<Repair> repairList = repairRepository.findByMember(member);
-            List<Vehicle> vehicleList = member.getVehicles();
-            List<Repair> repairList = new ArrayList<>();
-            for(int i=0; i<vehicleList.size(); i++){ repairList.add( vehicleList.get(i).getRepairs().get(i) ); }
-            if(repairList.isEmpty() ) { throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
+            try {
+                List<Vehicle> vehicleList = member.getVehicles();
+
+                for (int i = 0; i < vehicleList.size(); i++) {
+                    List<Repair> repairsByVehicle = vehicleList.get(i).getRepairs();
+                    for (int j = 0; j < repairsByVehicle.size(); j++) {
+                        repairList.add(repairsByVehicle.get(j));
+                    }
+                }
+            }catch (Exception e){ throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
             return repairList;
         }
     @Override
@@ -63,12 +103,12 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
         Vehicle vehicle = vehicleRepository.findByPlate(plate);
 
-        if(vehicle == null ){throw new RepairNotFoundException("Vehicle not exist with palte" + plate);}
+        if(vehicle == null ){throw new RepairNotFoundException("Vehicle not exist with plate " + plate);}
 
-        if(vehicle.getRepairs() == null){ throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
+        if(vehicle.getRepairs() == null){ throw new RepairNotFoundException("Repairs not exist for plate " + plate); }
 
         List<Repair> repairList = vehicle.getRepairs();
-        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for palte " + plate); }
+        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for plate " + plate); }
         return repairList;
     }
 
@@ -83,7 +123,7 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(date2+"T23:59:59");
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
-        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + startDate + " and " + beforeDate); }
+        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + firstDate + " and " + beforeDate); }
         return repairList;
     }
 

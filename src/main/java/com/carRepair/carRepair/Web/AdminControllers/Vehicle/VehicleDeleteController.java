@@ -19,7 +19,6 @@ public class VehicleDeleteController {
     @RequestMapping(value = "/admin/delete-vehicle", method = RequestMethod.POST)
     String deleteVehicle(Model model ,  RedirectAttributes redirectAttributes , @RequestParam("hidden_vehicleId" )Long hidden_vehicleId){
 
-
         vehicleDeleteService.deleteVehicle(hidden_vehicleId);
         redirectAttributes.addFlashAttribute("errorMessage" , "The vehicle successful delete!");
 

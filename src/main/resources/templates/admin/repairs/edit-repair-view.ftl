@@ -26,7 +26,7 @@
         <div class="col-md-12">
             <div class="side">
             ${message!""}
-                ${errormessage!""}
+                ${errorMessage!""}
                 <div class="col-md-12">
                    <div class="col-md-6">
                  <@spring.bind "repairForm.repairId"/>
@@ -59,7 +59,7 @@
                     <span style="color:red">${error}</span>
                 </#list><br>
                 <label for="dateService">Service Date</label>
-            <input type="datetime-local" id="dateServ" name="date" placeholder="Select a date" value=${repairForm.repairDate!""} >
+            <input type="datetime-local" id="dateServ" name="repairDate" placeholder="Select a date" value=${repairForm.repairDate!""} >
         </div>
 
 
@@ -96,7 +96,7 @@
                   <#list spring.status.errorMessages as error>
                   <span style="color:red">${error}</span>
               </#list><br>
-            <textarea name="description" class="form-control" rows="4" id="comment" placeholder="Type comments for the service here(255 characters limit).." ></textarea>
+            <textarea name="description" class="form-control" rows="4" id="comment" placeholder="Type comments for the service here(255 characters limit).." >${repairForm.description!""}</textarea>
                 </div>
                 <input type="submit" value="Submit"><br><br>
 

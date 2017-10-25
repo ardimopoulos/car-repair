@@ -59,7 +59,6 @@ public class RepairCreateController {
                 status = "pending";
             }
 
-
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
             redirectAttributes.addFlashAttribute( type, "selected");

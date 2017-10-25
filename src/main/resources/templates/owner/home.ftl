@@ -27,7 +27,6 @@
                              <th>Status</th>
                              <th>Date</th>
                              <th>Type</th>
-                             <th>Time</th>
                              <th>Car</th>
                            </tr>
                      </thead>
@@ -36,10 +35,10 @@
                 <#list repairs as repair>
                            <tr>
                              <td>${repair.description}</td>
-                             <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
-                             <td>${repair.repairDate}</td>
-                             <td><#if repair.type>Big<#else>Small</#if></td>
-                             <td>Not done Yet</td>
+                             <td><#if repair.status==0>Pending<#elseif repair.status==1>In progress<#else>Completed</#if></td>
+                             <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
+                             <td><#if repair.type == true>Big<#else>Small</#if></td>
+                             <td>${repair.getVehicle().plate}</td>
                            </tr>
                 </#list>
                  </tbody>

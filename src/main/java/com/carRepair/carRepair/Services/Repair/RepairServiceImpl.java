@@ -2,6 +2,7 @@ package com.carRepair.carRepair.Services.Repair;
 
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,13 +47,23 @@ public class RepairServiceImpl implements RepairService{
     }
 
 
-    public List<Repair> getMemberRepairs(String email){
+    public List<Repair> getMemberRepairs(String email) throws RepairNotFoundException{
 
         Member member = memberRepository.findByEmail(email);
 
-       // List<Repair> repairs =  repairRepository.findByMember(member);
+        List<Repair> repairList = new ArrayList<>();
 
-        return  null;
+        try {
+            List<Vehicle> vehicleList = member.getVehicles();
+
+            for (int i = 0; i < vehicleList.size(); i++) {
+                List<Repair> repairsByVehicle = vehicleList.get(i).getRepairs();
+                for (int j = 0; j < repairsByVehicle.size(); j++) {
+                    repairList.add(repairsByVehicle.get(j));
+                }
+            }
+        }catch (Exception e){ throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
+        return repairList;
     }
 
 }
