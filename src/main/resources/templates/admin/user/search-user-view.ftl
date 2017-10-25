@@ -39,7 +39,7 @@
 
                                </div>
                                 <div class="tab-pane fade" id="v-pills-email" role="tabpanel" aria-labelledby="v-pills-email-tab">
-                                       <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" /><br>
+                                       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" /><br>
 
                                    <input type="submit" class="btn btn-info" name="button" value="Search email">
 

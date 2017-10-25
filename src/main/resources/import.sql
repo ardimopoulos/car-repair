@@ -17,14 +17,24 @@ INSERT INTO vehicle ( brand, color, model, plate, year, user_id) VALUES ( 'Toyot
 INSERT INTO vehicle ( brand, color, model, plate, year, user_id) VALUES ( 'Nissan', 'Black', 'Model1', 'XHI-4321', '2014-01-01', 2);
 INSERT INTO vehicle ( brand, color, model, plate, year, user_id) VALUES ( 'Scoda', 'White', 'Model1', 'OPI-4321', '2014-01-01', 1);
 
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:00:00','100', 'This is a description1', '0', false,1);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-15 15:00:00','100', 'This is a description2', '1',  true,2);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-30 15:00:00','100', 'This is a description3', '2',  false,3);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-28 15:00:00','100', 'This is a description4', '0',  true,4);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-28 15:00:00','100', 'This is a description1', '0', false,1);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description2', '1',  true,2);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description3', '2',  false,3);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description4', '0',  true,4);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 11:00:00','100', 'This is a description1', '0', false,1);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 12:00:00','100', 'This is a description2', '1',  true,2);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 13:00:00','100', 'This is a description3', '2',  false,3);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 10:00:00','100', 'This is a description4', '0',  true,4);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 09:00:00','100', 'This is a description1', '0', false,1);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 08:00:00','100', 'This is a description2', '1',  true,2);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 07:00:00','100', 'This is a description3', '2',  false,3);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:30:00','100', 'This is a description4', '0',  true,4);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:45:00','100', 'This is a description1', '0', false,1);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:15:00','100', 'This is a description2', '1',  true,2);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 20:15:00','100', 'This is a description3', '2',  false,3);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 19:30:00','100', 'This is a description4', '0',  true,4);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 14:45:00','100', 'This is a description1', '0', false,1);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:00:00','100', 'This is a description2', '1',  true,2);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:00:00','100', 'This is a description3', '2',  false,3);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:00:00','100', 'This is a description4', '0',  true,4);
+
+
 
 
 

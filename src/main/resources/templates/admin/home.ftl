@@ -33,6 +33,7 @@
                  <td><#if repair.status==0>Pending<#elseif repair.status==1>In progress<#else>Completed</#if></td>
                  <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
                  <td><#if repair.type>Big<#else>Small</#if></td>
+                 <td>${repair.getVehicle().getMember().getFirstname()} ${repair.getVehicle().getMember().getLastname()}</td>
                  <th>${repair.getVehicle().getPlate()}</th>
                  <td>${repair.getVehicle().getMember().getVat()}</td>
                </tr>
