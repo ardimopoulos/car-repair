@@ -31,4 +31,17 @@ public class VehicleConverter {
 
         return vehicle;
     }
+
+    public static VehicleForm buildVehicleFormObject(Vehicle vehicle){
+        String vehicleId = String.valueOf(vehicle.getVehicleId());
+        String plate = vehicle.getPlate();
+        String vat = vehicle.getMember().getVat();
+        String brand = vehicle.getBrand();
+        String model = vehicle.getModel();
+        String color = vehicle.getColor();
+        String year = vehicle.getYear().toString().substring(0,4);
+
+        VehicleForm vehicleForm = new VehicleForm(vehicleId,vat,plate,brand,model,color,year);
+        return vehicleForm;
+    }
 }

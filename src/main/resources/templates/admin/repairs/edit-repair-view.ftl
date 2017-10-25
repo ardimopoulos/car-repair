@@ -26,7 +26,7 @@
         <div class="col-md-12">
             <div class="side">
             ${message!""}
-                ${errormessage!""}
+                ${errorMessage!""}
                 <div class="col-md-12">
                    <div class="col-md-6">
                  <@spring.bind "repairForm.repairId"/>
@@ -59,7 +59,7 @@
                     <span style="color:red">${error}</span>
                 </#list><br>
                 <label for="dateService">Service Date</label>
-            <input type="datetime-local" id="dateServ" name="date" placeholder="Select a date" value=${repairForm.repairDate!""} >
+            <input type="datetime-local" id="dateServ" name="repairDate" placeholder="Select a date" value=${repairForm.repairDate!""} >
         </div>
 
 

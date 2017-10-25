@@ -15,8 +15,8 @@ public class RepairConverter {
     public static Repair builtRepairObject(RepairForm repairForm) throws ParseException {
 
         boolean repairType = (repairForm.getType().equals("true")) ? true : false;
-
-        LocalDateTime date = LocalDateTime.parse(repairForm.getRepairDate());
+        repairForm.getRepairDate();
+        LocalDateTime date =repairForm.getRepairDate();
 
         int status = Integer.parseInt(repairForm.getStatus());
         String description = repairForm.getDescription();

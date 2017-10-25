@@ -2,6 +2,7 @@ package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Converters.MemberConverter;
 import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Forms.User.EditUserForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
 import com.carRepair.carRepair.Utilities.AppUtilities;
@@ -37,13 +38,12 @@ public class UserEditController {
         if(vat != null){
             try {
                 Member member = memberService.getMemberByVat(vat);
-                EditUserForm editUserForm = new EditUserForm(member);
-
+                EditUserForm editUserForm = new EditUserForm(member); //TODO converter
                 String role = (member.getUserType()) ? "admin" : "simple";
                 model.addAttribute("editUserForm", editUserForm);
                 model.addAttribute(role,"selected");
-            } catch (Exception e) {
-                redirectAttributes.addFlashAttribute("errormessage","There is no user with VAT: "+vat);
+            } catch (UserNotFoundException e) {
+                redirectAttributes.addFlashAttribute("errormessage",e.getMessage());
                 return "redirect:/admin/edit-user";
             }
         }
@@ -76,6 +76,7 @@ public class UserEditController {
             String formNewPass = editUserForm.getNewPassword();
             String hashFormNewPass = "";
 
+            //TODO method
             if(!formPass.equals("")) {
                 boolean checkPass = AppUtilities.checkPassword(formPass,memberPass);
                 if ( checkPass && formNewPass.length() >= 8 && formNewPass.matches(pattern)){
@@ -100,7 +101,7 @@ public class UserEditController {
 
             member = memberService.insertMember(editMember);
 
-            String message = "User ";
+            String message = "Successful update!";
             redirectAttributes.addFlashAttribute("message", message);
 
         }catch (Exception e){

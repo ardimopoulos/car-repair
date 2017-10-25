@@ -76,7 +76,7 @@
             </div>
             </#if>
 <hr>
-<#if repairs??>
+<#if repairs?has_content>
 <div class="col-md-11">
 
 

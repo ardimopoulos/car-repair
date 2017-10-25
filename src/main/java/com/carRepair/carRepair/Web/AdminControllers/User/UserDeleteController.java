@@ -24,7 +24,6 @@ public class UserDeleteController {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping(value = "/admin/delete-user", method = RequestMethod.POST)
     String deleteUser(Model model , @RequestParam("hidden_email" )String hidden_email ){
 

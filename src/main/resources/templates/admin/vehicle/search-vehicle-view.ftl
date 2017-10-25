@@ -70,7 +70,7 @@
                     <td>${vehicle.year}</td>
                     <td>${vehicle.getMember().getFirstname()}</td>
 
-    <th><a href="/admin/edit-vehicle"><button type="button" class="btn btn-info">Edit</button></a></th>
+    <th><a href="/admin/edit-vehicle?p=${vehicle.plate}"><button type="button" class="btn btn-info">Edit</button></a></th>
 
     <form action ="/admin/delete-vehicle" name="deleteForm" id ="deleteForm" method="POST">
         <input type="hidden" name="hidden_vehicleId" id="hidden_vehicleId" value="${vehicle.vehicleId}">

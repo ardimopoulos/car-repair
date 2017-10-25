@@ -17,10 +17,9 @@ import javax.validation.Valid;
 
 @Controller
 
-public class UserController {
+public class UserCreateController {
 
     private static final String USER_FORM = "userForm";
-    private static final String BASE_URL = "/admin";
 
     @Autowired
     private MemberService memberService;
@@ -65,13 +64,12 @@ public class UserController {
                 return "redirect:/admin/create-vehicle";
             }
 
-
             String message = "New user is created: " + member.getFirstname() + " " + member.getLastname() + " with VAT: " + member.getVat();
             redirectAttributes.addFlashAttribute("message", message);
             redirectAttributes.addFlashAttribute("userId", member.getUserId());
 
         }catch (Exception e){
-            redirectAttributes.addFlashAttribute("message", "There is already an account with same VAT or email.");
+            redirectAttributes.addFlashAttribute("errormessage", "There is already an account with same VAT or email.");
             redirectAttributes.addFlashAttribute(USER_FORM, userForm);
             redirectAttributes.addFlashAttribute(role, "selected");
             redirectAttributes.addFlashAttribute("checked",  addVehicle);
@@ -79,6 +77,4 @@ public class UserController {
 
         return "redirect:/admin/create-user";
     }
-
-
 }
