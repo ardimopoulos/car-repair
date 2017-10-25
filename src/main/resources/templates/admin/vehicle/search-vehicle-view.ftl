@@ -59,7 +59,8 @@
      <th>Color</th>
      <th>Plate</th>
      <th>Year</th>
-     <th>User</th>
+     <th>First name</th>
+     <th>Last name</th>
    </tr>
    <#list vehicles as vehicle>
                   <tr>
@@ -69,6 +70,7 @@
                      <td>${vehicle.plate}</td>
                     <td>${vehicle.year?substring(7)}</td>
                     <td>${vehicle.getMember().getFirstname()}</td>
+                    <td>${vehicle.getMember().getLastname()}</td>
 
     <th><a href="/admin/edit-vehicle?p=${vehicle.plate}"><button type="button" class="btn btn-info">Edit</button></a></th>
 

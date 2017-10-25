@@ -50,11 +50,11 @@ public class VehicleEditController {
     }
 
     @RequestMapping(value = "/admin/edit-vehicle", method = RequestMethod.POST)
-    public String editVehicleView(@Valid @ModelAttribute(name = VEHICLE_FORM) VehicleForm vehicleForm, BindingResult bindingResult,
+    public String editVehicleView(Model model, @Valid @ModelAttribute(name = VEHICLE_FORM) VehicleForm vehicleForm, BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes){
 
         if(vehicleForm.getVehicleId().equals("")){
-            redirectAttributes.addFlashAttribute("errormessage", "Something went wrong");
+            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong");
             return "redirect:/admin/edit-repair";
         }
 
@@ -70,6 +70,7 @@ public class VehicleEditController {
             Member member = memberService.getMemberByVat(vehicleForm.getVat());
             vehicle.setMember(member);
             vehicleService.insertVehicle(vehicle);
+           redirectAttributes.addFlashAttribute("message", "Successful update!");
         }catch(UserNotFoundException e){
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }catch (Exception e) {

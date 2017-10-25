@@ -92,19 +92,21 @@
      <th>Description</th>
      <th>Status</th>
      <th>Type</th>
-     <th>User</th>
+     <th>First name</th>
+     <th>Last name</th>
    </tr>
    <#list repairs as repair>
                   <tr>
+                    <td>#${repair.repairId}</td>
+                    <td>${repair.getVehicle().getMember().getVat()}</td>
+                    <td>${repair.getVehicle().getPlate()}</td>
                     <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>${repair.repairDate}</td>
                     <td>${repair.description}</td>
                     <td><#if repair.status==0>Pending<#elseif repair.status==1>In progress<#else>Completed</#if></td>
                     <td><#if repair.type>Big<#else>Small</#if></td>
                     <td>${repair.getVehicle().getMember().getFirstname()}</td>
+                    <td>${repair.getVehicle().getMember().getLastname()}</td>
+
 
     <th><a href="/admin/edit-repair?id=${repair.repairId}"><button type="button" class="btn btn-info">Edit</button></a></th>
 
