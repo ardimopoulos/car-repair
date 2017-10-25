@@ -3,6 +3,8 @@ package com.carRepair.carRepair.Forms.Repair;
 import org.apache.tomcat.jni.Local;
 
 import javax.print.DocFlavor;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -10,7 +12,8 @@ import java.util.Date;
 public class RepairSearchForm {
 
     private static final String VAT_PATTERN = "^[0-9]{9}$";
-    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$";
+
+    private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[1-9]{4}$";
 
     private String startDate;
 
@@ -35,13 +38,16 @@ public class RepairSearchForm {
     public void setDate(String date) { this.date = date; }
 
     //@NotNull(message = "{create-user.vat.null}")
-    //@Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")
+    @Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")
     private String vat;
 
     public String getVat() { return vat; }
 
     public void setVat(String vat) { this.vat = vat; }
 
+
+    //@NotNull(message = "{create-vehicle.plate.null}")
+    @Pattern(regexp = PLATE_PATTERN, message = "{create-repair.plate.invalid}" )
     private String plate;
 
     public String getPlate() { return plate; }

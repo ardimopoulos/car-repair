@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
                 searchMember = memberRepository.findByVatOrEmail(vat, email);
             }
             if (searchMember == null || (vat.equals("") && email.equals(""))) {
-                throw new UserNotFoundException("User not found");
+                throw new UserNotFoundException("User not found with those credenatioals");
             }
         }catch(Exception e){
             throw new UserNotFoundException("User not found");

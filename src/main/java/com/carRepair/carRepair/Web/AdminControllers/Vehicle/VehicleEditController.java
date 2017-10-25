@@ -60,3 +60,31 @@ public class VehicleEditController {
     }
 
 }
+
+
+
+/*
+
+@Autowired
+private VehicleSearchService vehicleSearchService;
+
+@RequestMapping(value = "/admin/edit-vehicle", method = RequestMethod.GET)
+public String getEditVehicleView(Model model ,@RequestParam(name="plate",required = false)String plate){
+
+        if(plate !=null) {
+        try {
+        List<Vehicle> vehicles = vehicleSearchService.getByPlate(plate); // one vehicle
+        model.addAttribute("vehicles", vehicles);
+        } catch (VehicleNotFoundException vehicleNotFound) { model.addAttribute("errorMessage", vehicleNotFound.getMessage()); }
+
+        if (!model.containsAttribute(VEHICLE_FORM)) { model.addAttribute(VEHICLE_FORM, new VehicleForm()); } else { }
+
+        } else{ model.addAttribute(VEHICLE_SEARCH_FORM, new VehicleSearchForm()); }
+
+
+
+        return "/admin/vehicle/edit-vehicle-view";
+        }
+*/
+
+

@@ -7,6 +7,7 @@ import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
 import com.carRepair.carRepair.Repositories.RepairRepository;
 import com.carRepair.carRepair.Repositories.VehicleRepository;
+import freemarker.template.utility.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,22 @@ public class RepairSearchServiceImpl implements RepairSearchService{
     private VehicleRepository vehicleRepository;
 
     @Override
+    public List<Repair> getByRepairDate(String date)throws RepairNotFoundException,DateParseException {
+        LocalDate formatDate;
+        try{ formatDate = formatLocalDate("yyyy-MM-dd",date);
+        } catch(DateTimeParseException dateTimeParse){ throw new DateParseException("Cant use this format.Use the datepicker!"); }
+
+        LocalDateTime startDate = LocalDateTime.parse(formatDate+"T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(formatDate+"T23:59:59");
+
+        List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate , endDate);
+        if(repairList.isEmpty()){throw new RepairNotFoundException("Repairs not exist for day " + date);}
+
+        return repairList;
+
+    }
+
+    /*@Override
     public List<Repair> getByRepairDate(String date)throws RepairNotFoundException,DateTimeParseException {
         // Chrome returns format yyyy-mm-dd. Mozilla returns dd/mm/yyyy.
         if (date.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
@@ -45,9 +62,9 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         }
 
         return repairList;
-    }
+    }*/
 
-    @Override
+   /* @Override
     public List<Repair> getByBetweenRepairDates(String firstDate , String beforeDate) throws RepairNotFoundException{
         // Chrome returns format yyyy-mm-dd. Mozilla returns dd/mm/yyyy.
         if (firstDate.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
@@ -61,7 +78,7 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
         if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + firstDate + " and " + beforeDate); }
         return repairList;
-    }
+    }*/
 
     @Override
     public List<Repair> getByVat(String vat) throws RepairNotFoundException{
@@ -94,7 +111,24 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         return repairList;
     }
 
-    private LocalDate formatLocalDate(String format , String date){
+    @Override
+    public List<Repair> getByBetweenRepairDates(String firstDate , String beforeDate) throws RepairNotFoundException,DateParseException{
+        LocalDate date1;
+        LocalDate date2;
+        try {
+             date1 = formatLocalDate("yyyy-MM-dd", firstDate);
+             date2 = formatLocalDate("yyyy-MM-dd", beforeDate);
+        }catch(DateTimeParseException dateTimeParse){throw new DateUtil.DateParseException("Cant use this format.Use the datepicker!");}
+
+        LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(date2+"T23:59:59");
+        List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
+        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + startDate + " and " + beforeDate); }
+        return repairList;
+    }
+
+
+    public LocalDate formatLocalDate(String format , String date) throws DateTimeParseException{
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         LocalDate parsedDate = LocalDate.parse(date, formatter);

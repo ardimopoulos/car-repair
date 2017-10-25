@@ -2,9 +2,11 @@ package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
 import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
+import com.carRepair.carRepair.Exceptions.DateParseException;
 import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairSearchForm;
 import com.carRepair.carRepair.Services.Repair.RepairSearchService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,7 @@ import java.util.List;
 
 @Controller
 public class RepairSearchController {
-
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(RepairSearchController.class);
     private static final String REPAIR_SEARCH_FORM = "repairSearchForm";
 
     @Autowired
@@ -44,6 +46,7 @@ public class RepairSearchController {
                                    RedirectAttributes redirectAttributes,
                                    @RequestParam("button") String button){
 
+
         if(button.equals("Search Vat")){
             try {
                 List<Repair> repairs = repairSearchService.getByVat(repairSearchForm.getVat());
@@ -62,8 +65,8 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
         }catch(RepairNotFoundException repairNotFound) {
                 redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage());
-        }catch(DateTimeParseException ex){
-                redirectAttributes.addFlashAttribute("errorMessage", "Format or date is not valid. Please try again 'dd/mm/yyyy'");
+        }catch(DateParseException dateParseException){
+                redirectAttributes.addFlashAttribute("errorMessage", dateParseException.getMessage());
             }
 
         }else if(button.equals("Search Between")){
@@ -71,6 +74,7 @@ public class RepairSearchController {
             List<Repair> repairs = repairSearchService.getByBetweenRepairDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate() );
             redirectAttributes.addFlashAttribute("repairs" , repairs);
             }catch(RepairNotFoundException repairNotFound){redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage()); }
+            catch(DateParseException dateParseException){redirectAttributes.addFlashAttribute("errorMessage", dateParseException.getMessage()); }
         }else{
             redirectAttributes.addFlashAttribute("errorMessage", "Press the button");
 

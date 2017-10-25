@@ -5,6 +5,7 @@
 <title>Add user</title>
 
 <link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
+
        <#include "/base_libraries/head.ftl"/>
 
 
