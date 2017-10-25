@@ -46,13 +46,6 @@ public class RepairSearchController {
                                    RedirectAttributes redirectAttributes,
                                    @RequestParam("button") String button){
 
-        if(bindingResult.hasErrors()) {
-
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairSearchForm", bindingResult);
-            redirectAttributes.addFlashAttribute(REPAIR_SEARCH_FORM, repairSearchForm);
-            logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
-            return "redirect:/admin/search-repair";
-        }
 
         if(button.equals("Search Vat")){
             try {
