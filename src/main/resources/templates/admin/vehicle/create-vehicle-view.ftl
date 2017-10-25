@@ -10,14 +10,15 @@
 
 <#include "/admin/menu_bar.ftl"/>
 
-<h4>${message!""}</h4>
-<span style="color:red">${errormessage!""}</span>
+
 
 <form action="/admin/create-vehicle" id="mainForm" method="post" name="vehicleForm">
 <div class="col-md-1"></div>
 <div class="col-md-10">
 <h1>New Vehicle Form</h1><br>
             <div class="side">
+            <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
+            <span style="color:red">${errormessage!""}</span>
                 <div class="col-md-12">
                    <div class="col-md-6">
                         <@spring.bind "vehicleForm.vat"/>

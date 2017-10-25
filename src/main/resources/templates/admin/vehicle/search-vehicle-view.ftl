@@ -55,8 +55,8 @@
 <table class="table" id="myTable">
    <tr>
    <th>Brand</th>
+   <th>Model</th>
      <th>Color</th>
-     <th>Model</th>
      <th>Plate</th>
      <th>Year</th>
      <th>User</th>
@@ -64,10 +64,10 @@
    <#list vehicles as vehicle>
                   <tr>
                     <td>${vehicle.brand}</td>
+                    <td>${vehicle.model}</td>
                     <td>${vehicle.color}</td>
-                    <td></td>
                      <td>${vehicle.plate}</td>
-                    <td>${vehicle.year}</td>
+                    <td>${vehicle.year?substring(7)}</td>
                     <td>${vehicle.getMember().getFirstname()}</td>
 
     <th><a href="/admin/edit-vehicle?p=${vehicle.plate}"><button type="button" class="btn btn-info">Edit</button></a></th>

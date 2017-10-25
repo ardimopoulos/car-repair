@@ -14,7 +14,6 @@ public class VehicleForm {
     private static final String YEAR_PATTERN = "^[12]{1}[0-9]{3}$";
     private static final String VAT_PATTERN = "^[0-9]{9}$";
 
-    @NotNull
     private String vehicleId;
 
     @NotNull(message = "{create-vehicle.vat.null}")

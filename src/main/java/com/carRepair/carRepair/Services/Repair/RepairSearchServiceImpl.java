@@ -124,7 +124,7 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(date2+"T23:59:59");
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
-        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + startDate + " and " + beforeDate); }
+        if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for those dates between " + firstDate + " and " + beforeDate); }
         return repairList;
     }
 
