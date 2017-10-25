@@ -43,7 +43,7 @@ public class UserSearchController {
             Member member = memberService.getMemberByVatOrMail(searchForm.getVat(),searchForm.getEmail());
             redirectAttributes.addFlashAttribute("member", member);
         }catch(UserNotFoundException userNotFound){
-            redirectAttributes.addFlashAttribute("errorMessage", "No results");
+            redirectAttributes.addFlashAttribute("errorMessage", userNotFound.getMessage());
         }
         return "redirect:/admin/search-user";
     }

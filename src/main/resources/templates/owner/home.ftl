@@ -37,9 +37,8 @@
                            <tr>
                              <td>${repair.description}</td>
                              <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
-                             <td>${repair.date}</td>
+                             <td>${repair.repairDate}</td>
                              <td><#if repair.type>Big<#else>Small</#if></td>
-                             <td>${repair.time}</td>
                              <td>Not done Yet</td>
                            </tr>
                 </#list>

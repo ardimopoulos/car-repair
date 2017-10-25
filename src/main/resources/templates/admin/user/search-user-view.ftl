@@ -15,16 +15,36 @@
              <div class="row"  >
                  <div class="col-md-2"></div>
                  <div class="col-md-8">
-                       <form name="searchForm" id="searchForm" action="/admin/search-user"  method="post" >
+                           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                               <li class="nav-item">
+                                <a class="nav-link active" id="v-pills-vat-tab" data-toggle="pill" href="#v-pills-vat" role="tab" aria-controls="v-pills-vat" aria-selected="true">Vat</a>
+                               </li>
+                              <li class="nav-item">
+                                <a class="nav-link" id="v-pills-email-tab" data-toggle="pill" href="#v-pills-email" role="tab" aria-controls="v-pills-email" aria-selected="false">Email</a>
+                               </li>
 
-                                <input type="text" class="form-control"  id="vat" placeholder="Enter VAT"  name="vat" /><br>
+                              </div>
 
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" />
+                              <br>
+                              <form name="searchForm" id="searchForm" action="/admin/search-user"  method="post" >
+                              <div class="tab-content" id="v-pills-tabContent">
 
+                                <div class="tab-pane fade" id="v-pills-vat" role="tabpanel" aria-labelledby="v-pills-vat-tab">
+                                       <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
 
+                                   <input type="submit" class="btn btn-info" name="button" value="Search Vat">
 
-                           <button type="submit" class="btn">Search</button>
-                        </form>
+                               </div>
+                                <div class="tab-pane fade" id="v-pills-email" role="tabpanel" aria-labelledby="v-pills-email-tab">
+                                       <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" /><br>
+
+                                   <input type="submit" class="btn btn-info" name="button" value="Search email">
+
+                               </div>
+
+                                </div>
+                            </form>
 
                  </div>
             <div class="col-md-2"></div>
