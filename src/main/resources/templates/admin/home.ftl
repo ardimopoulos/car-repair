@@ -30,7 +30,7 @@
                  <td><#if repair.status==0>Not Done<#elseif repair.status==1>Stand By<#else>Done</#if></td>
                  <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
                  <td><#if repair.type>Big<#else>Small</#if></td>
-                 <td>Note done yet</td>
+                 <td>${repair.getVehicle().getMember().getFirstname()} ${repair.getVehicle().getMember().getLastname()}</td>
                </tr>
     </#list>
      </tbody>

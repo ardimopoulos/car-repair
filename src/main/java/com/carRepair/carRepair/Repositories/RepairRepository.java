@@ -19,6 +19,9 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
 
     List<Repair> findByRepairDateAfterAndRepairDateBefore(LocalDateTime startDate ,LocalDateTime startAfter);
 
+    List<Repair> findTop10ByRepairDateAfterAndRepairDateBeforeOrderByRepairDateAsc(LocalDateTime startDate ,LocalDateTime startAfter);
+
+
     void delete(Long id);
 
     Repair save(Repair repair);

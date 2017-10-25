@@ -80,7 +80,6 @@ public class RepairSearchServiceImpl implements RepairSearchService{
              date1 = formatLocalDate("yyyy-MM-dd", firstDate);
              date2 = formatLocalDate("yyyy-MM-dd", beforeDate);
         }catch(DateTimeParseException dateTimeParse){throw new DateParseException("Cant use this format.Use the datepicker!");}
-
         LocalDateTime startDate = LocalDateTime.parse(date1+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(date2+"T23:59:59");
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate, endDate );
