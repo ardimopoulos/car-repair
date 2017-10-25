@@ -39,12 +39,9 @@ public class RepairSearchServiceImpl implements RepairSearchService{
 
         LocalDateTime startDate = LocalDateTime.parse(formatDate+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(formatDate+"T23:59:59");
-
         List<Repair> repairList = repairRepository.findByRepairDateAfterAndRepairDateBefore(startDate , endDate);
         if(repairList.isEmpty()){throw new RepairNotFoundException("Repairs not exist for day " + date);}
-
         return repairList;
-
     }
 
     /*@Override
@@ -84,29 +81,25 @@ public class RepairSearchServiceImpl implements RepairSearchService{
     @Override
     public List<Repair> getByVat(String vat) throws RepairNotFoundException{
         List<Repair> repairList = new ArrayList<>();
-            Member member = memberRepository.findByVat(vat);
-            if(member == null){throw new RepairNotFoundException("Member not exist with vat "+vat );}
-            try {
-                List<Vehicle> vehicleList = member.getVehicles();
-
-                for (int i = 0; i < vehicleList.size(); i++) {
-                    List<Repair> repairsByVehicle = vehicleList.get(i).getRepairs();
-                    for (int j = 0; j < repairsByVehicle.size(); j++) {
-                        repairList.add(repairsByVehicle.get(j));
-                    }
+        Member member = memberRepository.findByVat(vat);
+        if(member == null){throw new RepairNotFoundException("Member not exist with vat "+vat );}
+        try {
+            List<Vehicle> vehicleList = member.getVehicles();
+            for (int i = 0; i < vehicleList.size(); i++) {
+                List<Repair> repairsByVehicle = vehicleList.get(i).getRepairs();
+                for (int j = 0; j < repairsByVehicle.size(); j++) {
+                    repairList.add(repairsByVehicle.get(j));
                 }
-            }catch (Exception e){ throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
-            return repairList;
-        }
+            }
+        }catch (Exception e){ throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
+        return repairList;
+    }
+
     @Override
     public List<Repair> getByPlate(String plate) throws RepairNotFoundException{
-
         Vehicle vehicle = vehicleRepository.findByPlate(plate);
-
         if(vehicle == null ){throw new RepairNotFoundException("Vehicle not exist with plate " + plate);}
-
         if(vehicle.getRepairs() == null){ throw new RepairNotFoundException("Repairs not exist for plate " + plate); }
-
         List<Repair> repairList = vehicle.getRepairs();
         if(repairList.isEmpty()) { throw new RepairNotFoundException("Repairs not exist for plate " + plate); }
         return repairList;
@@ -127,12 +120,9 @@ public class RepairSearchServiceImpl implements RepairSearchService{
         return repairList;
     }
 
-
-    public LocalDate formatLocalDate(String format , String date) throws DateTimeParseException{
-
+    private LocalDate formatLocalDate(String format , String date) throws DateTimeParseException{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         LocalDate parsedDate = LocalDate.parse(date, formatter);
         return parsedDate; // get (default) format : yyyy-MM-dd
     }
-
 }

@@ -48,14 +48,10 @@ public class RepairServiceImpl implements RepairService{
 
 
     public List<Repair> getMemberRepairs(String email) throws RepairNotFoundException{
-
         Member member = memberRepository.findByEmail(email);
-
         List<Repair> repairList = new ArrayList<>();
-
         try {
             List<Vehicle> vehicleList = member.getVehicles();
-
             for (int i = 0; i < vehicleList.size(); i++) {
                 List<Repair> repairsByVehicle = vehicleList.get(i).getRepairs();
                 for (int j = 0; j < repairsByVehicle.size(); j++) {

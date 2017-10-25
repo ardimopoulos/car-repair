@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 </html>
 
 <#import "/spring.ftl" as spring/>
@@ -67,3 +67,4 @@
                 }
             </script>
     </body>
+</html>

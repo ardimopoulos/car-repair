@@ -1,4 +1,5 @@
 <#import "/spring.ftl" as spring/>
+<!DOCTYPE html>
 <head>
     <title>Sign-Up/Search Form</title>
         <#include "/base_libraries/head.ftl"/>
@@ -83,3 +84,4 @@
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
     </body>
+</html>
