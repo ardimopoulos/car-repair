@@ -113,7 +113,7 @@ input[type=text]:focus {
 }
 .subut{
     width: 24%;
-    background-color: limegreen;
+   background-color: #4CAF50;
     border-radius: 10px;
     font-weight: bold;
     text-align: center;

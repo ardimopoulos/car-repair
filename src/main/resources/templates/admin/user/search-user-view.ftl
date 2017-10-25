@@ -2,6 +2,8 @@
 <head>
     <title>Sign-Up/Search Form</title>
         <#include "/base_libraries/head.ftl"/>
+                <link rel="stylesheet" type="text/css" href="/css/searchFormsStyle.css"/>
+
 </head>
     <body>
     <#include "/admin/menu_bar.ftl"/>
@@ -12,9 +14,9 @@
             </div>
             </div>
             </#if>
-             <div class="row"  >
-                 <div class="col-md-2"></div>
-                 <div class="col-md-8">
+             <div class="container"  >
+
+                 <div class="col-md-12">
                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                <li class="nav-item">
@@ -47,10 +49,8 @@
                             </form>
 
                  </div>
-            <div class="col-md-2"></div>
 </div>
 
-<hr>
 <#if member??>
 <div class="container">
 <table class="table">
