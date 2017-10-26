@@ -22,8 +22,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-            //POST method for login
-            .formLogin()
+        /*http*/.formLogin()
                     .loginPage("/login")
                     .successHandler(successLoginHandler)
                     .usernameParameter("username")

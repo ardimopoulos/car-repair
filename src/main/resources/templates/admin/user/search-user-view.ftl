@@ -29,18 +29,18 @@
                               </div>
 
                               <br>
-                              <form name="searchForm" id="searchForm" action="/admin/search-user"  method="post" >
+                              <form name="searchForm" id="searchForm" action="/admin/search-user"  method="post" onsubmit="return (vatValidation() && emailValidation());">
                               <div class="tab-content" id="v-pills-tabContent">
 
                                 <div class="tab-pane fade" id="v-pills-vat" role="tabpanel" aria-labelledby="v-pills-vat-tab">
-                                       <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
-
+                                       <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" onkeydown="vatValidation()" onkeyup="vatValidation()"><br>
+                                  <span id="vat_error"></span>
                                    <input type="submit" class="btn btn-info" name="button" value="Search Vat">
 
                                </div>
                                 <div class="tab-pane fade" id="v-pills-email" role="tabpanel" aria-labelledby="v-pills-email-tab">
-                                       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" /><br>
-
+                                       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" onkeydown="emailValidation()" onkeyup="emailValidation()"><br>
+                                 <span id="email_error"></span>
                                    <input type="submit" class="btn btn-info" name="button" value="Search email">
 
                                </div>
@@ -50,7 +50,6 @@
 
                  </div>
 </div>
-
 <#if member??>
 <div class="container">
 <table class="table">
@@ -82,4 +81,6 @@
 
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
+<script type="text/javascript" src=/js/UserValidation.js></script>
+
     </body>
