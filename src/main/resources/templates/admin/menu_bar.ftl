@@ -4,7 +4,7 @@
      <a class="navbar-brand" >Car Repairs</a>
    </div>
    <ul class="nav navbar-nav">
-     <li class="active"><a href="/admin">Home</a></li>
+     <li class="nav navbar-nav"><a href="/admin">Home</a></li>
      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
        <ul class="dropdown-menu">
          <li><a href="/admin/create-user">Create User</a></li>

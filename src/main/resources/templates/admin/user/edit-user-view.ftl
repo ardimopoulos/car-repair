@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add user</title>
+<title>Edit User</title>
 
 <link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
 
@@ -48,7 +48,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
-       <h1>Edit user</h1>
+       <h1>Edit User</h1>
     <br>
        <form name="searchUser" action="/admin/edit-user"  method="get" >
           <!-- <label for="vat">VAT:</label>-->

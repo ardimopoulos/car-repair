@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <head>
-    <title>Sign-Up/Search Form</title>
+    <title>Search Form</title>
         <#include "/base_libraries/head.ftl"/>
         <link rel="stylesheet" type="text/css" href="/css/searchFormsStyle.css"/>
 </head>

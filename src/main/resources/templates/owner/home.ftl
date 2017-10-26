@@ -16,11 +16,22 @@
 </head>
 
     <body>
+    <nav class="navbar navbar-inverse">
+     <div class="container-fluid">
+
+       <ul class="nav navbar-nav navbar-right">
+                     <li>
+                         <a href="/logout"> <span class="glyphicon glyphicon-log-in"></span>&nbsp; Logout</a>
+                     </li>
+                   </ul>
+     </div>
+    </nav>
     <div class="container">
-             <header>
-                     <h1>Welcome to Car Repairs</h1>
-                     </header>
-<table class="table">
+
+                     <h3>Welcome to Car Repairs</h3>
+                     <br>
+
+            <table class="table">
               <thead>
                            <tr>
                              <th>Description</th>

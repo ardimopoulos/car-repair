@@ -10,16 +10,8 @@
 <#include "/admin/menu_bar.ftl"/>
     <script>
              function myFunction() {
-                 var pass1 = document.getElementById("UserP").value;
-                 var pass2 = document.getElementById("ConfPass").value;
-                 if (pass1 != pass2) {
-                     //alert("Passwords Do not match");
-                     document.getElementById("UserP").style.borderColor = "#E34234 ";
-                     document.getElementById("ConfPass").style.borderColor = "#E34234 ";
-                 } else {
-                     document.getElementById("UserP").style.borderColor = "#33cc33";
-                     document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
-                 } {
+
+
                      var pass1 = document.getElementById("UserP").value;
                      var pass2 = document.getElementById("ConfPass").value;
                      var ok = true;
@@ -34,7 +26,7 @@
                      }
                      return ok;
                  }
-             }
+
      </script>
     <div class="col-md-1"></div>
     <div class="col-md-10">

@@ -60,7 +60,7 @@ public class UserCreateController {
             // Redirect if checkbox in form is checked
             if(userForm.getAddVehicle()){
                 redirectAttributes.addFlashAttribute("memberVat", member.getVat());
-                redirectAttributes.addFlashAttribute("errormessage", "Add vehicle for user wih VAT: " + member.getVat());
+                redirectAttributes.addFlashAttribute("errormessage", "Add vehicle for user with VAT: " + member.getVat());
                 return "redirect:/admin/create-vehicle";
             }
 

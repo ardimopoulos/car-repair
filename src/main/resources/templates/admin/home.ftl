@@ -3,7 +3,7 @@
 
 <#import "/spring.ftl" as spring/>
 <head>
-    <title>Sign-Up/Login Form</title>
+    <title>Home Admin</title>
         <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
@@ -12,7 +12,8 @@
 <div class="container">
     <table class="table table-striped">
 
-   <h1>Last Services </h1>
+   <h3>Last Services </h3>
+   <br>
          <thead>
                <tr>
                <th>Service ID</th>

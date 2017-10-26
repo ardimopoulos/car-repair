@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 <html>
 <head>
-<title>Add Vehicle</title>
+<title>Edit Vehicle</title>
     <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/serviceReg.css">
 </head>
