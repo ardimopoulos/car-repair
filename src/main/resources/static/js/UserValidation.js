@@ -16,12 +16,15 @@ function vatValidation() {
 function emailValidation() {
     var email = document.getElementById("email").value;
     if(email != ""){
-    if( email.match(/^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$/) ){
-        document.getElementById("email").style.borderColor = "#33cc33";
-        document.getElementById("email_error").innerHTML="";
-    }else{
-        document.getElementById("email").style.borderColor = "#E34234";
-        document.getElementById("email_error").innerHTML="Give valid email";
+        if( email.match(/^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$/) ){
+            document.getElementById("email").style.borderColor = "#33cc33";
+            document.getElementById("email_error").innerHTML="";
+        }else{
+            document.getElementById("email").style.borderColor = "#E34234";
+            document.getElementById("email_error").innerHTML="Give valid email";
+          }
+      }else{
+          document.getElementById("email").style.borderColor = "#ccc";
+          document.getElementById("email_error").innerHTML="";
       }
-      }else{document.getElementById("email").style.borderColor = "#ccc";document.getElementById("email_error").innerHTML="";}
 }
