@@ -70,10 +70,9 @@ public class VehicleEditController {
             vehicle.setMember(member);
             vehicleService.insertVehicle(vehicle);
            redirectAttributes.addFlashAttribute("message", "Successful update!");
-        }catch(UserNotFoundException e){
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong");
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(VEHICLE_FORM, vehicleForm);
         }
         return "redirect:/admin/edit-vehicle";
     }

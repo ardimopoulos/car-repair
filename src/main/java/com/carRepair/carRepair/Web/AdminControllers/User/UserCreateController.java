@@ -55,7 +55,7 @@ public class UserCreateController {
             // Redirect if checkbox in form is checked
             if(userForm.getAddVehicle()){
                 redirectAttributes.addFlashAttribute("memberVat", member.getVat());
-                redirectAttributes.addFlashAttribute("errormessage", "Add vehicle for user with VAT: " + member.getVat());
+                redirectAttributes.addFlashAttribute("errorMessage", "Add vehicle for user with VAT: " + member.getVat());
                 return "redirect:/admin/create-vehicle";
             }
 
@@ -64,7 +64,7 @@ public class UserCreateController {
             redirectAttributes.addFlashAttribute("message", message);
             redirectAttributes.addFlashAttribute("userId", member.getUserId());
         }catch (UserExistException e){
-            redirectAttributes.addFlashAttribute("errormessage", "There is already an account with same VAT or email.");
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             redirectAttributes.addFlashAttribute(USER_FORM, userForm);
             redirectAttributes.addFlashAttribute(role, "selected");
             redirectAttributes.addFlashAttribute("checked",  addVehicle);

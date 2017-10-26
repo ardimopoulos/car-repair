@@ -17,9 +17,8 @@
                   <button type="submit" class="btn">Search</button>
                </form>
 </div>
-
 <span id="mes1" style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-<span id="mes2" style="color:red">${errorMessage!""}</span>
+
 
 <#if vehicleForm??>
 
@@ -28,7 +27,7 @@
 <div class="col-md-10">
 
             <div class="side">
-
+<span id="mes2" style="color:red">${errorMessage!""}</span>
                 <div class="col-md-12">
                    <div class="col-md-6">
                     <input type="hidden" id="vehid" name="vehicleId" value="${vehicleForm.vehicleId}" />

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -34,9 +36,11 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member insertMember(Member member) throws UserExistException {
-        Member newMember = memberRepository.save(member);
-        if(newMember == null){
-            throw new UserExistException("User already exists");
+        Member newMember = null;
+        try {
+           newMember = memberRepository.save(member);
+        }catch(Exception e){
+            throw new UserExistException("There is already an account with same VAT or email.");
         }
         return newMember;
     }
@@ -68,7 +72,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member getMemberById(Long id) throws UserNotFoundException {
         Member m =  memberRepository.findOne(id);
-        if(m != null){return m;}else{throw new UserNotFoundException("User not found by email");}
+        if(m != null){return m;}else{throw new UserNotFoundException("User not found");}
     }
 
     @Override

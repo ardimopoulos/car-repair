@@ -4,6 +4,7 @@ import com.carRepair.carRepair.Converters.RepairConverter;
 import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Exceptions.RepairNotFoundException;
+import com.carRepair.carRepair.Exceptions.VehicleNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairForm;
 import com.carRepair.carRepair.Services.Repair.RepairService;
 import com.carRepair.carRepair.Services.Vehicle.VehicleService;
@@ -96,11 +97,11 @@ public class RepairEditController {
             repair.setRepairId(Long.valueOf(repairForm.getRepairId()));
             repair.setVehicle(vehicle);
             repairService.insertRepair(repair);
-            redirectAttributes.addFlashAttribute("message", "Sucessful update!");
+            redirectAttributes.addFlashAttribute("message", "Successful update!");
         }catch(ParseException e){
             redirectAttributes.addFlashAttribute("errorMessage", "Invalid date format");
         }catch (Exception e){
-            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong");
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
         }
         return "redirect:/admin/edit-repair";

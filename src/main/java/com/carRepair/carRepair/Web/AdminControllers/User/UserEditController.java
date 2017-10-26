@@ -2,6 +2,7 @@ package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Converters.MemberConverter;
 import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.Exceptions.UserExistException;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Forms.User.EditUserForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
@@ -36,7 +37,7 @@ public class UserEditController {
                 model.addAttribute("editUserForm", editUserForm);
                 model.addAttribute(role,"selected");
             } catch (UserNotFoundException e) {
-                redirectAttributes.addFlashAttribute("errormessage",e.getMessage());
+                redirectAttributes.addFlashAttribute("errorMessage",e.getMessage());
                 return "redirect:/admin/edit-user";
             }
         }
@@ -72,8 +73,9 @@ public class UserEditController {
             memberService.insertMember(editMember);
             String message = "Successful update!";
             redirectAttributes.addFlashAttribute("message", message);
-        }catch (Exception e){
+        }catch (UserExistException | UserNotFoundException e){
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(EDIT_USER_FORM, editUserForm);
         }
         return "redirect:/admin/edit-user";
     }

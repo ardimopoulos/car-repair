@@ -23,16 +23,15 @@
        <#if message??>
        <span style="background-color:green; padding:10px; color:white">${message}<span>
        </#if>
-       <#if errorMessage??>
-       <span style="background-color:red; padding:10px; color:white"">${errorMessage}<span>
-       </#if>
+
        <#if editUserForm??>
         <form action="/admin/edit-user" id="mainForm" method="post" name="editUserForm">
             <div class="col-md-12">
                 <div class="side">
-                <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-                <span style="color: red; font-weight: bold; font-size:14px">${errormessage!""}</span>
-                    <div class="col-md-12">
+                <#if errorMessage??>
+                       <p style="color: red; font-weight: bold; font-size:14px">${errorMessage}<p>
+                       </#if>
+                  <div class="col-md-12">
                     <@spring.bind "editUserForm.userId"/>
                     <input type="hidden" name="userId" value="${editUserForm.userId!""}"/>
                    <div class="col-md-6">
