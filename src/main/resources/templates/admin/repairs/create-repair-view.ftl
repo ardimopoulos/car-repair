@@ -5,6 +5,7 @@
 
 
 <head>
+    <title>New Service Form</title>
       <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/serviceReg.css">
 </head>

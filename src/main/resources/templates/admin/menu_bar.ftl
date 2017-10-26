@@ -4,7 +4,7 @@
      <a class="navbar-brand" >Car Repairs</a>
    </div>
    <ul class="nav navbar-nav">
-     <li class="active"><a href="/admin">Home</a></li>
+     <li class="nav navbar-nav"><a href="/admin">Home</a></li>
      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
        <ul class="dropdown-menu">
          <li><a href="/admin/create-user">Create User</a></li>
@@ -12,7 +12,7 @@
          <li><a href="/admin/search-user">Search User</a></li>
        </ul>
      </li>
-     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Repairs<span class="caret"></span></a>
+     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Services<span class="caret"></span></a>
              <ul class="dropdown-menu">
                <li><a href="/admin/create-repair">Create Service</a></li>
                <li><a href="/admin/edit-repair">Edit Service</a></li>

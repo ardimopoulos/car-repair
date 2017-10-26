@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <head>
-    <title>Sign-Up/Search Form</title>
+    <title>Search Form</title>
         <#include "/base_libraries/head.ftl"/>
         <link rel="stylesheet" type="text/css" href="/css/searchFormsStyle.css"/>
 </head>
@@ -28,13 +28,13 @@
 
                </div>
                <br>&nbsp;
-               <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm">
+               <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm" onsubmit="return vatValidation()">
                <div class="tab-content" id="v-pills-tabContent">
 
                  <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                        <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
-
+                        <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" onkeyup="vatValidation()"/><br>
+                    <span id="vat_error"></span>
                     <input type="submit" class="btn btn-info" name="button" value="Search Vat">
 
                 </div>
@@ -122,6 +122,7 @@
 
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
+<script type="text/javascript" src="/js/RepairValidation.js"></script>
 
 
     </body>

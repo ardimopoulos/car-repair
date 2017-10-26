@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+
 </html>
 
 <#import "/spring.ftl" as spring/>
 <head>
-    <title>Sign-Up/Login Form</title>
+    <title>Home Admin</title>
         <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
@@ -12,9 +12,10 @@
 <div class="container">
     <table class="table table-striped">
 
-   <h1>Last Services </h1>
-         <thead style="background-color:white;" class="hometable">
-               <tr class="tablehead">
+   <h3>Last Services </h3>
+   <br>
+         <thead>
+               <tr>
                <th>Service ID</th>
                  <th>Description</th>
                  <th>Status</th>
@@ -22,6 +23,7 @@
                  <th>Type</th>
                  <th>Name</th>
                  <th>Vehicle</th>
+                 <th>Plate</th>
                  <th>VAT</th>
                </tr>
          </thead>

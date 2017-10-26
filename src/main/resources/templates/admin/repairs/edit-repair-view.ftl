@@ -5,6 +5,7 @@
 
 
 <head>
+    <title>Edit Service Form</title>
   <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/serviceReg.css">
 </head>
@@ -15,6 +16,7 @@
 
 
        <h1>Edit Service Form</h1>
+       <br>
        <form name="searchUser" action="/admin/edit-repair"  method="get" >
                  <!-- <label for="vat">VAT:</label>-->
                  <input type="text" class="form-control"  id="id" placeholder="Enter service number" autocomplet="off" name="id" required/>

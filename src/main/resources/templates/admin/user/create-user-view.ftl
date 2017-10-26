@@ -8,40 +8,12 @@
 </head>
 <body>
 <#include "/admin/menu_bar.ftl"/>
-    <script>
-             function myFunction() {
-                 var pass1 = document.getElementById("UserP").value;
-                 var pass2 = document.getElementById("ConfPass").value;
-                 if (pass1 != pass2) {
-                     document.getElementById("UserP").style.borderColor = "#E34234";
-                     document.getElementById("ConfPass").style.borderColor = "#E34234";
-                 } else {
-                     document.getElementById("UserP").style.borderColor = "#33cc33";
-                     document.getElementById("ConfPass").style.borderColor = "#33cc33";
-                 } {
-                     var pass1 = document.getElementById("UserP").value;
-                     var pass2 = document.getElementById("ConfPass").value;
-                     var ok = true;
-                     if (pass1 != pass2) {
-                         //alert("Passwords Do not match");
-                         document.getElementById("UserP").style.borderColor = "#E34234";
-                         document.getElementById("ConfPass").style.borderColor = "#E34234";
-                         ok = false;
-                     } else {
-                         document.getElementById("UserP").style.borderColor = "#33cc33";
-                         document.getElementById("ConfPass").style.borderColor = "#33cc33";
-                     }
-                     return ok;
-                 }
-             }
-     </script>
+
     <div class="col-md-1"></div>
     <div class="col-md-10">
-       <h1>User Registration Form</h1>
-        <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return myFunction()">
-         <!--<#if userId??>
-                <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>
-          </#if>-->
+       <h1>User Registration Form</h1><br>
+        <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return passValidation();">
+
             <div class="col-md-12">
                 <div class="side">
                 <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
@@ -90,7 +62,7 @@
                         </div>
                     <div class="col-md-6">
                     <label for="configpassword">Confirm password</label>
-        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." /></div>
+        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." onkeyup="passValidation()" ></div>
            </div>
             <div class="col-md-12">
     <div class="col-md-6">
@@ -128,5 +100,5 @@
     </body>
     <#include "/base_libraries/footer.ftl"/>
     <#include "/base_libraries/js.ftl"/>
-
+    <script type="text/javascript" src="/js/PasswordValidation.js">
     </html>

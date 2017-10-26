@@ -2,52 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add user</title>
+<title>Edit User</title>
+
 <link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
 <#include "/base_libraries/head.ftl"/>
 </head>
 <body>
 <#include "/admin/menu_bar.ftl"/>
 
-
-    <script>
-             function myFunction() {
-                 var pass1 = document.getElementById("UserP").value;
-                 var pass2 = document.getElementById("ConfPass").value;
-                 if (pass1 != pass2) {
-                     //alert("Passwords Do not match");
-                     document.getElementById("UserP").style.borderColor = "#E34234 ";
-                     document.getElementById("ConfPass").style.borderColor = "#E34234 ";
-                 } else {
-                     document.getElementById("UserP").style.borderColor = "#33cc33";
-                     document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
-                 } {
-                     var pass1 = document.getElementById("UserP").value;
-                     var pass2 = document.getElementById("ConfPass").value;
-                     var ok = true;
-                     if (pass1 != pass2) {
-                         //alert("Passwords Do not match");
-                         document.getElementById("UserP").style.borderColor = "#E34234 ";
-                         document.getElementById("ConfPass").style.borderColor = "#E34234 ";
-                         ok = false;
-                     } else {
-                         document.getElementById("UserP").style.borderColor = "#33cc33 ";
-                         document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
-                     }
-                     return ok;
-                 }
-             }
-     </script>
-
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
-       <h1>Edit user</h1>
-
+       <h1>Edit User</h1>
+    <br>
        <form name="searchUser" action="/admin/edit-user"  method="get" >
           <!-- <label for="vat">VAT:</label>-->
-          <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="v" />
-           <button type="submit" class="btn">Search</button>
+          <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="v" required/>
+           <button id="searchB" type="submit" class="btn">Search</button>
         </form>
        <#if message??>
        <span style="background-color:green; padding:10px; color:white">${message}<span>
@@ -119,7 +90,6 @@
                     </div>
                     <div class="col-md-12">
                      <hr>
-
                       ${passwordMessage!"Fill the fields bellow if you want to change password"}<br/>
                       <div class="col-md-6">
                       <@spring.bind "editUserForm.password"/>
