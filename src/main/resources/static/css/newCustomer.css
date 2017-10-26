@@ -120,14 +120,15 @@ width: 30%;
 margin-top:0%;
 margin-bottom:0%;
 }
-button{
+#searchB{
     width:10%;
     position: relative;
     top:-35px;
     left:32%;
-    padding:11px;
+    padding:8px;
     background-color: #4CAF50;
     color:#ffffff;
+
 
 }
 #ConfPass{

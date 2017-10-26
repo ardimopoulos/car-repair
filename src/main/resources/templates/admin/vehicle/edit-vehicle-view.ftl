@@ -9,6 +9,7 @@
 <body>
 
 <#include "/admin/menu_bar.ftl"/>
+<div class="col-md-1"></div>
 <div class="col-md-10">
 <h1>Edit Vehicle Form</h1><br>
 <form name="searchUser" action="/admin/edit-vehicle"  method="get" >
@@ -16,13 +17,14 @@
                   <button type="submit" class="btn">Search</button>
                </form>
 </div>
-<div class="col-md-10">
-<span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-<span style="color:red">${errorMessage!""}</span>
-</div>
+
+<span id="mes1" style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
+<span id="mes2" style="color:red">${errorMessage!""}</span>
+
 <#if vehicleForm??>
+
 <form action="/admin/edit-vehicle" id="mainForm" method="post" name="vehicleForm">
-<div class="col-md-1"></div>
+
 <div class="col-md-10">
 
             <div class="side">

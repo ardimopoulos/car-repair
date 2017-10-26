@@ -49,11 +49,11 @@
     <div class="col-md-10">
 
        <h1>Edit user</h1>
-
+    <br>
        <form name="searchUser" action="/admin/edit-user"  method="get" >
           <!-- <label for="vat">VAT:</label>-->
           <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="v" />
-           <button type="submit" class="btn">Search</button>
+           <button id="searchB" type="submit" class="btn">Search</button>
         </form>
        <span style="background-color:red;">${errormessage!""}<span>
        <#if editUserForm??>

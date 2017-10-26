@@ -38,7 +38,7 @@
      </script>
     <div class="col-md-1"></div>
     <div class="col-md-10">
-       <h1>User Registration Form</h1>
+       <h1>User Registration Form</h1><br>
         <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return myFunction()">
          <!--<#if userId??>
                 <a href="/admin/create-vehicle?id=${userId!""}">Go to vehicle form</a>

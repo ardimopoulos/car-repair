@@ -110,7 +110,7 @@ button{
     left:32%;
     padding:11px;
     background-color: #4CAF50;
-    color:white;
+    color:#ffffff;
 
 }
 #id{
@@ -142,4 +142,15 @@ margin-bottom:2%;
 #vModel{
 margin-top:6%;
 margin-bottom:2%;
+}
+#mes2, #mes1{
+position:absolute;
+top:37%;
+left:10%;
+
+}
+#mes3, mes4{
+position:absolute;
+top:37%;
+left:10%;
 }
