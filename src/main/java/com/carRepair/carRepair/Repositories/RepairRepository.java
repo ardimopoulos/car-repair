@@ -13,13 +13,15 @@ import java.util.List;
 @Repository
 public interface RepairRepository extends CrudRepository<Repair, Long> {
 
-
-   Repair findByRepairId(long  repairId);
+   Repair findByRepairId(long repairId);
 
     List<Repair> findByRepairDateAfterAndRepairDateBefore(LocalDateTime startDate ,LocalDateTime startAfter);
 
+   // List<Repair> findByRepairDateBetween(LocalDateTime startDate ,LocalDateTime startAfter);
+
     List<Repair> findTop10ByRepairDateAfterAndRepairDateBeforeOrderByRepairDateAsc(LocalDateTime startDate ,LocalDateTime startAfter);
 
+   // List<Repair> findTop10ByRepairDateBetweenOrderByRepairDateAsc(LocalDateTime startDate ,LocalDateTime startAfter);
 
     void delete(Long id);
 

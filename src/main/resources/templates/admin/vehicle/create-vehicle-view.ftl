@@ -16,10 +16,11 @@
 <div class="col-md-1"></div>
 <div class="col-md-10">
 <h1>New Vehicle Form</h1><br>
+
+            <div class="side">
 <span id="mes3" style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
 <span id="mes4" style="color:red">${errormessage!""}</span>
-            <div class="side">
-
+<br>
                 <div class="col-md-12">
                    <div class="col-md-6">
                         <@spring.bind "vehicleForm.vat"/>

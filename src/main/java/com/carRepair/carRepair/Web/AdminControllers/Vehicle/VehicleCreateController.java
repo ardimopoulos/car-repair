@@ -55,13 +55,15 @@ public class VehicleCreateController {
             vehicle.setMember(member);
             vehicle = vehicleService.insertVehicle(vehicle);
         } catch (Exception e) {
-            String message = "Add vehicle failed: There is not user with VAT: " + memberVat +
-                            " or vehicle with plate " +vehicle.getPlate()+" already exists";
-            redirectAttributes.addFlashAttribute("errormessage", message);
+            String message = "There is not user with VAT: "+memberVat+
+                             " or vehicle with plate " +vehicle.getPlate()+" already exists";
+            redirectAttributes.addFlashAttribute("errorMessage", message);
+            redirectAttributes.addFlashAttribute(VEHICLE_FORM, vehicleForm);
             return "redirect:/admin/create-vehicle";
         }
 
-        String message = "Vehicle with plate: " + vehicle.getPlate().toUpperCase() + " is created for user with VAT: " + memberVat;
+        String message = "Vehicle with plate: " + vehicle.getPlate().toUpperCase() +
+                         " is created for user with VAT: " + memberVat;
         redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/admin/create-vehicle";

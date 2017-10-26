@@ -5,13 +5,8 @@
 <title>Edit User</title>
 
 <link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
-
-       <#include "/base_libraries/head.ftl"/>
-
-
-
+<#include "/base_libraries/head.ftl"/>
 </head>
-
 <body>
 <#include "/admin/menu_bar.ftl"/>
 
@@ -25,14 +20,18 @@
           <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="v" required/>
            <button id="searchB" type="submit" class="btn">Search</button>
         </form>
-       <span style="background-color:red;">${errormessage!""}<span>
+       <#if message??>
+       <span style="background-color:green; padding:10px; color:white">${message}<span>
+       </#if>
+
        <#if editUserForm??>
         <form action="/admin/edit-user" id="mainForm" method="post" name="editUserForm">
             <div class="col-md-12">
                 <div class="side">
-                <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-                <span style="color: red; font-weight: bold; font-size:14px">${errormessage!""}</span>
-                    <div class="col-md-12">
+                <#if errorMessage??>
+                       <p style="color: red; font-weight: bold; font-size:14px">${errorMessage}<p>
+                       </#if>
+                  <div class="col-md-12">
                     <@spring.bind "editUserForm.userId"/>
                     <input type="hidden" name="userId" value="${editUserForm.userId!""}"/>
                    <div class="col-md-6">
@@ -103,7 +102,7 @@
                         <@spring.bind "editUserForm.newPassword"/>
                         <label for="newpassword">New password</label>
                         <input type="password" id="newPass" name="newPassword" placeholder="New password.." /></div>
-                     <hr>
+
                      </div>
 
                     &nbsp;<br>

@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="side">
                 <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-                <span style="color: red; font-weight: bold; font-size:14px">${errormessage!""}</span>
+                <span style="color: red; font-weight: bold; font-size:14px">${errorMessage!""}</span>
                     <div class="col-md-12">
                    <div class="col-md-6">
                     <@spring.bind "userForm.firstname"/>

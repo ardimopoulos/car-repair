@@ -3,12 +3,9 @@ package com.carRepair.carRepair.Web.AdminControllers.Repair;
 import com.carRepair.carRepair.Converters.RepairConverter;
 import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
-import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
+import com.carRepair.carRepair.Exceptions.RepairNotFoundException;
+import com.carRepair.carRepair.Exceptions.VehicleNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairForm;
-import com.carRepair.carRepair.Forms.User.SearchForm;
-import com.carRepair.carRepair.Forms.Vehicle.VehicleForm;
-import com.carRepair.carRepair.Repositories.RepairRepository;
-import com.carRepair.carRepair.Services.Repair.RepairCreateService;
 import com.carRepair.carRepair.Services.Repair.RepairService;
 import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +28,6 @@ public class RepairEditController {
 
     @Autowired
     private RepairService repairService;
-
-    @Autowired
-    private RepairCreateService repairCreateService;
 
     @Autowired
     private VehicleService vehicleService;
@@ -77,47 +71,39 @@ public class RepairEditController {
 
         if(repairForm.getRepairId().equals("")){
             redirectAttributes.addFlashAttribute("errormessage", "Something went wrong");
-            //redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
             return "redirect:/admin/edit-repair";
         }
 
         if(bindingResult.hasErrors()) {
-
             String type = (repairForm.getType().equals("true")) ? "long" : "short";
             String status = "";
             if(repairForm.getStatus().equals("1")){
-
                 status = "inProgress";
             }else if(repairForm.getStatus().equals("2")){
                 status = "completed";
             }else{
                 status = "pending";
             }
-
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
             redirectAttributes.addFlashAttribute( type, "selected");
-            //redirectAttributes.addFlashAttribute( "errorMessage",  "ERROR MESSAGE");
-
+            redirectAttributes.addFlashAttribute( status,  "selected");
             return "redirect:/admin/edit-repair";
         }
 
-
-        //TODO Edit service Fuunctionality
-
         try {
-            Vehicle vehicle = vehicleService.findByPlate(repairForm.getPlate());
+            Vehicle vehicle = vehicleService.getByPlate(repairForm.getPlate());
             Repair repair = RepairConverter.builtRepairObject(repairForm);
             repair.setRepairId(Long.valueOf(repairForm.getRepairId()));
             repair.setVehicle(vehicle);
-            repairCreateService.insertRepair(repair);
-            redirectAttributes.addFlashAttribute("message", "Sucessful update!");
+            repairService.insertRepair(repair);
+            redirectAttributes.addFlashAttribute("message", "Successful update!");
         }catch(ParseException e){
-            redirectAttributes.addFlashAttribute("errormessage", "Invalid date format");
+            redirectAttributes.addFlashAttribute("errorMessage", "Invalid date format");
         }catch (Exception e){
-            redirectAttributes.addFlashAttribute("errormessage", "Something went wrong");
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
         }
-
         return "redirect:/admin/edit-repair";
     }
 

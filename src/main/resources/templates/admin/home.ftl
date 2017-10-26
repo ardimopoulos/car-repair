@@ -21,6 +21,7 @@
                  <th>Status</th>
                  <th>Date</th>
                  <th>Type</th>
+                 <th>Name</th>
                  <th>Vehicle</th>
                  <th>Plate</th>
                  <th>VAT</th>
@@ -36,7 +37,7 @@
                  <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
                  <td><#if repair.type>Big<#else>Small</#if></td>
                  <td>${repair.getVehicle().getMember().getFirstname()} ${repair.getVehicle().getMember().getLastname()}</td>
-                 <th>${repair.getVehicle().getPlate()}</th>
+                 <td>${repair.getVehicle().getPlate()}</td>
                  <td>${repair.getVehicle().getMember().getVat()}</td>
                </tr>
     </#list>
@@ -69,3 +70,4 @@
                 }
             </script>
     </body>
+</html>

@@ -1,13 +1,10 @@
 package com.carRepair.carRepair.Web.AdminControllers.Repair;
 
 import com.carRepair.carRepair.Converters.RepairConverter;
-import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
-import com.carRepair.carRepair.Exceptions.UserNotFoundException;
+import com.carRepair.carRepair.Exceptions.VehicleNotFoundException;
 import com.carRepair.carRepair.Forms.Repair.RepairForm;
-import com.carRepair.carRepair.Services.Member.MemberService;
-import com.carRepair.carRepair.Services.Repair.RepairCreateService;
 import com.carRepair.carRepair.Services.Repair.RepairService;
 import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +24,16 @@ public class RepairCreateController {
     private static final String REPAIR_FORM = "repairForm";
 
     @Autowired
-    private RepairCreateService repairCreateService;
+    private RepairService repairService;
 
     @Autowired
     private VehicleService vehicleService;
 
-
     @RequestMapping(value = "/admin/create-repair" ,  method = RequestMethod.GET)
     public String getCreateServiceView(Model model, RepairForm repairForm){
-
         if(!model.containsAttribute(REPAIR_FORM)){
             model.addAttribute(REPAIR_FORM, new RepairForm());
         }
-
         return "/admin/repairs/create-repair-view";
     }
 
@@ -48,8 +42,6 @@ public class RepairCreateController {
                                  BindingResult bindingResult, RedirectAttributes redirectAttributes){
 
         if(bindingResult.hasErrors()) {
-
-            String type = (repairForm.getType().equals("true")) ? "long" : "short";
             String status = "";
             if(repairForm.getStatus().equals("1")){
                 status = "inProgress";
@@ -58,6 +50,8 @@ public class RepairCreateController {
             }else{
                 status = "pending";
             }
+
+            String type = (repairForm.getType().equals("true")) ? "long" : "short";
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
@@ -69,15 +63,16 @@ public class RepairCreateController {
         }
 
         try {
-            Vehicle vehicle = vehicleService.findByPlate(repairForm.getPlate());
+            Vehicle vehicle = vehicleService.getByPlate(repairForm.getPlate());
             Repair repair = RepairConverter.builtRepairObject(repairForm);
             repair.setVehicle(vehicle);
-            Repair newRepair = repairCreateService.insertRepair(repair);
+            Repair newRepair = repairService.insertRepair(repair);
             redirectAttributes.addFlashAttribute("message", "Repair is created for vehicle with plate: "+vehicle.getPlate());
-        }catch (UserNotFoundException e){
-            redirectAttributes.addFlashAttribute("errorMessage", "Vehicle with plate: "+repairForm.getPlate()+"not found");
+        }catch (VehicleNotFoundException e){
+            redirectAttributes.addFlashAttribute("errorMessage", "Vehicle with plate: "+repairForm.getPlate()+" not found");
+            redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
         }catch(Exception e){
-            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong. Please try again");redirectAttributes.addFlashAttribute("errorMessage", "Vehicle with plate: "+repairForm.getPlate()+"not found");
+            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong. Please try again later");
         }
         return "redirect:/admin/create-repair";
     }

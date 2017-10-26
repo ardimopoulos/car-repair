@@ -1,12 +1,9 @@
 package com.carRepair.carRepair.Web.AdminControllers.Vehicle;
 
-import com.carRepair.carRepair.Domain.Repair;
 import com.carRepair.carRepair.Domain.Vehicle;
-import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
-import com.carRepair.carRepair.Exceptions.Vehicle.VehicleNotFoundException;
-import com.carRepair.carRepair.Forms.Repair.RepairSearchForm;
+import com.carRepair.carRepair.Exceptions.VehicleNotFoundException;
 import com.carRepair.carRepair.Forms.Vehicle.VehicleSearchForm;
-import com.carRepair.carRepair.Services.Vehicle.VehicleSearchService;
+import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +22,7 @@ public class VehicleSearchController {
     private static final String VEHICLE_SEARCH_FORM = "vehicleSearchForm";
 
     @Autowired
-    private VehicleSearchService vehicleSearchService;
+    private VehicleService vehicleService;
 
     @RequestMapping(value = "/admin/search-vehicle", method = RequestMethod.GET)
     public String searchRepair(Model model){
@@ -45,19 +42,19 @@ public class VehicleSearchController {
 
         if(button.equals("Search Vat")){
             try {
-                List<Vehicle> vehicles = vehicleSearchService.getByVat(vehicleSearchForm.getVat());
+                List<Vehicle> vehicles = vehicleService.getVehiclesByMemberVat(vehicleSearchForm.getVat());
                 redirectAttributes.addFlashAttribute("vehicles", vehicles);
             }catch(VehicleNotFoundException vehicleNotFound){redirectAttributes.addFlashAttribute("errorMessage", vehicleNotFound.getMessage()); }
 
         }else if(button.equals("Search Plate")){
             try{
-                List<Vehicle> vehicles = vehicleSearchService.getByPlate(vehicleSearchForm.getPlate());
+                List<Vehicle> vehicles = vehicleService.getVehiclesByMemberPlate(vehicleSearchForm.getPlate());
                 redirectAttributes.addFlashAttribute("vehicles" , vehicles);
             }catch(VehicleNotFoundException vehicleNotFound){redirectAttributes.addFlashAttribute("errorMessage", vehicleNotFound.getMessage()); }
 
-        }else{
+        }/*else{
             System.out.println("Nothing to do!");
-        }
+        }*/
         return "redirect:/admin/search-vehicle";
     }
 

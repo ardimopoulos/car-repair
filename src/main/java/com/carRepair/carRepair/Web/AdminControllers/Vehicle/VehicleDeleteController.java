@@ -1,7 +1,6 @@
 package com.carRepair.carRepair.Web.AdminControllers.Vehicle;
 
-import com.carRepair.carRepair.Domain.Vehicle;
-import com.carRepair.carRepair.Services.Vehicle.VehicleDeleteService;
+import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +13,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class VehicleDeleteController {
 
     @Autowired
-    private VehicleDeleteService vehicleDeleteService;
+    private VehicleService vehicleService;
 
     @RequestMapping(value = "/admin/delete-vehicle", method = RequestMethod.POST)
     String deleteVehicle(Model model ,  RedirectAttributes redirectAttributes , @RequestParam("hidden_vehicleId" )Long hidden_vehicleId){
 
-        vehicleDeleteService.deleteVehicle(hidden_vehicleId);
+        vehicleService.deleteVehicle(hidden_vehicleId);
         redirectAttributes.addFlashAttribute("errorMessage" , "The vehicle successful delete!");
 
         return "redirect:/admin/search-vehicle";

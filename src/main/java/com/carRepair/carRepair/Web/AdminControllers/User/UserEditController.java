@@ -2,11 +2,11 @@ package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Converters.MemberConverter;
 import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.Exceptions.UserExistException;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Forms.User.EditUserForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
 import com.carRepair.carRepair.Utilities.AppUtilities;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,25 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
 
 @Controller
 public class UserEditController {
-
-    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserEditController.class);
 
     private static final String EDIT_USER_FORM = "editUserForm";
 
     @Autowired
     private MemberService memberService;
 
-    //TODO  bug edit
-
     @RequestMapping(value = "/admin/edit-user", method = RequestMethod.GET)
     public String getEditUserView(Model model, @RequestParam(name = "v", required = false) String vat,
                                   RedirectAttributes redirectAttributes){
-
         if(vat != null){
             try {
                 Member member = memberService.getMemberByVat(vat);
@@ -43,7 +37,7 @@ public class UserEditController {
                 model.addAttribute("editUserForm", editUserForm);
                 model.addAttribute(role,"selected");
             } catch (UserNotFoundException e) {
-                redirectAttributes.addFlashAttribute("errormessage",e.getMessage());
+                redirectAttributes.addFlashAttribute("errorMessage",e.getMessage());
                 return "redirect:/admin/edit-user";
             }
         }
@@ -55,62 +49,34 @@ public class UserEditController {
                            RedirectAttributes redirectAttributes){
 
         String role = (editUserForm.getUserType()) ? "admin" : "simple";
-
         if(bindingResult.hasErrors()) {
-
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.editUserForm", bindingResult);
             redirectAttributes.addFlashAttribute(EDIT_USER_FORM, editUserForm);
             redirectAttributes.addFlashAttribute(role, "selected");
-
             return "redirect:/admin/edit-user";
         }
 
-        String pattern = "^[a-zA-Z0-9@#$%^&]*$";
-
         try {
-
             Member member = memberService.getMemberById(editUserForm.getUserId());
-
             String memberPass = member.getPassword();
             String formPass = editUserForm.getPassword();
             String formNewPass = editUserForm.getNewPassword();
-            String hashFormNewPass = "";
+            String editPass = AppUtilities.editPassword(memberPass,formPass,formNewPass);
 
-            //TODO method
-            if(!formPass.equals("")) {
-                boolean checkPass = AppUtilities.checkPassword(formPass,memberPass);
-                if ( checkPass && formNewPass.length() >= 8 && formNewPass.matches(pattern)){
-                    hashFormNewPass = AppUtilities.hashPassword(formNewPass);
-                    editUserForm.setPassword(hashFormNewPass);
-                } else {
-                    redirectAttributes.addFlashAttribute("passwordMessage", "Invalid inputs");
-                    return "redirect:/admin/edit-user?v=" + member.getVat();
-                }
-            }
-
-            if(formPass.equals("") && !formNewPass.equals("")) {
-                redirectAttributes.addFlashAttribute("passwordMessage", "Invalid inputs");
+            if(editPass.equals("")){
+                redirectAttributes.addFlashAttribute("passwordMessage", "Current and new password must have 8 characters at least");
                 return "redirect:/admin/edit-user?v=" + member.getVat();
             }
 
-            String pass = (hashFormNewPass.equals("")) ? memberPass : hashFormNewPass;
-
-            editUserForm.setPassword(pass);
-
+            editUserForm.setPassword(editPass);
             Member editMember = MemberConverter.buildEditMemberObjecr(editUserForm);
-
-            member = memberService.insertMember(editMember);
-
+            memberService.insertMember(editMember);
             String message = "Successful update!";
             redirectAttributes.addFlashAttribute("message", message);
-
-        }catch (Exception e){
-            redirectAttributes.addFlashAttribute("errormessage", "Edit user failed");
-            return "redirect:/admin/edit-user";
+        }catch (UserExistException | UserNotFoundException e){
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(EDIT_USER_FORM, editUserForm);
         }
-
         return "redirect:/admin/edit-user";
     }
 }
-
-

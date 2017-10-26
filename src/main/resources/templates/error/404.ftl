@@ -18,8 +18,9 @@
     <body>
 
    <span style="font-size:130px; position: relative;top: 100px;">ERROR 404</span>
-   <br/>
-   <span style="font-size:80px; position: relative;top: 150px;">PAGE NOT FOUND</span>
+   <br/> <br/> <br/> <br/>
+   <!--<span style="font-size:80px; position: relative;top: 150px; ">PAGE NOT FOUND</span>-->
+
 
    </body>
 <#include "/base_libraries/footer.ftl"/>

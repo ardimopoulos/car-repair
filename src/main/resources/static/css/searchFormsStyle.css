@@ -1,8 +1,6 @@
 body
         {
 
-
-
             font-weight: bold;
             background:url('https://image.ibb.co/maKv1G/car_repair_362150_960_720.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -51,3 +49,10 @@ width:30%;
   input[type="date"]:valid:before {
     content: "";
   }
+
+  #myTable{
+    font-size: 15px;
+  }
+ #myTable td{
+      max-width: 200px;
+ }

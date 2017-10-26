@@ -22,13 +22,15 @@
                  <input type="text" class="form-control"  id="id" placeholder="Enter service number" autocomplet="off" name="id" required/>
                   <button type="submit" class="btn">Search</button>
                </form>
+               <#if message??>
+               <span style="background-color:green; padding:10px; color:white">${message}<span>
+               </#if>
 <#if repairForm??>
     <form action="/admin/edit-repair" method="post" name="repairForm">
 
         <div class="col-md-12">
             <div class="side">
-            ${message!""}
-                ${errorMessage!""}
+                <span style="color: red; font-weight: bold; font-size:14px">${errorMessage!""}</span>
                 <div class="col-md-12">
                    <div class="col-md-6">
                  <@spring.bind "repairForm.repairId"/>
