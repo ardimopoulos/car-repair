@@ -17,7 +17,10 @@
 
     <body>
 
-   <span style="font-size:80px; position: relative;top: 150px;">PAGE NOT FOUND</span>
+   <span style="font-size:80px; position: relative;top: 100px;">PAGE NOT FOUND</span>
+   <br><br>
+   <br><br>
+   <h3><span><a href="/">Go to Home page!</a></span></h3>
 
    </body>
 <#include "/base_libraries/footer.ftl"/>

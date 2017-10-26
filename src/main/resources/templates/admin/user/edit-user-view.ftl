@@ -3,15 +3,9 @@
 <html>
 <head>
 <title>Add user</title>
-
 <link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
-
-       <#include "/base_libraries/head.ftl"/>
-
-
-
+<#include "/base_libraries/head.ftl"/>
 </head>
-
 <body>
 <#include "/admin/menu_bar.ftl"/>
 
@@ -55,7 +49,12 @@
           <input type="text" class="form-control"  id="vat" placeholder="Enter VAT" autocomplet="off" name="v" />
            <button type="submit" class="btn">Search</button>
         </form>
-       <span style="background-color:red;">${errormessage!""}<span>
+       <#if message??>
+       <span style="background-color:green; padding:10px; color:white">${message}<span>
+       </#if>
+       <#if errorMessage??>
+       <span style="background-color:red; padding:10px; color:white"">${errorMessage}<span>
+       </#if>
        <#if editUserForm??>
         <form action="/admin/edit-user" id="mainForm" method="post" name="editUserForm">
             <div class="col-md-12">
@@ -120,6 +119,7 @@
                     </div>
                     <div class="col-md-12">
                      <hr>
+
                       ${passwordMessage!"Fill the fields bellow if you want to change password"}<br/>
                       <div class="col-md-6">
                       <@spring.bind "editUserForm.password"/>
@@ -133,7 +133,7 @@
                         <@spring.bind "editUserForm.newPassword"/>
                         <label for="newpassword">New password</label>
                         <input type="password" id="newPass" name="newPassword" placeholder="New password.." /></div>
-                     <hr>
+
                      </div>
 
                     &nbsp;<br>

@@ -2,6 +2,8 @@ package com.carRepair.carRepair.Web.AdminControllers.User;
 
 import com.carRepair.carRepair.Converters.MemberConverter;
 import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.Exceptions.UserExistException;
+import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Forms.User.UserForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +63,7 @@ public class UserCreateController {
                              " with VAT: " + member.getVat();
             redirectAttributes.addFlashAttribute("message", message);
             redirectAttributes.addFlashAttribute("userId", member.getUserId());
-        }catch (Exception e){
+        }catch (UserExistException e){
             redirectAttributes.addFlashAttribute("errormessage", "There is already an account with same VAT or email.");
             redirectAttributes.addFlashAttribute(USER_FORM, userForm);
             redirectAttributes.addFlashAttribute(role, "selected");

@@ -4,10 +4,9 @@ import com.carRepair.carRepair.Converters.VehicleConverter;
 import com.carRepair.carRepair.Domain.Member;
 import com.carRepair.carRepair.Domain.Vehicle;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
-import com.carRepair.carRepair.Exceptions.Vehicle.VehicleNotFoundException;
+import com.carRepair.carRepair.Exceptions.VehicleNotFoundException;
 import com.carRepair.carRepair.Forms.Vehicle.VehicleForm;
 import com.carRepair.carRepair.Services.Member.MemberService;
-import com.carRepair.carRepair.Services.Repair.RepairService;
 import com.carRepair.carRepair.Services.Vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +37,7 @@ public class VehicleEditController {
         if(p != null){
 
             try {
-                Vehicle vehicle = vehicleService.findByPlate(p);
+                Vehicle vehicle = vehicleService.getByPlate(p);
                 VehicleForm vehicleForm = VehicleConverter.buildVehicleFormObject(vehicle);
                 model.addAttribute(VEHICLE_FORM, vehicleForm);
             } catch (VehicleNotFoundException e) {
@@ -76,7 +75,6 @@ public class VehicleEditController {
         }catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong");
         }
-
         return "redirect:/admin/edit-vehicle";
     }
 }

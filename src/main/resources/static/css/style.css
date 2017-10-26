@@ -141,3 +141,11 @@ html {
 .search{
     border-radius: 22px;
 }
+
+.tablehead th{
+    text-align : center;
+}
+
+.hometable td{
+    max-width: 200px;
+}

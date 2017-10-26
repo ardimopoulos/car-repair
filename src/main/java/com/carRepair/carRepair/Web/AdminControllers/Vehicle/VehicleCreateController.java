@@ -58,6 +58,7 @@ public class VehicleCreateController {
             String message = "Add vehicle failed: There is not user with VAT: " + memberVat +
                             " or vehicle with plate " +vehicle.getPlate()+" already exists";
             redirectAttributes.addFlashAttribute("errormessage", message);
+            redirectAttributes.addFlashAttribute(VEHICLE_FORM, vehicleForm);
             return "redirect:/admin/create-vehicle";
         }
 

@@ -20,9 +20,9 @@
              <header>
                      <h1>Welcome to Car Repairs</h1>
                      </header>
-<table class="table">
-              <thead>
-                           <tr>
+<table class="table table-striped hometable">
+              <thead style="background-color:white">
+                           <tr class="tablehead">
                              <th>Description</th>
                              <th>Status</th>
                              <th>Date</th>

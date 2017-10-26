@@ -1,9 +1,13 @@
 package com.carRepair.carRepair.Services.Member;
 
 import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.Exceptions.InvalidCredentialsException;
+import com.carRepair.carRepair.Exceptions.UserExistException;
 import com.carRepair.carRepair.Exceptions.UserNotFoundException;
 import com.carRepair.carRepair.Repositories.MemberRepository;
+import com.carRepair.carRepair.Utilities.AppUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,16 +16,32 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Override
+    public Member login(String email, String password) throws AuthenticationException {
+
+        Member member = memberRepository.findByEmail(email);
+
+        if (member != null) {
+            boolean checkPassword = AppUtilities.checkPassword(password, member.getPassword());
+            if (!checkPassword) {
+                throw new InvalidCredentialsException("User not found!");
+            }
+        } else {
+            throw new InvalidCredentialsException("User not found!");
+        }
+        return member;
+    }
 
     @Override
-    public Member insertMember(Member member) throws Exception{
+    public Member insertMember(Member member) throws UserExistException {
         Member newMember = memberRepository.save(member);
         if(newMember == null){
-            throw new Exception("User already exists");
+            throw new UserExistException("User already exists");
         }
         return newMember;
     }
 
+    @Override
     public Member getMemberByVatOrMail(String vat , String email) throws UserNotFoundException {
         Member searchMember = null;
         try {
@@ -31,35 +51,24 @@ public class MemberServiceImpl implements MemberService {
                 searchMember = memberRepository.findByVatOrEmail(vat, email);
             }
             if (searchMember == null || (vat.equals("") && email.equals(""))) {
-                throw new UserNotFoundException("User not found with those credenatioals");
+                throw new UserNotFoundException("User not found with those credentials");
             }
         }catch(Exception e){
             throw new UserNotFoundException("User not found");
         }
-
         return searchMember;
     }
 
-/*
     @Override
-    public Member getMemberByVat(String vat) throws Exception {
-        Member member = memberRepository.findByVat(vat);
-        if(member == null){
-            throw new Exception("Member not found!");
-        }
-        return member;
-    }*/
-
-    @Override
-    public Member getMemberById(Long id) throws Exception {
-        return memberRepository.findOne(id);
+    public Member getMemberByEmail(String email) throws UserNotFoundException{
+        Member m = memberRepository.findByEmail(email);
+        if(m != null){return m;}else{throw new UserNotFoundException("User not found by email");}
     }
 
-
-
-    public Member updateMember(Long id , Member member){
-       Member m = memberRepository.save(member);
-        return m;
+    @Override
+    public Member getMemberById(Long id) throws UserNotFoundException {
+        Member m =  memberRepository.findOne(id);
+        if(m != null){return m;}else{throw new UserNotFoundException("User not found by email");}
     }
 
     @Override
@@ -68,10 +77,10 @@ public class MemberServiceImpl implements MemberService {
             if(m != null){return m;}else{ throw new UserNotFoundException("User not found with VAT: " + vat); }
     }
 
-    public void deleteMember(Long id){ memberRepository.delete(id); }
+    @Override
+    public void deleteMember(Long id) throws IllegalArgumentException{
 
-    public Member searchMember(Long id){ Member member = memberRepository.findOne(id); return member; }
+        memberRepository.delete(id);
 
-
-
+    }
 }

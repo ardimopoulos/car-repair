@@ -1,7 +1,7 @@
-package com.carRepair.carRepair.Web;
+package com.carRepair.carRepair.Web.MemberController;
 
 import com.carRepair.carRepair.Domain.Repair;
-import com.carRepair.carRepair.Exceptions.Repair.RepairNotFoundException;
+import com.carRepair.carRepair.Exceptions.RepairNotFoundException;
 import com.carRepair.carRepair.Services.Repair.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

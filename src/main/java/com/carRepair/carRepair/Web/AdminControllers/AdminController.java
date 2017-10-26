@@ -26,10 +26,8 @@ public class AdminController {
 
     @RequestMapping(value = {"/admin/home", "/admin"}, method = RequestMethod.GET)
     String getAdminView(Model model){
-
         List<Repair> repairs = repairService.getDailyServices();
         model.addAttribute("repairs" , repairs);
-
         return "/admin/home";
     }
 }

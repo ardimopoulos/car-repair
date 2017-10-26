@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Exceptions.Repair;
+package com.carRepair.carRepair.Exceptions;
 
 public class RepairNotFoundException extends Exception{
 

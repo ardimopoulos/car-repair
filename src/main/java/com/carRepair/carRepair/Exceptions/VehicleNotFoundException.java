@@ -1,4 +1,4 @@
-package com.carRepair.carRepair.Exceptions.Vehicle;
+package com.carRepair.carRepair.Exceptions;
 
 public class VehicleNotFoundException extends Exception {
 

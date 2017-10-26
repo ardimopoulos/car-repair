@@ -13,24 +13,23 @@
                  var pass1 = document.getElementById("UserP").value;
                  var pass2 = document.getElementById("ConfPass").value;
                  if (pass1 != pass2) {
-                     //alert("Passwords Do not match");
-                     document.getElementById("UserP").style.borderColor = "#E34234 ";
-                     document.getElementById("ConfPass").style.borderColor = "#E34234 ";
+                     document.getElementById("UserP").style.borderColor = "#E34234";
+                     document.getElementById("ConfPass").style.borderColor = "#E34234";
                  } else {
                      document.getElementById("UserP").style.borderColor = "#33cc33";
-                     document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
+                     document.getElementById("ConfPass").style.borderColor = "#33cc33";
                  } {
                      var pass1 = document.getElementById("UserP").value;
                      var pass2 = document.getElementById("ConfPass").value;
                      var ok = true;
                      if (pass1 != pass2) {
                          //alert("Passwords Do not match");
-                         document.getElementById("UserP").style.borderColor = "#E34234 ";
-                         document.getElementById("ConfPass").style.borderColor = "#E34234 ";
+                         document.getElementById("UserP").style.borderColor = "#E34234";
+                         document.getElementById("ConfPass").style.borderColor = "#E34234";
                          ok = false;
                      } else {
-                         document.getElementById("UserP").style.borderColor = "#33cc33 ";
-                         document.getElementById("ConfPass").style.borderColor = "#33cc33 ";
+                         document.getElementById("UserP").style.borderColor = "#33cc33";
+                         document.getElementById("ConfPass").style.borderColor = "#33cc33";
                      }
                      return ok;
                  }
@@ -46,7 +45,7 @@
             <div class="col-md-12">
                 <div class="side">
                 <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-                <span style="color: red; font-weight: bold; font-size:14px">${errormessage!""}</span>
+                <span style="color: red; font-weight: bold; font-size:14px">${errorMessage!""}</span>
                     <div class="col-md-12">
                    <div class="col-md-6">
                     <@spring.bind "userForm.firstname"/>
