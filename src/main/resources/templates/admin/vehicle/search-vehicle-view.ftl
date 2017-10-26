@@ -8,7 +8,6 @@
     <#include "/admin/menu_bar.ftl"/>
 
             <div class = "container">
-
                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
@@ -19,20 +18,22 @@
                 </li>
 
                </div>
-               <form action="/admin/search-vehicle" method="POST" id="vehicleSearchForm" name = "vehicleSearchForm">
+
                <br>
                <div class="tab-content" id="v-pills-tabContent">
                  <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" /><br>
-
+                  <form action="/admin/search-vehicle" method="POST" id="vehicleSearchForm" name = "vehicleSearchForm" onsubmit="return vatValidation()">
+                        <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" onkeyup="vatValidation()"/><br>
+                        <span id="vat_error"></span>
                     <input type="submit" class="btn btn-info" name="button" value="Search Vat">
-
+                </form>
                 </div>
                  <div class="tab-pane fade" id="v-pills-plate" role="tabpanel" aria-labelledby="v-pills-plate-tab">
-                        <input type="text" class="form-control" id="plate" placeholder="Enter plate" name="plate" /><br>
-
+                  <form action="/admin/search-vehicle" method="POST" id="vehicleSearchForm" name = "vehicleSearchForm" onsubmit="return plateValidation()">
+                    <input type="text" class="form-control" id="plate" placeholder="Enter plate" name="plate" onkeyup="plateValidation()"/><br>
+                    <span id="plate_error"></span>
                     <input type="submit" class="btn btn-info" name="button" value="Search Plate">
-
+                </form>
                 </div>
 
 
@@ -86,5 +87,5 @@
 
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
-
+<script type="text/javascript" src="/js/VehicleValidation.js"></script>
     </body>

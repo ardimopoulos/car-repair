@@ -12,3 +12,18 @@ function vatValidation() {
         }
     }else{document.getElementById("vat").style.borderColor = "#ccc";document.getElementById("vat_error").innerHTML=""; return false;}
 }
+
+function plateValidation() {
+    var plate = document.getElementById("plate").value;
+    if(plate != ""){
+        if( plate.match(/^[A-Z]{3}-[0-9]{4}$/) ){
+            document.getElementById("plate").style.borderColor = "#33cc33";
+            document.getElementById("plate_error").innerHTML="";
+        return true;
+        }else{
+            document.getElementById("plate").style.borderColor = "#E34234";
+            document.getElementById("plate_error").innerHTML="Give something like this ABC-1234";
+        return false;
+        }
+    }else{document.getElementById("plate").style.borderColor = "#ccc";document.getElementById("plate_error").innerHTML=""; return false;}
+}

@@ -19,12 +19,15 @@ function emailValidation() {
         if( email.match(/^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$/) ){
             document.getElementById("email").style.borderColor = "#33cc33";
             document.getElementById("email_error").innerHTML="";
+            return true;
         }else{
             document.getElementById("email").style.borderColor = "#E34234";
             document.getElementById("email_error").innerHTML="Give valid email";
+            return false
           }
       }else{
           document.getElementById("email").style.borderColor = "#ccc";
           document.getElementById("email_error").innerHTML="";
+          return false;
       }
 }

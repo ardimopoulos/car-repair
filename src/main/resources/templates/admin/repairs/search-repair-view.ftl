@@ -28,46 +28,41 @@
 
                </div>
                <br>&nbsp;
-               <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm" onsubmit="return vatValidation()">
-               <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-content" id="v-pills-tabContent">
 
-                 <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-
-                        <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" onkeyup="vatValidation()"/><br>
-                    <span id="vat_error"></span>
-                    <input type="submit" class="btn btn-info" name="button" value="Search Vat">
-
-                </div>
+                    <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm" onsubmit="return vatValidation();">
+                            <input type="text" class="form-control" id="vat" placeholder="Enter vat" name="vat" onkeyup="vatValidation()"/><br>
+                            <span id="vat_error"></span>
+                        <input type="submit" class="btn btn-info" name="button" value="Search Vat">
+                        </form>
+                    </div>
                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-
+                 <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm">
                         <input type="date" class="form-control" id="date" placeholder="Enter date..." name="date" /><br>
-
-
                     <input type="submit" class="btn btn-info" name="button" value="Search Date">
-
+                    </form>
                 </div>
                  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <input type="text" class="form-control" id="plate" placeholder="Enter plate..(ABD-1234)" name="plate" /><br>
-
+                 <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm" onsubmit="return plateValidation();">
+                        <input type="text" class="form-control" id="plate" placeholder="Enter plate..(ABD-1234)" name="plate" onkeyup="plateValidation()"/><br>
+                        <span id="plate_error"></span>
                     <input type="submit" class="btn btn-info" name="button" value="Search Plate">
-
+                </form>
                 </div>
                 <div class="tab-pane fade" id="v-pills-dates" role="tabpanel" aria-labelledby="v-pills-dates-tab">
-
+                <form action="/admin/search-repair" method="POST" id="repairSearchForm" name = "repairSearchForm">
 
                     <div class="col-md-5">
                             <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date..." name="startDate" /><br>
-
                     </div>
                     <div class="col-md-5">
                             <input type="date" class="form-control" id="beforeDate" placeholder="Enter Before Date..." name="beforeDate" /><br>
-
                     </div>
                     <input type="submit" class="btn btn-info" name="button" value="Search Between">
-
+                    </form>
                 </div>
 
-                </form>
 </div>
 
 <#if errorMessage??>

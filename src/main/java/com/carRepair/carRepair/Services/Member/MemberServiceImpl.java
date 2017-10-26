@@ -24,17 +24,16 @@ public class MemberServiceImpl implements MemberService {
 
     public Member getMemberByVatOrMail(String vat , String email) throws UserNotFoundException {
         Member searchMember = null;
-        try {
-            if(!vat.equals("") && !email.equals("")){
+        String usingCase = "";
+            if(vat != null && email != null){
                 searchMember = memberRepository.findByVatAndEmail(vat, email);
+                usingCase = "email"+email+" and vat"+vat;
             }else {
                 searchMember = memberRepository.findByVatOrEmail(vat, email);
+                if(vat == null){ usingCase = "email = "+email;}else{usingCase = "vat = "+vat;}
             }
-            if (searchMember == null || (vat.equals("") && email.equals(""))) {
-                throw new UserNotFoundException("User not found with those credenatioals");
-            }
-        }catch(Exception e){
-            throw new UserNotFoundException("User not found");
+        if (searchMember == null) {
+            throw new UserNotFoundException("User not found with those credenatioals (" + usingCase+ ")");
         }
 
         return searchMember;
