@@ -12,7 +12,7 @@
          <li><a href="/admin/search-user">Search User</a></li>
        </ul>
      </li>
-     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Repairs<span class="caret"></span></a>
+     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Services<span class="caret"></span></a>
              <ul class="dropdown-menu">
                <li><a href="/admin/create-repair">Create Service</a></li>
                <li><a href="/admin/edit-repair">Edit Service</a></li>

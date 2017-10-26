@@ -22,6 +22,7 @@
                  <th>Date</th>
                  <th>Type</th>
                  <th>Vehicle</th>
+                 <th>Plate</th>
                  <th>VAT</th>
                </tr>
          </thead>

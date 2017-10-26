@@ -31,7 +31,7 @@
                      <h3>Welcome to Car Repairs</h3>
                      <br>
 
-            <table class="table">
+            <table class="table table-striped">
               <thead>
                            <tr>
                              <th>Description</th>
@@ -44,7 +44,7 @@
                  <tbody>
             <#if repairs??>
                 <#list repairs as repair>
-                           <tr>
+                           <tr align=left>
                              <td>${repair.description}</td>
                              <td><#if repair.status==0>Pending<#elseif repair.status==1>In progress<#else>Completed</#if></td>
                              <td>${repair.repairDate?datetime.iso?string("dd/MM/yyyy HH:mm:ss")}</td>
