@@ -45,7 +45,7 @@ public class UserForm {
 
     public UserForm(){}
 
-    public UserForm(Member member){
+   /* public UserForm(Member member){
         this.vat = member.getVat();
         this.firstname = member.getFirstname();
         this.lastname = member.getLastname();
@@ -54,7 +54,7 @@ public class UserForm {
         this.password = member.getPassword();
         this.userType = member.getUserType();
         this.password = member.getPassword();
-    }
+    }*/
 
     public String getFirstname() {
         return firstname;
