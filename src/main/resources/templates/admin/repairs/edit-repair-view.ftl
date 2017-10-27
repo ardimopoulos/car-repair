@@ -38,7 +38,7 @@
                 <@spring.bind "repairForm.plate"/>
                  <#list spring.status.errorMessages as error>
                  <span style="color:red">${error}</span>
-                </#list><br>
+                </#list>
                 <label for="Plate">Plate</label>
                     <input type="text" id="plate" name="plate" placeholder="Type the plate..(ABC-1234)" value=${repairForm.plate!""}>
                 <br/>
