@@ -17,10 +17,10 @@
 
     <body>
 
-   <span style="font-size:80px; position: absolute;top: 20%; left:30%; color:red;background-color:lightgrey; ">Access denied</span>
+   <span style="font-size:50px; position: absolute;top: 20%; left:30%; color:red;background-color:lightgrey; ">Access denied</span>
 
 
-   <span style="font-size:80px; position: absolute; top: 40%;left:30%;  background-color:lightgrey;"><a href="/">Go to Home page!</a></span>
+   <span style="font-size:50px; position: absolute; top: 40%;left:30%;  background-color:lightgrey;"><a href="/">Go to Home page!</a></span>
 
    </body>
 <#include "/base_libraries/footer.ftl"/>
