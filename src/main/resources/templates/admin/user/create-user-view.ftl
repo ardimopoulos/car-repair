@@ -54,10 +54,12 @@
                     </div>
                     <div class="col-md-12">
                     <div class="col-md-6">
+
                     <@spring.bind "userForm.password"/>
                     <#list spring.status.errorMessages as error>
                          <span style="color:red">${error}</span>
-                    </#list><br/><span style="color:red" id="UserP_error"></span>
+                    </#list><br/>
+                    <span style="color:red" id="UserP_error"></span>
                     <br/>
                         <label for ="password">User password</label>
                         <input type="password" id="UserP" name="password" placeholder="Set new password.." onkeyup="passValidation()"/>
