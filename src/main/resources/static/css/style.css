@@ -109,7 +109,7 @@ html {
     footer
         {
          font-size: 13px;
-          position: absolute;
+          position:fixed;
           width:auto;
           right: 0;
           bottom:0;
@@ -150,4 +150,7 @@ html {
 }
 .table table-striped{
 color:lightgrey;
+}
+#homeTable{
+margin-bottom:5%;
 }
