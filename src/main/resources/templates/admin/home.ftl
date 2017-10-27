@@ -14,7 +14,7 @@
 
    <h3>Last Services </h3>
    <br>
-        <input type="text" id="myInput" placeholder="Type a name and search" onkeyup="myFunction()">
+        <input type="text" id="myInput" placeholder="Type and search by name" onkeyup="myFunction()">
 
         <thead>
                <tr>
