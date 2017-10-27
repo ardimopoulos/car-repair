@@ -10,6 +10,8 @@ import com.carRepair.carRepair.Repositories.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.carRepair.carRepair.Repositories.RepairRepository;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class RepairServiceImpl implements RepairService{
 
     @Autowired

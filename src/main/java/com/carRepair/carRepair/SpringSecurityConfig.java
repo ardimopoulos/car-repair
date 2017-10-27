@@ -40,13 +40,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/member/**").hasAuthority("MEMBER");
     }
 
-
-        @Autowired
-        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-            auth.authenticationProvider(loginAuthenticationProvider);
-        }
-
-
-
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(loginAuthenticationProvider);
     }
+}
 

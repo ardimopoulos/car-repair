@@ -18,15 +18,11 @@ public class SuccessLoginHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-
-       // httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         String role = AppUtilities.userAuthority();
             if (role.equals("ADMIN")) {
                 httpServletResponse.sendRedirect("/admin");
             } else if (role.equals("MEMBER")) {
                 httpServletResponse.sendRedirect("/member");
             }
-
-
     }
 }

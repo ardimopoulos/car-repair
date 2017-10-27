@@ -9,10 +9,12 @@ import com.carRepair.carRepair.Utilities.AppUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @Service
+@Transactional
 public class MemberServiceImpl implements MemberService {
 
     @Autowired

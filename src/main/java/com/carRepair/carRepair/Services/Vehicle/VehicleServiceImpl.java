@@ -8,11 +8,13 @@ import com.carRepair.carRepair.Repositories.VehicleRepository;
 import com.carRepair.carRepair.Services.Member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class VehicleServiceImpl implements VehicleService{
 
     @Autowired

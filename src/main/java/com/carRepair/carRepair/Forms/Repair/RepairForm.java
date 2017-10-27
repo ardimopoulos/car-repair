@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 
 public class RepairForm {
 
-    private static final String DATE_PATTERN = "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$";
     private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[1-9]{4}$";
     private static final String STATUS_PATTERN = "^[012]$";
    // private static final String TYPE_PATTERN = "^[\btrue\b\bfalse\b]$";

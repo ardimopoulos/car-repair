@@ -48,9 +48,10 @@ public class VehicleCreateController {
         }
 
         String memberVat = vehicleForm.getVat();
-        Vehicle vehicle = VehicleConverter.buildVehicleObjecr(vehicleForm);
+        Vehicle vehicle = null;
 
         try {
+            vehicle = VehicleConverter.buildVehicleObjecr(vehicleForm);
             Member member = memberService.getMemberByVat(memberVat);
             vehicle.setMember(member);
             vehicle = vehicleService.insertVehicle(vehicle);

@@ -13,17 +13,13 @@ import java.util.Locale;
 public class RepairConverter {
 
     public static Repair builtRepairObject(RepairForm repairForm) throws ParseException {
-
-        boolean repairType = (repairForm.getType().equals("true")) ? true : false;
-        repairForm.getRepairDate();
+        boolean repairType = repairForm.getType().equals("true");
         LocalDateTime date =repairForm.getRepairDate();
-
         int status = Integer.parseInt(repairForm.getStatus());
         String description = repairForm.getDescription();
-        boolean type = repairType;
         double cost = Double.valueOf(repairForm.getCost());
 
-        Repair repair = new Repair(date, status, description, type, cost);
+        Repair repair = new Repair(date, status, description, repairType, cost);
 
         return repair;
     }

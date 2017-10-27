@@ -9,22 +9,14 @@ import java.util.Date;
 
 public class VehicleConverter {
 
-    public static Vehicle buildVehicleObjecr(VehicleForm vehicleForm){
+    public static Vehicle buildVehicleObjecr(VehicleForm vehicleForm) throws ParseException{
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-
-        //long user_id = Long.valueOf(vehicleForm.getUserId());
         String plate = vehicleForm.getPlate();
         String brand = vehicleForm.getBrand();
         String model = vehicleForm.getModel();
         String color = vehicleForm.getColor();
-        Date yearOfModel = null;
-        try {
-            yearOfModel = formatter.parse(vehicleForm.getYearOfModel());
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date yearOfModel = formatter.parse(vehicleForm.getYearOfModel());
 
         Vehicle vehicle = new Vehicle(plate, brand, model, yearOfModel, color);
 
