@@ -11,15 +11,15 @@
 <#include "/admin/menu_bar.ftl"/>
 <div class="col-md-1"></div>
 <div class="col-md-10">
-<h1>Edit Vehicle Form</h1><br>
+<h1>Edit Vehicle Form</h1>
 <form name="searchUser" action="/admin/edit-vehicle"  method="get" >
                  <input type="text" class="form-control"  id="id" placeholder="Enter plate...(ABC-1234)" autocomplete="off" name="p" required/>
                   <button type="submit" class="btn">Search</button>
                </form>
 </div>
-<span id="mes1" style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-
-
+<#if message??>
+<span id="mes1" style="background-color: #4CAF50; font-weight: bold; font-size:14px; padding:10px; color:white">${message!""}</span>
+</#if>
 <#if vehicleForm??>
 
 <form action="/admin/edit-vehicle" id="mainForm" method="post" name="vehicleForm">
