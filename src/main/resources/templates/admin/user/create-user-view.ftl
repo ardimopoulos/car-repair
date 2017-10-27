@@ -3,8 +3,9 @@
 <html>
 <head>
 <title>Add user</title>
-<link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
+
      <#include "/base_libraries/head.ftl"/>
+      <link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
 </head>
 <body>
 <#include "/admin/menu_bar.ftl"/>
@@ -12,7 +13,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
        <h1>User Registration Form</h1><br>
-        <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return passValidation();">
+        <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return passValidation()">
 
             <div class="col-md-12">
                 <div class="side">
@@ -58,11 +59,11 @@
                          <span style="color:red">${error}</span>
                     </#list><br/>
                         <label for ="password">User password</label>
-                        <input type="password" id="UserP" name="password" placeholder="Set new password.." />
+                        <input type="password" id="UserP" name="password" placeholder="Set new password.." onkeyup="passValidation()"/>
                         </div>
                     <div class="col-md-6">
                     <label for="configpassword">Confirm password</label>
-        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." onkeyup="passValidation()" ></div>
+        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." onkeyup=""passValidation()"></div>
            </div>
             <div class="col-md-12">
     <div class="col-md-6">
@@ -100,5 +101,5 @@
     </body>
     <#include "/base_libraries/footer.ftl"/>
     <#include "/base_libraries/js.ftl"/>
-    <script type="text/javascript" src="/js/PasswordValidation.js">
+    <script type="text/javascript" src="/js/PasswordValidation.js"></script>
     </html>

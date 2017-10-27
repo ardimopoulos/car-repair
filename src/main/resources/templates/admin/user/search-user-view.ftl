@@ -76,7 +76,7 @@
     </form>
     <form action ="/admin/delete-user" name="deleteForm" id ="deleteForm" method="POST">
         <input type="hidden" name="hidden_email" id="hidden_email" value="${member.getUser().getEmail()}">
-    <th><input type="submit" class="btn btn-danger" value="Delete"></th>
+    <th><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirmUserDelete()"></th>
     </form>
   </tr>
 </table>
@@ -85,7 +85,7 @@
 
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
-<script type="text/javascript" src=/js/UserValidation.js></script>
-
+<script type="text/javascript" src="/js/UserValidation.js"></script>
+<script type="text/javascript" src="/js/ConfirmDelete.js"></script>
     </body>
 </html>

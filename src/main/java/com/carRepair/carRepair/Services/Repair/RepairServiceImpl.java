@@ -101,6 +101,7 @@ public class RepairServiceImpl implements RepairService{
                     repairList.add(repairsByVehicle.get(j));
                 }
             }
+            if (repairList.isEmpty()){throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname());}
         }catch (Exception e){ throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname()); }
         return repairList;
     }
