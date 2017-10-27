@@ -23,8 +23,7 @@
 <#if vehicleForm??>
 
 <form action="/admin/edit-vehicle" id="mainForm" method="post" name="vehicleForm">
-
-<div class="col-md-10">
+<div class="col-md-10" id="editForm">
 
             <div class="side">
 <span id="mes2" style="color:red">${errorMessage!""}</span>
@@ -87,6 +86,7 @@
                     <input type="text" id="platenum" name="platenum" placeholder="Type plate number.." /><br>-->
 
                     <input type="submit" id="vehButton" value="Submit">
+
                     </form>
                         </#if>
 
