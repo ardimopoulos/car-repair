@@ -44,7 +44,7 @@ public class RepairServiceImpl implements RepairService{
     public List<Repair> getDailyServices(){
         LocalDateTime startDate = LocalDateTime.parse(LocalDate.now()+"T00:00:00");
         LocalDateTime endDate = LocalDateTime.parse(LocalDate.now()+"T23:59:59");
-        List<Repair> repairList = repairRepository.findTop10ByRepairDateAfterAndRepairDateBeforeOrderByRepairDateAsc(startDate,endDate);
+        List<Repair> repairList = repairRepository.findTop10ByRepairDateBetweenOrderByRepairDateAsc(startDate,endDate);
         return repairList;
     }
 

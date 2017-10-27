@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @Service
-@Transactional
 public class MemberServiceImpl implements MemberService {
 
     @Autowired
@@ -59,7 +58,7 @@ public class MemberServiceImpl implements MemberService {
             if(vat == null){ usingCase = "email = "+email;}else{usingCase = "vat = "+vat;}
         }
         if (searchMember == null) {
-            throw new UserNotFoundException("User not found with those credenatioals (" + usingCase+ ")");
+            throw new UserNotFoundException("User not found with those credentials (" + usingCase+ ")");
         }
         return searchMember;
     }
