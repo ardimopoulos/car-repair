@@ -8,13 +8,7 @@
 </head>
     <body>
     <#include "/admin/menu_bar.ftl"/>
-            <#if errorMessage??>
-            <div class="container">
-            <div class="alert alert-danger" role="alert">
-            ${errorMessage!""}
-            </div>
-            </div>
-            </#if>
+
              <div class="container"  >
 
                  <div class="col-md-12">
@@ -54,6 +48,14 @@
 
                  </div>
 </div>
+  <#if errorMessage??>
+            <div class="container">
+            <div class="alert alert-danger" role="alert">
+            ${errorMessage!""}
+            </div>
+            </div>
+            </#if>
+
 <#if member??>
 <div class="container">
 <table class="table">
