@@ -109,7 +109,7 @@ html {
     footer
         {
          font-size: 13px;
-          position: absolute;
+          position:fixed;
           width:auto;
           right: 0;
           bottom:0;
