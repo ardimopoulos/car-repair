@@ -22,7 +22,6 @@
                  <th>Date</th>
                  <th>Type</th>
                  <th>Name</th>
-                 <th>Vehicle</th>
                  <th>Plate</th>
                  <th>VAT</th>
                </tr>
