@@ -40,6 +40,7 @@
                      <input type="text" id="vPlate" name="plate" placeholder="Type plate.." value="${vehicleForm.plate!""}"/>
                 <br>
                     </div>
+
                  <div class="col-md-6">
                         <@spring.bind "vehicleForm.brand"/>
                         <#list spring.status.errorMessages as error><br>
