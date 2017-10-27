@@ -5,7 +5,7 @@
 
 
 <head>
-    <title>Edit Service Form</title>
+    <title>Create Service Form</title>
   <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/serviceReg.css">
 </head>
@@ -15,21 +15,17 @@
 <div class="col-md-10">
 
 
-       <h1>Edit Service Form</h1>
+       <h1>Create Service Form</h1>
        <br>
-       <form name="searchUser" action="/admin/create-repair"  method="get" >
-                 <!-- <label for="vat">VAT:</label>-->
-                 <input type="text" class="form-control"  id="id" placeholder="Enter service number" autocomplet="off" name="id" required/>
-                  <button type="submit" class="btn">Search</button>
-               </form>
-               <#if message??>
-               <span style="background-color:green; padding:10px; color:white">${message}<span>
-               </#if>
+
 <#if repairForm??>
     <form action="/admin/create-repair" method="post" name="repairForm">
 
         <div class="col-md-12">
             <div class="side">
+             <#if message??>
+               <p style="color:green;">${message}<p>
+              </#if>
                 <span style="color: red; font-weight: bold; font-size:14px">${errorMessage!""}</span>
                 <div class="col-md-12">
                    <div class="col-md-6">
