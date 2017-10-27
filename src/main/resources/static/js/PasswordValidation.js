@@ -11,5 +11,8 @@ function passValidation() {
          document.getElementById("ConfPass").style.borderColor = "#33cc33";
          return true;
      }
- }else{return false;}
+ }else{
+ document.getElementById("UserP").style.borderColor = "#ccc";
+  document.getElementById("ConfPass").style.borderColor = "#ccc";
+ return false;}
 }

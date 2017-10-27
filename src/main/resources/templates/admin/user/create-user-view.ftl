@@ -3,8 +3,9 @@
 <html>
 <head>
 <title>Add user</title>
-<link rel="stylesheet" type="text/css" href="/css/newCustomer.css">
+
      <#include "/base_libraries/head.ftl"/>
+
 </head>
 <body>
 <#include "/admin/menu_bar.ftl"/>
@@ -58,11 +59,11 @@
                          <span style="color:red">${error}</span>
                     </#list><br/>
                         <label for ="password">User password</label>
-                        <input type="password" id="UserP" name="password" placeholder="Set new password.." />
+                        <input type="password" id="UserP" name="password" placeholder="Set new password.." onkeyup="passValidation()"/>
                         </div>
                     <div class="col-md-6">
                     <label for="configpassword">Confirm password</label>
-        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." ></div>
+        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." onkeyup="passValidation()"></div>
            </div>
             <div class="col-md-12">
     <div class="col-md-6">
