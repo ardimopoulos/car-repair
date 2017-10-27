@@ -10,11 +10,11 @@
     <body>
     <#include "/admin/menu_bar.ftl"/>
 <div class="container">
-    <table id="homeTable" class="table table-striped">
+    <table id="myTable" class="table table-striped">
 
    <h3>Last Services </h3>
    <br>
-        <input type="text" id="search" placeholder="Type in and search" onkeyup="myFunction()">
+        <input type="text" id="myInput" placeholder="Type in and search" onkeyup="myFunction()">
 
         <thead>
                <tr>

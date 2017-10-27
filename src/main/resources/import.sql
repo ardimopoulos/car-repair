@@ -30,13 +30,9 @@ insert into repair ( repair_date, cost, description, status, type, vehicle_id) V
 insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 20:15:00','100', 'This is a description3', '2',  false,3);
 insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 19:30:00','100', 'This is a description4', '0',  true,4);
 insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 14:45:00','100', 'This is a description1', '0', false,1);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description2', '1',  true,2);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description3', '2',  false,3);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description4', '0',  true,4);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description4', '0',  true,4);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description4', '0',  true,2);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description4', '0',  true,4);
-insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-27 15:00:00','100', 'This is a description4', '0',  true,1);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-24 15:00:00','100', 'This is a description2', '1',  true,2);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-25 15:00:00','100', 'This is a description3', '2',  false,3);
+insert into repair ( repair_date, cost, description, status, type, vehicle_id) VALUES ('2017-10-26 15:00:00','100', 'This is a description4', '0',  true,4);
 
 
 
