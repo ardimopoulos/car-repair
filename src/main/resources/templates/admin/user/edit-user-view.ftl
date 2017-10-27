@@ -89,7 +89,12 @@
                     </div>
                     <div class="col-md-12">
                      <hr>
-                      ${passwordMessage!"Fill the fields bellow if you want to change password"}<br/>
+                      Fill the fields bellow if you want to change password
+                        <br/>
+                     <#if passwordMessage??>
+                          <span style="color:red">${passwordMessage}</span>
+                     </#if>
+                     <br/>
                       <div class="col-md-6">
                       <@spring.bind "editUserForm.password"/>
                       <#list spring.status.errorMessages as error>
