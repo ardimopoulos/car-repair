@@ -10,7 +10,7 @@
     <body>
     <#include "/admin/menu_bar.ftl"/>
 <div class="container">
-    <table class="table table-striped">
+    <table id="homeTable" class="table table-striped">
 
    <h3>Last Services </h3>
    <br>
