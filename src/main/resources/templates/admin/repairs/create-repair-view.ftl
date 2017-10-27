@@ -5,36 +5,49 @@
 
 
 <head>
-    <title>New Service Form</title>
-      <#include "/base_libraries/head.ftl"/>
+    <title>Edit Service Form</title>
+  <#include "/base_libraries/head.ftl"/>
     <link rel="stylesheet" type="text/css" href="/css/serviceReg.css">
 </head>
 <body>
 <#include "/admin/menu_bar.ftl"/>
 <div class="col-md-1"></div>
 <div class="col-md-10">
-    <h1>New Service Form</h1><br>
+
+
+       <h1>Edit Service Form</h1>
+       <br>
+       <form name="searchUser" action="/admin/create-repair"  method="get" >
+                 <!-- <label for="vat">VAT:</label>-->
+                 <input type="text" class="form-control"  id="id" placeholder="Enter service number" autocomplet="off" name="id" required/>
+                  <button type="submit" class="btn">Search</button>
+               </form>
+               <#if message??>
+               <span style="background-color:green; padding:10px; color:white">${message}<span>
+               </#if>
+<#if repairForm??>
     <form action="/admin/create-repair" method="post" name="repairForm">
 
         <div class="col-md-12">
             <div class="side">
-            <span style="color: #4CAF50; font-weight: bold; font-size:14px">${message!""}</span>
-            <span style="color: red; font-weight: bold; font-size:14px">${errorMessage!""}</span>
+                <span style="color: red; font-weight: bold; font-size:14px">${errorMessage!""}</span>
                 <div class="col-md-12">
                    <div class="col-md-6">
+                 <@spring.bind "repairForm.repairId"/>
+                  <input type="hidden" name="repairId" value="${repairForm.repairId!""}"/>
                 <@spring.bind "repairForm.plate"/>
                  <#list spring.status.errorMessages as error>
                  <span style="color:red">${error}</span>
-                </#list>
+                </#list><br>
                 <label for="Plate">Plate</label>
-                    <input type="text" id="plate" name="plate" placeholder="Type the plate..(ABC-1234)" >
+                    <input type="text" id="plate" name="plate" placeholder="Type the plate..(ABC-1234)" value=${repairForm.plate!""}>
                 <br/>
                 </div>
                 <div class="col-md-6">
                                  <@spring.bind "repairForm.status"/>
                                 <#list spring.status.errorMessages as error>
                                     <span style="color:red">${error}</span>
-                                </#list>
+                                </#list><br>
                                  <label for="Status of Service">Status of Service</label>
                             <select id="statusServ" name="status" >
                                     <option value="0" ${pending!""}>Pending</option>
@@ -48,7 +61,7 @@
                 <@spring.bind "repairForm.repairDate"/>
                 <#list spring.status.errorMessages as error>
                     <span style="color:red">${error}</span>
-                </#list>
+                </#list><br>
                 <label for="dateService">Service Date</label>
             <input type="datetime-local" id="dateServ" name="repairDate" placeholder="Select a date" value=${repairForm.repairDate!""} >
         </div>
@@ -63,7 +76,7 @@
                 <@spring.bind "repairForm.type"/>
                 <#list spring.status.errorMessages as error>
                     <span style="color:red">${error}</span>
-                </#list>
+                </#list><br>
                 <label for="Type of Service">Type of Service</label>
             <select id="typeServ" name="type" required>
                     <option value="true" ${long!""}>Long</option>
@@ -74,9 +87,9 @@
                 <@spring.bind "repairForm.cost"/>
                 <#list spring.status.errorMessages as error>
                     <span style="color:red">${error}</span>
-                </#list>
+                </#list><br>
                 <label for="Cost">Service Cost</label>
-            <input type="text" id="costServ" name="cost" placeholder="Type cost of Service..(123.45)" value=${repairForm.cost!""}>
+            <input type="text" id="costServ" name="cost" placeholder="Type the cost of Service.." value=${repairForm.cost!""}>
                     </div>
 
 
@@ -86,8 +99,8 @@
               <@spring.bind "repairForm.description"/>
                   <#list spring.status.errorMessages as error>
                   <span style="color:red">${error}</span>
-              </#list>
-            <textarea name="description" class="form-control" rows="4" id="comment" placeholder="Type comments for the service here(255 characters limit).." value="${repairForm.description!""}" >${repairForm.description!""}</textarea>
+              </#list><br>
+            <textarea name="description" class="form-control" rows="4" id="comment" placeholder="Type comments for the service here(255 characters limit).." >${repairForm.description!""}</textarea>
                 </div>
                 <input type="submit" value="Submit"><br><br>
 
@@ -98,6 +111,7 @@
         </div>
 
     </form>
+    </#if>
 </div>
 <div class="col-md-1"></div>
 

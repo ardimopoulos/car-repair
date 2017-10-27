@@ -19,7 +19,7 @@ public class RepairForm {
 
     private String repairId;
 
-    @NotNull(message = "{create-vehicle.plate.null}")
+    @NotNull(message = "{create-repair.plate.null}")
     @Pattern(regexp = PLATE_PATTERN, message = "{create-repair.plate.invalid}")
     private String plate;
 

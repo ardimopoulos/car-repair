@@ -38,8 +38,7 @@ public class RepairCreateController {
     }
 
     @RequestMapping(value = "/admin/create-repair" ,  method = RequestMethod.POST)
-    public String createService(Model model,@Valid @ModelAttribute(name = REPAIR_FORM) RepairForm repairForm,
-                                 BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String createService(@Valid @ModelAttribute(name = REPAIR_FORM) RepairForm repairForm,BindingResult bindingResult, RedirectAttributes redirectAttributes){
 
         if(bindingResult.hasErrors()) {
             String status = "";
@@ -55,10 +54,9 @@ public class RepairCreateController {
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
-            redirectAttributes.addFlashAttribute( type, "selected");
-            redirectAttributes.addFlashAttribute( status, "selected");
+            redirectAttributes.addFlashAttribute(type, "selected");
+            redirectAttributes.addFlashAttribute(status,  "selected");
             redirectAttributes.addFlashAttribute( "errorMessage",  "Fill the fields bellow");
-
             return "redirect:/admin/create-repair";
         }
 
@@ -66,7 +64,7 @@ public class RepairCreateController {
             Vehicle vehicle = vehicleService.getByPlate(repairForm.getPlate());
             Repair repair = RepairConverter.builtRepairObject(repairForm);
             repair.setVehicle(vehicle);
-            Repair newRepair = repairService.insertRepair(repair);
+            repairService.insertRepair(repair);
             redirectAttributes.addFlashAttribute("message", "Repair is created for vehicle with plate: "+vehicle.getPlate());
         }catch (VehicleNotFoundException e){
             redirectAttributes.addFlashAttribute("errorMessage", "Vehicle with plate: "+repairForm.getPlate()+" not found");
