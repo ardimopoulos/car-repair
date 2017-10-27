@@ -133,7 +133,7 @@ footer
 #vehButton{
  position: relative;
 
-    right:110px;
+    right:9%;
 }
 #vBrand{
 margin-top:6%;
@@ -153,4 +153,7 @@ left:10%;
 //position:absolute;
 top:37%;
 left:10%;
+}
+#editForm{
+margin-left:8%;
 }
