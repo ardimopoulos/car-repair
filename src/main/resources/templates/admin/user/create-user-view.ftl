@@ -12,7 +12,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
        <h1>User Registration Form</h1><br>
-        <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return passValidation();">
+        <form action="/admin/create-user" id="mainForm" method="post" name="userForm" onsubmit="return passValidation()">
 
             <div class="col-md-12">
                 <div class="side">
@@ -62,7 +62,7 @@
                         </div>
                     <div class="col-md-6">
                     <label for="configpassword">Confirm password</label>
-        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." onkeyup="passValidation()" ></div>
+        <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." ></div>
            </div>
             <div class="col-md-12">
     <div class="col-md-6">
@@ -100,5 +100,5 @@
     </body>
     <#include "/base_libraries/footer.ftl"/>
     <#include "/base_libraries/js.ftl"/>
-    <script type="text/javascript" src="/js/PasswordValidation.js">
+    <script type="text/javascript" src="/js/PasswordValidation.js"></script>
     </html>

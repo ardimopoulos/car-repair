@@ -103,11 +103,11 @@
                     <td>${repair.getVehicle().getMember().getLastname()}</td>
 
 
-    <th><a href="/admin/edit-repair?id=${repair.repairId}"><button type="button" class="btn btn-info">Edit</button></a></th>
+    <th><a href="/admin/edit-repair?id=${repair.repairId}"><button type="button" class="btn btn-info" >Edit</button></a></th>
 
-    <form action ="/admin/delete-repair" name="deleteForm" id ="deleteForm" method="POST">
+    <form action ="/admin/delete-repair" name="deleteForm" id ="deleteForm" method="POST" ">
         <input type="hidden" name="hidden_serviceId" id="hidden_serviceId" value="${repair.repairId}">
-    <th><input type="submit" class="btn btn-danger" value="Delete"></th>
+    <th><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirmRepairDelete()"></th>
     </form>
   </tr>
   </#list>
@@ -118,7 +118,7 @@
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
 <script type="text/javascript" src="/js/RepairValidation.js"></script>
-
+<script type="text/javascript" src="/js/ConfirmDelete.js"></script>
 
     </body>
 

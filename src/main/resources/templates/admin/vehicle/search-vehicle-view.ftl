@@ -77,7 +77,7 @@
 
     <form action ="/admin/delete-vehicle" name="deleteForm" id ="deleteForm" method="POST">
         <input type="hidden" name="hidden_vehicleId" id="hidden_vehicleId" value="${vehicle.vehicleId}">
-    <th><input type="submit" class="btn btn-danger" value="Delete"></th>
+    <th><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirmVehicleDelete()"></th>
     </form>
   </tr>
   </#list>
@@ -88,4 +88,5 @@
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
 <script type="text/javascript" src="/js/VehicleValidation.js"></script>
+<script type="text/javascript" src="/js/ConfirmDelete.js"></script>
     </body>
