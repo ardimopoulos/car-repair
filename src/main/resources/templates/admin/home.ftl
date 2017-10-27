@@ -8,13 +8,15 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
     <body>
-    <#include "/Admin/menu_bar.ftl"/>
+    <#include "/admin/menu_bar.ftl"/>
 <div class="container">
     <table class="table table-striped">
 
    <h3>Last Services </h3>
    <br>
-         <thead>
+        <input type="text" id="search" placeholder="Type in and search" onkeyup="myFunction()">
+
+        <thead>
                <tr>
                <th>Service ID</th>
                  <th>Description</th>
@@ -51,7 +53,7 @@
 <#include "/base_libraries/js.ftl"/>
 <script>
                 function myFunction() {
-                    var input, filter, table, tr, td, i;
+                    var input, filter, table, tr, td;
                     input = document.getElementById("myInput");
                     filter = input.value.toUpperCase();
                     table = document.getElementById("myTable");
