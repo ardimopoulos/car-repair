@@ -1,13 +1,13 @@
 <#import "/spring.ftl" as spring/>
-
-
+<!DOCTYPE html>
+<html>
 <head>
 
-    <title>Sign-Up/Login Form</title>
+    <title>Login</title>
 
         <#include "/base_libraries/head.ftl"/>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 
 
 </head>
@@ -16,14 +16,13 @@
              <header>
                      <h1>Welcome to Car Repairs</h1>
                      </header>
-                     <h2>${message!""}</h2>
-
-                     <h2 style="color: red;">${errorMessage!""}</h2>
 
              <div class="row"  >
                  <div class="col-md-2"></div>
                  <div class="col-md-8">
+
                        <form name="loginForm" action="/login"  method="post" >
+                        <h2 style="color: red; font-weight: 800;">${errorMessage!""}</h2>
                          <div class="login">
                           <!-- <label for="username">Email:</label>-->
                            <input type="email" class="form-control"  id="username" placeholder="Enter email" autocomplet="off" name="username" required/><br>
@@ -40,3 +39,4 @@
 <#include "/base_libraries/footer.ftl"/>
 <#include "/base_libraries/js.ftl"/>
     </body>
+</html>

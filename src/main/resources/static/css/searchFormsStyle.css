@@ -1,0 +1,58 @@
+body
+        {
+
+            font-weight: bold;
+            background:url('https://image.ibb.co/maKv1G/car_repair_362150_960_720.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+
+        }
+footer
+        {
+         font-size: 13px;
+          position:fixed;
+          width:auto;
+          right: 0;
+          bottom:0;
+
+          left: 0;
+          padding: 0.8rem;
+          color:white;
+          background-color: black;
+          text-align: center;
+         }
+
+#vat, #email{
+width:30%;
+}
+#date{
+width:30%;
+}
+#plate{
+ width:30%;
+ }
+ .container, #v-pills-tab {
+          border-radius: 10px;
+          background-color: #f2f2f2;
+          padding: 10px;
+ }
+ #pills-tab{
+  background-color:lightgrey;
+ }
+  input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
+
+  #myTable{
+    font-size: 15px;
+  }
+ #myTable td{
+      max-width: 200px;
+ }

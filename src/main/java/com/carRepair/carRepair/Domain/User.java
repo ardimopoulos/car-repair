@@ -1,37 +1,38 @@
 package com.carRepair.carRepair.Domain;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 
 @Entity
-public class User {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class User implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id" ,nullable = false)
+    @Column(name = "user_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
 
-    @Column(nullable = false , length = 32)
+    @Column(nullable = false, unique = true, length = 60)
     private String email;
 
-    @Column(nullable = false , length = 20)
+    @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private boolean userType;    // value true means ADMIN - value false means USER
 
-    @Column(nullable = false , length=1)
-    private boolean userType;
-
-    @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class)
+    @OneToOne(optional = false, mappedBy = "user", targetEntity = Member.class, cascade = CascadeType.ALL)
     private Member member;
 
-    public User() {
-    }
+    public User(){}
 
-    public User(String email, String password, boolean userType) {
+    public User(/*long userId,*/ String email, String password, boolean userType) {
+       /* this.userId = userId;*/
         this.email = email;
         this.password = password;
         this.userType = userType;
+
+       // this.member = member;
     }
 
     public long getUserId() { return userId; }
@@ -48,6 +49,16 @@ public class User {
 
     public boolean getUserType() { return userType; }
 
-    public void setUserType(boolean userType) { this.userType = userType; }
+    public void setUserType(boolean userType) {
+        this.userType = userType;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Member getMember() {
+        return member;
+    }
 
 }

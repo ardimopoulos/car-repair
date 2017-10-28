@@ -10,7 +10,7 @@ html {
         {
             text-align: center;
             background-color:whitesmoke;
-            color:crimson;
+            font-style:
             font-weight: bold;
             background:url('https://image.ibb.co/maKv1G/car_repair_362150_960_720.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -29,13 +29,20 @@ html {
         {
             text-align: center;
             font-style :normal;
-             text-align: center;
-             font-size: 19px;
-
-
-
+            text-align: center;
+            font-size: 19px;
 
         }
+     h3{
+
+             background-color:lightgray;
+             border: 1.5px solid #4CAF50;
+             border-radius: 20px;
+             padding: 26px;
+             text-align: center;
+              font-family:inherit;
+              font-size:30px;
+     }
     input
         {
                 align: center;
@@ -102,7 +109,7 @@ html {
     footer
         {
          font-size: 13px;
-          position: absolute;
+          position:fixed;
           width:auto;
           right: 0;
           bottom:0;
@@ -115,7 +122,7 @@ html {
      table
         {
 
-               align: center;
+              align:;
               background: grey;
               padding: 15px;
               margin-top: 10px;
@@ -129,3 +136,21 @@ html {
               opacity:1.5;
 
         }
+.but{
+    background-color: lightgrey;
+    border-radius: 14px;
+    border-color: grey;
+    position: relative;
+    left: 2%;
+    padding: 2px;
+    width:8%;
+}
+.search{
+    border-radius: 22px;
+}
+.table table-striped{
+color:lightgrey;
+}
+#myTable{
+margin-bottom:10%;
+}
