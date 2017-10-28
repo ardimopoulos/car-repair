@@ -64,7 +64,7 @@
                         <label for ="password">User password</label>
                         <input type="password" id="UserP" name="password" placeholder="Set new password.." onkeyup="passValidation()"/>
                         </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6"><br>
                     <label for="configpassword">Confirm password</label>
         <input type="password" id="ConfPass" name="configpassword" placeholder="Confirm password number.." onkeyup=""passValidation()"></div>
            <span id="UserP_error"></span></div>
