@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User implements Serializable{
+public class User{
 
     @Id
     @Column(name = "user_id", nullable = false)
