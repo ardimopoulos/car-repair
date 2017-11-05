@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Member extends User implements Serializable {
+public class Member extends User{
 
     @Column(nullable = false, length = 9, unique = true)
     private String vat;
