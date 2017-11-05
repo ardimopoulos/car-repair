@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Vehicle implements Serializable {
+public class Vehicle{
 
     @Id
     @Column(name = "vehicle_id", nullable = false)
