@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-public class Repair implements Serializable {
+public class Repair{
 
     @Id
     @Column(name = "repair_id", nullable = false)
