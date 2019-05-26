@@ -65,15 +65,7 @@ public class RepairServiceImpl implements RepairService{
         List<Repair> repairList = new ArrayList<>();
 
         try {
-            List<Vehicle> vehicleList = member.getVehicles();
-
-            for (int i = 0; i < vehicleList.size(); i++) {
-                List<Repair> repairsByVehicle = vehicleList.get(i).getRepairs();
-
-                for (int j = 0; j < repairsByVehicle.size(); j++) {
-                    repairList.add(repairsByVehicle.get(j));
-                }
-            }
+            member.getVehicles().forEach(v -> repairList.addAll(v.getRepairs()));
 
         } catch (Exception e) {
             throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname());
@@ -118,15 +110,7 @@ public class RepairServiceImpl implements RepairService{
         }
 
         try {
-            List<Vehicle> vehicleList = member.getVehicles();
-
-            for (int i = 0; i < vehicleList.size(); i++) {
-                List<Repair> repairsByVehicle = vehicleList.get(i).getRepairs();
-
-                for (int j = 0; j < repairsByVehicle.size(); j++) {
-                    repairList.add(repairsByVehicle.get(j));
-                }
-            }
+            member.getVehicles().forEach(v -> repairList.addAll(v.getRepairs()));
 
             if (repairList.isEmpty()) {
                 throw new RepairNotFoundException("Repairs not exist for member " + member.getFirstname() + member.getLastname());

@@ -15,14 +15,11 @@ public class AppUtilities {
     public static String userAuthority(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> grant = auth.getAuthorities();
-        String userType = "";
+        String userType = "MEMBER";
 
         for (GrantedAuthority g: grant) {
             if (g.getAuthority().equals("ADMIN")) {
                 userType = "ADMIN";
-
-            }else if (g.getAuthority().equals("MEMBER")) {
-                userType = "MEMBER";
             }
         }
 
