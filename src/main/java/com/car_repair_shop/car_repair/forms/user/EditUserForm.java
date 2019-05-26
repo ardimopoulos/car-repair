@@ -8,15 +8,12 @@ import lombok.Setter;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import static com.car_repair_shop.car_repair.properties.ValidationPatterns.*;
+
 @NoArgsConstructor
 @Getter
 @Setter
 public class EditUserForm {
-
-    private static final String VAT_PATTERN = "^[0-9]{9}$";
-    private static final String NAME_PATTERN = "^[a-zA-Z]+$";
-    private static final String ADDRESS_PATTERN = "^[a-zA-Z0-9\\s]+$";
-    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$";
 
     @NotNull
     private long userId;

@@ -11,16 +11,12 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
+import static com.car_repair_shop.car_repair.properties.ValidationPatterns.*;
+
 @NoArgsConstructor
 @Getter
 @Setter
 public class RepairForm {
-
-    private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[1-9]{4}$";
-    private static final String STATUS_PATTERN = "^[012]$";
-    private static final String COST_PATTERN = "^[0-9]+[.]{1}[0-9]+$";
-    private static final String DESC_PATTERN = "^.+$";
-    private static final String TYPE_PATTERN = "^.+$";
 
     private String repairId;
 

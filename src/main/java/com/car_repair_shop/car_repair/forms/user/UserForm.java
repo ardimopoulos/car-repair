@@ -8,16 +8,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import static com.car_repair_shop.car_repair.properties.ValidationPatterns.*;
+
 @NoArgsConstructor
 @Getter
 @Setter
 public class UserForm {
-    private static final String VAT_PATTERN = "^[0-9]{9}$";
-    private static final String NAME_PATTERN = "^[a-zA-Z]+$";
-    private static final String ADDRESS_PATTERN = "^[a-zA-Z0-9\\s]+$";
-    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_%#+.-]+@[A-Za-z0-9.-]+.[a-zA-Z]+$";
-    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&]*$";
-    private static final int PASSWORD_MINIMUM_SIZE = 8;
 
     @NotNull(message = "{create-user.vat.null}")
     @Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")

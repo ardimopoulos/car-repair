@@ -3,6 +3,7 @@ package com.car_repair_shop.car_repair.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 
@@ -19,6 +20,7 @@ public class User{
     private long userId;
 
     @Column(nullable = false, unique = true, length = 60)
+    @Email
     private String email;
 
     @Column(nullable = false)

@@ -6,13 +6,13 @@ import lombok.Setter;
 
 import javax.validation.constraints.Pattern;
 
+import static com.car_repair_shop.car_repair.properties.ValidationPatterns.PLATE_PATTERN;
+import static com.car_repair_shop.car_repair.properties.ValidationPatterns.VAT_PATTERN;
+
 @NoArgsConstructor
 @Getter
 @Setter
 public class RepairSearchForm {
-
-    private static final String VAT_PATTERN = "^[0-9]{9}$";
-    private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[1-9]{4}$";
 
     @Pattern(regexp = VAT_PATTERN, message = "{create-user.vat.invalid}")
     private String vat;

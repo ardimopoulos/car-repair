@@ -8,17 +8,12 @@ import lombok.Setter;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import static com.car_repair_shop.car_repair.properties.ValidationPatterns.*;
+
 @NoArgsConstructor
 @Getter
 @Setter
 public class VehicleForm {
-
-    private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[0-9]{4}$";
-    private static final String BRAND_PATTERN = "^[a-zA-Z0-9\\s]+$";
-    private static final String MODEL_PATTERN = "^[a-zA-Z0-9\\s]+$";
-    private static final String COLOR_PATTERN = "^[a-zA-Z\\s]+$";
-    private static final String YEAR_PATTERN = "^[12]{1}[0-9]{3}$";
-    private static final String VAT_PATTERN = "^[0-9]{9}$";
 
     private String vehicleId;
 
