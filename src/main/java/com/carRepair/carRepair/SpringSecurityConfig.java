@@ -1,7 +1,7 @@
 package com.carRepair.carRepair;
 
-import com.carRepair.carRepair.Handlers.SuccessLoginHandler;
-import com.carRepair.carRepair.Security.LoginAuthenticationProvider;
+import com.carRepair.carRepair.handlers.SuccessLoginHandler;
+import com.carRepair.carRepair.security.LoginAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
