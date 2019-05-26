@@ -1,10 +1,16 @@
-package com.carRepair.carRepair.Forms.User;
+package com.carRepair.carRepair.forms.user;
 
-import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.domain.Member;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class EditUserForm {
 
     private static final String VAT_PATTERN = "^[0-9]{9}$";
@@ -42,8 +48,6 @@ public class EditUserForm {
     @NotNull
     private boolean userType;
 
-    public EditUserForm(){}
-
     public EditUserForm(Member member) {
         this.userId = member.getUserId();
         this.vat = member.getVat();
@@ -52,78 +56,6 @@ public class EditUserForm {
         this.address = member.getAddress();
         this.email = member.getEmail();
         this.password = member.getPassword();
-        this.userType = member.getUserType();
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNewPassword() {
-        return newPassword;
-    }
-
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
-
-    public boolean getUserType() {
-        return userType;
-    }
-
-    public void setUserType(boolean userType) {
-        this.userType = userType;
+        this.userType = member.isUserType();
     }
 }

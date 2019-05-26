@@ -1,6 +1,9 @@
-package com.carRepair.carRepair.Forms.Repair;
+package com.carRepair.carRepair.forms.repair;
 
-import com.carRepair.carRepair.Domain.Repair;
+import com.carRepair.carRepair.domain.Repair;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
@@ -8,11 +11,13 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class RepairForm {
 
     private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[1-9]{4}$";
     private static final String STATUS_PATTERN = "^[012]$";
-   // private static final String TYPE_PATTERN = "^[\btrue\b\bfalse\b]$";
     private static final String COST_PATTERN = "^[0-9]+[.]{1}[0-9]+$";
     private static final String DESC_PATTERN = "^.+$";
     private static final String TYPE_PATTERN = "^.+$";
@@ -43,74 +48,13 @@ public class RepairForm {
     @Pattern(regexp = COST_PATTERN, message = "{create-repair.cost.invalid}")
     private String cost;
 
-    public RepairForm() {
-    }
-
-    //TODO repairform converter
-
     public RepairForm(Repair repair) {
         this.repairId = String.valueOf(repair.getRepairId());
         this.plate = repair.getVehicle().getPlate();
-        this.repairDate = repair.getrepairDate();
+        this.repairDate = repair.getRepairDate();
         this.status = String.valueOf(repair.getStatus());
         this.description = repair.getDescription();
-        this.type = String.valueOf(repair.getType());
+        this.type = String.valueOf(repair.isType());
         this.cost = String.valueOf(repair.getCost());
-    }
-
-    public String getRepairId() {
-        return repairId;
-    }
-
-    public void setRepairId(String repairId) {
-        this.repairId = repairId;
-    }
-
-    public String getPlate() {
-        return plate;
-    }
-
-    public void setPlate(String vat) {
-        this.plate = vat;
-    }
-
-    public LocalDateTime getRepairDate() {
-        return repairDate;
-    }
-
-    public void setRepairDate(LocalDateTime date) {
-        this.repairDate = date;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getCost() {
-        return cost;
-    }
-
-    public void setCost(String cost) {
-        this.cost = cost;
     }
 }

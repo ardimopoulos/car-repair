@@ -4,7 +4,7 @@ import com.carRepair.carRepair.domain.Member;
 import com.carRepair.carRepair.forms.user.EditUserForm;
 import com.carRepair.carRepair.forms.user.UserForm;
 
-import static com.carRepair.carRepair.Utilities.AppUtilities.hashPassword;
+import static com.carRepair.carRepair.utilities.AppUtilities.hashPassword;
 
 public class MemberConverter {
 

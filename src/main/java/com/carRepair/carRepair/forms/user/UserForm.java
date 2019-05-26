@@ -1,11 +1,16 @@
-package com.carRepair.carRepair.Forms.User;
+package com.carRepair.carRepair.forms.user;
 
-import com.carRepair.carRepair.Domain.Member;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class UserForm {
     private static final String VAT_PATTERN = "^[0-9]{9}$";
     private static final String NAME_PATTERN = "^[a-zA-Z]+$";
@@ -42,81 +47,4 @@ public class UserForm {
     private boolean userType;
 
     private boolean addVehicle;
-
-    public UserForm(){}
-
-   /* public UserForm(Member member){
-        this.vat = member.getVat();
-        this.firstname = member.getFirstname();
-        this.lastname = member.getLastname();
-        this.address = member.getAddress();
-        this.email = member.getEmail();
-        this.password = member.getPassword();
-        this.userType = member.getUserType();
-        this.password = member.getPassword();
-    }*/
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean getUserType() {
-        return userType;
-    }
-
-    public void setUserType(boolean type) {
-        userType = type;
-    }
-
-    public boolean getAddVehicle() {
-        return addVehicle;
-    }
-
-    public void setAddVehicle(boolean addVehicle) {
-        this.addVehicle = addVehicle;
-    }
 }

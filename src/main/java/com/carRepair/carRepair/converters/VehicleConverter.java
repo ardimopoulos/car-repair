@@ -1,7 +1,7 @@
 package com.carRepair.carRepair.converters;
 
 import com.carRepair.carRepair.domain.Vehicle;
-import com.carRepair.carRepair.forms.Vehicle.VehicleForm;
+import com.carRepair.carRepair.forms.vehicle.VehicleForm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

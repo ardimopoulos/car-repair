@@ -1,10 +1,16 @@
-package com.carRepair.carRepair.Forms.Vehicle;
+package com.carRepair.carRepair.forms.vehicle;
 
-import com.carRepair.carRepair.Domain.Member;
+import com.carRepair.carRepair.domain.Member;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class VehicleForm {
 
     private static final String PLATE_PATTERN = "^[a-zA-Z]{3}-[0-9]{4}$";
@@ -42,9 +48,6 @@ public class VehicleForm {
 
     private Member member;
 
-    public VehicleForm() {
-    }
-
     public VehicleForm(String vehicleId, String vat, String plate, String brand, String model, String color, String yearOfModel) {
         this.vehicleId = vehicleId;
         this.vat = vat;
@@ -52,62 +55,6 @@ public class VehicleForm {
         this.brand = brand;
         this.model = model;
         this.color = color;
-        this.yearOfModel = yearOfModel;
-    }
-
-    public String getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
-    public String getPlate() {
-        return plate;
-    }
-
-    public void setPlate(String plate) {
-        this.plate = plate;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String moden) {
-        this.model = moden;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getYearOfModel() {
-        return yearOfModel;
-    }
-
-    public void setYearOfModel(String yearOfModel) {
         this.yearOfModel = yearOfModel;
     }
 }
