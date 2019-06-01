@@ -17,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class VehicleCreateController {
 
@@ -61,7 +63,7 @@ public class VehicleCreateController {
         } catch (Exception e) {
             String message = "There is not user with VAT: " + memberVat + " or vehicle already exists";
 
-            redirectAttributes.addFlashAttribute("errorMessage", message);
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, message);
             redirectAttributes.addFlashAttribute(VEHICLE_FORM, vehicleForm);
 
             return "redirect:/admin/create-vehicle";

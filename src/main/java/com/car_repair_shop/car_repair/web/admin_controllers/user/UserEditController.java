@@ -19,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class UserEditController {
 
@@ -39,7 +41,7 @@ public class UserEditController {
                 model.addAttribute(role,"selected");
 
             } catch (UserNotFoundException e) {
-                redirectAttributes.addFlashAttribute("errorMessage",e.getMessage());
+                redirectAttributes.addFlashAttribute(ERROR_MESSAGE,e.getMessage());
                 return "redirect:/admin/edit-user";
             }
         }
@@ -80,7 +82,7 @@ public class UserEditController {
             redirectAttributes.addFlashAttribute("message", message);
 
         } catch (UserExistException | UserNotFoundException e) {
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, e.getMessage());
             redirectAttributes.addFlashAttribute(EDIT_USER_FORM, editUserForm);
         }
 

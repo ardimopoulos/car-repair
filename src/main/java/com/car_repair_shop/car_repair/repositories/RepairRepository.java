@@ -19,5 +19,4 @@ public interface RepairRepository extends CrudRepository<Repair, Long> {
     void delete(Long id);
 
     Repair save(Repair repair);
-
 }

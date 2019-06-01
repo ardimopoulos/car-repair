@@ -20,6 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.text.ParseException;
 
+import static com.car_repair_shop.car_repair.properties.Constants.*;
+
 @Controller
 public class RepairEditController {
 
@@ -45,13 +47,13 @@ public class RepairEditController {
                 String status;
 
                 if (repair.getStatus() == 1) {
-                    status = "inProgress";
+                    status = IN_PROGRESS;
 
                 } else if (repair.getStatus() == 2) {
-                    status = "completed";
+                    status = COMPLETED;
 
                 } else {
-                    status = "pending";
+                    status = PENDING;
                 }
 
                 model.addAttribute(type,"selected");
@@ -59,10 +61,10 @@ public class RepairEditController {
                 model.addAttribute(REPAIR_FORM, repairForm);
 
             } catch (RepairNotFoundException ex) {
-                model.addAttribute("errorMessage", "Service with id: " + id + "not found");
+                model.addAttribute(ERROR_MESSAGE, "Service with id: " + id + "not found");
 
             } catch (NumberFormatException e) {
-                model.addAttribute("errorMessage", "Service id must be number");
+                model.addAttribute(ERROR_MESSAGE, "Service id must be number");
             }
         }
 
@@ -83,13 +85,13 @@ public class RepairEditController {
             String status;
 
             if (repairForm.getStatus().equals("1")) {
-                status = "inProgress";
+                status = IN_PROGRESS;
 
             } else if (repairForm.getStatus().equals("2")) {
-                status = "completed";
+                status = COMPLETED;
 
             } else {
-                status = "pending";
+                status = PENDING;
             }
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
@@ -109,10 +111,10 @@ public class RepairEditController {
             redirectAttributes.addFlashAttribute("message", "Successful update!");
 
         } catch (ParseException e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Invalid date format");
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, "Invalid date format");
 
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, e.getMessage());
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
         }
 

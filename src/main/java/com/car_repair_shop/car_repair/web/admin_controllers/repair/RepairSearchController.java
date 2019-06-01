@@ -18,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class RepairSearchController {
     private static final String REPAIR_SEARCH_FORM = "repairSearchForm";
@@ -45,7 +47,7 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute("repairs", repairs);
 
             } catch (RepairNotFoundException repairNotFound) {
-                redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage());
+                redirectAttributes.addFlashAttribute(ERROR_MESSAGE, repairNotFound.getMessage());
             }
 
         } else if (button.equals("Search Plate")) {
@@ -54,7 +56,7 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
 
             } catch (RepairNotFoundException repairNotFound) {
-                redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage());
+                redirectAttributes.addFlashAttribute(ERROR_MESSAGE, repairNotFound.getMessage());
             }
 
         } else if (button.equals("Search Date")) {
@@ -63,7 +65,7 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
 
             } catch (RepairNotFoundException | DateParseException repairNotFound) {
-                redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage());
+                redirectAttributes.addFlashAttribute(ERROR_MESSAGE, repairNotFound.getMessage());
             }
 
         } else if (button.equals("Search Between")) {
@@ -72,11 +74,11 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
 
             } catch (RepairNotFoundException | DateParseException repairNotFound) {
-                redirectAttributes.addFlashAttribute("errorMessage", repairNotFound.getMessage());
+                redirectAttributes.addFlashAttribute(ERROR_MESSAGE, repairNotFound.getMessage());
             }
 
         }else{
-            redirectAttributes.addFlashAttribute("errorMessage", "Press the button");
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, "Press the button");
         }
 
         return "redirect:/admin/search-repair";

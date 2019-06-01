@@ -16,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class UserCreateController {
 
@@ -67,7 +69,7 @@ public class UserCreateController {
             redirectAttributes.addFlashAttribute("userId", member.getUserId());
 
         } catch (UserExistException e) {
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, e.getMessage());
             redirectAttributes.addFlashAttribute(USER_FORM, userForm);
             redirectAttributes.addFlashAttribute(role, "selected");
             redirectAttributes.addFlashAttribute("checked",  addVehicle);

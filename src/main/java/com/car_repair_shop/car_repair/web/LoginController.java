@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class LoginController {
 
@@ -29,7 +31,7 @@ public class LoginController {
         }
 
         if (error != null) {
-            model.addAttribute("errorMessage", "user not found! Please try again");
+            model.addAttribute(ERROR_MESSAGE, "user not found! Please try again");
         }
 
         if (!model.containsAttribute(LOGIN_FORM)) {

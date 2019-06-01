@@ -16,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class VehicleSearchController {
 
@@ -46,7 +48,7 @@ public class VehicleSearchController {
                 redirectAttributes.addFlashAttribute("vehicles", vehicles);
 
             } catch (VehicleNotFoundException vehicleNotFound) {
-                redirectAttributes.addFlashAttribute("errorMessage", vehicleNotFound.getMessage());
+                redirectAttributes.addFlashAttribute(ERROR_MESSAGE, vehicleNotFound.getMessage());
             }
 
         }
@@ -57,7 +59,7 @@ public class VehicleSearchController {
                 redirectAttributes.addFlashAttribute("vehicles" , vehicles);
 
             } catch (VehicleNotFoundException vehicleNotFound) {
-                redirectAttributes.addFlashAttribute("errorMessage", vehicleNotFound.getMessage());
+                redirectAttributes.addFlashAttribute(ERROR_MESSAGE, vehicleNotFound.getMessage());
             }
         }
 

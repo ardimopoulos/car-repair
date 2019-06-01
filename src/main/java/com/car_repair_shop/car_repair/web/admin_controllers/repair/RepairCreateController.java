@@ -18,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class RepairCreateController {
 
@@ -59,7 +61,7 @@ public class RepairCreateController {
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
             redirectAttributes.addFlashAttribute(type, "selected");
             redirectAttributes.addFlashAttribute(status,  "selected");
-            redirectAttributes.addFlashAttribute( "errorMessage",  "Fill the fields bellow");
+            redirectAttributes.addFlashAttribute( ERROR_MESSAGE,  "Fill the fields bellow");
 
             return "redirect:/admin/create-repair";
         }
@@ -72,11 +74,11 @@ public class RepairCreateController {
             redirectAttributes.addFlashAttribute("message", "repair is created for vehicle with plate: "+vehicle.getPlate());
 
         } catch (VehicleNotFoundException e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "vehicle with plate: "+repairForm.getPlate()+" not found");
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, "vehicle with plate: "+repairForm.getPlate()+" not found");
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
 
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong. Please try again later");
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, "Something went wrong. Please try again later");
         }
 
         return "redirect:/admin/create-repair";

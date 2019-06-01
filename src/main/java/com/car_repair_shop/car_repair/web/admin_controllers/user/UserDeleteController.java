@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class UserDeleteController {
 
@@ -23,10 +25,10 @@ public class UserDeleteController {
            memberService.deleteMember(member.getUserId());
 
         } catch (UserNotFoundException userNotFound) {
-            model.addAttribute("errorMessage", "Can t find user!" );
+            model.addAttribute(ERROR_MESSAGE, "Can t find user!" );
 
         } catch (IllegalArgumentException e) {
-            model.addAttribute("errorMessage", "Something went wrong");
+            model.addAttribute(ERROR_MESSAGE, "Something went wrong");
         }
 
         return "redirect:/admin/search-user";

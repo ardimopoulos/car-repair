@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class RepairDeleteController {
 
@@ -19,7 +21,7 @@ public class RepairDeleteController {
 
         repairService.deleteRepair(hidden_serviceId);
 
-        redirectAttributes.addFlashAttribute("errorMessage" , "The repair deleted successfully");
+        redirectAttributes.addFlashAttribute(ERROR_MESSAGE , "The repair deleted successfully");
         return "redirect:/admin/search-repair";
     }
 

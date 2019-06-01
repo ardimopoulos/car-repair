@@ -19,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+
 @Controller
 public class VehicleEditController {
 
@@ -39,7 +41,7 @@ public class VehicleEditController {
                 model.addAttribute(VEHICLE_FORM, vehicleForm);
 
             } catch (VehicleNotFoundException e) {
-                model.addAttribute("errorMessage", "vehicle with plate "+ p + " not found");
+                model.addAttribute(ERROR_MESSAGE, "vehicle with plate "+ p + " not found");
             }
         }
 
@@ -51,7 +53,7 @@ public class VehicleEditController {
                                   RedirectAttributes redirectAttributes) {
 
         if (vehicleForm.getVehicleId().equals("")) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Something went wrong");
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, "Something went wrong");
             return "redirect:/admin/edit-repair";
         }
 
@@ -70,7 +72,7 @@ public class VehicleEditController {
            redirectAttributes.addFlashAttribute("message", "Successful update!");
 
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            redirectAttributes.addFlashAttribute(ERROR_MESSAGE, e.getMessage());
             redirectAttributes.addFlashAttribute(VEHICLE_FORM, vehicleForm);
         }
 
