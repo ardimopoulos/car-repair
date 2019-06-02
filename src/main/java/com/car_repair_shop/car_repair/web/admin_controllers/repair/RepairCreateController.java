@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import static com.car_repair_shop.car_repair.enums.RepairStatus.*;
 import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
 
 @Controller
@@ -45,14 +46,16 @@ public class RepairCreateController {
         if (bindingResult.hasErrors()) {
             String status;
 
-            if (repairForm.getStatus().equals("1")) {
-                status = "inProgress";
+            int repairStatus = Integer.parseInt(repairForm.getStatus());
 
-            } else if (repairForm.getStatus().equals("2")) {
-                status = "completed";
+            if (repairStatus == IN_PROGRESS.value()) {
+                status = IN_PROGRESS.toString();
+
+            } else if (repairStatus == COMPLETED.value()) {
+                status = COMPLETED.toString();
 
             } else {
-                status = "pending";
+                status = PENDING.toString();
             }
 
             String type = (repairForm.getType().equals("true")) ? "long" : "short";

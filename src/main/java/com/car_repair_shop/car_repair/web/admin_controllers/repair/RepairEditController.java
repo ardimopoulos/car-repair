@@ -20,7 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.text.ParseException;
 
-import static com.car_repair_shop.car_repair.properties.Constants.*;
+import static com.car_repair_shop.car_repair.enums.RepairStatus.*;
+import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
 
 @Controller
 public class RepairEditController {
@@ -46,14 +47,14 @@ public class RepairEditController {
                 String type = (repair.isType()) ? "long" : "short";
                 String status;
 
-                if (repair.getStatus() == 1) {
-                    status = IN_PROGRESS;
+                if (repair.getStatus() == IN_PROGRESS.value()) {
+                    status = IN_PROGRESS.toString();
 
                 } else if (repair.getStatus() == 2) {
-                    status = COMPLETED;
+                    status = COMPLETED.toString();
 
                 } else {
-                    status = PENDING;
+                    status = PENDING.toString();
                 }
 
                 model.addAttribute(type,"selected");
@@ -84,14 +85,16 @@ public class RepairEditController {
             String type = (repairForm.getType().equals("true")) ? "long" : "short";
             String status;
 
-            if (repairForm.getStatus().equals("1")) {
-                status = IN_PROGRESS;
+            int repairStatus = Integer.parseInt(repairForm.getStatus());
 
-            } else if (repairForm.getStatus().equals("2")) {
-                status = COMPLETED;
+            if (repairStatus == IN_PROGRESS.value()) {
+                status = IN_PROGRESS.toString();
+
+            } else if (repairStatus == COMPLETED.value()) {
+                status = COMPLETED.toString();
 
             } else {
-                status = PENDING;
+                status = PENDING.toString();
             }
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
