@@ -22,6 +22,7 @@ import java.text.ParseException;
 
 import static com.car_repair_shop.car_repair.enums.RepairStatus.*;
 import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+import static com.car_repair_shop.car_repair.properties.Constants.TRUE;
 
 @Controller
 public class RepairEditController {
@@ -82,7 +83,7 @@ public class RepairEditController {
         }
 
         if (bindingResult.hasErrors()) {
-            String type = ("true".equals(repairForm.getType())) ? "long" : "short";
+            String type = (TRUE.equals(repairForm.getType())) ? "long" : "short";
             String status;
 
             int repairStatus = Integer.parseInt(repairForm.getStatus());

@@ -20,6 +20,7 @@ import javax.validation.Valid;
 
 import static com.car_repair_shop.car_repair.enums.RepairStatus.*;
 import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+import static com.car_repair_shop.car_repair.properties.Constants.TRUE;
 
 @Controller
 public class RepairCreateController {
@@ -58,7 +59,7 @@ public class RepairCreateController {
                 status = PENDING.toString();
             }
 
-            String type = ("true".equals(repairForm.getType())) ? "long" : "short";
+            String type = (TRUE.equals(repairForm.getType())) ? "long" : "short";
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);
