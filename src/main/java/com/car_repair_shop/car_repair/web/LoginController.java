@@ -20,10 +20,10 @@ public class LoginController {
         String role = AppUtilities.userAuthority();
         String view;
 
-        if (role.equals(ADMIN)) {
+        if (ADMIN.equals(role)) {
             view = "redirect:/admin/";
 
-        } else if (role.equals(MEMBER)) {
+        } else if (MEMBER.equals(role)) {
             view = "redirect:/member/";
 
         } else {

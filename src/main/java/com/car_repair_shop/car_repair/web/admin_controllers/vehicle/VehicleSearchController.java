@@ -42,7 +42,7 @@ public class VehicleSearchController {
                                RedirectAttributes redirectAttributes,
                                @RequestParam("button") String button){
 
-        if (button.equals("Search Vat")) {
+        if ("Search Vat".equals(button)) {
             try {
                 List<Vehicle> vehicles = vehicleService.getVehiclesByMemberVat(vehicleSearchForm.getVat());
                 redirectAttributes.addFlashAttribute("vehicles", vehicles);
@@ -53,7 +53,7 @@ public class VehicleSearchController {
 
         }
 
-        if (button.equals("Search Plate")) {
+        if ("Search Plate".equals(button)) {
             try{
                 List<Vehicle> vehicles = vehicleService.getVehiclesByMemberPlate(vehicleSearchForm.getPlate());
                 redirectAttributes.addFlashAttribute("vehicles" , vehicles);

@@ -58,7 +58,7 @@ public class RepairCreateController {
                 status = PENDING.toString();
             }
 
-            String type = (repairForm.getType().equals("true")) ? "long" : "short";
+            String type = ("true".equals(repairForm.getType())) ? "long" : "short";
 
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.repairForm", bindingResult);
             redirectAttributes.addFlashAttribute(REPAIR_FORM, repairForm);

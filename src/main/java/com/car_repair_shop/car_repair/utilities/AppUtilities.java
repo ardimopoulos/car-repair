@@ -10,16 +10,19 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ADMIN;
+import static com.car_repair_shop.car_repair.properties.Constants.MEMBER;
+
 public class AppUtilities {
 
     public static String userAuthority(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> grant = auth.getAuthorities();
-        String userType = "MEMBER";
+        String userType = MEMBER;
 
         for (GrantedAuthority g: grant) {
-            if (g.getAuthority().equals("ADMIN")) {
-                userType = "ADMIN";
+            if (ADMIN.equals(g.getAuthority())) {
+                userType = ADMIN;
             }
         }
 
@@ -38,10 +41,10 @@ public class AppUtilities {
         String newHashPass = "";
         String pattern = "^[a-zA-Z0-9@#$%^&]*$";
 
-        if (formPass.equals("") && formNewPass.equals("")) {
+        if ("".equals(formPass) && "".equals(formNewPass)) {
             newHashPass = memberPass;
 
-        } else if (!formPass.equals("") && !formNewPass.equals("")) {
+        } else if (!"".equals(formPass) && !"".equals(formNewPass)) {
             boolean checkPass = checkPassword(formPass, memberPass);
 
             if (checkPass && formNewPass.length() >= 8 && formNewPass.matches(pattern)) {

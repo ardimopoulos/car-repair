@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ADMIN;
+import static com.car_repair_shop.car_repair.properties.Constants.MEMBER;
+
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -36,12 +39,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").anonymous()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/member/**").hasAuthority("MEMBER");
+                .antMatchers("/admin/**").hasAuthority(ADMIN)
+                .antMatchers("/member/**").hasAuthority(MEMBER);
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(loginAuthenticationProvider);
     }
 }

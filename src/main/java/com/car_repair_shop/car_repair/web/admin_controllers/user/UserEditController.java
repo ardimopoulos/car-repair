@@ -70,7 +70,7 @@ public class UserEditController {
             String formNewPass = editUserForm.getNewPassword();
             String editPass = AppUtilities.editPassword(memberPass,formPass,formNewPass);
 
-            if (editPass.equals("")) {
+            if ("".equals(editPass)) {
                 redirectAttributes.addFlashAttribute("passwordMessage", "Current and new password must have 8 characters at least");
                 return "redirect:/admin/edit-user?v=" + member.getVat();
             }

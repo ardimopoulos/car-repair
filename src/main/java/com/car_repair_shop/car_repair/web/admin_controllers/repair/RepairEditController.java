@@ -76,13 +76,13 @@ public class RepairEditController {
     public String editRepair(@Valid @ModelAttribute(name = REPAIR_FORM) RepairForm repairForm, BindingResult bindingResult,
                              RedirectAttributes redirectAttributes){
 
-        if (repairForm.getRepairId().equals("")) {
+        if ("".equals(repairForm.getRepairId())) {
             redirectAttributes.addFlashAttribute("errormessage", "Something went wrong");
             return "redirect:/admin/edit-repair";
         }
 
         if (bindingResult.hasErrors()) {
-            String type = (repairForm.getType().equals("true")) ? "long" : "short";
+            String type = ("true".equals(repairForm.getType())) ? "long" : "short";
             String status;
 
             int repairStatus = Integer.parseInt(repairForm.getStatus());

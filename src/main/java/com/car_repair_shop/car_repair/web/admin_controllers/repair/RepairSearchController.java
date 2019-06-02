@@ -41,7 +41,7 @@ public class RepairSearchController {
     public String searchRepairPost(@Valid @ModelAttribute(REPAIR_SEARCH_FORM) RepairSearchForm repairSearchForm, BindingResult bindingResult,
                                    RedirectAttributes redirectAttributes, @RequestParam("button") String button) {
 
-        if (button.equals("Search Vat")) {
+        if ("Search Vat".equals(button)) {
             try {
                 List<Repair> repairs = repairService.getByVat(repairSearchForm.getVat());
                 redirectAttributes.addFlashAttribute("repairs", repairs);
@@ -50,7 +50,7 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute(ERROR_MESSAGE, repairNotFound.getMessage());
             }
 
-        } else if (button.equals("Search Plate")) {
+        } else if ("Search Plate".equals(button)) {
             try {
                 List<Repair> repairs = repairService.getByPlate(repairSearchForm.getPlate());
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
@@ -59,7 +59,7 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute(ERROR_MESSAGE, repairNotFound.getMessage());
             }
 
-        } else if (button.equals("Search Date")) {
+        } else if ("Search Date".equals(button)) {
             try{
                 List<Repair> repairs = repairService.getByRepairDate(repairSearchForm.getDate());
                 redirectAttributes.addFlashAttribute("repairs" , repairs);
@@ -68,7 +68,7 @@ public class RepairSearchController {
                 redirectAttributes.addFlashAttribute(ERROR_MESSAGE, repairNotFound.getMessage());
             }
 
-        } else if (button.equals("Search Between")) {
+        } else if ("Search Between".equals(button)) {
             try{
                 List<Repair> repairs = repairService.getByBetweenRepairDates(repairSearchForm.getStartDate() ,repairSearchForm.getBeforeDate());
                 redirectAttributes.addFlashAttribute("repairs" , repairs);

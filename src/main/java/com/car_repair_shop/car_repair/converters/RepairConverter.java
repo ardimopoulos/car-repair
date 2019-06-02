@@ -10,7 +10,7 @@ public class RepairConverter {
                 repairForm.getRepairDate(),
                 Integer.parseInt(repairForm.getStatus()),
                 repairForm.getDescription(),
-                repairForm.getType().equals("true"),
+                "true".equals(repairForm.getType()),
                 Double.valueOf(repairForm.getCost())
         );
     }

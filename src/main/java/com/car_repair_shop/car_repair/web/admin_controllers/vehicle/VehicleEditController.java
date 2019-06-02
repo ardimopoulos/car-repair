@@ -52,7 +52,7 @@ public class VehicleEditController {
     public String editVehicleView(@Valid @ModelAttribute(name = VEHICLE_FORM) VehicleForm vehicleForm, BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes) {
 
-        if (vehicleForm.getVehicleId().equals("")) {
+        if ("".equals(vehicleForm.getVehicleId())) {
             redirectAttributes.addFlashAttribute(ERROR_MESSAGE, "Something went wrong");
             return "redirect:/admin/edit-repair";
         }

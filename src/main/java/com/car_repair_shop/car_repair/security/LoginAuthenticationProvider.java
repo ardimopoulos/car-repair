@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ADMIN;
+import static com.car_repair_shop.car_repair.properties.Constants.MEMBER;
+
 @Component
 public class LoginAuthenticationProvider implements AuthenticationProvider {
 
@@ -28,10 +31,10 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
         Member member = memberService.login(username, password);
 
         if (member.isUserType()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority("ADMIN"));
+            grantedAuthorities.add(new SimpleGrantedAuthority(ADMIN));
 
         } else {
-            grantedAuthorities.add(new SimpleGrantedAuthority("MEMBER"));
+            grantedAuthorities.add(new SimpleGrantedAuthority(MEMBER));
         }
 
         return new UsernamePasswordAuthenticationToken(username, password,grantedAuthorities);

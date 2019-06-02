@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.car_repair_shop.car_repair.properties.Constants.ADMIN;
+import static com.car_repair_shop.car_repair.properties.Constants.MEMBER;
+
 @Component
 public class SuccessLoginHandler implements AuthenticationSuccessHandler {
 
@@ -17,10 +20,10 @@ public class SuccessLoginHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException {
         String role = AppUtilities.userAuthority();
 
-        if (role.equals("ADMIN")) {
+        if (ADMIN.equals(role)) {
                 httpServletResponse.sendRedirect("/admin");
 
-        } else if (role.equals("MEMBER")) {
+        } else if (MEMBER.equals(role)) {
             httpServletResponse.sendRedirect("/member");
         }
     }
