@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static com.car_repair_shop.car_repair.properties.Constants.ERROR_MESSAGE;
+import static com.car_repair_shop.car_repair.properties.Constants.*;
 
 @Controller
 public class LoginController {
@@ -20,10 +20,10 @@ public class LoginController {
         String role = AppUtilities.userAuthority();
         String view;
 
-        if (role.equals("ADMIN")) {
+        if (role.equals(ADMIN)) {
             view = "redirect:/admin/";
 
-        } else if (role.equals("MEMBER")) {
+        } else if (role.equals(MEMBER)) {
             view = "redirect:/member/";
 
         } else {
