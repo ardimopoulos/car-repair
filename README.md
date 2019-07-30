@@ -1,4 +1,4 @@
-## car-repar
+## car-repair
 
 Spring Boot web application for car repair shop management 
 
